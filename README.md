@@ -2,7 +2,7 @@
 
 ## Prerequsites
 
-I have use “create-react-app” for building the primary project, which will helps you to understand how redux works with react js.
+Primary Project for buinding the app with react and redux using  “create-react-app” , which will helps you to understand how redux works with react js.
 
 We need Node js V1.8.10 stable, “create-react-app” for develop the simple project with react and redux. Need some plugins related to “react js” named.
 1. React Router Dom
