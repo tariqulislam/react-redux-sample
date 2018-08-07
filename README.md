@@ -3,12 +3,13 @@
 ## Prerequsites
 
 I have use “create-react-app” for building the primary project, which will helps you to understand how redux works with react js.
+
 We need Node js V1.8.10 stable, “create-react-app” for develop the simple project with react and redux. Need some plugins related to “react js” named.
-React Router Dom
-Redux Thunk
-React Router Redux
-Redux Promise
-Axios
+1. React Router Dom
+2. Redux Thunk
+3. React Router Redux
+4. Redux Promise
+5. Axios
 
 ### What is React Router?
 React Router is the standard routing library for React. It keeps your UI sync with the URL. it has a simple API with powerful features  like Lazy code Loading, dynamic route matching and Location transition handling build right in. To know about react router you can go to this link “react-router”
