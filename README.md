@@ -176,6 +176,21 @@ render () {
 2. `!this.props.showInfo` will check the `redux store` provide the `showInfo`  false, it will hide `Show  Paragraph` button  and  `this.props.showInfo` is `redux store state` which helps react component to  shows the paragraph at `Home component`
 
 
+## Output of the Project
+
+1. Home Page initial load without paragraph
+
+![page-initial-load](https://github.com/tariqulislam/react-redux-sample/blob/master/images/Screen%20Shot%202018-08-07%20at%206.35.14%20PM.png)
+
+2. Click `Show Paragraph` button output
+![Click-Show-Paragraph](https://github.com/tariqulislam/react-redux-sample/blob/master/images/Screen%20Shot%202018-08-07%20at%206.36.21%20PM.png)
+
+3. About Page Output
+
+![About-Page-Output](https://github.com/tariqulislam/react-redux-sample/blob/master/images/Screen%20Shot%202018-08-07%20at%206.40.30%20PM.png)
+
+
+
 
 
 
