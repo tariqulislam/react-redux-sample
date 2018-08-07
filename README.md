@@ -1,4 +1,4 @@
-# React Redux Sample With create-create-app
+# Redux Integration in React JS With `create-react-app`
 
 ## Prerequsites
 
