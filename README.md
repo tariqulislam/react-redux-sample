@@ -30,4 +30,62 @@ React Router includes three main packages:
 2. then Run Command for `npm install`
 3. After that run command `npm start` or `yarn start`
 
+## Create the Reducer for Redux Store for Sample component
+
+Then I have create file named `home.reducer.js` file at `src/reducers` directory at project which will contains  `action constraint`, `actions`, `reducer` for `Home Component`, `state` for
+
+1. Add the `action constraint` to `home.reducer.js` which will show and hide the paragraph of home page
+
+```javascript
+export const HIDE_HOME_INFO = 'HIDE_HOME_INFO'
+export const SHOW_HOME_INFO = 'SHOW_HOME_INFO'
+```
+
+2. Initialize the `state` of the `reducer` by:
+```javascript
+const initialState = {
+   showInfo: false
+}
+```
+3. Then add the action those action constraint.
+```javascript
+export const showParagraphInfo = () => {
+   return dispatch => { dispatch({  type: SHOW_HOME_INFO })}
+}
+
+export const hideParagraphInfo = () => {
+   return dispatch => { dispatch({  type: HIDE_HOME_INFO })}
+}
+```
+4. Create the Reducer for `Home Component` at `home.reducer.js` file
+```javascript
+export default (state= initialState, action) => {
+   switch (action.type) {
+       case SHOW_HOME_INFO:
+           return {
+               ...state,
+               showInfo: true
+           }
+       case HIDE_HOME_INFO:
+           return {
+               ...state,
+               showInfo: false
+           }
+       default:
+           return state
+   }
+}
+```
+5. Then change the code at `src/core/rootReducer.js` file and add `home.reducer`  for combine and resolve  the `home module reducer` to `redux store`
+```javascript
+import { combineReducers } from 'redux'
+import home  from '../reducers/Home/home.reducer'
+const rootReducer = combineReducers({  home})
+export default rootReducer
+```
+
+
+
+
+
 
