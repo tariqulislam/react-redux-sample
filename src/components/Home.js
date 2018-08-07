@@ -4,13 +4,15 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
     showParagraphInfo,
-    hideParagraphInfo
+    hideParagraphInfo,
+    getAllPostForFromApi
 } from '../reducers/Home/home.reducer'
 
 
 class Home extends Component {
    componentWillMount () {
         this.props.hideParagraphInfo()
+       const getAll = this.props.getAllPostForFromApi()
    }
 
    render () {
@@ -42,6 +44,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
     showParagraphInfo,
     hideParagraphInfo,
+    getAllPostForFromApi,
     goToAboutPage: () => push('/about-us')
 }, dispatch)
 
