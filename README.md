@@ -175,6 +175,24 @@ render () {
 
 1. `this.props.showParagraphInfo()` redux `action` added in <button> `onClick` event to show the paragraph
 2. `!this.props.showInfo` will check the `redux store` provide the `showInfo`  false, it will hide `Show  Paragraph` button  and  `this.props.showInfo` is `redux store state` which helps react component to  shows the paragraph at `Home component`
+	
+## Handle Ajax Request By React Redux
+
+1. For ajax request handling, we have to create `home.async.js` file at `src/components/Home` directory
+2. For learning purpose, we have to create function named `getAllPosts` which is async function to get all post from sample json web api site named `https://jsonplaceholder.typicode.com`
+3. We are using `axios` package to get the data from json api.
+```javascript
+import axios from 'axios'
+export const getAllPosts = async () => {
+  const getAllPosts = await axios.get(
+   "https://jsonplaceholder.typicode.com/posts",
+   {
+        headers: {'Content-Type': 'application/json'}
+   }
+  )
+  return getAllPosts;
+}
+```
 
 
 ## Output of the Project
