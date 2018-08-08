@@ -25,6 +25,14 @@ React Router includes three main packages:
 2. react-router-dom. It contains the DOM bindings for React Router. In other words, the router components for websites.
 3. react-router-native. It contains the React Native bindings for React Router. In other words, the router components for an app development environment using React Native.
 
+### What is Redux Promise?
+The middleware returns a promise to the caller so that it can wait for the operation to finish before continuing. So Developer can add the `.then` and `.catch` after `dispatch` any action at `redux`.
+
+### What is React Router Redux?
+
+You use Redux to manage your application state. You use React Router to do routing. All is good.But the two libraries don't coordinate. You want to do time travel with your application state, but React Router doesn't navigate between pages when you replay actions. It controls an important part of application state: the URL.
+This library helps you keep that bit of state in sync with your Redux store. We keep a copy of the current location hidden in state. When you rewind your application state with a tool like Redux DevTools, that state change is propagated to React Router so it can adjust the component tree accordingly. You can jump around in state, rewinding, replaying, and resetting as much as you'd like, and this library will ensure the two stay in sync at all times.
+
 ## Installations
 
 1. Download git Repository `git clone https://github.com/tariqulislam/react-redux-sample/`
