@@ -7,17 +7,34 @@ import {
     hideParagraphInfo,
     getAllPostForFromApi
 } from '../reducers/Home/home.reducer'
+import ErrorBoundary from './ErrorBoundary';
 
 
 class Home extends Component {
+   constructor(props) {
+       super(props);
+       this.state = {
+           hasError: false
+       }
+   }
    componentWillMount () {
         this.props.hideParagraphInfo()
        const getAll = this.props.getAllPostForFromApi()
    }
 
+   componentDidCatch() {
+       this.setState(state => ({...state, hasError: true}))
+   }
+
    render () {
+
+       if(this.state.hasError) {
+           return <div>Sorry Something Went Wrong</div>
+       }
+       
        return (  
-        <div>
+           <ErrorBoundary debug={true}>
+            <div>
             <h1> Home Page</h1>
             {
             !this.props.showInfo &&   <button onClick={() => this.props.showParagraphInfo()}> Show Paragraph </button>
@@ -32,6 +49,7 @@ class Home extends Component {
             }
             <button onClick={() => this.props.goToAboutPage()}> Go To About Page</button>
          </div>
+           </ErrorBoundary>
        )
    }
 }
