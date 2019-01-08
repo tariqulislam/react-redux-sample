@@ -19,6 +19,7 @@ class Home extends Component {
    }
 
    render () {
+      
       if(this.state.hasError) {
           return <div>Sorry,Something went wrong!</div>
       }
@@ -32,7 +33,7 @@ class Home extends Component {
 
 export const TestElement = (props) => {
   return (
-    <div>{props.name.toString()}</div>
+    <div>{props.name}</div>
   )
 }
 
