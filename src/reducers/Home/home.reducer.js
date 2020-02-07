@@ -14,7 +14,6 @@ export const getAllWeatherInfoFromApi = () => {
             debugger
             /** calculating the weather data */
             let weatherInfo = res.data && res.data.list;
-            let weatherTypes = ["Clouds", "Clear", "Rain"]
             /** get the dateinfo */
             let dates = [];
             let newWeatherInfo = [];
@@ -22,7 +21,11 @@ export const getAllWeatherInfoFromApi = () => {
                 let tempDate = val.dt_txt.split(' ')
                 dates = [...dates, tempDate[0]]
                 let main = val.weather && val.weather[0].main;
-                let tempWeatherInfo = { date: tempDate[0], timetext: tempDate[1], weather: main }
+                let maxTemp = val.main && val.main.temp
+                let celUnit = 273.15;
+                let temp = maxTemp - celUnit
+
+                let tempWeatherInfo = { date: tempDate[0], timetext: tempDate[1], weather: main, temp: temp }
                 newWeatherInfo = [...newWeatherInfo, tempWeatherInfo]
             })
             
@@ -37,24 +40,30 @@ export const getAllWeatherInfoFromApi = () => {
                 let tempClear =0;
                 let total = 0
                 let tempWeather = [];
+                let highestTemp = 0
                 newWeatherInfo.forEach(mElem => {
                     if(elem === mElem.date) {
-                       if(mElem.weather == 'Clear') {
+                       if(mElem.weather === 'Clear') {
                            tempClear = tempClear + 1;
                        }
 
-                       if(mElem.weather == 'Clouds') {
+                       if(mElem.weather === 'Clouds') {
                            tempClouds = tempClouds + 1;
                        }
 
-                       if(mElem.weather == 'Rain') {
+                       if(mElem.weather === 'Rain') {
                            tempRain = tempRain + 1;
+                       }
+                       if(mElem.temp > highestTemp) {
+                          highestTemp = mElem.temp; 
                        }
                        total = total + 1;
                        tempWeather = [...tempWeather, mElem]
+                      
                     }
                 })
                 consolidateInfo[key] = {"clouds": tempClouds,
+                 "temp": highestTemp,
                  "rain": tempRain,
                   "clear": tempClear,
                   "total": total,
