@@ -1,5 +1,4 @@
 import {getAllWeatherInfo}   from './home.async'
-
 export const GET_ALL_WEATHER_INFO = 'GET_ALL_WEATHER_INFO'
 
 

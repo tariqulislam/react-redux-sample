@@ -28,7 +28,7 @@ class Forcast extends Component {
             if (a.clear < b.clear) { return b;} else { return a; }
         })
 
-        let has5DaysAvarage = true;
+        let has5DaysAvarage = false;
         
         let ifTotalRainyDuration = 0;
         let ifTotalSunnyDuration =0;
