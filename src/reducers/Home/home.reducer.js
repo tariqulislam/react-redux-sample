@@ -8,7 +8,6 @@ export const getAllWeatherInfoFromApi = () => {
     return dispatch => {
     
         getAllWeatherInfo().then(res => {
-            debugger
             /** calculating the weather data */
             let weatherInfo = res.data && res.data.list;
             /** get the dateinfo */
@@ -52,22 +51,23 @@ export const getAllWeatherInfoFromApi = () => {
                 let rainyPredictionSum = tempClouds + tempRain;
 
                 if(rainyPredictionSum > tempClear) {
-                     byingPrediction = "umbrella";
-                     weatherCondition = "Rain or Clouds"
+                    byingPrediction = "umbralla";
+                    weatherCondition = "Rain or Clouds"
                 } else {
                     byingPrediction = "jecket";
                     weatherCondition = "Sunny or Clear"
                 }
                 
                 consolidateInfo = [...consolidateInfo, {
-                "date": elem,
-                "clouds": tempClouds, 
-                "temp": highestTemp,
-                "rain": tempRain,
+                 "date": elem,
+                 "clouds": tempClouds, 
+                 "temp": highestTemp,
+                 "rain": tempRain,
                  "clear": tempClear, 
-                 "total": total,"weather": tempWeather,
-                  "product": byingPrediction, 
-                  "daycondition": weatherCondition
+                 "total": total,
+                 "weather": tempWeather,
+                 "product": byingPrediction, 
+                 "daycondition": weatherCondition
                 }]
             })
          

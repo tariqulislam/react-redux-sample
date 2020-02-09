@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
@@ -37,8 +36,7 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    getAllWeatherInfoFromApi,
-    goToAboutPage: () => push('/about-us')
+    getAllWeatherInfoFromApi
 }, dispatch)
 
 export default connect(
