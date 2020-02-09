@@ -35,14 +35,12 @@ export  const DailyWeather = (props) => {
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>00:00</th>
-                    <th>03:00</th>
-                    <th>06:00</th>
-                    <th>09:00</th>
-                    <th>12:00</th>
-                    <th>15:00</th>
-                    <th>18:00</th>
-                    <th>21:00</th>
+                    {
+                       refinedWeather.map((item,index) => {
+                       return (<th key={index}>{item.timetext}</th>)
+                       })
+                    }
+                  
                 </tr>
             </thead>
            <tbody>

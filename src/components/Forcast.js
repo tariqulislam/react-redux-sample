@@ -27,8 +27,8 @@ class Forcast extends Component {
                         <tr>
                             <th>Date</th>
                             <th>Forcast</th>
-                            <th>Over All Condition</th>
-                            <th>Suggestion</th>
+                            <th>Condition</th>
+                            <th>Buying Suggestion</th>
                         </tr>
                     </thead>
                     <tbody>
