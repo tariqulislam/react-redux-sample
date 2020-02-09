@@ -1,7 +1,4 @@
 import {getAllWeatherInfo}   from './home.async'
-export const HIDE_HOME_INFO = 'HIDE_HOME_INFO'
-export const SHOW_HOME_INFO = 'SHOW_HOME_INFO'
-export const GET_ALL_POSTS = 'GET_ALL_POSTS'
 
 export const GET_ALL_WEATHER_INFO = 'GET_ALL_WEATHER_INFO'
 
@@ -31,10 +28,9 @@ export const getAllWeatherInfoFromApi = () => {
             
             let uniqueDate = dates.filter((elem,pos) => dates.indexOf(elem) === pos)
 
-            let consolidateInfo = {};
-
+            let consolidateInfo = [];
+            
             uniqueDate.forEach(elem => {
-                let key = `${elem}`
                 let tempClouds = 0;
                 let tempRain =0;
                 let tempClear =0;
@@ -43,39 +39,41 @@ export const getAllWeatherInfoFromApi = () => {
                 let highestTemp = 0
                 newWeatherInfo.forEach(mElem => {
                     if(elem === mElem.date) {
-                       if(mElem.weather === 'Clear') {
-                           tempClear = tempClear + 1;
-                       }
-
-                       if(mElem.weather === 'Clouds') {
-                           tempClouds = tempClouds + 1;
-                       }
-
-                       if(mElem.weather === 'Rain') {
-                           tempRain = tempRain + 1;
-                       }
-                       if(mElem.temp > highestTemp) {
-                          highestTemp = mElem.temp; 
-                       }
+                       if(mElem.weather === 'Clear') { tempClear = tempClear + 1; }
+                       if(mElem.weather === 'Clouds') { tempClouds = tempClouds + 1;}
+                       if(mElem.weather === 'Rain') { tempRain = tempRain + 1;}
+                       if(mElem.temp > highestTemp) { highestTemp = mElem.temp;}
                        total = total + 1;
                        tempWeather = [...tempWeather, mElem]
-                      
                     }
                 })
-                consolidateInfo[key] = {"clouds": tempClouds,
-                 "temp": highestTemp,
-                 "rain": tempRain,
-                  "clear": tempClear,
-                  "total": total,
-                   "weather": tempWeather}
-            })
+                let byingPrediction = "";
+                let weatherCondition = "";
+                let rainyPredictionSum = tempClouds + tempRain;
 
-            debugger
+                if(rainyPredictionSum > tempClear) {
+                     byingPrediction = "umbrella";
+                     weatherCondition = "Rain or Clouds"
+                } else {
+                    byingPrediction = "jecket";
+                    weatherCondition = "Sunny or Clear"
+                }
+                
+                consolidateInfo = [...consolidateInfo, {
+                "date": elem,
+                "clouds": tempClouds, 
+                "temp": highestTemp,
+                "rain": tempRain,
+                 "clear": tempClear, 
+                 "total": total,"weather": tempWeather,
+                  "product": byingPrediction, 
+                  "daycondition": weatherCondition
+                }]
+            })
+         
             dispatch({
                 type: GET_ALL_WEATHER_INFO,
-                payload: {
-                    ...res.data
-                }
+                payload: consolidateInfo
             })
         })
     }
