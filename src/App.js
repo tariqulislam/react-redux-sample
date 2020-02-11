@@ -32,8 +32,8 @@ class App extends Component {
             </Nav>
             <Nav>
               <Nav.Link href="javascript.void(0);"><Link to="/register">Register</Link></Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Dank memes
+              <Nav.Link eventKey={2} href="javascript.void(0);">
+                  <Link to="/">English</Link>&nbsp;|&nbsp;<Link to="/">Nepal</Link>&nbsp;|&nbsp;<Link to="/">Vetnam</Link>&nbsp;|&nbsp;<Link to="/">Japan</Link>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

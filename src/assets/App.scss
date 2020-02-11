@@ -19,3 +19,22 @@
         }
     }
 }
+
+.form {
+    &-main {
+        &-container {
+            margin-right: 0px !important;
+            margin-left: 0px !important;
+            margin-bottom: 0px !important;
+            .col-form-label {
+                padding:5px !important;
+                border: 1px solid #d8d5d5;
+                background-color: #f4f4f4;
+            }
+            .col-sm-9 {
+                padding:5px !important;
+                border: 1px solid #f0f0f0;
+            }
+        }
+    }
+}
