@@ -2,7 +2,7 @@
     "translations": {
         "registration": {
             "registration_form": "登録用紙",
-            "full_name":  {
+            "full_name": {
                 "title": " 名前(氏名)",
                 "placeholder": "お名前を入力してください"
             },
@@ -13,7 +13,82 @@
             "nick_name": {
                 "title": "ニックネーム",
                 "placeholder": "ニックネームを入力してください"
-            } 
+            },
+            "country_resident": {
+                "title": "国と居住者"
+            },
+            "language_you_can_fully_understand": {
+                "title": "あなたが完全に理解できる言語"
+            },
+            "date_of_birth": {
+                "title": "生年月日"
+            },
+            "religion": {
+                "title": "宗教"
+            },
+            "sex": {
+                "title": "性別"
+            },
+            "half_body_photo": {
+                "title": "半身写真"
+            },
+            "passport_photo": {
+                "title": "パスポートの写真"
+            },
+            "height_weight": {
+                "title": "身長体重"
+            },
+            "eyesight_hearing": {
+                "title": "視力と聴覚"
+            },
+            "foot_size": {
+                "title": "足のサイズ"
+            },
+            "email": {
+                "title": "Eメール"
+            },
+            "password": {
+                "title": "パスワード"
+            },
+            "retypepassword": {
+                "title": "パスワードを再入力してください"
+            },
+            "phonenumber": {
+                "title": "電話番号"
+            },
+            "facebook": {
+                "title": "フェイスブック"
+            },
+            "current_location": {
+                "title": "現在位置"
+            },
+            "current_situation": {
+                "title": "現在の状況"
+            },
+            "work_experience": {
+                "title": "実務経験"
+            },
+            "specific_skills": {
+                "title": "特定のスキル"
+            },
+            "meritial_status": {
+                "title": "配偶者の有無"
+            },
+            "cronic_disease": {
+                "title": "慢性疾患"
+            },
+            "japanese_language_skills": {
+                "title": "日本語スキル"
+            },
+            "desired_job": {
+                "title": "希望した職種"
+            },
+            "terms_conditions": {
+                "title": "利用規約"
+            },
+            "register_to_site": {
+                "title": "サイトに登録"
+            }
         }
     }
 }
