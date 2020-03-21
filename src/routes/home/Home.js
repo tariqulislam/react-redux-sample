@@ -13,11 +13,6 @@ import GroupOnDevice from './assets/images/group-on-devices.jpg'
 
 
 class Home extends Component {
-   constructor(props) {
-       super(props);
-   }
-   
-
    render () {
        let bannerStyle = {
            width: "100%"

@@ -4,8 +4,22 @@ import Home from "./routes/home/Home";
 import Register from "./routes/register/Register";
 import "./assets/App.css";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import CandidateLogin from "./routes/Login/CandidateLogin";
+import { withTranslation, Trans } from 'react-i18next'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: "en"
+    }
+  }
+
+  onLanguageHandle = (event) => {
+    this.setState({value: event})
+    this.props.i18n.changeLanguage(event)
+  }
+
   render() {
     return (
        <React.Fragment>
@@ -31,10 +45,10 @@ class App extends Component {
               </NavDropdown>
             </Nav>
             <Nav>
+              
               <Nav.Link href="javascript.void(0);"><Link to="/register">Register</Link></Nav.Link>
-              <Nav.Link eventKey={2} href="javascript.void(0);">
-                  <Link to="/">English</Link>&nbsp;|&nbsp;<Link to="/">Nepal</Link>&nbsp;|&nbsp;<Link to="/">Vetnam</Link>&nbsp;|&nbsp;<Link to="/">Japan</Link>
-              </Nav.Link>
+              <Nav.Item style={{color: 'white', marginTop:'8px', cursor: 'pointer'}} eventKey={2} onClick={() => this.onLanguageHandle('en')}>EN </Nav.Item>
+              <Nav.Item style={{color: 'white', marginTop: '8px', cursor: 'pointer'}} eventKey={2} onClick={() => this.onLanguageHandle('jp')}>&nbsp;|&nbsp;JP</Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -47,10 +61,11 @@ class App extends Component {
          <main>
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/candidate/login" component={CandidateLogin} />
         </main>
         </React.Fragment>
     );
   }
 }
 
-export default App;
+export default withTranslation()(App)

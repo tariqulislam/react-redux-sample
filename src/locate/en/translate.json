@@ -1,0 +1,20 @@
+
+{
+    "translations": {
+        "registration": {
+            "registration_form": "Registration Form",
+            "full_name": {
+                "title": "Name(Full Name)",
+                "placeholder": "Please Type Your Name"
+            },
+            "romanji_name": {
+                "title": "Name(Romaji)",
+                "placeholder": "Please Type Your Name"
+            } ,
+            "nick_name": {
+                "title": "Nick Name",
+                "placeholder": "Please Type Nick Name"
+            }
+        }
+    }
+}
