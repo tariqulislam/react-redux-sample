@@ -13,7 +13,15 @@
             "nick_name": {
                 "title": "ニックネーム",
                 "placeholder": "ニックネームを入力してください"
-            } 
+            }
+        },
+        "homepage": {
+            "counter_section": {
+
+            },
+            "initial_section": {
+                "whatsGHRN": "GHRNとは？"
+            }
         }
     }
 }

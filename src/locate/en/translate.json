@@ -15,6 +15,24 @@
                 "title": "Nick Name",
                 "placeholder": "Please Type Nick Name"
             }
+        },
+        "homepage": {
+            "counter_section": {
+
+            },
+            "initial_section": {
+                "whatsGHRN": "What is GHRN？",
+                "leftMsg": {
+                    "one": "GHRN (GlobalHumanResourceNetwork) is for foreigners who want to work in Japan who are registered on this site or who are already living in Japan (international students or working) Is a site where you can scout the right human resources",
+                    "two": "If you find a person you are interested in, register the job search information on the site and scout. The job information will be converted into the native language of the scouting personnel and sent to the person on this site.",
+                    "three": "The registrant who receives the scout will view the job search information and decide whether to take the scout.",
+                    "four": "The registrant who receives the scout will view the job search information and decide whether to take the scout.",
+                    "five": "If a scout is received, the scout company will be notified as a match. * Here, personal information is disclosed for the first time.",
+                    "six": "マッチングした双方でサイト内のチャットやWeb面談システムを使用して採用までの情報をやり取りします。",
+                    "seven": "※Web面談システムはソクメンを利用しています。"
+                }
+            }
+            
         }
     }
 }
