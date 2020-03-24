@@ -53,18 +53,19 @@ export class Register extends React.Component {
                 </Col>
               </Form.Group>
 
+             
               <Form.Group
                 className="form-main-container"
                 as={Row}
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Country & Resident
+                  {t('registration.country_resident.title')}
                 </Form.Label>
                 <Col sm={9}>
                     <select name="country" className="form-control">
                         <option>-- Select One --</option>
-                        <opton> Japan </opton>
+                        <option> Japan </option>
                         <option>Nepal</option>
                         <option>Vitnam</option>
                     </select>
@@ -78,7 +79,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalRomajiName"
               >
                 <Form.Label column sm={3}>
-                  Language You can fully understand
+                  {t('registration.language_you_can_fully_understand.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Row>
@@ -95,7 +96,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalRomajiName"
               >
                 <Form.Label column sm={3}>
-                  Date Of Birth
+                  {t('registration.date_of_birth.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Row>
@@ -113,7 +114,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Religion
+                  {t('registration.religion.title')}
                 </Form.Label>
                 <Col sm={9}>
                     <select name="religion" className="form-control">
@@ -133,7 +134,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Sex
+                  {t('registration.sex.title')}
                 </Form.Label>
                 <Col sm={9}>
                     <select name="religion" className="form-control">
@@ -151,7 +152,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Half Body Photo
+                  {t('registration.half_body_photo.title')}
                 </Form.Label>
                 <Col sm={9}>
                    <input className="form-control" type="file" />
@@ -164,7 +165,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                 Passport Photo
+                 {t('registration.passport_photo.title')}
                 </Form.Label>
                 <Col sm={9}>
                    <input className="form-control" type="file" />
@@ -177,7 +178,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Height &amp; Weight
+                  {t('registration.height_weight.title')}
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
@@ -209,7 +210,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Eyesight &amp; Hearing
+                  {t('registration.eyesight_hearing.title')}
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
@@ -242,7 +243,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Foot Size
+                 {t('registration.foot_size.title')}
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
@@ -265,7 +266,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalFullName"
               >
                 <Form.Label column sm={3}>
-                 Email
+                 {t('registration.email.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Control type="text" placeholder="Type Email Address" />
@@ -277,7 +278,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalFullName"
               >
                 <Form.Label column sm={3}>
-                 Password
+                 {t('registration.password.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Control type="password" placeholder="Type Email Address" />
@@ -289,7 +290,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalFullName"
               >
                 <Form.Label column sm={3}>
-                 Retype Password
+                 {t('registration.retypepassword.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Control type="password" placeholder="Type Email Address" />
@@ -301,7 +302,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalFullName"
               >
                 <Form.Label column sm={3}>
-                  Phone Number
+                  {t('registration.phonenumber.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Control type="text" placeholder="Type Phone Number" />
@@ -313,7 +314,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalFullName"
               >
                 <Form.Label column sm={3}>
-                  Facebook
+                  {t('registration.phonenumber.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Control type="text" placeholder="Type Facebook address" />
@@ -325,7 +326,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Current Location
+                  {t('registration.facebook.title')}
                 </Form.Label>
                 <Col sm={9}>
                     <select name="religion" className="form-control">
@@ -342,7 +343,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Current Situation
+                  {t('registration.current_location.title')}
                 </Form.Label>
                   
                 <Col sm={9}>
@@ -373,7 +374,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Work Experience 
+                  {t('registration.current_situation.title')}
                 </Form.Label>
                   
                 <Col sm={9}>
@@ -426,36 +427,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Current Situation
-                </Form.Label>
-                  
-                <Col sm={9}>
-                  <Row>
-                    <Col sm={12}>
-                    <select name="religion" className="form-control">
-                        <option>--  Japanese Language Training --</option>
-                        <option> Technical Traning </option>
-                        <option> Work at Your Country </option>
-                        <option>Others</option>
-                    </select>
-                    </Col>
-                  
-                  </Row>
-                   <Row>
-                     <Col sm={12}>
-                     <input type="text" className="form-control" />
-                     </Col>
-                   </Row>
-              
-                </Col>
-              </Form.Group>
-              <Form.Group
-                className="form-main-container"
-                as={Row}
-                controlId="formHorizontalCountry"
-              >
-                <Form.Label column sm={3}>
-                  Specific Skills
+                  {t('registration.work_experience.title')}
                 </Form.Label>
                   
                 <Col sm={9}>
@@ -480,7 +452,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalRomajiName"
               >
                 <Form.Label column sm={3}>
-                  Meritial Status
+                  {t('registration.specific_skills.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Col sm={4}>
@@ -497,7 +469,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalRomajiName"
               >
                 <Form.Label column sm={3}>
-                  Cronic Disease
+                  {t('registration.meritial_status.title')}
                 </Form.Label>
                 <Col sm={9}>
                   
@@ -512,7 +484,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Japanese Language Skills
+                  {t('registration.cronic_disease.title')}
                 </Form.Label>
                   
                 <Col sm={9}>
@@ -534,7 +506,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Desired Job
+                  {t('registration.japanese_language_skills.title')}
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
@@ -567,7 +539,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  Terms &amp; Conditions
+                  {t('registration.terms_conditions.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <textarea style={{width: '100%'}} cols="40" rows="5"></textarea>
@@ -584,7 +556,7 @@ export class Register extends React.Component {
                
                 </Form.Label>
                 <Col sm={9}>
-                  <Button type="submit">Register To Site</Button>
+                  <Button type="submit"> {t('registration.register_to_site.title')} </Button>
                 </Col>
               </Form.Group>
            

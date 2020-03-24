@@ -1,4 +1,3 @@
-
 {
     "translations": {
         "registration": {
@@ -10,10 +9,85 @@
             "romanji_name": {
                 "title": "Name(Romaji)",
                 "placeholder": "Please Type Your Name"
-            } ,
+            },
             "nick_name": {
                 "title": "Nick Name",
                 "placeholder": "Please Type Nick Name"
+            },
+            "country_resident": {
+                "title": "Country & Resident"
+            },
+            "language_you_can_fully_understand": {
+                "title": "Language You can fully understand"
+            },
+            "date_of_birth": {
+                "title": "Date Of Birth"
+            },
+            "religion": {
+                "title": "Religion"
+            },
+            "sex": {
+                "title": "Sex"
+            },
+            "half_body_photo": {
+                "title": "Half Body Photo"
+            },
+            "passport_photo": {
+                "title": "Passport Photo"
+            },
+            "height_weight": {
+                "title": "Height & Weight"
+            },
+            "eyesight_hearing": {
+                "title": "Eyesight & Hearing"
+            },
+            "foot_size": {
+                "title": "Foot Size"
+            },
+            "email": {
+                "title": "Email"
+            },
+            "password": {
+                "title": "Password"
+            },
+            "retypepassword": {
+                "title": "Retype Password"
+            },
+            "phonenumber": {
+                "title": "Phone Number"
+            },
+            "facebook": {
+                "title": "Facebook"
+            },
+            "current_location": {
+                "title": "Current Location"
+            },
+            "current_situation": {
+                "title": "Current Situation"
+            },
+            "work_experience": {
+                "title": "Work Experience"
+            },
+            "specific_skills": {
+                "title": "Specific Skills"
+            },
+            "meritial_status": {
+                "title": "Meritial Status"
+            },
+            "cronic_disease": {
+                "title": "Cronic Disease"
+            },
+            "japanese_language_skills": {
+                "title": "Japanese Language Skills"
+            },
+            "desired_job": {
+                "title": "Desired Job"
+            },
+            "terms_conditions": {
+                "title": "Terms & Conditions"
+            },
+            "register_to_site": {
+                "title": "Register To Site"
             }
         },
         "homepage": {

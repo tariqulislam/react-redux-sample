@@ -5,7 +5,7 @@ import Register from "./routes/register/Register";
 import "./assets/App.css";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import CandidateLogin from "./routes/Login/CandidateLogin";
-import { withTranslation, Trans } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +17,14 @@ class App extends Component {
 
   onLanguageHandle = (event) => {
     this.setState({value: event})
+    localStorage.setItem('language', event);
     this.props.i18n.changeLanguage(event)
+  }
+
+  componentDidMount() {
+    let getLanguageVal = localStorage.getItem('language')
+    this.setState({value: getLanguageVal})
+    this.props.i18n.changeLanguage(getLanguageVal)
   }
 
   render() {
@@ -59,9 +66,9 @@ class App extends Component {
         </header> */}
 
          <main>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/candidate/login" component={CandidateLogin} />
+          <Route exact path="/" component={Home}  />
+          <Route exact path="/register" component={Register}  />
+          <Route exact path="/candidate/login" component={CandidateLogin}  />
         </main>
         </React.Fragment>
     );
