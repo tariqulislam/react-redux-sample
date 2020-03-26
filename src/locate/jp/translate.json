@@ -94,6 +94,14 @@
             "counter_section": {
 
             },
+            "candidate_process": {
+                "title": "候補者",
+                "notes": "初めての方はこちらへGHRNとは",
+                "one": "登録人材をスカウトできるスカウトシステムサイトGHRN",
+                "two": "日本の各地の企業からスカウトができる（来る）GHRN",
+                "three": "日本での働き方はいろいろ、希望する仕事が見つかるGHRN",
+                "four": "日本で働きたい外国人の方（日本在留の方も含め）を日本の企業に紹介するサイトGHRN"
+            },
             "initial_section": {
                 "whatsGHRN": "GHRNとは？",
                 "leftMsg": {

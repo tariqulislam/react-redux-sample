@@ -52,8 +52,6 @@ export class Register extends React.Component {
                   <Form.Control type="text" placeholder={t('registration.nick_name.placeholder')} />
                 </Col>
               </Form.Group>
-
-             
               <Form.Group
                 className="form-main-container"
                 as={Row}
@@ -65,7 +63,7 @@ export class Register extends React.Component {
                 <Col sm={9}>
                     <select name="country" className="form-control">
                         <option>-- Select One --</option>
-                        <option> Japan </option>
+                        <option>Japan </option>
                         <option>Nepal</option>
                         <option>Vitnam</option>
                     </select>
@@ -196,9 +194,9 @@ export class Register extends React.Component {
                      <Col sm={6}><input type="text" placeholder="weight" className="form-control" /></Col>
                      <Col sm={6}>
                      <select name="religion" className="form-control">
-                        <option>--  Select One --</option>
-                        <option> kg </option>
-                        <option> lb  </option>
+                        <option>--Select One--</option>
+                        <option>kg</option>
+                        <option>lb</option>
                     </select>
                      </Col>
                    </Row>
@@ -510,24 +508,24 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
-                   <Col sm={3}> <input className="form-control" type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" />Chef</Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" />Software</Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" />Networking</Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" />Cleaner</Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
-                   <Col sm={3}> <input className="form-control" type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Chef</Col>
+                   <Col sm={3}> <input  type="checkbox" />Software</Col>
+                   <Col sm={3}> <input  type="checkbox" />Networking</Col>
+                   <Col sm={3}> <input  type="checkbox" />Cleaner</Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" /></Col>
                    </Row>
                   
                 </Col>

@@ -1,0 +1,11 @@
+.candidate {
+    &-section {
+        &-note {
+            background-color: green;
+            color: white;
+            height: 50px;
+            font-size: 30px;
+            padding-left: 20px;
+        }
+    }
+}

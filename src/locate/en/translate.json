@@ -94,6 +94,14 @@
             "counter_section": {
 
             },
+            "candidate_process": {
+                "title": "For Candidate",
+                "notes": "If you are new to GHRN",
+                "one": "Scout system site GHRN where you can scout registered personnel",
+                "two": "GHRN that can (come) scout from companies all over Japan",
+                "three": "GHRN finds a variety of ways to work in Japan",
+                "four": "A site that introduces foreigners who want to work in Japan (including those living in Japan) to Japanese companies GHRN"
+            },
             "initial_section": {
                 "whatsGHRN": "What is GHRN？",
                 "leftMsg": {
