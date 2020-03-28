@@ -90,9 +90,30 @@
                 "title": "Register To Site"
             }
         },
+        "company_reg_page": {
+            "name": "",
+            "phone_number": "",
+            "company_email": "",
+            "contact_person": "",
+            "industry_classification": "",
+            "terms_and_condition": ""
+        },
         "homepage": {
             "counter_section": {
-
+                "year": "Year",
+                "month": "Month",
+                "day": "Day",
+                "candidate_register_for": "Number of Registrants",
+                "person": "Person",
+                "company_register_for": "Number of Company Register"
+            },
+            "regsection": {
+                "for_company_button": "For Company",
+                "for_candidate_button": "For Candidate",
+                "for_support_button": "For Support",
+                "for_company_title": "For Companies",
+                "for_user_title": "For Candidate",
+                "for_support_title": "For Support"
             },
             "candidate_process": {
                 "title": "For Candidate",

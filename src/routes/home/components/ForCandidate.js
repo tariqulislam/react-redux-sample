@@ -20,7 +20,25 @@ export class ForCandidate extends React.Component {
             color: "white",
             height: "50px",
             fontSize: "30px",
-            paddingLeft: "20px"
+            paddingLeft: "20px",
+        }
+
+        let designCounterNote = {
+           
+                backgroundColor: "#de5383",
+                color: "white",
+                height: "150px",
+                fontSize: "30px",
+                paddingLeft: "20px",
+            
+        }
+
+        let DayTimeStyle = {
+            float: 'left',
+            border: '2px solid white',
+            padding: '5px',
+            marginTop: '5px',
+            float: 'left'
         }
         return (
             <React.Fragment>
@@ -48,9 +66,29 @@ export class ForCandidate extends React.Component {
                     <div style={paraStyle}>{t('homepage.candidate_process.four')}</div>
                 </Col>
                 </Row>
-                <Row>
+                <Row style={{paddingLeft: '15px', paddingRight: '15px'}}>
                     <Col style={designFooterNote} md={12}>
                         <div>{t('homepage.candidate_process.notes')}</div>
+                    </Col>
+                </Row>
+                <Row style={{paddingLeft: '15px', paddingRight: '15px' }} >
+                    <Col style={designCounterNote} md={12}>
+                      <Row>
+                          <div style={DayTimeStyle}>2020</div>
+                          <div style={DayTimeStyle}>{t('homepage.counter_section.year')}</div>
+                          <div style={DayTimeStyle}>03</div>
+                          <div style={DayTimeStyle}>{t('homepage.counter_section.month')}</div>
+                          <div style={DayTimeStyle}>28</div>
+                          <div style={DayTimeStyle}>{t('homepage.counter_section.day')}</div>
+                      </Row>
+                      <Row>
+                          <div style={DayTimeStyle}>2020</div>
+                          <div style={DayTimeStyle}>{t('homepage.counter_section.candidate_register_for')}</div>
+                          <div style={DayTimeStyle}>03</div>
+                          <div style={DayTimeStyle}>{t('homepage.counter_section.person')}</div>
+                          <div style={DayTimeStyle}>28</div>
+                          <div style={DayTimeStyle}>{t('homepage.counter_section.company_register_for')}</div>
+                      </Row>
                     </Col>
                 </Row>
             </React.Fragment>

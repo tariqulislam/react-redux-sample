@@ -90,9 +90,30 @@
                 "title": "サイトに登録"
             }
         },
+        "company_reg_page": {
+            "name": "",
+            "contact_number": "",
+            "company_email": "",
+            "contact_person": "",
+            "industry_classification": "",
+            "terms_and_condition": ""
+        },
         "homepage": {
             "counter_section": {
-
+                "year": "年",
+                "month": "月",
+                "day": "日",
+                "candidate_register_for": "登録者数",
+                "person": "人",
+                "company_register_for": "企業登録数"
+            },
+            "regsection": {
+                "for_company_button": "企業の方へ",
+                "for_candidate_button": "外国人の方へ",
+                "for_support_button": "サポートのための",
+                "for_company_title": "企業の方へ",
+                "for_user_title": "外国人の方へ",
+                "for_support_title": "サポートのための"
             },
             "candidate_process": {
                 "title": "候補者",

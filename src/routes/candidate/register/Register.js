@@ -1,10 +1,45 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { withTranslation, Trans } from 'react-i18next'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {saveCandidateInfoFromApi} from '../../../reducers/Candidate/candidate.reducer'
 
 export class Register extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: null,
+      password: null,
+      retypepassword: null,
+      name: null,
+      name_romaji: null,
+      username: null
+    }
+  }
+
+  onSubmitCandidateData = (e) => {
+    debugger
+    this.props.saveCandidateInfoForm({email: 'ttt', name: 'ddddd'})
+  }
+
   render() {
     const {t} = this.props
+
+    let initYear = 1971;
+    let yearCount = 2050;
+    let years = []
+    for(let x = initYear; x< yearCount; x++) {
+       years.push(x)
+    }
+
+    let initMonth = 1;
+    let months = []
+    for(let x = initMonth; x <= 12; x++) {
+      months.push(x)
+    }
+    console.log('this is years', years)
     return (
       <Container>
         <Row className="justify-content-md-center">
@@ -98,8 +133,25 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                   <Row>
-                    <Col sm={4}><select className="form-control" name="year" ><option>-- Select One --</option></select></Col>
-                    <Col sm={4}><select className="form-control" name="month" ><option>-- Select One --</option></select></Col>
+                    <Col sm={4}>
+                      <select className="form-control" name="year" >
+                        <option>-- Select One --</option>
+                        {
+                          years.map(item => {
+                            return (<option value={item}>{item}</option>)
+                          })
+                        }
+                      </select>
+                    </Col>
+                    <Col sm={4}><select className="form-control" name="month" >
+                      <option>-- Select One --</option>
+                      {
+                        months.map(item => {
+                          return (<option value={item}>{item}</option>)
+                        })
+                      }
+                      </select>
+                      </Col>
                     <Col sm={4}><input  className="form-control" type="text" name="day" /></Col>
                  
                   </Row>
@@ -254,8 +306,6 @@ export class Register extends React.Component {
                     </select>
                      </Col>
                    </Row>
-                 
-                   
                 </Col>
               </Form.Group>
               <Form.Group
@@ -312,7 +362,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalFullName"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.phonenumber.title')}
+                  {t('registration.facebook.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Control type="text" placeholder="Type Facebook address" />
@@ -324,10 +374,10 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.facebook.title')}
+                  {t('registration.current_location.title')}
                 </Form.Label>
                 <Col sm={9}>
-                    <select name="religion" className="form-control">
+                    <select name="currentlocation" className="form-control">
                         <option>--  Same As Nationality --</option>
                         <option> Japan </option>
                         <option> Others </option>
@@ -341,7 +391,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.current_location.title')}
+                  {t('registration.current_situation.title')}
                 </Form.Label>
                   
                 <Col sm={9}>
@@ -372,7 +422,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.current_situation.title')}
+                  {t('registration.work_experience.title')}
                 </Form.Label>
                   
                 <Col sm={9}>
@@ -425,7 +475,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.work_experience.title')}
+                  {t('registration.specific_skills.title')}
                 </Form.Label>
                   
                 <Col sm={9}>
@@ -450,7 +500,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalRomajiName"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.specific_skills.title')}
+                  {t('registration.meritial_status.title')}
                 </Form.Label>
                 <Col sm={9}>
                   <Col sm={4}>
@@ -467,12 +517,10 @@ export class Register extends React.Component {
                 controlId="formHorizontalRomajiName"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.meritial_status.title')}
+                  {t('registration.cronic_disease.title')}
                 </Form.Label>
                 <Col sm={9}>
-                  
                     <Form.Control name="marritial" type="text" />
-                
                 </Col>
               </Form.Group>
               
@@ -482,7 +530,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.cronic_disease.title')}
+                  {t('registration.japanese_language_skills.title')}
                 </Form.Label>
                   
                 <Col sm={9}>
@@ -504,7 +552,7 @@ export class Register extends React.Component {
                 controlId="formHorizontalCountry"
               >
                 <Form.Label column sm={3}>
-                  {t('registration.japanese_language_skills.title')}
+                  {t('registration.desired_job.title')}
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
@@ -513,19 +561,19 @@ export class Register extends React.Component {
                    <Col sm={3}> <input  type="checkbox" />Software</Col>
                    <Col sm={3}> <input  type="checkbox" />Networking</Col>
                    <Col sm={3}> <input  type="checkbox" />Cleaner</Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
-                   <Col sm={3}> <input  type="checkbox" /></Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
                    </Row>
                   
                 </Col>
@@ -554,7 +602,7 @@ export class Register extends React.Component {
                
                 </Form.Label>
                 <Col sm={9}>
-                  <Button type="submit"> {t('registration.register_to_site.title')} </Button>
+                  <Button onClick={this.onSubmitCandidateData} type="button"> {t('registration.register_to_site.title')} </Button>
                 </Col>
               </Form.Group>
            
@@ -567,4 +615,14 @@ export class Register extends React.Component {
   }
 }
 
-export default withTranslation()(Register)
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    saveCandidateInfoForm: (formData) => dispatch(saveCandidateInfoFromApi(formData))
+  }
+}
+
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(Register))

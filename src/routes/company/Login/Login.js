@@ -1,15 +1,16 @@
 import React from 'react'
+import {Container, Row, Col} from 'react-bootstrap'
 
-class CompanyLogin extends React.Component {
-    constructor(props) {
-       
-    }
+export class CandidateLogin extends React.Component {
 
     render() {
         return (
-            <form>
+            <Container>
+            <Row className="justify-content-md-center">
+                <Col sm="3"></Col>
+                <Col sm="6">
+                <form style={{ width: "100%" }}>
                 <h3>Sign In</h3>
-
                 <div className="form-group">
                     <label>Email address</label>
                     <input type="email" className="form-control" placeholder="Enter email" />
@@ -28,12 +29,15 @@ class CompanyLogin extends React.Component {
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block">Submit</button>
-                <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
-                </p>
+             
             </form>
+            
+                </Col>
+         <Col sm="3"></Col>
+            </Row>
+            </Container>
         )
     }
 }
 
-export default CompanyLogin;
+export default CandidateLogin;
