@@ -12,6 +12,7 @@ import GroupOnDevice from "./assets/images/group-on-devices.jpg";
 import { withTranslation } from "react-i18next";
 import RegSection from "./components/RegSection";
 import ForCandidate from "./components/ForCandidate";
+import ForFeature from "./components/ForFeature";
 import InitialSection from "./components/InitialSection";
 
 class Home extends Component {
@@ -38,6 +39,9 @@ class Home extends Component {
         </Row>
         <Row style={{ padding: "40px" }}>
           <RegSection />
+        </Row>
+        <Row style={{ padding: "40px" }}>
+          <ForFeature />
         </Row>
       </>
     );
