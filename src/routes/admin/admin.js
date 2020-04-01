@@ -1,18 +1,25 @@
 import React from 'react'
 import CampainPage from './campain/index'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
+import {Container, Row} from 'react-bootstrap'
 
-export class Admin extends React.Component {
+
+export class AdminDashboard extends React.Component {
     render() {
         return (
-            <div>
+            <Container>
+                <Row>
+                    This is row
+                </Row>
                 <div>
                     <Link to="/admin/campain">Campain</Link>
                 </div>
                 <div>
                     <Route exact path="/admin/campain" component={CampainPage}  />
                 </div>
-            </div>
+            </Container>
         )
     }
 }
+
+export default AdminDashboard

@@ -7,6 +7,7 @@ import AdminLogin from './routes/admin/login/Login';
 import "./assets/App.css";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import CandidateLogin from "./routes/candidate/Login/Login";
+import AdminDashboard from './routes/admin/admin'
 import { withTranslation } from 'react-i18next'
 
 class App extends Component {
@@ -73,6 +74,7 @@ class App extends Component {
           <Route exact path="/candidate/register" component={CandidateRegister}  />
           <Route exact path="/company/register" component={CompanyRegister} />
           <Route exact path="/candidate/login" component={CandidateLogin}  />
+          <Route exact path="/admin/dashboard" component={AdminDashboard} />
         </main>
         </React.Fragment>
     );

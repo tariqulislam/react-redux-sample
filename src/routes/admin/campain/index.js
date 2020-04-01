@@ -7,3 +7,5 @@ export class Campain extends React.Component {
         )
     }
 }
+
+export default Campain

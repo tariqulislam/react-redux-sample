@@ -169,3 +169,4 @@ export class Register extends React.Component {
 }
 
 export default withTranslation()(Register)
+
