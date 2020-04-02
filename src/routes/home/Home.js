@@ -16,6 +16,7 @@ import ForCompanyFeature from "./components/ForCompanyFeature";
 import ForSpecificSkill from "./components/ForSpecificSkill";
 import ForUserFeature from "./components/ForUserFeature";
 import InitialSection from "./components/InitialSection";
+import "./assets/home.scss";
 
 class Home extends Component {
   render() {
@@ -42,13 +43,13 @@ class Home extends Component {
         <Row style={{ padding: "40px" }}>
           <RegSection />
         </Row>
-        <Row style={{ padding: "40px" }}>
+        <Row>
           <ForCompanyFeature />
         </Row>
-        <Row style={{ padding: "40px" }}>
+        <Row>
           <ForUserFeature />
         </Row>
-        <Row style={{ padding: "40px" }}>
+        <Row>
           <ForSpecificSkill />
         </Row>
       </>

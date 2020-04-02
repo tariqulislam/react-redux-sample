@@ -10,11 +10,12 @@ export class ForSpecificSkill extends React.Component {
     return (
       <React.Fragment>
         <Container>
-          <Row>
-            <Col style={{ textAlign: "center" }}>
-              <h1>What is "specific skill"?</h1>
-              <h3>With “specific skill”</h3>
-              <p>
+          <Row className="padding-bottom-30">
+            <Col className="text-center">
+              <h1 className="title">What is "specific skill"?</h1>
+              <div className="title-underline"></div>
+              <p className="title-subtitle text-red">With “specific skill”</p>
+              <p className="title-description">
                 "Specific Skills" is a new status of residence newly established
                 in April 2019. Even if efforts are made to improve productivity
                 and secure domestic human resources, it is limited to 14 fields
