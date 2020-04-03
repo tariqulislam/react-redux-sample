@@ -14,11 +14,15 @@ export class ForUserFeature extends React.Component {
           <Container>
             <Row className="padding-bottom-30">
               <Col className="text-center">
-                <h1 className="title">What you can do with My Company Page</h1>
+                <h1 className="title">
+                  {t("homepage.user_feature_section.title")}
+                </h1>
                 <div className="title-underline"></div>
-                <p className="title-subtitle text-red">User My Page Features</p>
+                <p className="title-subtitle text-red">
+                  Company My Page Features
+                </p>
                 <p className="title-description text-orange">
-                  My page is created when you register.
+                  {t("homepage.user_feature_section.title-description")}
                 </p>
               </Col>
             </Row>
@@ -26,46 +30,52 @@ export class ForUserFeature extends React.Component {
               <Col>
                 <div className="feature-list">
                   <div className="feature-list-title text-aqua">
-                    Shupan News
+                    {t("homepage.user_feature_section.feature-list.one.title")}
                   </div>
                   <div className="feature-list-subtitle">
-                    You can browse news related to specific skills.
+                    {t(
+                      "homepage.user_feature_section.feature-list.one.subtitle"
+                    )}
                   </div>
                   <div className="feature-list-title text-aqua">
-                    Shupan News
+                    {t("homepage.user_feature_section.feature-list.one.title")}
                   </div>
                   <div className="feature-list-subtitle">
-                    You can browse news related to specific skills.
+                    {t(
+                      "homepage.user_feature_section.feature-list.one.subtitle"
+                    )}
                   </div>
-                  <div className="feature-list-title  text-aqua">
-                    Shupan News
-                  </div>
-                  <div className="feature-list-subtitle">
-                    You can browse news related to specific skills.
-                  </div>
-                  <div className="feature-list-title  text-aqua">
-                    Shupan News
+                  <div className="feature-list-title text-aqua">
+                    {t("homepage.user_feature_section.feature-list.one.title")}
                   </div>
                   <div className="feature-list-subtitle">
-                    You can browse news related to specific skills.
+                    {t(
+                      "homepage.user_feature_section.feature-list.one.subtitle"
+                    )}
                   </div>
-                  <div className="feature-list-title  text-aqua">
-                    Shupan News
-                  </div>
-                  <div className="feature-list-subtitle">
-                    You can browse news related to specific skills.
-                  </div>
-                  <div className="feature-list-title  text-aqua">
-                    Shupan News
+                  <div className="feature-list-title text-aqua">
+                    {t("homepage.user_feature_section.feature-list.one.title")}
                   </div>
                   <div className="feature-list-subtitle">
-                    You can browse news related to specific skills.
+                    {t(
+                      "homepage.user_feature_section.feature-list.one.subtitle"
+                    )}
                   </div>
-                  <div className="feature-list-title  text-aqua">
-                    Shupan News
+                  <div className="feature-list-title text-aqua">
+                    {t("homepage.user_feature_section.feature-list.one.title")}
                   </div>
                   <div className="feature-list-subtitle">
-                    You can browse news related to specific skills.
+                    {t(
+                      "homepage.user_feature_section.feature-list.one.subtitle"
+                    )}
+                  </div>
+                  <div className="feature-list-title text-aqua">
+                    {t("homepage.user_feature_section.feature-list.one.title")}
+                  </div>
+                  <div className="feature-list-subtitle">
+                    {t(
+                      "homepage.user_feature_section.feature-list.one.subtitle"
+                    )}
                   </div>
                 </div>
               </Col>
