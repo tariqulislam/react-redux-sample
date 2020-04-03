@@ -10,6 +10,8 @@ import CandidateLogin from "./routes/candidate/Login/Login";
 import AdminDashboard from './routes/admin/admin'
 import { withTranslation } from 'react-i18next'
 
+import HomeWithSideBar from './routes/home-with-side-bar/HomeWithSideBar';
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -75,6 +77,7 @@ class App extends Component {
           <Route exact path="/company/register" component={CompanyRegister} />
           <Route exact path="/candidate/login" component={CandidateLogin}  />
           <Route exact path="/admin/dashboard" component={AdminDashboard} />
+          <Route exact path="/adminlte" component={HomeWithSideBar}  />
         </main>
         </React.Fragment>
     );
