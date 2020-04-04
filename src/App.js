@@ -9,6 +9,7 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import CandidateLogin from "./routes/candidate/Login/Login";
 import AdminDashboard from './routes/admin/admin'
 import { withTranslation } from 'react-i18next'
+import Campaign from './routes/admin/campain/components/campaign'
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
        <React.Fragment>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -70,6 +72,7 @@ class App extends Component {
 
          <main>
           <Route exact path="/" component={Home}  />
+          <Route exact path="/admin/campaign" component={Campaign} />
           <Route exact path="/admin/login" component={AdminLogin} />
           <Route exact path="/candidate/register" component={CandidateRegister}  />
           <Route exact path="/company/register" component={CompanyRegister} />
