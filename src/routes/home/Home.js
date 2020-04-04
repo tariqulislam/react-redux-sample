@@ -12,8 +12,11 @@ import GroupOnDevice from "./assets/images/group-on-devices.jpg";
 import { withTranslation } from "react-i18next";
 import RegSection from "./components/RegSection";
 import ForCandidate from "./components/ForCandidate";
-import ForFeature from "./components/ForFeature";
+import ForCompanyFeature from "./components/ForCompanyFeature";
+import ForSpecificSkill from "./components/ForSpecificSkill";
+import ForUserFeature from "./components/ForUserFeature";
 import InitialSection from "./components/InitialSection";
+import "./assets/home.scss";
 
 class Home extends Component {
   render() {
@@ -40,8 +43,14 @@ class Home extends Component {
         <Row style={{ padding: "40px" }}>
           <RegSection />
         </Row>
-        <Row style={{ padding: "40px" }}>
-          <ForFeature />
+        <Row>
+          <ForCompanyFeature />
+        </Row>
+        <Row>
+          <ForUserFeature />
+        </Row>
+        <Row>
+          <ForSpecificSkill />
         </Row>
       </>
     );

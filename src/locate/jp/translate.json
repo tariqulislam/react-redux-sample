@@ -1,140 +1,162 @@
 {
-    "translations": {
-        "registration": {
-            "registration_form": "登録用紙",
-            "full_name": {
-                "title": " 名前(氏名)",
-                "placeholder": "お名前を入力してください"
-            },
-            "romanji_name": {
-                "title": "名前(ローマ字)",
-                "placeholder": "お名前を入力してください"
-            },
-            "nick_name": {
-                "title": "ニックネーム",
-                "placeholder": "ニックネームを入力してください"
-            },
-            "country_resident": {
-                "title": "国と居住者"
-            },
-            "language_you_can_fully_understand": {
-                "title": "あなたが完全に理解できる言語"
-            },
-            "date_of_birth": {
-                "title": "生年月日"
-            },
-            "religion": {
-                "title": "宗教"
-            },
-            "sex": {
-                "title": "性別"
-            },
-            "half_body_photo": {
-                "title": "半身写真"
-            },
-            "passport_photo": {
-                "title": "パスポートの写真"
-            },
-            "height_weight": {
-                "title": "身長体重"
-            },
-            "eyesight_hearing": {
-                "title": "視力と聴覚"
-            },
-            "foot_size": {
-                "title": "足のサイズ"
-            },
-            "email": {
-                "title": "Eメール"
-            },
-            "password": {
-                "title": "パスワード"
-            },
-            "retypepassword": {
-                "title": "パスワードを再入力してください"
-            },
-            "phonenumber": {
-                "title": "電話番号"
-            },
-            "facebook": {
-                "title": "フェイスブック"
-            },
-            "current_location": {
-                "title": "現在位置"
-            },
-            "current_situation": {
-                "title": "現在の状況"
-            },
-            "work_experience": {
-                "title": "実務経験"
-            },
-            "specific_skills": {
-                "title": "特定のスキル"
-            },
-            "meritial_status": {
-                "title": "配偶者の有無"
-            },
-            "cronic_disease": {
-                "title": "慢性疾患"
-            },
-            "japanese_language_skills": {
-                "title": "日本語スキル"
-            },
-            "desired_job": {
-                "title": "希望した職種"
-            },
-            "terms_conditions": {
-                "title": "利用規約"
-            },
-            "register_to_site": {
-                "title": "サイトに登録"
-            }
-        },
-        "company_reg_page": {
-            "name": "",
-            "contact_number": "",
-            "company_email": "",
-            "contact_person": "",
-            "industry_classification": "",
-            "terms_and_condition": ""
-        },
-        "homepage": {
-            "counter_section": {
-                "year": "年",
-                "month": "月",
-                "day": "日",
-                "candidate_register_for": "登録者数",
-                "person": "人",
-                "company_register_for": "企業登録数"
-            },
-            "regsection": {
-                "for_company_button": "企業の方へ",
-                "for_candidate_button": "外国人の方へ",
-                "for_support_button": "サポートのための",
-                "for_company_title": "企業の方へ",
-                "for_user_title": "外国人の方へ",
-                "for_support_title": "サポートのための"
-            },
-            "candidate_process": {
-                "title": "候補者",
-                "notes": "初めての方はこちらへGHRNとは",
-                "one": "登録人材をスカウトできるスカウトシステムサイトGHRN",
-                "two": "日本の各地の企業からスカウトができる（来る）GHRN",
-                "three": "日本での働き方はいろいろ、希望する仕事が見つかるGHRN",
-                "four": "日本で働きたい外国人の方（日本在留の方も含め）を日本の企業に紹介するサイトGHRN"
-            },
-            "initial_section": {
-                "whatsGHRN": "GHRNとは？",
-                "leftMsg": {
-                    "one": "GHRN（GlobalHumanResourceNetwork）は、 当サイトに登録している日本で働きたい外国人の方や既に日本に在留している（留学生、就労中の方）外国人の方々を、日本各地の企業様が条件に合った人材をスカウトできるサイトです",
-                    "two": "気になった人材が見つかれば、求職情報をサイトに登録しスカウトをします。 当サイト内で求職情報をスカウト人材の母国語に変換し本人に送信します。",
-                    "three": "スカウトを受けた登録者は求職情報を閲覧し、スカウトを受けるか判断します。",
-                    "four": "スカウトを受けた登録者は求職情報を閲覧し、スカウトを受けるか判断します。",
-                    "five": "スカウトを受けた場合は、マッチングしたとしてスカウト企業に通知します。※ここで初めて個人情報が開示されます。",
-                    "six": "マッチングした双方でサイト内のチャットやWeb面談システムを使用して採用までの情報をやり取りします。",
-                    "seven": "※Web面談システムはソクメンを利用しています。"
-                }
-            }
+  "translations": {
+    "registration": {
+      "registration_form": "登録用紙",
+      "full_name": {
+        "title": " 名前(氏名)",
+        "placeholder": "お名前を入力してください"
+      },
+      "romanji_name": {
+        "title": "名前(ローマ字)",
+        "placeholder": "お名前を入力してください"
+      },
+      "nick_name": {
+        "title": "ニックネーム",
+        "placeholder": "ニックネームを入力してください"
+      },
+      "country_resident": {
+        "title": "国と居住者"
+      },
+      "language_you_can_fully_understand": {
+        "title": "あなたが完全に理解できる言語"
+      },
+      "date_of_birth": {
+        "title": "生年月日"
+      },
+      "religion": {
+        "title": "宗教"
+      },
+      "sex": {
+        "title": "性別"
+      },
+      "half_body_photo": {
+        "title": "半身写真"
+      },
+      "passport_photo": {
+        "title": "パスポートの写真"
+      },
+      "height_weight": {
+        "title": "身長体重"
+      },
+      "eyesight_hearing": {
+        "title": "視力と聴覚"
+      },
+      "foot_size": {
+        "title": "足のサイズ"
+      },
+      "email": {
+        "title": "Eメール"
+      },
+      "password": {
+        "title": "パスワード"
+      },
+      "retypepassword": {
+        "title": "パスワードを再入力してください"
+      },
+      "phonenumber": {
+        "title": "電話番号"
+      },
+      "facebook": {
+        "title": "フェイスブック"
+      },
+      "current_location": {
+        "title": "現在位置"
+      },
+      "current_situation": {
+        "title": "現在の状況"
+      },
+      "work_experience": {
+        "title": "実務経験"
+      },
+      "specific_skills": {
+        "title": "特定のスキル"
+      },
+      "meritial_status": {
+        "title": "配偶者の有無"
+      },
+      "cronic_disease": {
+        "title": "慢性疾患"
+      },
+      "japanese_language_skills": {
+        "title": "日本語スキル"
+      },
+      "desired_job": {
+        "title": "希望した職種"
+      },
+      "terms_conditions": {
+        "title": "利用規約"
+      },
+      "register_to_site": {
+        "title": "サイトに登録"
+      }
+    },
+    "company_reg_page": {
+      "name": "",
+      "contact_number": "",
+      "company_email": "",
+      "contact_person": "",
+      "industry_classification": "",
+      "terms_and_condition": ""
+    },
+    "homepage": {
+      "counter_section": {
+        "year": "年",
+        "month": "月",
+        "day": "日",
+        "candidate_register_for": "登録者数",
+        "person": "人",
+        "company_register_for": "企業登録数"
+      },
+      "regsection": {
+        "for_company_button": "企業の方へ",
+        "for_candidate_button": "外国人の方へ",
+        "for_support_button": "サポートのための",
+        "for_company_title": "企業の方へ",
+        "for_user_title": "外国人の方へ",
+        "for_support_title": "サポートのための"
+      },
+      "candidate_process": {
+        "title": "候補者",
+        "notes": "初めての方はこちらへGHRNとは",
+        "one": "登録人材をスカウトできるスカウトシステムサイトGHRN",
+        "two": "日本の各地の企業からスカウトができる（来る）GHRN",
+        "three": "日本での働き方はいろいろ、希望する仕事が見つかるGHRN",
+        "four": "日本で働きたい外国人の方（日本在留の方も含め）を日本の企業に紹介するサイトGHRN"
+      },
+      "initial_section": {
+        "whatsGHRN": "GHRNとは？",
+        "leftMsg": {
+          "one": "GHRN（GlobalHumanResourceNetwork）は、 当サイトに登録している日本で働きたい外国人の方や既に日本に在留している（留学生、就労中の方）外国人の方々を、日本各地の企業様が条件に合った人材をスカウトできるサイトです",
+          "two": "気になった人材が見つかれば、求職情報をサイトに登録しスカウトをします。 当サイト内で求職情報をスカウト人材の母国語に変換し本人に送信します。",
+          "three": "スカウトを受けた登録者は求職情報を閲覧し、スカウトを受けるか判断します。",
+          "four": "スカウトを受けた登録者は求職情報を閲覧し、スカウトを受けるか判断します。",
+          "five": "スカウトを受けた場合は、マッチングしたとしてスカウト企業に通知します。※ここで初めて個人情報が開示されます。",
+          "six": "マッチングした双方でサイト内のチャットやWeb面談システムを使用して採用までの情報をやり取りします。",
+          "seven": "※Web面談システムはソクメンを利用しています。"
         }
+      },
+      "company_feature_section": {
+        "title": "企業のマイページでできること",
+        "title-subtitle": "",
+        "title-description": "企業登録をするとマイページが作成されます。",
+        "feature-list": {
+          "one": {
+            "title": "就panニュース",
+            "subtitle": "特定技能に関するニュース等を閲覧する事ができます。"
+          }
+        }
+      },
+      "user_feature_section": {
+        "title": "企業のマイページでできること",
+        "title-subtitle": "",
+        "title-description": "企業登録をするとマイページが作成されます。",
+        "feature-list": {
+          "one": {
+            "title": "就panニュース",
+            "subtitle": "特定技能に関するニュース等を閲覧する事ができます。"
+          }
+        }
+      }
     }
+  }
 }

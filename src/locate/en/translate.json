@@ -1,141 +1,162 @@
 {
-    "translations": {
-        "registration": {
-            "registration_form": "Registration Form",
-            "full_name": {
-                "title": "Name(Full Name)",
-                "placeholder": "Please Type Your Name"
-            },
-            "romanji_name": {
-                "title": "Name(Romaji)",
-                "placeholder": "Please Type Your Name"
-            },
-            "nick_name": {
-                "title": "Nick Name",
-                "placeholder": "Please Type Nick Name"
-            },
-            "country_resident": {
-                "title": "Country & Resident"
-            },
-            "language_you_can_fully_understand": {
-                "title": "Language You can fully understand"
-            },
-            "date_of_birth": {
-                "title": "Date Of Birth"
-            },
-            "religion": {
-                "title": "Religion"
-            },
-            "sex": {
-                "title": "Sex"
-            },
-            "half_body_photo": {
-                "title": "Half Body Photo"
-            },
-            "passport_photo": {
-                "title": "Passport Photo"
-            },
-            "height_weight": {
-                "title": "Height & Weight"
-            },
-            "eyesight_hearing": {
-                "title": "Eyesight & Hearing"
-            },
-            "foot_size": {
-                "title": "Foot Size"
-            },
-            "email": {
-                "title": "Email"
-            },
-            "password": {
-                "title": "Password"
-            },
-            "retypepassword": {
-                "title": "Retype Password"
-            },
-            "phonenumber": {
-                "title": "Phone Number"
-            },
-            "facebook": {
-                "title": "Facebook"
-            },
-            "current_location": {
-                "title": "Current Location"
-            },
-            "current_situation": {
-                "title": "Current Situation"
-            },
-            "work_experience": {
-                "title": "Work Experience"
-            },
-            "specific_skills": {
-                "title": "Specific Skills"
-            },
-            "meritial_status": {
-                "title": "Meritial Status"
-            },
-            "cronic_disease": {
-                "title": "Cronic Disease"
-            },
-            "japanese_language_skills": {
-                "title": "Japanese Language Skills"
-            },
-            "desired_job": {
-                "title": "Desired Job"
-            },
-            "terms_conditions": {
-                "title": "Terms & Conditions"
-            },
-            "register_to_site": {
-                "title": "Register To Site"
-            }
-        },
-        "company_reg_page": {
-            "name": "Company Name",
-            "contact_number": "Contact Number",
-            "company_email": "",
-            "contact_person": "",
-            "industry_classification": "",
-            "terms_and_condition": ""
-        },
-        "homepage": {
-            "counter_section": {
-                "year": "Year",
-                "month": "Month",
-                "day": "Day",
-                "candidate_register_for": "Number of Registrants",
-                "person": "Person",
-                "company_register_for": "Number of Company Register"
-            },
-            "regsection": {
-                "for_company_button": "For Company",
-                "for_candidate_button": "For Candidate",
-                "for_support_button": "For Support",
-                "for_company_title": "For Companies",
-                "for_user_title": "For Candidate",
-                "for_support_title": "For Support"
-            },
-            "candidate_process": {
-                "title": "For Candidate",
-                "notes": "If you are new to GHRN",
-                "one": "Scout system site GHRN where you can scout registered personnel",
-                "two": "GHRN that can (come) scout from companies all over Japan",
-                "three": "GHRN finds a variety of ways to work in Japan",
-                "four": "A site that introduces foreigners who want to work in Japan (including those living in Japan) to Japanese companies GHRN"
-            },
-            "initial_section": {
-                "whatsGHRN": "What is GHRN？",
-                "leftMsg": {
-                    "one": "GHRN (GlobalHumanResourceNetwork) is for foreigners who want to work in Japan who are registered on this site or who are already living in Japan (international students or working) Is a site where you can scout the right human resources",
-                    "two": "If you find a person you are interested in, register the job search information on the site and scout. The job information will be converted into the native language of the scouting personnel and sent to the person on this site.",
-                    "three": "The registrant who receives the scout will view the job search information and decide whether to take the scout.",
-                    "four": "The registrant who receives the scout will view the job search information and decide whether to take the scout.",
-                    "five": "If a scout is received, the scout company will be notified as a match. * Here, personal information is disclosed for the first time.",
-                    "six": "Both sides that have matched will exchange information up to recruitment using the on-site chat and web interview system.",
-                    "seven": " * The web interview system uses Sokumen."
-                }
-            }
-            
+  "translations": {
+    "registration": {
+      "registration_form": "Registration Form",
+      "full_name": {
+        "title": "Name(Full Name)",
+        "placeholder": "Please Type Your Name"
+      },
+      "romanji_name": {
+        "title": "Name(Romaji)",
+        "placeholder": "Please Type Your Name"
+      },
+      "nick_name": {
+        "title": "Nick Name",
+        "placeholder": "Please Type Nick Name"
+      },
+      "country_resident": {
+        "title": "Country & Resident"
+      },
+      "language_you_can_fully_understand": {
+        "title": "Language You can fully understand"
+      },
+      "date_of_birth": {
+        "title": "Date Of Birth"
+      },
+      "religion": {
+        "title": "Religion"
+      },
+      "sex": {
+        "title": "Sex"
+      },
+      "half_body_photo": {
+        "title": "Half Body Photo"
+      },
+      "passport_photo": {
+        "title": "Passport Photo"
+      },
+      "height_weight": {
+        "title": "Height & Weight"
+      },
+      "eyesight_hearing": {
+        "title": "Eyesight & Hearing"
+      },
+      "foot_size": {
+        "title": "Foot Size"
+      },
+      "email": {
+        "title": "Email"
+      },
+      "password": {
+        "title": "Password"
+      },
+      "retypepassword": {
+        "title": "Retype Password"
+      },
+      "phonenumber": {
+        "title": "Phone Number"
+      },
+      "facebook": {
+        "title": "Facebook"
+      },
+      "current_location": {
+        "title": "Current Location"
+      },
+      "current_situation": {
+        "title": "Current Situation"
+      },
+      "work_experience": {
+        "title": "Work Experience"
+      },
+      "specific_skills": {
+        "title": "Specific Skills"
+      },
+      "meritial_status": {
+        "title": "Meritial Status"
+      },
+      "cronic_disease": {
+        "title": "Cronic Disease"
+      },
+      "japanese_language_skills": {
+        "title": "Japanese Language Skills"
+      },
+      "desired_job": {
+        "title": "Desired Job"
+      },
+      "terms_conditions": {
+        "title": "Terms & Conditions"
+      },
+      "register_to_site": {
+        "title": "Register To Site"
+      }
+    },
+    "company_reg_page": {
+      "name": "Company Name",
+      "contact_number": "Contact Number",
+      "company_email": "",
+      "contact_person": "",
+      "industry_classification": "",
+      "terms_and_condition": ""
+    },
+    "homepage": {
+      "counter_section": {
+        "year": "Year",
+        "month": "Month",
+        "day": "Day",
+        "candidate_register_for": "Number of Registrants",
+        "person": "Person",
+        "company_register_for": "Number of Company Register"
+      },
+      "regsection": {
+        "for_company_button": "For Company",
+        "for_candidate_button": "For Candidate",
+        "for_support_button": "For Support",
+        "for_company_title": "For Companies",
+        "for_user_title": "For Candidate",
+        "for_support_title": "For Support"
+      },
+      "candidate_process": {
+        "title": "For Candidate",
+        "notes": "If you are new to GHRN",
+        "one": "Scout system site GHRN where you can scout registered personnel",
+        "two": "GHRN that can (come) scout from companies all over Japan",
+        "three": "GHRN finds a variety of ways to work in Japan",
+        "four": "A site that introduces foreigners who want to work in Japan (including those living in Japan) to Japanese companies GHRN"
+      },
+      "initial_section": {
+        "whatsGHRN": "What is GHRN？",
+        "leftMsg": {
+          "one": "GHRN (GlobalHumanResourceNetwork) is for foreigners who want to work in Japan who are registered on this site or who are already living in Japan (international students or working) Is a site where you can scout the right human resources",
+          "two": "If you find a person you are interested in, register the job search information on the site and scout. The job information will be converted into the native language of the scouting personnel and sent to the person on this site.",
+          "three": "The registrant who receives the scout will view the job search information and decide whether to take the scout.",
+          "four": "The registrant who receives the scout will view the job search information and decide whether to take the scout.",
+          "five": "If a scout is received, the scout company will be notified as a match. * Here, personal information is disclosed for the first time.",
+          "six": "Both sides that have matched will exchange information up to recruitment using the on-site chat and web interview system.",
+          "seven": " * The web interview system uses Sokumen."
         }
+      },
+      "company_feature_section": {
+        "title": "What you can do with My Company Page",
+        "title-subtitle": "",
+        "title-description": "My page is created when you register.",
+        "feature-list": {
+          "one": {
+            "title": "Shupan News",
+            "subtitle": "You can browse news related to specific skills."
+          }
+        }
+      },
+      "user_feature_section": {
+        "title": "What you can do with My User Page",
+        "title-subtitle": "",
+        "title-description": "My page is created when you register.",
+        "feature-list": {
+          "one": {
+            "title": "Shupan News",
+            "subtitle": "You can browse news related to specific skills."
+          }
+        }
+      }
     }
+  }
 }

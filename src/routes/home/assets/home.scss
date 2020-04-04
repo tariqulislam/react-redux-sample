@@ -1,17 +1,80 @@
 .candidate {
-    &-section {
-        &-note {
-            background-color: green;
-            color: white;
-            height: 50px;
-            font-size: 30px;
-            padding-left: 20px;
-        }
+  &-section {
+    &-note {
+      background-color: green;
+      color: white;
+      height: 50px;
+      font-size: 30px;
+      padding-left: 20px;
     }
+  }
 }
 
 .regSection {
-    &-back {
-        background-image: url('./images/regsection/company.jpg');
-    }
+  &-back {
+    background-image: url("./images/regsection/company.jpg");
+  }
+}
+
+.padding-bottom-120 {
+  padding-bottom: 120px;
+}
+
+.padding-bottom-30 {
+  padding-bottom: 30px;
+}
+
+.bg-offwhite {
+  background-color: #f2efe4;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: center;
+}
+.text-orange {
+  color: ORANGE;
+}
+.text-red {
+  color: #e60039;
+}
+.text-blue {
+  color: #052e6f;
+}
+.text-aqua {
+  color: #54baba;
+}
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 120px;
+  margin-bottom: 2px;
+}
+.title-underline {
+  background-color: #c7c7c7;
+  width: 350px;
+  height: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+.title-subtitle {
+  font-size: 14px;
+}
+.title-description {
+  font-size: 20px;
+  margin-top: 40px;
+  line-height: 1.5;
+}
+
+.feature-list {
+}
+.feature-list-title {
+}
+.feature-list-subtitle {
 }
