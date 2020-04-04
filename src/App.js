@@ -58,7 +58,7 @@ class App extends Component {
             </Nav>
             <Nav>
               
-              <Nav.Link href="javascript.void(0);"><Link to="/candidate/register">Register</Link></Nav.Link>
+              <Nav.Link ><Link to="/candidate/register">Register</Link></Nav.Link>
               <Nav.Item style={{color: 'white', marginTop:'8px', cursor: 'pointer'}} eventKey={2} onClick={() => this.onLanguageHandle('en')}>EN </Nav.Item>
               <Nav.Item style={{color: 'white', marginTop: '8px', cursor: 'pointer'}} eventKey={2} onClick={() => this.onLanguageHandle('jp')}>&nbsp;|&nbsp;JP</Nav.Item>
             </Nav>
