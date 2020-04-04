@@ -10,6 +10,7 @@ export class ForCompanyFeature extends React.Component {
       <React.Fragment>
         <Container className="padding-bottom-120">
           <Row className="padding-bottom-30">
+            <Col md={2}></Col>
             <Col className="text-center">
               <h1 className="title">
                 {t("homepage.company_feature_section.title")}
@@ -22,8 +23,10 @@ export class ForCompanyFeature extends React.Component {
                 {t("homepage.company_feature_section.title-description")}
               </p>
             </Col>
+            <Col md={2}></Col>
           </Row>
           <Row>
+            <Col md={1}></Col>
             <Col>
               <Image src={FeatureImage} fluid />
             </Col>
@@ -79,6 +82,7 @@ export class ForCompanyFeature extends React.Component {
                 </div>
               </div>
             </Col>
+            <Col md={1}></Col>
           </Row>
         </Container>
       </React.Fragment>

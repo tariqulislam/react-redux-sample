@@ -10,23 +10,24 @@ export class ForUserFeature extends React.Component {
 
     return (
       <React.Fragment>
-        <Container fluid className="bg-offwhite padding-bottom-120">
-          <Container>
+        <Container fluid className="bg-offwhite">
+          <Container className="padding-bottom-120">
             <Row className="padding-bottom-30">
+              <Col md={2}></Col>
               <Col className="text-center">
                 <h1 className="title">
                   {t("homepage.user_feature_section.title")}
                 </h1>
                 <div className="title-underline"></div>
-                <p className="title-subtitle text-red">
-                  Company My Page Features
-                </p>
+                <p className="title-subtitle text-red">User My Page Features</p>
                 <p className="title-description text-orange">
                   {t("homepage.user_feature_section.title-description")}
                 </p>
               </Col>
+              <Col md={2}></Col>
             </Row>
             <Row>
+              <Col md={1}></Col>
               <Col>
                 <div className="feature-list">
                   <div className="feature-list-title text-aqua">
@@ -82,6 +83,7 @@ export class ForUserFeature extends React.Component {
               <Col>
                 <Image src={UserFeatureImage} fluid />
               </Col>
+              <Col md={1}></Col>
             </Row>
           </Container>
         </Container>

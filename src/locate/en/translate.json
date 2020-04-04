@@ -156,6 +156,14 @@
             "subtitle": "You can browse news related to specific skills."
           }
         }
+      },
+      "specific_skill_section": {
+        "title": "What is 'specific skill'?",
+        "title-subtitle": "With 'specific skill'",
+        "title-description": "'Specific Skills' is a new status of residence newly established in April 2019. Even if efforts are made to improve productivity and secure domestic human resources, it is limited to 14 fields (specific industrial fields) where it is difficult to secure human resources. Acceptance was accepted.",
+        "first-content": "Specific industries (14 fields Nursing care / Building cleaning / Shape material industry / Industrial machinery manufacturing industry / Electrical and electronic information related industries / Construction / Shipbuilding / Marine industry / Automobile maintenance / Aviation / Accommodation / Agriculture / Fishing / Food / food manufacturing Business / restaurant business",
+        "second-content": "* Specific Skill No. 2 only for construction, shipbuilding and marine industries (as of April 2019)",
+        "action-btn": "Learn more about specific skills"
       }
     }
   }
