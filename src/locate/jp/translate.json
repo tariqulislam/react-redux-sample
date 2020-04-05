@@ -188,6 +188,29 @@
             "description-one": "サイト内には、メッセージ機能やWEB面談機能(WEB面接機能は株式会社grabss様のBizMeeを利用しています。)を備えており、求職者である外国人材と企業様又は登録支援機関様との間で、直接的なコミュニケーションが可能です。"
           }
         }
+      },
+      "user_action_section": {
+        "item-one": {
+          "title": "企業の方へ",
+          "content-title": "Japanで就職",
+          "content-heading": "For Company",
+          "btn-left": "企業向けTOPページ",
+          "btn-right": "MYページログイン"
+        },
+        "item-two": {
+          "title": "外国人の方へ",
+          "content-title": "Japanで就職",
+          "content-heading": "For User",
+          "btn-left": "企業向けTOPページ",
+          "btn-right": "MYページログイン"
+        },
+        "item-three": {
+          "title": "支援機関の方へ",
+          "content-title": "Japanで就職",
+          "content-heading": "For Support",
+          "btn-left": "支援機関向けTOPページ",
+          "btn-right": "MYページログイン"
+        }
       }
     }
   }
