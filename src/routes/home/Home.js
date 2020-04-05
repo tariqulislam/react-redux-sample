@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import {
   showParagraphInfo,
   hideParagraphInfo,
-  getAllPostForFromApi
+  getAllPostForFromApi,
 } from "../../reducers/Home/home.reducer";
 import { Row, Col, Image } from "react-bootstrap";
 import GroupOnDevice from "./assets/images/group-on-devices.jpg";
@@ -21,9 +21,8 @@ import "./assets/home.scss";
 class Home extends Component {
   render() {
     let bannerStyle = {
-      width: "100%"
+      width: "100%",
     };
-    const { t } = this.props;
     const selectedLanguage = localStorage.getItem("language");
     return (
       <>
@@ -57,17 +56,17 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  showInfo: state.home.showInfo
+const mapStateToProps = (state) => ({
+  showInfo: state.home.showInfo,
 });
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       showParagraphInfo,
       hideParagraphInfo,
       getAllPostForFromApi,
-      goToAboutPage: () => push("/about-us")
+      goToAboutPage: () => push("/about-us"),
     },
     dispatch
   );

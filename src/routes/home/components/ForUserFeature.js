@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
 import UserFeatureImage from "../assets/images/feature/user_feature.jpg";
-import { withRouter, Link } from "react-router-dom";
 
 export class ForUserFeature extends React.Component {
   render() {

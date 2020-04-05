@@ -1,11 +1,21 @@
 import React from "react";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import { withRouter, Link } from "react-router-dom";
+import SkillImg from "../assets/images/skill/skill_section_image.jpg";
 
 export class ForSpecificSkill extends React.Component {
   render() {
     const { t } = this.props;
+
+    let companyRegStyle = {
+      backgroundSize: "cover",
+      backgroundImage: `url(${SkillImg})`,
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      height: "0px",
+      paddingBottom: "550px",
+    };
 
     return (
       <React.Fragment>
@@ -46,6 +56,7 @@ export class ForSpecificSkill extends React.Component {
               <Col md={1}></Col>
             </Row>
           </Container>
+          <div style={companyRegStyle}></div>
         </Container>
       </React.Fragment>
     );
