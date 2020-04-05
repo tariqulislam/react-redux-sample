@@ -164,6 +164,41 @@
         "first-content": "Specific industries (14 fields Nursing care / Building cleaning / Shape material industry / Industrial machinery manufacturing industry / Electrical and electronic information related industries / Construction / Shipbuilding / Marine industry / Automobile maintenance / Aviation / Accommodation / Agriculture / Fishing / Food / food manufacturing Business / restaurant business",
         "second-content": "* Specific Skill No. 2 only for construction, shipbuilding and marine industries (as of April 2019)",
         "action-btn": "Learn more about specific skills"
+      },
+      "user_syupan_section": {
+        "title": "What you can do with My User Page",
+        "title-subtitle": "",
+        "title-description": "My page is created when you register.",
+        "feature-list": {
+          "one": {
+            "title": "Shupan News",
+            "subtitle": "You can browse news related to specific skills."
+          }
+        }
+      },
+      "syupan_feature_section": {
+        "title": "Features of bread",
+        "title-subtitle": "Features of Syupan",
+        "feature": {
+          "one": {
+            "title": "Specializing in specific skills personnel",
+            "description-one": "With the revision of the law in April 2019, a specific skill visa has been newly established, and the direction of recruitment strategies for domestic companies is about to change significantly.",
+            "description-two": "On this site, we have built a human resources bank specialized in specific skills and create matching with human resources from around the world."
+          },
+          "second": {
+            "title": "Complete performance reward type",
+            "description-one": "Our services are operated on a full performance compensation basis. You can use it with low risk even for the first time, and you can minimize the cost burden of recruiting.",
+            "description-two": "Foreigners: There are no costs associated with using the services on this site, such as member registration and database usage fees.",
+            "description-three": "Foreigners: There are no costs associated with using the services on this site, such as member registration and database usage fees.",
+            "description-four": "Companies: Company registration, recruitment posting, database usage fee is free. A performance fee is paid for each person hired. The performance reward will be 20% of the annual total salary plan (including various benefits).",
+            "description-box": "* Annual salary plan = monthly salary x 12 months + postal allowance, family allowance, housing allowance, and other allowances",
+            "description-five": "Registration support organization: Registration of support organization, posting of recruitment, database usage fee is free. A system usage fee of 29,800 yen (tax included) per person will be charged for each job placement contract to a recruiting company."
+          },
+          "third": {
+            "title": "Two-way communication",
+            "description-one": "The site has a message function and a web interview function (the web interview function uses BizMee of grabss Co., Ltd.). Direct communication is possible between them."
+          }
+        }
       }
     }
   }

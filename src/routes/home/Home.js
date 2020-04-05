@@ -16,6 +16,7 @@ import ForCompanyFeature from "./components/ForCompanyFeature";
 import ForSpecificSkill from "./components/ForSpecificSkill";
 import ForUserFeature from "./components/ForUserFeature";
 import InitialSection from "./components/InitialSection";
+import ForSyupanFeature from "./components/ForSyupanFeature";
 import "./assets/home.scss";
 
 class Home extends Component {
@@ -50,6 +51,9 @@ class Home extends Component {
         </Row>
         <Row>
           <ForSpecificSkill />
+        </Row>
+        <Row>
+          <ForSyupanFeature />
         </Row>
       </>
     );
