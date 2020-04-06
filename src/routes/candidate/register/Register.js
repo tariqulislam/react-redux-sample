@@ -97,13 +97,17 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                     <select name="country" className="form-control">
-                        <option>-- Select One --</option>
-                        <option>Japan </option>
-                        <option>Nepal</option>
-                        <option>Vitnam</option>
+                        {/*<option>-- Select One --</option>*/}
+                        <option>{t('registration.country_resident.dropdown.placeholder')}</option>
+                        {/*<option>Japan </option>*/}
+                        <option>{t('registration.country_resident.dropdown.option0')}</option>
+                        {/*<option>Nepal</option>*/}
+                        <option>{t('registration.country_resident.dropdown.option1')}</option>
+                        {/*<option>Vitnam</option>*/}
+                        <option>{t('registration.country_resident.dropdown.option2')}</option>
                     </select>
                   <br/>
-                  <Form.Control type="text" placeholder="Nationality" />
+                  <Form.Control type="text" placeholder={t('registration.country_resident.nationality_placeholder')} />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -116,10 +120,10 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                   <Row>
-                    <Col sm={3}><input type="checkbox" />Japanese</Col>
-                    <Col sm={3}><input type="checkbox" />Vietnamese</Col>
-                    <Col sm={3}><input type="checkbox" />English</Col>
-                    <Col sm={3}><input type="checkbox" />Others</Col>
+                    <Col sm={3}><input type="checkbox" />{t('registration.language_you_can_fully_understand.check.option0')}</Col>
+                    <Col sm={3}><input type="checkbox" />{t('registration.language_you_can_fully_understand.check.option1')}</Col>
+                    <Col sm={3}><input type="checkbox" />{t('registration.language_you_can_fully_understand.check.option2')}</Col>
+                    <Col sm={3}><input type="checkbox" />{t('registration.language_you_can_fully_understand.check.option3')}</Col>
                   </Row>
                 </Col>
               </Form.Group>
@@ -135,7 +139,7 @@ export class Register extends React.Component {
                   <Row>
                     <Col sm={4}>
                       <select className="form-control" name="year" >
-                        <option>-- Select One --</option>
+                        <option>{t('registration.date_of_birth.year_placeholder')}</option>
                         {
                           years.map(item => {
                             return (<option value={item}>{item}</option>)
@@ -144,7 +148,7 @@ export class Register extends React.Component {
                       </select>
                     </Col>
                     <Col sm={4}><select className="form-control" name="month" >
-                      <option>-- Select One --</option>
+                        <option>{t('registration.date_of_birth.month_placeholder')}</option>
                       {
                         months.map(item => {
                           return (<option value={item}>{item}</option>)
@@ -152,7 +156,7 @@ export class Register extends React.Component {
                       }
                       </select>
                       </Col>
-                    <Col sm={4}><input  className="form-control" type="text" name="day" /></Col>
+                    <Col sm={4}><input  className="form-control" type="text" name="day" placeholder={t('registration.date_of_birth.day_placeholder')} /></Col>
                  
                   </Row>
                 </Col>
@@ -168,12 +172,12 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                     <select name="religion" className="form-control">
-                        <option>-- No Religion --</option>
-                        <option> Buddist </option>
-                        <opton> Cristen </opton>
-                        <option>Muslim</option>
-                        <option>Jdusim</option>
-                        <option>Others</option>
+                        <option>{t('registration.religion.dropdown.placeholder')}</option>
+                        <option>{t('registration.religion.dropdown.option0')}</option>
+                        <option>{t('registration.religion.dropdown.option1')}</option>
+                        <option>{t('registration.religion.dropdown.option2')}</option>
+                        <option>{t('registration.religion.dropdown.option3')}</option>
+                        <option>{t('registration.religion.dropdown.option4')}</option>
                     </select>
               
                 </Col>
@@ -188,12 +192,11 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                     <select name="religion" className="form-control">
-                        <option>--  Select One --</option>
-                        <option> Male </option>
-                        <option> Female </option>
-                        <option>Others</option>
+                        <option>{t('registration.sex.dropdown.placeholder')}</option>
+                        <option>{t('registration.sex.dropdown.option0')}</option>
+                        <option>{t('registration.sex.dropdown.option1')}</option>
+                        <option>{t('registration.sex.dropdown.option2')}</option>
                     </select>
-              
                 </Col>
               </Form.Group>
               <Form.Group
@@ -232,24 +235,24 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
-                     <Col sm={6}><input type="text" placeholder="height" className="form-control" /></Col>
+                     <Col sm={6}><input type="text" placeholder={t('registration.height_weight.height.placeholder')} className="form-control" /></Col>
                      <Col sm={6}>
                      <select name="religion" className="form-control">
-                        <option>--  Select One --</option>
-                        <option> cm </option>
-                        <option> ft  </option>
+                        <option>{t('registration.height_weight.height.unit_placeholder')}</option>
+                        <option>{t('registration.height_weight.height.option0')}</option>
+                        <option>{t('registration.height_weight.height.option1')}</option>
                     </select>
                      </Col>
                    </Row>
                    <Row style={{height: '10px'}}></Row>
                    <Row>
-                     <Col sm={6}><input type="text" placeholder="weight" className="form-control" /></Col>
+                     <Col sm={6}><input type="text" placeholder={t('registration.height_weight.weight.placeholder')} className="form-control" /></Col>
                      <Col sm={6}>
-                     <select name="religion" className="form-control">
-                        <option>--Select One--</option>
-                        <option>kg</option>
-                        <option>lb</option>
-                    </select>
+                         <select name="religion" className="form-control">
+                             <option>{t('registration.height_weight.weight.unit_placeholder')}</option>
+                             <option>{t('registration.height_weight.weight.option0')}</option>
+                             <option>{t('registration.height_weight.weight.option1')}</option>
+                         </select>
                      </Col>
                    </Row>
                 </Col>
@@ -264,24 +267,24 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
-                     <Col sm={3}>Eyesight</Col>
+                     <Col sm={3}>{t('registration.eyesight_hearing.eyesight.title')}</Col>
                      <Col sm={8}>
                      <select name="religion" className="form-control">
-                        <option>--  Select One --</option>
-                        <option> Nacket Vision </option>
-                        <option> Glass  </option>
-                        <option> Lenses </option>
+                        <option>{t('registration.eyesight_hearing.eyesight.placeholder')}</option>
+                        <option>{t('registration.eyesight_hearing.eyesight.option0')}</option>
+                        <option>{t('registration.eyesight_hearing.eyesight.option1')}</option>
+                        <option>{t('registration.eyesight_hearing.eyesight.option2')}</option>
                     </select>
                      </Col>
                    </Row>
                    <Row style={{height: '10px'}}></Row>
                    <Row>
-                     <Col sm={3}>Hearing</Col>
+                     <Col sm={3}>{t('registration.eyesight_hearing.hearing.title')}</Col>
                      <Col sm={8}>
                      <select name="religion" className="form-control">
-                        <option>--  Select One --</option>
-                        <option> Clear Hearing </option>
-                        <option> HearPices  </option>
+                         <option>{t('registration.eyesight_hearing.hearing.placeholder')}</option>
+                         <option>{t('registration.eyesight_hearing.hearing.option0')}</option>
+                         <option>{t('registration.eyesight_hearing.hearing.option1')}</option>
                     </select>
                      </Col>
                    </Row>
@@ -297,12 +300,12 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
-                     <Col sm={3}><input type="text" placeholder="Foot Size" className="form-control" /></Col>
+                     <Col sm={3}><input type="text" placeholder={t('registration.foot_size.title')} className="form-control" /></Col>
                      <Col sm={8}>
                      <select name="religion" className="form-control">
-                        <option>--  Select One --</option>
-                        <option> cm </option>
-                        <option> inc  </option>
+                        <option>{t('registration.foot_size.dropdown.placeholder')}</option>
+                        <option>{t('registration.foot_size.dropdown.option0')}</option>
+                        <option>{t('registration.foot_size.dropdown.option1')}</option>
                     </select>
                      </Col>
                    </Row>
@@ -317,7 +320,7 @@ export class Register extends React.Component {
                  {t('registration.email.title')}
                 </Form.Label>
                 <Col sm={9}>
-                  <Form.Control type="text" placeholder="Type Email Address" />
+                  <Form.Control type="text" placeholder={t('registration.email.placeholder')} />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -329,7 +332,7 @@ export class Register extends React.Component {
                  {t('registration.password.title')}
                 </Form.Label>
                 <Col sm={9}>
-                  <Form.Control type="password" placeholder="Type Email Address" />
+                  <Form.Control type="password" placeholder={t('registration.password.placeholder')} />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -341,7 +344,7 @@ export class Register extends React.Component {
                  {t('registration.retypepassword.title')}
                 </Form.Label>
                 <Col sm={9}>
-                  <Form.Control type="password" placeholder="Type Email Address" />
+                  <Form.Control type="password" placeholder={t('registration.retypepassword.title')} />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -353,7 +356,7 @@ export class Register extends React.Component {
                   {t('registration.phonenumber.title')}
                 </Form.Label>
                 <Col sm={9}>
-                  <Form.Control type="text" placeholder="Type Phone Number" />
+                  <Form.Control type="text" placeholder={t('registration.phonenumber.placeholder')} />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -365,7 +368,7 @@ export class Register extends React.Component {
                   {t('registration.facebook.title')}
                 </Form.Label>
                 <Col sm={9}>
-                  <Form.Control type="text" placeholder="Type Facebook address" />
+                  <Form.Control type="text" placeholder={t('registration.facebook.placeholder')}/>
                 </Col>
               </Form.Group>
               <Form.Group
@@ -378,9 +381,9 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                     <select name="currentlocation" className="form-control">
-                        <option>--  Same As Nationality --</option>
-                        <option> Japan </option>
-                        <option> Others </option>
+                        <option>{t('registration.current_location.dropdown.placeholder')}</option>
+                        <option>{t('registration.current_location.dropdown.option0')}</option>
+                        <option>{t('registration.current_location.dropdown.option1')}</option>
                     </select>
               
                 </Col>
@@ -398,11 +401,12 @@ export class Register extends React.Component {
                   <Row>
                     <Col sm={12}>
                     <select name="religion" className="form-control">
-                        <option>--  Japanese Language Training --</option>
-                        <option> Technical Traning </option>
-                        <option> Work at Your Country </option>
-                        <option> Student </option>
-                        <option>Others</option>
+                        <option>{t('registration.current_situation.dropdown.placeholder')}</option>
+                        <option>{t('registration.current_situation.dropdown.option0')}</option>
+                        <option>{t('registration.current_situation.dropdown.option1')}</option>
+                        <option>{t('registration.current_situation.dropdown.option2')}</option>
+                        <option>{t('registration.current_situation.dropdown.option3')}</option>
+
                     </select>
                     </Col>
                   
@@ -429,10 +433,10 @@ export class Register extends React.Component {
                   <Row>
                     <Col sm={6}>
                     <select name="religion" className="form-control">
-                        <option>--  Work Status 1 --</option>
-                        <option> Technical Traning </option>
-                        <option> Office Work </option>
-                        <option>Others</option>
+                        <option>{t('registration.work_experience.dropdown.placeholder0')}</option>
+                        <option>{t('registration.work_experience.dropdown.option0')}</option>
+                        <option>{t('registration.work_experience.dropdown.option1')}</option>
+                        <option>{t('registration.work_experience.dropdown.option2')}</option>
                     </select>
                     </Col>
                     <Col sm={6}>
@@ -442,10 +446,10 @@ export class Register extends React.Component {
                   <Row>
                     <Col sm={6}>
                     <select name="religion" className="form-control">
-                        <option>--  Work Status 2 --</option>
-                        <option> Technical Traning </option>
-                        <option> Office Work </option>
-                        <option>Others</option>
+                        <option>{t('registration.work_experience.dropdown.placeholder1')}</option>
+                        <option>{t('registration.work_experience.dropdown.option0')}</option>
+                        <option>{t('registration.work_experience.dropdown.option1')}</option>
+                        <option>{t('registration.work_experience.dropdown.option2')}</option>
                     </select>
                     </Col>
                     <Col sm={6}>
@@ -456,10 +460,10 @@ export class Register extends React.Component {
                   <Row>
                     <Col sm={6}>
                     <select name="religion" className="form-control">
-                        <option>--  Work Status 3 --</option>
-                        <option> Technical Traning </option>
-                        <option> Office Work </option>
-                        <option>Others</option>
+                        <option>{t('registration.work_experience.dropdown.placeholder2')}</option>
+                        <option>{t('registration.work_experience.dropdown.option0')}</option>
+                        <option>{t('registration.work_experience.dropdown.option1')}</option>
+                        <option>{t('registration.work_experience.dropdown.option2')}</option>
                     </select>
                     </Col>
                     <Col sm={6}>
@@ -482,10 +486,10 @@ export class Register extends React.Component {
                   <Row>
                     <Col sm={6}>
                     <select name="religion" className="form-control">
-                        <option>--  Japanese Language Training --</option>
-                        <option> Technical Traning </option>
-                        <option> Work at Your Country </option>
-                        <option>Others</option>
+                        <option>{t('registration.specific_skills.dropdown.placeholder')}</option>
+                        <option>{t('registration.specific_skills.dropdown.option0')}</option>
+                        <option>{t('registration.specific_skills.dropdown.option1')}</option>
+                        <option>{t('registration.specific_skills.dropdown.option2')}</option>
                     </select>
                     </Col>
                     <Col sm={6}>
@@ -504,10 +508,10 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                   <Col sm={4}>
-                    <input name="marritial" type="radio" value="married" /> Married
+                    <input name="marritial" type="radio" value="married" /> {t('registration.meritial_status.check.option0')}
                   </Col>
                   <Col sm={4}>
-                    <input name="marritial"  type="radio" value="unmarried" /> Unmarried
+                    <input name="marritial"  type="radio" value="unmarried" /> {t('registration.meritial_status.check.option1')}
                   </Col>
                 </Col>
               </Form.Group>
@@ -536,12 +540,12 @@ export class Register extends React.Component {
                 <Col sm={9}>
                 
                     <select name="religion" className="form-control">
-                        <option>--  No Skill --</option>
-                        <option> N5 </option>
-                        <option> N4 </option>
-                        <option> N3 </option>
-                        <option> N2 </option>
-                        <option> N1 </option>
+                        <option>{t('registration.japanese_language_skills.dropdown.placeholder')}</option>
+                        <option>{t('registration.japanese_language_skills.dropdown.option0')}</option>
+                        <option>{t('registration.japanese_language_skills.dropdown.option1')}</option>
+                        <option>{t('registration.japanese_language_skills.dropdown.option2')}</option>
+                        <option>{t('registration.japanese_language_skills.dropdown.option3')}</option>
+                        <option>{t('registration.japanese_language_skills.dropdown.option4')}</option>
                     </select>
                     </Col>
               </Form.Group>
@@ -556,24 +560,11 @@ export class Register extends React.Component {
                 </Form.Label>
                 <Col sm={9}>
                    <Row>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Chef</Col>
-                   <Col sm={3}> <input  type="checkbox" />Software</Col>
-                   <Col sm={3}> <input  type="checkbox" />Networking</Col>
-                   <Col sm={3}> <input  type="checkbox" />Cleaner</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
-                   <Col sm={3}> <input  type="checkbox" />Engineer</Col>
+                   <Col sm={3}> <input  type="checkbox" />{t('registration.desired_job.check.option0')}</Col>
+                   <Col sm={3}> <input  type="checkbox" />{t('registration.desired_job.check.option1')}</Col>
+                   <Col sm={3}> <input  type="checkbox" />{t('registration.desired_job.check.option2')}</Col>
+                   <Col sm={3}> <input  type="checkbox" />{t('registration.desired_job.check.option3')}</Col>
+                   <Col sm={3}> <input  type="checkbox" />{t('registration.desired_job.check.option4')}</Col>
                    </Row>
                   
                 </Col>

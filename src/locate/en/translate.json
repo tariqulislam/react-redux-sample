@@ -15,19 +15,49 @@
         "placeholder": "Please Type Nick Name"
       },
       "country_resident": {
-        "title": "Country & Resident"
+        "title": "Country & Resident",
+        "dropdown": {
+          "placeholder": "-- Select One --",
+          "option0": "Japan",
+          "option1": "Nepal",
+          "option2": "Vietnam"
+        },
+        "nationality_placeholder": "Nationality"
       },
       "language_you_can_fully_understand": {
-        "title": "Language You can fully understand"
+        "title": "Language You can fully understand",
+        "check": {
+          "option0": "Japanese",
+          "option1": "Vietnamese",
+          "option2": "English",
+          "option3": "Others"
+        }
       },
       "date_of_birth": {
-        "title": "Date Of Birth"
+        "title": "Date Of Birth",
+        "year_placeholder": "Year",
+        "month_placeholder": "Month",
+        "day_placeholder": "Day"
       },
       "religion": {
-        "title": "Religion"
+        "title": "Religion",
+        "dropdown": {
+          "placeholder": "-- No Religion --",
+          "option0": "Buddhism",
+          "option1": "Christianity",
+          "option2": "Islam",
+          "option3": "Judaism",
+          "option4": "Others"
+        }
       },
       "sex": {
-        "title": "Sex"
+        "title": "Sex",
+        "dropdown": {
+          "placeholder": "--  Select One --",
+          "option0": "Male",
+          "option1": "Female",
+          "option2": "Others"
+        }
       },
       "half_body_photo": {
         "title": "Half Body Photo"
@@ -36,52 +66,131 @@
         "title": "Passport Photo"
       },
       "height_weight": {
-        "title": "Height & Weight"
+        "title": "Height & Weight",
+        "height": {
+          "placeholder": "Height",
+          "unit_placeholder": "-- Select One --",
+          "option0": "cm",
+          "option1": "ft"
+        },
+        "weight": {
+          "placeholder": "Weight",
+          "unit_placeholder": "-- Select One --",
+          "option0": "kg",
+          "option1": "lb"
+        }
       },
       "eyesight_hearing": {
-        "title": "Eyesight & Hearing"
+        "title": "Eyesight & Hearing",
+        "eyesight": {
+          "title": "Eyesight",
+          "placeholder": "-- Select One --",
+          "option0": "Naked Vision",
+          "option1": "Glass",
+          "option2": "Lenses"
+        },
+        "hearing": {
+          "title": "Hearing",
+          "placeholder": "-- Select One --",
+          "option0": "Clear Hearing",
+          "option1": "Hear Pieces"
+        }
       },
       "foot_size": {
-        "title": "Foot Size"
+        "title": "Foot Size",
+        "dropdown": {
+          "placeholder": "-- Select One --",
+          "option0": "cm",
+          "option1": "in"
+        }
       },
       "email": {
-        "title": "Email"
+        "title": "Email",
+        "placeholder": "Type E-mail address"
       },
       "password": {
-        "title": "Password"
+        "title": "Password",
+        "placeholder": "Type password"
       },
       "retypepassword": {
         "title": "Retype Password"
       },
       "phonenumber": {
-        "title": "Phone Number"
+        "title": "Phone Number",
+        "placeholder": "Type phone number"
       },
       "facebook": {
-        "title": "Facebook"
+        "title": "Facebook",
+        "placeholder": "Type facebook address"
       },
       "current_location": {
-        "title": "Current Location"
+        "title": "Current Location",
+        "dropdown": {
+          "placeholder": "-- Same as nationality --",
+          "option0": "Japan",
+          "option1": "Others"
+        }
       },
       "current_situation": {
-        "title": "Current Situation"
+        "title": "Current Situation",
+        "dropdown": {
+          "placeholder": "--  Japanese Language Training --",
+          "option0": "Technical Training",
+          "option1": "Work at Your Country",
+          "option2": "Student",
+          "option3": "Others"
+        }
       },
       "work_experience": {
-        "title": "Work Experience"
+        "title": "Work Experience",
+        "dropdown": {
+          "placeholder0": "-- Work Status 1 --",
+          "placeholder1": "-- Work Status 2 --",
+          "placeholder2": "-- Work Status 3 --",
+          "option0": "Technical Training",
+          "option1": "Office Work",
+          "option2": "Others"
+        }
       },
       "specific_skills": {
-        "title": "Specific Skills"
+        "title": "Specific Skills",
+        "dropdown": {
+          "placeholder": "--  Japanese Language Training --",
+          "option0": "Technical Training",
+          "option1": "Work at Your Country",
+          "option2": "Others"
+        }
       },
       "meritial_status": {
-        "title": "Meritial Status"
+        "title": "Meritial Status",
+        "check": {
+          "option0": "Married",
+          "option1": "Single"
+        }
       },
       "cronic_disease": {
         "title": "Cronic Disease"
       },
       "japanese_language_skills": {
-        "title": "Japanese Language Skills"
+        "title": "Japanese Language Skills",
+        "dropdown": {
+          "placeholder": "-- No Skill --",
+          "option0": "N5",
+          "option1": "N4",
+          "option2": "N3",
+          "option3": "N2",
+          "option4": "N1"
+        }
       },
       "desired_job": {
-        "title": "Desired Job"
+        "title": "Desired Job",
+        "check": {
+          "option0": "Doctor",
+          "option1": "Chef",
+          "option2": "Software Engineer",
+          "option3": "Hardware Engineer",
+          "option4": "Mechanic"
+        }
       },
       "terms_conditions": {
         "title": "Terms & Conditions"

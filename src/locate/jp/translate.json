@@ -15,19 +15,55 @@
         "placeholder": "ニックネームを入力してください"
       },
       "country_resident": {
-        "title": "国と居住者"
+        "title": "国と居住者",
+        "dropdown": {
+          "placeholder": "-- 一つ選択してください --",
+          "option0": "日本",
+          "option1": "ネパール",
+          "option2": "ベトナム"
+        },
+        "nationality_placeholder": "国籍"
       },
       "language_you_can_fully_understand": {
-        "title": "あなたが完全に理解できる言語"
+        "title": "あなたが完全に理解できる言語",
+        "check": {
+          "option0": "日本人",
+          "option1": "ベトナム人",
+          "option2": "英語",
+          "option3": "その他"
+        }
+      },
+      "language_you_can_fully_understand_check": {
+        "option0": "",
+        "option1": "",
+        "option2": "",
+        "option3": ""
       },
       "date_of_birth": {
-        "title": "生年月日"
+        "title": "生年月日",
+        "year_placeholder": "年",
+        "month_placeholder": "月",
+        "day_placeholder": "日"
       },
       "religion": {
-        "title": "宗教"
+        "title": "宗教",
+        "dropdown": {
+          "placeholder": "-- 宗教なし --",
+          "option0": "仏教",
+          "option1": "キリスト教",
+          "option2": "イスラム教",
+          "option3": "ユダヤ教",
+          "option4": "その他"
+        }
       },
       "sex": {
-        "title": "性別"
+        "title": "性別",
+        "dropdown": {
+          "placeholder": "-- 一つ選択してください --",
+          "option0": "男性",
+          "option1": "女性",
+          "option2": "その他"
+        }
       },
       "half_body_photo": {
         "title": "半身写真"
@@ -36,52 +72,131 @@
         "title": "パスポートの写真"
       },
       "height_weight": {
-        "title": "身長体重"
+        "title": "身長体重",
+        "height": {
+          "placeholder": "高さ",
+          "unit_placeholder": "-- 一つ選択してください --",
+          "option0": "センチ",
+          "option1": "足"
+        },
+        "weight": {
+          "placeholder": "重量",
+          "unit_placeholder": "-- 一つ選択してください --",
+          "option0": "キログラム",
+          "option1": "ポンド"
+        }
       },
       "eyesight_hearing": {
-        "title": "視力と聴覚"
+        "title": "視力と聴覚",
+        "eyesight": {
+          "title": "視力",
+          "placeholder": "-- 一つ選択してください --",
+          "option0": "ネイキッドビジョン",
+          "option1": "ガラス",
+          "option2": "レンズ"
+        },
+        "hearing": {
+          "title": "聴覚",
+          "placeholder": "-- 一つ選択してください --",
+          "option0": "クリアな聴覚",
+          "option1": "ヒアリングピース"
+        }
       },
       "foot_size": {
-        "title": "足のサイズ"
+        "title": "足のサイズ",
+        "dropdown": {
+          "placeholder": "-- 一つ選択してください --",
+          "option0": "センチメートル",
+          "option1": "インチ"
+        }
       },
       "email": {
-        "title": "Eメール"
+        "title": "電子メール",
+        "placeholder": "メールアドレスを入力"
       },
       "password": {
-        "title": "パスワード"
+        "title": "パスワード",
+        "placeholder": "パスワードをうつ"
       },
       "retypepassword": {
         "title": "パスワードを再入力してください"
       },
       "phonenumber": {
-        "title": "電話番号"
+        "title": "電話番号",
+        "placeholder": "電話番号を入力"
       },
       "facebook": {
-        "title": "フェイスブック"
+        "title": "フェイスブック",
+        "placeholder": "フェイスブックアドレスを入力してください"
       },
       "current_location": {
-        "title": "現在位置"
+        "title": "現在位置",
+        "dropdown": {
+          "placeholder": "-- 国籍と同じ --",
+          "option0": "日本",
+          "option1": "その他"
+        }
       },
       "current_situation": {
-        "title": "現在の状況"
+        "title": "現在の状況",
+        "dropdown": {
+          "placeholder": "-- 日本語研修 --",
+          "option0": "技術研修",
+          "option1": "あなたの国で働く",
+          "option2": "学生",
+          "option3": "その他"
+        }
       },
       "work_experience": {
-        "title": "実務経験"
+        "title": "実務経験",
+        "dropdown": {
+          "placeholder0": "-- 作業状況1 --",
+          "placeholder1": "-- 作業状況2 --",
+          "placeholder2": "-- 作業状況3 --",
+          "option0": "技術研修",
+          "option1": "オフィスワーク",
+          "option2": "その他"
+        }
       },
       "specific_skills": {
-        "title": "特定のスキル"
+        "title": "特定のスキル",
+        "dropdown": {
+          "placeholder": "-- 日本語研修 --",
+          "option0": "技術研修",
+          "option1": "あなたの国で働く",
+          "option2": "その他"
+        }
       },
       "meritial_status": {
-        "title": "配偶者の有無"
+        "title": "配偶者の有無",
+        "check": {
+          "option0": "既婚",
+          "option1": "シングル"
+        }
       },
       "cronic_disease": {
         "title": "慢性疾患"
       },
       "japanese_language_skills": {
-        "title": "日本語スキル"
+        "title": "日本語スキル",
+        "dropdown": {
+          "placeholder": "-- スキルなし --",
+          "option0": "N5",
+          "option1": "N4",
+          "option2": "N3",
+          "option3": "N2",
+          "option4": "N1"
+        }
       },
       "desired_job": {
-        "title": "希望した職種"
+        "title": "希望した職種",
+        "check": {
+          "option0": "医師",
+          "option1": "シェフ",
+          "option2": "ソフトウェアエンジニア",
+          "option3": "ハードウェアエンジニア",
+          "option4": "メカニック"
+        }
       },
       "terms_conditions": {
         "title": "利用規約"
