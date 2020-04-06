@@ -224,6 +224,22 @@
         "form-email-field": "Email Address",
         "form-description-label": "お問い合わせ内容",
         "form-btn": "確認"
+      },
+      "footer_section": {
+        "title": "Japanで就職",
+        "link-list-one": {
+          "one": "総合TOP",
+          "two": "企業TOP",
+          "three": "ユーザーTOP",
+          "four": "支援機関TOP",
+          "five": "特定技能とは"
+        },
+        "link-list-two": {
+          "one": "運営会社",
+          "two": "利用規約",
+          "three": "プライバシーポリシー"
+        },
+        "copyright": "Copyright 就pan All Rights Reserved."
       }
     }
   }

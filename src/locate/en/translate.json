@@ -235,6 +235,22 @@
         "form-email-field": "Email Address",
         "form-description-label": "Contents of inquiry",
         "form-btn": "Verification"
+      },
+      "footer_section": {
+        "title": "Get a job in Japan",
+        "link-list-one": {
+          "one": "General TOP",
+          "two": "Company TOP",
+          "three": "User TOP",
+          "four": "Supporting organizations TOP",
+          "five": "What is specific skill?"
+        },
+        "link-list-two": {
+          "one": "Operating company",
+          "two": "Terms of service",
+          "three": "privacy policy"
+        },
+        "copyright": "Copyright 就pan All Rights Reserved."
       }
     }
   }
