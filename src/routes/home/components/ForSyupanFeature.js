@@ -41,8 +41,8 @@ export class ForSyupanFeature extends React.Component {
       <React.Fragment>
         <Container className="padding-bottom-120">
           <Row className="padding-bottom-30">
-            <Col md={2}></Col>
-            <Col className="text-center">
+            <Col xs={12} md={2}></Col>
+            <Col xs={12} md={8} className="text-center">
               <h1 className="title">
                 {t("homepage.syupan_feature_section.title")}
               </h1>
@@ -51,11 +51,11 @@ export class ForSyupanFeature extends React.Component {
                 {t("homepage.syupan_feature_section.title-subtitle")}
               </p>
             </Col>
-            <Col md={2}></Col>
+            <Col xs={12} md={2}></Col>
           </Row>
           <Row>
-            <Col md={2}></Col>
-            <Col>
+            <Col xs={12} md={2}></Col>
+            <Col xs={12} md={8}>
               <div style={contentBlock}>
                 <div style={titleBlock}>
                   {t("homepage.syupan_feature_section.feature.one.title")}
@@ -132,7 +132,7 @@ export class ForSyupanFeature extends React.Component {
                 </div>
               </div>
             </Col>
-            <Col md={2}></Col>
+            <Col xs={12} md={2}></Col>
           </Row>
         </Container>
       </React.Fragment>

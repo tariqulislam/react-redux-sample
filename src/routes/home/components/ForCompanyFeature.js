@@ -26,11 +26,11 @@ export class ForCompanyFeature extends React.Component {
             <Col md={2}></Col>
           </Row>
           <Row>
-            <Col md={1}></Col>
-            <Col>
+            <Col xs={12} md={1}></Col>
+            <Col xs={12} md={5}>
               <Image src={FeatureImage} fluid />
             </Col>
-            <Col>
+            <Col xs={12} md={5}>
               <div className="feature-list">
                 <div className="feature-list-title text-blue">
                   {t("homepage.company_feature_section.feature-list.one.title")}
@@ -82,7 +82,7 @@ export class ForCompanyFeature extends React.Component {
                 </div>
               </div>
             </Col>
-            <Col md={1}></Col>
+            <Col xs={12} md={1}></Col>
           </Row>
         </Container>
       </React.Fragment>

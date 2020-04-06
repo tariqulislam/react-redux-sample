@@ -11,9 +11,11 @@ export class ForUserAction extends React.Component {
     const { t } = this.props;
 
     let userCard = {
-      display: "inline-block",
+      display: "block",
       backgroundColor: "#F2EFE4",
       paddingBottom: "10px",
+      margin: "0px auto 20px",
+      overflow: "hidden",
     };
     let cardTitle = {
       textAlign: "center",
@@ -106,7 +108,7 @@ export class ForUserAction extends React.Component {
       <React.Fragment>
         <Container className="padding-bottom-120">
           <Row>
-            <Col>
+            <Col xs={12} md={4}>
               <div style={userCard}>
                 <div style={cardTitle} className="bg-blue">
                   {t("homepage.user_action_section.item-one.title")}
@@ -136,7 +138,7 @@ export class ForUserAction extends React.Component {
                 </div>
               </div>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
               <div style={userCard}>
                 <div style={cardTitle} className="bg-aqua">
                   {t("homepage.user_action_section.item-two.title")}
@@ -166,7 +168,7 @@ export class ForUserAction extends React.Component {
                 </div>
               </div>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
               <div style={userCard}>
                 <div style={cardTitle} className="bg-green">
                   {t("homepage.user_action_section.item-three.title")}
