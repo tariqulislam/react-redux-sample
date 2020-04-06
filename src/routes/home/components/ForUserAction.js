@@ -4,7 +4,7 @@ import { withTranslation } from "react-i18next";
 import ItemOneImage from "../assets/images/user-action/item_1.jpg";
 import ItemSecondImage from "../assets/images/user-action/item_2.png";
 import ItemThirdImage from "../assets/images/user-action/item_3.jpg";
-import WhiteLogo from "../assets/images/user-action/logo_white.png";
+import WhiteLogo from "../assets/images/logo_white.png";
 
 export class ForUserAction extends React.Component {
   render() {

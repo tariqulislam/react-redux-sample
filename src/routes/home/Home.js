@@ -18,6 +18,7 @@ import ForUserFeature from "./components/ForUserFeature";
 import InitialSection from "./components/InitialSection";
 import ForSyupanFeature from "./components/ForSyupanFeature";
 import ForUserAction from "./components/ForUserAction";
+import ForContact from "./components/ForContact";
 import "./assets/home.scss";
 
 class Home extends Component {
@@ -58,6 +59,9 @@ class Home extends Component {
         </Row>
         <Row>
           <ForUserAction />
+        </Row>
+        <Row>
+          <ForContact />
         </Row>
       </>
     );

@@ -211,6 +211,19 @@
           "btn-left": "支援機関向けTOPページ",
           "btn-right": "MYページログイン"
         }
+      },
+      "contact_section": {
+        "title": "お問い合わせ",
+        "title-description": "必要事項をご記入の上、確認ボタンを押してください。プライバシーポリシーはこちら",
+        "form-required": "必須",
+        "form-name-label": "お名前",
+        "form-name-field": "Name",
+        "form-company-label": "会社名",
+        "form-company-field": "Company Name",
+        "form-email-label": "メールアドレス",
+        "form-email-field": "Email Address",
+        "form-description-label": "お問い合わせ内容",
+        "form-btn": "確認"
       }
     }
   }
