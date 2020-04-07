@@ -37,8 +37,7 @@ export class ForCandidate extends React.Component {
             float: 'left',
             border: '2px solid white',
             padding: '5px',
-            marginTop: '5px',
-            float: 'left'
+            marginTop: '5px'
         }
         return (
             <React.Fragment>
