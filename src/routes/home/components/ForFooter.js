@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
 import WhiteLogo from "../assets/images/logo_white.png";
 

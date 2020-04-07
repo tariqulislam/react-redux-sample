@@ -124,7 +124,7 @@
         "four": "A site that introduces foreigners who want to work in Japan (including those living in Japan) to Japanese companies GHRN"
       },
       "initial_section": {
-        "whatsGHRN": "What is GHRN？",
+        "title": "What is GHRN？",
         "leftMsg": {
           "one": "GHRN (GlobalHumanResourceNetwork) is for foreigners who want to work in Japan who are registered on this site or who are already living in Japan (international students or working) Is a site where you can scout the right human resources",
           "two": "If you find a person you are interested in, register the job search information on the site and scout. The job information will be converted into the native language of the scouting personnel and sent to the person on this site.",

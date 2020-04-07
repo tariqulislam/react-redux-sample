@@ -1,13 +1,12 @@
 import React from "react";
-import { Card, Button, Col } from "react-bootstrap";
-import companyImg from '../assets/images/regsection/company.jpg'
-import candidateImg from '../assets/images/regsection/candidate.jpg'
-import supportImg from '../assets/images/regsection/support.png'
-import { withTranslation } from 'react-i18next'
-import { withRouter, Link } from 'react-router-dom'
+import { Card, Col, Container, Row } from "react-bootstrap";
+import companyImg from "../assets/images/regsection/company.jpg";
+import candidateImg from "../assets/images/regsection/candidate.jpg";
+import supportImg from "../assets/images/regsection/support.png";
+import { withTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export class RegSection extends React.Component {
-
   //   candidateOnClick = () => {
   //       debugger
   //      this.props.history.push('/candidate/register')
@@ -19,67 +18,81 @@ export class RegSection extends React.Component {
   //   }
 
   render() {
-    const { t } = this.props
+    const { t } = this.props;
     let companyRegStyle = {
-      backgroundSize: 'cover',
-      paddingTop: '70px',
+      backgroundSize: "cover",
+      paddingTop: "70px",
       backgroundImage: `url(${companyImg})`,
-      height: '200px'
+      height: "200px",
     };
 
     let candidateRegStyle = {
-      backgroundSize: 'cover',
-      paddingTop: '70px',
+      backgroundSize: "cover",
+      paddingTop: "70px",
       backgroundImage: `url(${candidateImg})`,
-      height: '200px'
-    }
+      height: "200px",
+    };
 
     let supportRegStyle = {
-      backgroundSize: 'cover',
+      backgroundSize: "cover",
       backgroundImage: `url(${supportImg})`,
-      paddingTop: '70px',
-      height: '200px'
-    }
+      paddingTop: "70px",
+      height: "200px",
+    };
     return (
       <React.Fragment>
-        <Col md={1}></Col>
-        <Col md={3}>
-          <Card className="text-center">
-            <Card.Header>{t('homepage.regsection.for_company_title')}</Card.Header>
-            <Card.Body style={companyRegStyle}>
-              {/* <Card.Title>Special title treatment</Card.Title>
-              <Card.Text>
-               
-              </Card.Text> */}
-              <Link to={'/company/register'} className="btn btn-primary" variant="primary">{t('homepage.regsection.for_company_button')}</Link>
-            </Card.Body>
-            <Card.Footer className="text-muted"></Card.Footer>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card className="text-center">
-            <Card.Header>{t('homepage.regsection.for_user_title')}</Card.Header>
-            <Card.Body style={candidateRegStyle}>
-              {/* <Card.Title>Special title treatment</Card.Title>
-              <Card.Text>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </Card.Text> */}
-              <Link className="btn btn-primary" to={'/candidate/register'} variant="primary">{t('homepage.regsection.for_candidate_button')}</Link>
-            </Card.Body>
-            <Card.Footer className="text-muted"></Card.Footer>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card className="text-center">
-            <Card.Header>{t('homepage.regsection.for_support_title')}</Card.Header>
-            <Card.Body style={supportRegStyle}>
-              <Link className="btn btn-primary" to={'/company/register'} variant="primary">{t('homepage.regsection.for_support_button')}</Link>
-            </Card.Body>
-            <Card.Footer className="text-muted"></Card.Footer>
-          </Card>
-        </Col>
-        <Col md={1}></Col>
+        <Container>
+          <Row>
+            <Col xs={12} md={4}>
+              <Card className="text-center">
+                <Card.Header>
+                  {t("homepage.regsection.for_company_title")}
+                </Card.Header>
+                <Card.Body style={companyRegStyle}>
+                  <Link
+                    to={"/company/register"}
+                    className="btn btn-primary"
+                    variant="primary"
+                  >
+                    {t("homepage.regsection.for_company_button")}
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col xs={12} md={4}>
+              <Card className="text-center">
+                <Card.Header>
+                  {t("homepage.regsection.for_user_title")}
+                </Card.Header>
+                <Card.Body style={candidateRegStyle}>
+                  <Link
+                    className="btn btn-info"
+                    to={"/candidate/register"}
+                    variant="primary"
+                  >
+                    {t("homepage.regsection.for_candidate_button")}
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col xs={12} md={4}>
+              <Card className="text-center">
+                <Card.Header>
+                  {t("homepage.regsection.for_support_title")}
+                </Card.Header>
+                <Card.Body style={supportRegStyle}>
+                  <Link
+                    className="btn btn-success"
+                    to={"/company/register"}
+                    variant="primary"
+                  >
+                    {t("homepage.regsection.for_support_button")}
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </React.Fragment>
     );
   }
