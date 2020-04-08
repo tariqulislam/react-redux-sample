@@ -33,14 +33,16 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
           let country = document.getElementsByName("country");
           country = country[0].value;
 
-          let nationality = document.getElementsByName("nationalty");
+          let nationality = document.getElementsByName("nationality");
           nationality = nationality[0].value;
 
           let language = document.getElementsByName("language-check");
           let selectedLanguages = [];
           language.forEach(lan => {
               if(lan.checked === true) {
-                  selectedLanguages.push(lan.parentNode.innerText);
+                  selectedLanguages.push({
+                    "name": lan.parentNode.innerText
+                  });
               }
           })
 
@@ -157,7 +159,7 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
 
             acceptTermsfAndConditions: true,
 
-            romanName,
+            romajiName,
             nickName,
             country,
             nationality,
@@ -203,7 +205,7 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
             ],
             "specificSkill": skill,
             "specificSkillOption": skillText,
-            maritalStatus,
+            "maritalStatus": selectedStatus,
             selectedStatus,
             chronicDisease,
             japaneseLanguageSkill,
@@ -212,9 +214,7 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
           }
 
           // debugger
-          this.props.saveCandidateInfoForm(toBePostedCandidate).then(res => {
-            console.log(res)
-          })
+          this.props.saveCandidateInfoForm(toBePostedCandidate);
       }
 
       render() {
