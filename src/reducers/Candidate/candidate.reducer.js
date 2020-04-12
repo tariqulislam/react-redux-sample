@@ -10,7 +10,8 @@ export const saveCandidateInfoFromApi = (formData) => {
         console.log(formData)
         saveCandidateInfo(formData).then(res => {
             // debugger
-            dispatch
+            // dispatch
+            // console.log(res)
         }).catch(ex => {
             console.log(ex)
         })

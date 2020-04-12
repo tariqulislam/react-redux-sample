@@ -157,13 +157,13 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
 
           let toBePostedCandidate = {
 
-            acceptTermsfAndConditions: true,
+            acceptTermsAndCondition: true,
 
             romajiName,
             nickName,
             country,
             nationality,
-            selectedLanguages,
+            "languages": selectedLanguages,
             "birthYear": yearOfBirth,
             "birthMonth": monthOfBirth,
             "birthday": dayOfBirth,
@@ -178,6 +178,7 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
             footSize,
             footSizeUnit,
             "candidate": {
+              lang: '',
               email,
               "name": fullName,
               password,
@@ -210,7 +211,7 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
             chronicDisease,
             japaneseLanguageSkill,
             "desiredJobs": selectedJobs,
-            termsAndConditions
+            "status": true
           }
 
           // debugger
