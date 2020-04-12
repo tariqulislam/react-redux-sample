@@ -1,8 +1,5 @@
 import React from "react";
-import CandidateOne from "../assets/images/candidate/one.png";
-import CandidateTwo from "../assets/images/candidate/two.png";
-import CandidateThree from "../assets/images/candidate/three.png";
-import CandidateFour from "../assets/images/candidate/four.png";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
 
@@ -49,24 +46,40 @@ export class ForCandidate extends React.Component {
           </Row>
           <Row>
             <Col xs={12} md={3} className="text-center">
-              <Image style={imgStyle} src={CandidateOne} thumbnail />
+              <Image
+                style={imgStyle}
+                src={IMAGE_RESOURCE.candidateSection.candidateOne}
+                thumbnail
+              />
               <div>{t("homepage.candidate_process.one")}</div>
             </Col>
             <Col xs={12} md={3} className="text-center">
               <div>
-                <Image style={imgStyle} src={CandidateTwo} thumbnail />
+                <Image
+                  style={imgStyle}
+                  src={IMAGE_RESOURCE.candidateSection.candidateTwo}
+                  thumbnail
+                />
               </div>
               <div>{t("homepage.candidate_process.two")}</div>
             </Col>
             <Col xs={12} md={3} className="text-center">
               <div>
-                <Image style={imgStyle} src={CandidateThree} thumbnail />
+                <Image
+                  style={imgStyle}
+                  src={IMAGE_RESOURCE.candidateSection.candidateThree}
+                  thumbnail
+                />
               </div>
               <div>{t("homepage.candidate_process.three")}</div>
             </Col>
             <Col xs={12} md={3} className="text-center">
               <div>
-                <Image style={imgStyle} src={CandidateFour} thumbnail />
+                <Image
+                  style={imgStyle}
+                  src={IMAGE_RESOURCE.candidateSection.candidateFour}
+                  thumbnail
+                />
               </div>
               <div>{t("homepage.candidate_process.four")}</div>
             </Col>

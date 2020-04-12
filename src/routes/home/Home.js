@@ -8,7 +8,6 @@ import {
   getAllPostForFromApi,
 } from "../../reducers/Home/home.reducer";
 import { Image } from "react-bootstrap";
-import GroupOnDevice from "./assets/images/group-on-devices.jpg";
 import { withTranslation } from "react-i18next";
 import RegSection from "./components/RegSection";
 import ForCandidate from "./components/ForCandidate";
@@ -21,6 +20,7 @@ import ForUserAction from "./components/ForUserAction";
 import ForContact from "./components/ForContact";
 import ForFooter from "./components/ForFooter";
 import "./assets/home.scss";
+import IMAGE_RESOURCE from "./assets/images/ImageResource";
 
 class Home extends Component {
   render() {
@@ -31,7 +31,11 @@ class Home extends Component {
     return (
       <>
         <div>
-          <Image style={bannerStyle} src={GroupOnDevice} fluid />
+          <Image
+            style={bannerStyle}
+            src={IMAGE_RESOURCE.bannerSection.banner}
+            fluid
+          />
         </div>
         <ForCandidate />
         <InitialSection selectedLanguage={selectedLanguage} />
