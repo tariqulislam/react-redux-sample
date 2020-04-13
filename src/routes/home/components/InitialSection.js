@@ -1,19 +1,18 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import howItworkEn from "../assets/images/en/howitworks_en.png";
-import howItworkJp from "../assets/images/jp/howitworks_jp.png";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 
 export class InitialSection extends React.Component {
   render() {
     const { t, selectedLanguage } = this.props;
     let imgForHowItworks = "";
     if (selectedLanguage === "en") {
-      imgForHowItworks = howItworkEn;
+      imgForHowItworks = IMAGE_RESOURCE.initialSection.howItworkEn;
     }
 
     if (selectedLanguage === "jp") {
-      imgForHowItworks = howItworkJp;
+      imgForHowItworks = IMAGE_RESOURCE.initialSection.howItworkJp;
     }
     return (
       <React.Fragment>

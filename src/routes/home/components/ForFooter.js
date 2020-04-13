@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import WhiteLogo from "../assets/images/logo_white.png";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 
 export class ForUserFeature extends React.Component {
   render() {
@@ -30,7 +30,7 @@ export class ForUserFeature extends React.Component {
         <Container fluid style={footerContainer}>
           <div className="text-center">
             <p>{t("homepage.footer_section.title")}</p>
-            <Image style={contentLogo} src={WhiteLogo} />
+            <Image style={contentLogo} src={IMAGE_RESOURCE.transparentLogo} />
             <p style={{ marginTop: "60px" }}>
               <a style={link} href="/index.php">
                 {t("homepage.footer_section.link-list-one.one")}

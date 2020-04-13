@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import UserFeatureImage from "../assets/images/feature/user_feature.jpg";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 
 export class ForUserFeature extends React.Component {
   render() {
@@ -80,7 +80,10 @@ export class ForUserFeature extends React.Component {
                 </div>
               </Col>
               <Col xs={12} md={5}>
-                <Image src={UserFeatureImage} fluid />
+                <Image
+                  src={IMAGE_RESOURCE.userFeatureSection.featureImage}
+                  fluid
+                />
               </Col>
               <Col xs={12} md={1}></Col>
             </Row>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import FeatureImage from "../assets/images/feature/feature.jpg";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 export class ForCompanyFeature extends React.Component {
   render() {
     const { t } = this.props;
@@ -28,7 +28,10 @@ export class ForCompanyFeature extends React.Component {
           <Row>
             <Col xs={12} md={1}></Col>
             <Col xs={12} md={5}>
-              <Image src={FeatureImage} fluid />
+              <Image
+                src={IMAGE_RESOURCE.companyFeatureSection.featureImage}
+                fluid
+              />
             </Col>
             <Col xs={12} md={5}>
               <div className="feature-list">

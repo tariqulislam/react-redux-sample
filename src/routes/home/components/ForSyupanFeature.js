@@ -1,9 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import FeatureOneImage from "../assets/images/syupan/features_1.jpg";
-import FeatureSecondImage from "../assets/images/syupan/features_2.jpg";
-import FeatureThirdImage from "../assets/images/syupan/features_3.jpg";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 
 export class ForSyupanFeature extends React.Component {
   render() {
@@ -61,7 +59,10 @@ export class ForSyupanFeature extends React.Component {
                   {t("homepage.syupan_feature_section.feature.one.title")}
                 </div>
                 <div className="text-center">
-                  <Image style={featureImage} src={FeatureOneImage} />
+                  <Image
+                    style={featureImage}
+                    src={IMAGE_RESOURCE.syupanFeatureSection.featureOne}
+                  />
                 </div>
                 <div className="syupan-feature-content">
                   <p>
@@ -81,7 +82,10 @@ export class ForSyupanFeature extends React.Component {
                   {t("homepage.syupan_feature_section.feature.second.title")}
                 </div>
                 <div className="text-center">
-                  <Image style={featureImage} src={FeatureSecondImage} />
+                  <Image
+                    style={featureImage}
+                    src={IMAGE_RESOURCE.syupanFeatureSection.featureTwo}
+                  />
                 </div>
                 <div className="syupan-feature-content">
                   <p>
@@ -121,7 +125,10 @@ export class ForSyupanFeature extends React.Component {
                   {t("homepage.syupan_feature_section.feature.third.title")}
                 </div>
                 <div className="text-center">
-                  <Image style={featureImage} src={FeatureThirdImage} />
+                  <Image
+                    style={featureImage}
+                    src={IMAGE_RESOURCE.syupanFeatureSection.featureThree}
+                  />
                 </div>
                 <div className="syupan-feature-content">
                   <p>

@@ -1,14 +1,14 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import SkillImg from "../assets/images/skill/skill_section_image.jpg";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 
 export class ForSpecificSkill extends React.Component {
   render() {
     const { t } = this.props;
 
     let companyRegStyle = {
-      backgroundImage: `url(${SkillImg})`,
+      backgroundImage: `url(${IMAGE_RESOURCE.specificSkillSection.featureImage})`,
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",

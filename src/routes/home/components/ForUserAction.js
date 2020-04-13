@@ -1,10 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import ItemOneImage from "../assets/images/user-action/item_1.jpg";
-import ItemSecondImage from "../assets/images/user-action/item_2.png";
-import ItemThirdImage from "../assets/images/user-action/item_3.jpg";
-import WhiteLogo from "../assets/images/logo_white.png";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 
 export class ForUserAction extends React.Component {
   render() {
@@ -67,13 +64,13 @@ export class ForUserAction extends React.Component {
     };
 
     let itemOne = {
-      backgroundImage: `url(${ItemOneImage})`,
+      backgroundImage: `url(${IMAGE_RESOURCE.syupanFeatureSection.featureOne})`,
     };
     let itemTwo = {
-      backgroundImage: `url(${ItemSecondImage})`,
+      backgroundImage: `url(${IMAGE_RESOURCE.syupanFeatureSection.featureTwo})`,
     };
     let itemThree = {
-      backgroundImage: `url(${ItemThirdImage})`,
+      backgroundImage: `url(${IMAGE_RESOURCE.syupanFeatureSection.featureThree})`,
     };
 
     let cardFooter = {
@@ -119,7 +116,10 @@ export class ForUserAction extends React.Component {
                     <h2 style={contentTitle}>
                       {t("homepage.user_action_section.item-one.content-title")}
                     </h2>
-                    <Image style={contentLogo} src={WhiteLogo} />
+                    <Image
+                      style={contentLogo}
+                      src={IMAGE_RESOURCE.transparentLogo}
+                    />
                     <h3 style={contentHeading} className="bg-blue">
                       {t(
                         "homepage.user_action_section.item-one.content-heading"
@@ -149,7 +149,10 @@ export class ForUserAction extends React.Component {
                     <h2 style={contentTitle}>
                       {t("homepage.user_action_section.item-two.content-title")}
                     </h2>
-                    <Image style={contentLogo} src={WhiteLogo} />
+                    <Image
+                      style={contentLogo}
+                      src={IMAGE_RESOURCE.transparentLogo}
+                    />
                     <h3 style={contentHeading} className="bg-aqua">
                       {t(
                         "homepage.user_action_section.item-two.content-heading"
@@ -181,7 +184,10 @@ export class ForUserAction extends React.Component {
                         "homepage.user_action_section.item-three.content-title"
                       )}
                     </h2>
-                    <Image style={contentLogo} src={WhiteLogo} />
+                    <Image
+                      style={contentLogo}
+                      src={IMAGE_RESOURCE.transparentLogo}
+                    />
                     <h3 style={contentHeading} className="bg-green">
                       {t(
                         "homepage.user_action_section.item-three.content-heading"

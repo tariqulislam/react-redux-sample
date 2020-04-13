@@ -1,8 +1,6 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import companyImg from "../assets/images/regsection/company.jpg";
-import candidateImg from "../assets/images/regsection/candidate.jpg";
-import supportImg from "../assets/images/regsection/support.png";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 import { withTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -22,20 +20,20 @@ export class RegSection extends React.Component {
     let companyRegStyle = {
       backgroundSize: "cover",
       paddingTop: "70px",
-      backgroundImage: `url(${companyImg})`,
+      backgroundImage: `url(${IMAGE_RESOURCE.regSection.companyImg})`,
       height: "200px",
     };
 
     let candidateRegStyle = {
       backgroundSize: "cover",
       paddingTop: "70px",
-      backgroundImage: `url(${candidateImg})`,
+      backgroundImage: `url(${IMAGE_RESOURCE.regSection.candidateImg})`,
       height: "200px",
     };
 
     let supportRegStyle = {
       backgroundSize: "cover",
-      backgroundImage: `url(${supportImg})`,
+      backgroundImage: `url(${IMAGE_RESOURCE.regSection.supportImg})`,
       paddingTop: "70px",
       height: "200px",
     };
