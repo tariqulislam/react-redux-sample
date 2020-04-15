@@ -11,7 +11,15 @@ export const saveCandidateInfoFromApi = (formData) => {
         saveCandidateInfo(formData).then(res => {
             // debugger
             // dispatch
-            // console.log(res)
+            console.log(res)
+
+            // Awaiting function chaining to upload photos and ID card
+            // var formData = new FormData();
+            // for(var idx = 0; idx < this.state.photoList.length; idx++) {
+            //     // console.log(this.state.photoList[idx][1])
+            //     formData.append('files', this.state.photoList[idx][1])
+            // }
+
         }).catch(ex => {
             console.log(ex)
         })
