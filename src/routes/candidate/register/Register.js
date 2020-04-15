@@ -299,9 +299,14 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
           validity = validity[0].checkValidity();
 
           if(validity === true) {
-            e.preventDefault();
-
-            this.props.saveCandidateInfoForm(toBePostedCandidate);
+            e.preventDefault();            
+            let callback = () => {
+                this.props.history.push({
+                  pathname:"/candidate/new_one",
+                  state: { "payload": toBePostedCandidate }
+                });
+            }
+            this.props.saveCandidateInfoForm(toBePostedCandidate, callback);
           }
       }
 
@@ -426,7 +431,7 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
                             <option value="">{t('registration.date_of_birth.year_placeholder')}</option>
                             {
                               years.map(item => {
-                                return (<option value={item}>{item}</option>)
+                                return (<option key={item} value={item}>{item}</option>)
                               })
                             }
                           </select>
@@ -680,7 +685,7 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
                     </Form.Label>
                     <Col sm={9}>
                         <select name="currentlocation" className="form-control" required>
-                            <option value="">{t('registration.current_location.dropdown.placeholder')}</option>
+                            <option>{t('registration.current_location.dropdown.placeholder')}</option>
                             <option>{t('registration.current_location.dropdown.option0')}</option>
                             <option>{t('registration.current_location.dropdown.option1')}</option>
                         </select>
@@ -906,7 +911,7 @@ import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCand
 
     const mapDispatchToProps = dispatch => {
       return {
-        saveCandidateInfoForm: (formData) => dispatch(saveCandidateInfoFromApi(formData)),
+        saveCandidateInfoForm: (formData, callback) => dispatch(saveCandidateInfoFromApi(formData, callback)),
         // saveCandidateHalfBodyPhoto: (imageData) => dispatch(saveCandidateHalfBodyPhotoThroughAPI(imageData)),
         // saveCandidatePassport: (imageData) => dispatch(saveCandidatePassportThroughAPI(imageData))
       }

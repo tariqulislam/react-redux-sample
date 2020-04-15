@@ -10,6 +10,7 @@ import CandidateLogin from "./routes/candidate/Login/Login";
 import AdminDashboard from './routes/admin/admin'
 import { withTranslation } from 'react-i18next'
 import Campaign from './routes/admin/campain/components/campaign'
+import NewCandidate from './routes/candidate/new-candidate/NewCandidate';
 
 class App extends Component {
   constructor(props) {
@@ -78,6 +79,7 @@ class App extends Component {
           <Route exact path="/company/register" component={CompanyRegister} />
           <Route exact path="/candidate/login" component={CandidateLogin}  />
           <Route exact path="/admin/dashboard" component={AdminDashboard} />
+          <Route exact path="/candidate/new_one" component={NewCandidate} />
         </main>
         </React.Fragment>
     );

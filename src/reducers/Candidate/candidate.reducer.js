@@ -1,19 +1,29 @@
 import {saveCandidateInfo, saveCandidateHalfBodyPhoto, saveCandidatePhotoPassport} from './candidate.async'
+
 export const SAVE_CANDIDATE_INFO = 'SAVE_CANDIDATE_INFO'
 
 // export const SAVE_CANDIDATE_HALF_BODY_PHOTO = 'SAVE_CANDIDATE_HALF_BODY_PHOTO'
 // export const SAVE_CANDIDATE_PASSPORT_PHOTO = 'SAVE_CANDIDATE_PASSPORT_PHOTO'
 
-export const saveCandidateInfoFromApi = (formData) => {
+export const saveCandidateInfoFromApi = (formData, callback) => {
     // debugger
     return dispatch => {
-        console.log(formData)
         saveCandidateInfo(formData).then(res => {
             // debugger
             // dispatch
-            console.log(res)
+            console.log(res);
+            
+            
+            /**
+             * Redirecting towards the New Candidate Details page.
+             */
+            callback();
+            
+            
+            /**
+             * Awaiting function chaining to upload photos and ID card
+             */
 
-            // Awaiting function chaining to upload photos and ID card
             // var formData = new FormData();
             // for(var idx = 0; idx < this.state.photoList.length; idx++) {
             //     // console.log(this.state.photoList[idx][1])
