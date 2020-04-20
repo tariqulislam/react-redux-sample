@@ -5,60 +5,64 @@ import { connect } from "react-redux";
 import {
   showParagraphInfo,
   hideParagraphInfo,
-  getAllPostForFromApi
+  getAllPostForFromApi,
 } from "../../reducers/Home/home.reducer";
-import { Row, Col, Image } from "react-bootstrap";
-import GroupOnDevice from "./assets/images/group-on-devices.jpg";
+import { Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
 import RegSection from "./components/RegSection";
 import ForCandidate from "./components/ForCandidate";
-import ForFeature from "./components/ForFeature";
+import ForCompanyFeature from "./components/ForCompanyFeature";
+import ForSpecificSkill from "./components/ForSpecificSkill";
+import ForUserFeature from "./components/ForUserFeature";
 import InitialSection from "./components/InitialSection";
+import ForSyupanFeature from "./components/ForSyupanFeature";
+import ForUserAction from "./components/ForUserAction";
+import ForContact from "./components/ForContact";
+import ForFooter from "./components/ForFooter";
+import "./assets/home.scss";
+import IMAGE_RESOURCE from "./assets/images/ImageResource";
 
 class Home extends Component {
   render() {
     let bannerStyle = {
-      width: "100%"
+      width: "100%",
     };
-    const { t } = this.props;
     const selectedLanguage = localStorage.getItem("language");
     return (
       <>
-        <Row>
-          <Col md={12}>
-            <Image style={bannerStyle} src={GroupOnDevice} fluid />
-          </Col>
-        </Row>
-        <Row>
-          <Col style={{ padding: "30px" }} md={12}>
-            <ForCandidate />
-          </Col>
-        </Row>
-        <Row style={{ padding: "40px" }}>
-          <InitialSection selectedLanguage={selectedLanguage} />
-        </Row>
-        <Row style={{ padding: "40px" }}>
-          <RegSection />
-        </Row>
-        <Row style={{ padding: "40px" }}>
-          <ForFeature />
-        </Row>
+        <div>
+          <Image
+            style={bannerStyle}
+            src={IMAGE_RESOURCE.bannerSection.banner}
+            fluid
+          />
+        </div>
+        <ForCandidate />
+        <InitialSection selectedLanguage={selectedLanguage} />
+        <RegSection />
+        <ForCompanyFeature />
+        <ForUserFeature />
+        <ForSpecificSkill />
+        <ForSyupanFeature />
+        <ForUserAction />
+        <ForContact />
+        <ForFooter />
       </>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  showInfo: state.home.showInfo
+const mapStateToProps = (state) => ({
+  showInfo: state.home.showInfo,
 });
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       showParagraphInfo,
       hideParagraphInfo,
       getAllPostForFromApi,
-      goToAboutPage: () => push("/about-us")
+      goToAboutPage: () => push("/about-us"),
     },
     dispatch
   );
