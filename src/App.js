@@ -10,7 +10,7 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import CandidateLogin from "./routes/candidate/Login/Login";
 import AdminDashboard from "./routes/admin/admin";
 import { withTranslation } from "react-i18next";
-import CampaignAdmin from "./routes/admin/campain/components/campaign";
+import CampaignAdmin from "./routes/admin/campaign/campaign";
 
 import SideBar from "./routes/side-bar/SideBar";
 
