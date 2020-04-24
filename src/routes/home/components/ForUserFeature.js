@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
-import UserFeatureImage from "../assets/images/feature/user_feature.jpg";
+import IMAGE_RESOURCE from "../assets/images/ImageResource";
 
 export class ForUserFeature extends React.Component {
   render() {
@@ -12,8 +12,8 @@ export class ForUserFeature extends React.Component {
         <Container fluid className="bg-offwhite">
           <Container className="padding-bottom-120">
             <Row className="padding-bottom-30">
-              <Col md={2}></Col>
-              <Col className="text-center">
+              <Col xs={12} md={2}></Col>
+              <Col xs={12} md={8} className="text-center">
                 <h1 className="title">
                   {t("homepage.user_feature_section.title")}
                 </h1>
@@ -23,11 +23,11 @@ export class ForUserFeature extends React.Component {
                   {t("homepage.user_feature_section.title-description")}
                 </p>
               </Col>
-              <Col md={2}></Col>
+              <Col xs={12} md={2}></Col>
             </Row>
             <Row>
-              <Col md={1}></Col>
-              <Col>
+              <Col xs={12} md={1}></Col>
+              <Col xs={12} md={5}>
                 <div className="feature-list">
                   <div className="feature-list-title text-aqua">
                     {t("homepage.user_feature_section.feature-list.one.title")}
@@ -79,10 +79,13 @@ export class ForUserFeature extends React.Component {
                   </div>
                 </div>
               </Col>
-              <Col>
-                <Image src={UserFeatureImage} fluid />
+              <Col xs={12} md={5}>
+                <Image
+                  src={IMAGE_RESOURCE.userFeatureSection.featureImage}
+                  fluid
+                />
               </Col>
-              <Col md={1}></Col>
+              <Col xs={12} md={1}></Col>
             </Row>
           </Container>
         </Container>

@@ -233,7 +233,7 @@
         "four": "A site that introduces foreigners who want to work in Japan (including those living in Japan) to Japanese companies GHRN"
       },
       "initial_section": {
-        "whatsGHRN": "What is GHRN？",
+        "title": "What is GHRN？",
         "leftMsg": {
           "one": "GHRN (GlobalHumanResourceNetwork) is for foreigners who want to work in Japan who are registered on this site or who are already living in Japan (international students or working) Is a site where you can scout the right human resources",
           "two": "If you find a person you are interested in, register the job search information on the site and scout. The job information will be converted into the native language of the scouting personnel and sent to the person on this site.",
@@ -308,6 +308,58 @@
             "description-one": "The site has a message function and a web interview function (the web interview function uses BizMee of grabss Co., Ltd.). Direct communication is possible between them."
           }
         }
+      },
+      "user_action_section": {
+        "item-one": {
+          "title": "For companies",
+          "content-title": "Get a job in Japan",
+          "content-heading": "For Company",
+          "btn-left": "Top page for companies",
+          "btn-right": "My Page Login"
+        },
+        "item-two": {
+          "title": "For foreigners",
+          "content-title": "Get a job in Japan",
+          "content-heading": "For User",
+          "btn-left": "Top page for companies",
+          "btn-right": "My Page Login"
+        },
+        "item-three": {
+          "title": "To support organizations",
+          "content-title": "Get a job in Japan",
+          "content-heading": "For Support",
+          "btn-left": "TOP page for support ",
+          "btn-right": "My Page Login"
+        }
+      },
+      "contact_section": {
+        "title": "Contact Us",
+        "title-description": "Fill in the necessary information and press the confirmation button. Click here for Privacy Policy",
+        "form-required": "Required",
+        "form-name-label": "Name",
+        "form-name-field": "Name",
+        "form-company-label": "Company Name",
+        "form-company-field": "Company Name",
+        "form-email-label": "Email Address",
+        "form-email-field": "Email Address",
+        "form-description-label": "Contents of inquiry",
+        "form-btn": "Verification"
+      },
+      "footer_section": {
+        "title": "Get a job in Japan",
+        "link-list-one": {
+          "one": "General TOP",
+          "two": "Company TOP",
+          "three": "User TOP",
+          "four": "Supporting organizations TOP",
+          "five": "What is specific skill?"
+        },
+        "link-list-two": {
+          "one": "Operating company",
+          "two": "Terms of service",
+          "three": "privacy policy"
+        },
+        "copyright": "Copyright 就pan All Rights Reserved."
       }
     }
   }

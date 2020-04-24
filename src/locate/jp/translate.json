@@ -239,7 +239,7 @@
         "four": "日本で働きたい外国人の方（日本在留の方も含め）を日本の企業に紹介するサイトGHRN"
       },
       "initial_section": {
-        "whatsGHRN": "GHRNとは？",
+        "title": "GHRNとは？",
         "leftMsg": {
           "one": "GHRN（GlobalHumanResourceNetwork）は、 当サイトに登録している日本で働きたい外国人の方や既に日本に在留している（留学生、就労中の方）外国人の方々を、日本各地の企業様が条件に合った人材をスカウトできるサイトです",
           "two": "気になった人材が見つかれば、求職情報をサイトに登録しスカウトをします。 当サイト内で求職情報をスカウト人材の母国語に変換し本人に送信します。",
@@ -339,6 +339,22 @@
         "form-email-field": "Email Address",
         "form-description-label": "お問い合わせ内容",
         "form-btn": "確認"
+      },
+      "footer_section": {
+        "title": "Japanで就職",
+        "link-list-one": {
+          "one": "総合TOP",
+          "two": "企業TOP",
+          "three": "ユーザーTOP",
+          "four": "支援機関TOP",
+          "five": "特定技能とは"
+        },
+        "link-list-two": {
+          "one": "運営会社",
+          "two": "利用規約",
+          "three": "プライバシーポリシー"
+        },
+        "copyright": "Copyright 就pan All Rights Reserved."
       }
     }
   }

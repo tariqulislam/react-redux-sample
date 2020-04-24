@@ -7,8 +7,7 @@ import {
   hideParagraphInfo,
   getAllPostForFromApi,
 } from "../../reducers/Home/home.reducer";
-import { Row, Col, Image } from "react-bootstrap";
-import GroupOnDevice from "./assets/images/group-on-devices.jpg";
+import { Image } from "react-bootstrap";
 import { withTranslation } from "react-i18next";
 import RegSection from "./components/RegSection";
 import ForCandidate from "./components/ForCandidate";
@@ -19,7 +18,9 @@ import InitialSection from "./components/InitialSection";
 import ForSyupanFeature from "./components/ForSyupanFeature";
 import ForUserAction from "./components/ForUserAction";
 import ForContact from "./components/ForContact";
+import ForFooter from "./components/ForFooter";
 import "./assets/home.scss";
+import IMAGE_RESOURCE from "./assets/images/ImageResource";
 
 class Home extends Component {
   render() {
@@ -29,40 +30,23 @@ class Home extends Component {
     const selectedLanguage = localStorage.getItem("language");
     return (
       <>
-        <Row>
-          <Col md={12}>
-            <Image style={bannerStyle} src={GroupOnDevice} fluid />
-          </Col>
-        </Row>
-        <Row>
-          <Col style={{ padding: "30px" }} md={12}>
-            <ForCandidate />
-          </Col>
-        </Row>
-        <Row style={{ padding: "40px" }}>
-          <InitialSection selectedLanguage={selectedLanguage} />
-        </Row>
-        <Row style={{ padding: "40px" }}>
-          <RegSection />
-        </Row>
-        <Row>
-          <ForCompanyFeature />
-        </Row>
-        <Row>
-          <ForUserFeature />
-        </Row>
-        <Row>
-          <ForSpecificSkill />
-        </Row>
-        <Row>
-          <ForSyupanFeature />
-        </Row>
-        <Row>
-          <ForUserAction />
-        </Row>
-        <Row>
-          <ForContact />
-        </Row>
+        <div>
+          <Image
+            style={bannerStyle}
+            src={IMAGE_RESOURCE.bannerSection.banner}
+            fluid
+          />
+        </div>
+        <ForCandidate />
+        <InitialSection selectedLanguage={selectedLanguage} />
+        <RegSection />
+        <ForCompanyFeature />
+        <ForUserFeature />
+        <ForSpecificSkill />
+        <ForSyupanFeature />
+        <ForUserAction />
+        <ForContact />
+        <ForFooter />
       </>
     );
   }
