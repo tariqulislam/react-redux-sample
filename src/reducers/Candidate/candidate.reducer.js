@@ -1,4 +1,4 @@
-import {saveCandidateInfo, saveCandidateHalfBodyPhoto, saveCandidatePhotoPassport} from './candidate.async'
+import { saveCandidateInfo } from './candidate.async'
 
 export const SAVE_CANDIDATE_INFO = 'SAVE_CANDIDATE_INFO'
 

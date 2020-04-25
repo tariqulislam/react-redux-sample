@@ -72,7 +72,7 @@ class NewCandidate extends Component {
 
     render() {
         console.log(this.props)
-        this.keyValuePair();
+        // this.keyValuePair();
         return (
             <Table responsive>
                 <thead>

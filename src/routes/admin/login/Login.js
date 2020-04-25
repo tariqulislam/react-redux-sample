@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
+import { attemptLogin } from '../../../reducers/Admin/admin.reducer'
 
 export class AdminLogin extends React.Component {
 
@@ -22,7 +23,26 @@ export class AdminLogin extends React.Component {
   }
 
   onSubmitAdminForm = (e) => {
+    let validity = document.getElementsByClassName("login-form")
+    validity = validity[0].checkValidity();
 
+    const callback = () => {
+      let role = JSON.parse(localStorage.getItem('role'));
+      this.props.history.push({
+        pathname: '/admin/dashboard',
+        state: {
+          "payload": {
+            "username": this.state.email,
+            role
+          }
+        }
+      });
+    }
+
+    if(validity===true) {
+      e.preventDefault();
+      this.props.attemptAdminLogin({username: this.state.email, password: this.state.password}, callback);
+    }
   }
 
   render() {
@@ -31,7 +51,7 @@ export class AdminLogin extends React.Component {
         <Row className="justify-content-md-center">
           <Col sm="3"></Col>
           <Col sm="6">
-            <form style={{ width: "100%" }}>
+            <form className="login-form" style={{ width: "100%" }}>
               <h3>Sign In</h3>
               <div className="form-group">
                 <label>Email address</label>
@@ -39,6 +59,8 @@ export class AdminLogin extends React.Component {
                   type="email"
                   className="form-control"
                   placeholder="Enter email"
+                  onChange = { (e) => { this.setState({ email: e.target.value }) } }
+                  required
                 />
               </div>
 
@@ -48,10 +70,12 @@ export class AdminLogin extends React.Component {
                   type="password"
                   className="form-control"
                   placeholder="Enter password"
+                  onChange = { (e) => { this.setState({ password: e.target.value }) } }
+                  required
                 />
               </div>
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <div className="custom-control custom-checkbox">
                   <input
                     type="checkbox"
@@ -65,7 +89,7 @@ export class AdminLogin extends React.Component {
                     Remember me
                   </label>
                 </div>
-              </div>
+              </div> */}
 
               <button type="submit" onClick={this.onSubmitAdminForm} className="btn btn-primary btn-block">
                 Submit
@@ -75,6 +99,7 @@ export class AdminLogin extends React.Component {
           <Col sm="3"></Col>
         </Row>
       </Container>
+
     );
   }
 }
@@ -82,9 +107,17 @@ export class AdminLogin extends React.Component {
 const mapStateToProps = state => ({
 })
 
+/*
 const mapDispatchToProps = dispatch => bindActionCreators({
 
 }, dispatch)
+*/
+
+const mapDispatchToProps = dispatch => {
+  return {
+    attemptAdminLogin: (data, callback) => dispatch(attemptLogin(data, callback))
+  }
+}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminLogin);

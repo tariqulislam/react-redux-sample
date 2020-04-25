@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { withTranslation, Trans } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
 import {saveCandidateInfoFromApi, saveCandidateHalfBodyPhotoThroughAPI, saveCandidatePassportThroughAPI} from '../../../reducers/Candidate/candidate.reducer'
 
     export class Register extends React.Component {

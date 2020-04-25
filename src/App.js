@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import Home from "./routes/home/Home";
-import Campaign from "./routes/campaign/Campaign";
 import CandidateRegister from "./routes/candidate/register/Register";
 import CompanyRegister from "./routes/company/register/Register";
 import AdminLogin from "./routes/admin/login/Login";
@@ -11,8 +10,10 @@ import CandidateLogin from "./routes/candidate/Login/Login";
 import AdminDashboard from "./routes/admin/admin";
 import { withTranslation } from "react-i18next";
 import CampaignAdmin from "./routes/admin/campain/components/campaign";
+import NewCandidate from './routes/candidate/new-candidate/NewCandidate';
 
-import SideBar from "./routes/side-bar/SideBar";
+import AdminPanel from "./routes/admin-panel/AdminPanel";
+import NotFound from './routes/not-found/404';
 
 class App extends Component {
   constructor(props) {
@@ -101,15 +102,17 @@ class App extends Component {
         <div>
           <TopFragment />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/campaign" component={Campaign} />
+            <Route exact path="/" component={Home}  />
+            <Route exact path="/admin/dashboard" component={AdminPanel} />
             <Route exact path="/admin/campaign" component={CampaignAdmin} />
-            <Route path="/admin" component={SideBar} />
-            <Route path="/admin/login" component={AdminLogin} />
-            <Route path="/candidate/register" component={CandidateRegister} />
-            <Route path="/company/register" component={CompanyRegister} />
-            <Route path="/candidate/login" component={CandidateLogin} />
-            <Route path="/admin/dashboard" component={AdminDashboard} />
+            <Route exact path="/admin/login" component={AdminLogin} />
+            {/* <Route exact path="/admin/dashboard" component={AdminDashboard} /> */}
+            <Route exact path="/candidate/dashboard" component={AdminPanel} />
+            <Route exact path="/candidate/register" component={CandidateRegister}  />
+            <Route exact path="/candidate/login" component={CandidateLogin}  />
+            <Route exact path="/candidate/new_one" component={NewCandidate} />
+            <Route exact path="/company/register" component={CompanyRegister} />
+            <Route component={NotFound}/>
           </Switch>
         </div>
       </BrowserRouter>

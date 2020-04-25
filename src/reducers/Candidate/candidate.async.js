@@ -9,7 +9,7 @@ export const saveCandidateInfo = async (formData) => {
         }
     });
 
-    return saveAllCandidateInfo
+    return saveAllCandidateInfo;
 }
 
 export const saveCandidateHalfBodyPhoto = async (imageData) => {
@@ -20,6 +20,8 @@ export const saveCandidateHalfBodyPhoto = async (imageData) => {
             'Authorization': localStorage.getItem('authToken')
         }
     });
+
+    return uploadHalfBodyPhoto;
 }
 
 
@@ -31,5 +33,7 @@ export const saveCandidatePhotoPassport = async (imageData) => {
             'Authorization': localStorage.getItem('authToken')
         }
     });
+
+    return uploadPassportPhoto;
 }
 
