@@ -21,22 +21,55 @@ export default class AdminPanel extends Component {
     this.setState({ component: data })
   }
 
-  componentDidMount = () => {
-    this.setState({ username: JSON.parse(localStorage.getItem('username')) })
-  }
+    /**
+   * Question: How to decode/parse JWT in JavaScript without using any library
+   * Source: StackOverflow
+   * Answered by: Peheje
+   * Edited by: imgx64
+   * URL: https://stackoverflow.com/a/38552302/5554993
+   * 
+   * @param {*} token 
+   */
+  parseJwt = (token) => {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+  };
 
   render() {
 
-    let role = JSON.parse(localStorage.getItem('role'));
+    let role = null;
+    let history = false;
     let authinticated = false;
+    let name = '';
+    
+    
+    let token = localStorage.getItem('token');
+    let tokenRole = JSON.parse(localStorage.getItem('role'));
+    let tokenObject = this.parseJwt(token);
+    
+    tokenObject = {
+      ...tokenObject,
+      role: tokenRole
+    }
 
-    if(JSON.parse(localStorage.getItem('loggedIn')) === true) {
-      if(this.props.history === undefined) {
-        authinticated = true;
-      } else if(this.props.history.location.pathname.startsWith(`/${role}`)) {
+    if(token) {
+      role = tokenObject.role;
+      history = true;
+      name = tokenObject.user.name;
+
+      // if(this.props.history === undefined) {
+      //   authinticated = true;
+      // } else 
+      if(this.props.history.location.pathname.startsWith(`/${role}`)) {
         authinticated = true;
       }
     }
+    
 
     return (
       authinticated === true ? (
@@ -66,9 +99,8 @@ export default class AdminPanel extends Component {
                     data-widget="control-sidebar"
                     data-slide="true"
                     onClick={ () => {
-                      localStorage.removeItem('loggedIn');
                       localStorage.removeItem('role');
-                      localStorage.removeItem('username');
+                      localStorage.removeItem('token');
                       
                       this.props.history.push(`/${role}/login`);
                     } }
@@ -86,7 +118,7 @@ export default class AdminPanel extends Component {
                 <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                   <div className="info">
                     <a className="d-block" style={{ cursor: 'pointer' }}>
-                      { this.state.username }
+                      { name }
                     </a>
                   </div>
                 </div>

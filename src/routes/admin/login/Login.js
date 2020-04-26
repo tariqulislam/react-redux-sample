@@ -29,18 +29,16 @@ export class AdminLogin extends React.Component {
     validity = validity[0].checkValidity();
 
     const callback = (payload) => {
-      if(payload.state===true) {
-        this.setState({'loginMessage': payload.message, 'textColor': 'green'});
-
-        let role = JSON.parse(localStorage.getItem('role'));
-        this.props.history.push({
-          pathname: '/admin/dashboard',
-          state: {
-            "payload": {
-              "username": this.state.email,
-              role
+      if(payload.status===true) {
+        this.setState({'loginMessage': payload.message, 'textColor': 'green', role: payload.decodedToken.role}, () => {
+          // console.log('Pushing into History')
+          console.log(payload)
+          this.props.history.push({
+            pathname: '/admin/dashboard',
+            state: {
+              payload
             }
-          }
+          });
         });
       } else {
           this.setState({'loginMessage': payload.message, 'textColor': 'red', spinner: false});
@@ -57,7 +55,7 @@ export class AdminLogin extends React.Component {
   }
 
   render() {
-    let role = JSON.parse(localStorage.getItem('role'));
+    let role = this.state.role;
     let loggedIn = true;
 
     if(role === undefined || role === null) {

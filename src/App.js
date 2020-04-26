@@ -103,7 +103,7 @@ class App extends Component {
           <TopFragment />
           <Switch>
             <Route exact path="/" component={Home}  />
-            <Route exact path="/admin/dashboard" component={AdminPanel} />
+            <Route exact path="/admin/dashboard" component={AdminDashboard} />
             <Route exact path="/admin/campaign" component={CampaignAdmin} />
             <Route exact path="/admin/login" component={AdminLogin} />
             {/* <Route exact path="/admin/dashboard" component={AdminDashboard} /> */}
