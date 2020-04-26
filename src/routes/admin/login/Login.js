@@ -28,23 +28,29 @@ export class AdminLogin extends React.Component {
     let validity = document.getElementsByClassName("login-form")
     validity = validity[0].checkValidity();
 
-    const callback = () => {
-      let role = JSON.parse(localStorage.getItem('role'));
-      this.props.history.push({
-        pathname: '/admin/dashboard',
-        state: {
-          "payload": {
-            "username": this.state.email,
-            role
+    const callback = (payload) => {
+      if(payload.state===true) {
+        this.setState({'loginMessage': payload.message, 'textColor': 'green'});
+
+        let role = JSON.parse(localStorage.getItem('role'));
+        this.props.history.push({
+          pathname: '/admin/dashboard',
+          state: {
+            "payload": {
+              "username": this.state.email,
+              role
+            }
           }
-        }
-      });
+        });
+      } else {
+          this.setState({'loginMessage': payload.message, 'textColor': 'red', spinner: false});
+      }
     }
 
     if(validity===true) {
       e.preventDefault();
 
-      this.setState({'spinner': true});
+      this.setState({'spinner': true, loginMessage: ''});
 
       this.props.attemptAdminLogin({username: this.state.email, password: this.state.password}, callback);
     }
@@ -120,6 +126,10 @@ export class AdminLogin extends React.Component {
                       </label>
                   </div>
                 }
+
+                <div style={{display: 'flex', justifyContent: 'center', color: `${this.state.textColor}`, paddingTop: '5%'}}>
+                  { this.state.loginMessage }
+                </div>
 
               </form>
             </Col>

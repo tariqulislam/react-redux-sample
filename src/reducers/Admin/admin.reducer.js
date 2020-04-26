@@ -20,7 +20,7 @@ const parseJwt = (token) => {
 };
 
 const attemptLogin = (data, callback) => {
-    console.log(data);
+    // console.log(data);
     return () => {
         login(data).then(res => {
             console.log(res);
@@ -30,8 +30,9 @@ const attemptLogin = (data, callback) => {
             localStorage.setItem('username', JSON.stringify(data.username));
             localStorage.setItem('loggedIn', JSON.stringify(true));
 
-            callback();
+            callback({status: true, message: 'Login Success!'});
         }).catch(ex => {
+            callback({status: false, message: 'Login Failed!'})
             console.log(ex)
         })
     }
