@@ -1,6 +1,7 @@
 import { login } from './admin.async';
 
 /**
+ * Question: How to decode/parse JWT in JavaScript without using any library
  * Source: StackOverflow
  * Answered by: Peheje
  * Edited by: imgx64
@@ -26,6 +27,8 @@ const attemptLogin = (data, callback) => {
             console.log(parseJwt(res.data.accessToken));
 
             localStorage.setItem('role', JSON.stringify('admin'));
+            localStorage.setItem('username', JSON.stringify(data.username));
+            localStorage.setItem('loggedIn', JSON.stringify(true));
 
             callback();
         }).catch(ex => {

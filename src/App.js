@@ -112,7 +112,7 @@ class App extends Component {
             <Route exact path="/candidate/login" component={CandidateLogin}  />
             <Route exact path="/candidate/new_one" component={NewCandidate} />
             <Route exact path="/company/register" component={CompanyRegister} />
-            <Route component={NotFound}/>
+            <Route exact component={NotFound}/>
           </Switch>
         </div>
       </BrowserRouter>

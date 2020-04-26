@@ -10,17 +10,19 @@ import "./assets/css/google-fonts.css";
 import "./assets/css/fontawesome-all.css";
 import "./assets/css/ionicons.css";
 import { Redirect } from "react-router";
-import Login from '../admin/login/Login';
 
 export default class AdminPanel extends Component {
   constructor(props) {
     super(props);
-    console.log("Component Mounted");
-    console.log(this.props)
+    this.state = {}
   }
 
   loadComponent = (data) => {
     this.setState({ component: data })
+  }
+
+  componentDidMount = () => {
+    this.setState({ username: JSON.parse(localStorage.getItem('username')) })
   }
 
   render() {
@@ -28,9 +30,12 @@ export default class AdminPanel extends Component {
     let role = JSON.parse(localStorage.getItem('role'));
     let authinticated = false;
 
-    if(this.props.history && this.props.history.location.pathname.startsWith(`/${role}`)) {
-      console.log('YEYYY')
-      authinticated = true;
+    if(JSON.parse(localStorage.getItem('loggedIn')) === true) {
+      if(this.props.history === undefined) {
+        authinticated = true;
+      } else if(this.props.history.location.pathname.startsWith(`/${role}`)) {
+        authinticated = true;
+      }
     }
 
     return (
@@ -61,8 +66,10 @@ export default class AdminPanel extends Component {
                     data-widget="control-sidebar"
                     data-slide="true"
                     onClick={ () => {
+                      localStorage.removeItem('loggedIn');
                       localStorage.removeItem('role');
-                      console.log(localStorage)
+                      localStorage.removeItem('username');
+                      
                       this.props.history.push(`/${role}/login`);
                     } }
                     role="button"
@@ -79,7 +86,7 @@ export default class AdminPanel extends Component {
                 <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                   <div className="info">
                     <a className="d-block" style={{ cursor: 'pointer' }}>
-                      { this.props.history.location.state.payload.username }
+                      { this.state.username }
                     </a>
                   </div>
                 </div>
@@ -99,17 +106,6 @@ export default class AdminPanel extends Component {
                         <p>
                           Calendar
                           <span className="badge badge-info right">2</span>
-                        </p>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a onClick={ () => {
-                        this.loadComponent(Login);
-                      } } 
-                      className="nav-link">
-                        <i className="nav-icon far fa-calendar-alt"></i>
-                        <p>
-                          Random F.R.I.E.N.D.S
                         </p>
                       </a>
                     </li>
@@ -136,6 +132,7 @@ export default class AdminPanel extends Component {
                 </nav>
               </div>
             </aside>
+
             {/* Footer */}
             <Nav.Item as="footer" className="main-footer">
               <Nav.Item className="float-right d-none d-sm-block">
@@ -154,7 +151,7 @@ export default class AdminPanel extends Component {
           </div>
         </div>
       ) : (
-        <Redirect to={'/'}/>
+        <Redirect to={`/${role}/dashboard`}/>
       )
     );
   }
