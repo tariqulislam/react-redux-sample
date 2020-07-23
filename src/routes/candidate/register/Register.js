@@ -308,7 +308,7 @@ export class Register extends React.Component {
             let callback = () => {
                 this.props.history.push({
                     pathname: "/candidate/new_one",
-                    state: {"payload": toBePostedCandidate}
+                    state: toBePostedCandidate
                 });
             }
             this.props.saveCandidateInfoForm(toBePostedCandidate, callback);
