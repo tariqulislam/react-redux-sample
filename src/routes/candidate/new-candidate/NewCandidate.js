@@ -322,7 +322,7 @@ const NewCandidate = (props) => {
                 }
                 {
                     <tr>
-                        <td>#</td>
+                        <td></td>
                         <td></td>
                         <td>
                             <Button
