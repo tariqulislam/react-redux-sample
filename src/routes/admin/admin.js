@@ -15,21 +15,28 @@ export class AdminDashboard extends React.Component {
     render() {
         return (
             <div>
-                <AdminPanel {...this.props}/>
                 <Container style={{ paddingLeft: '200px' }}>
                     <Row>
                         This is row
                     </Row>
                     <div>
-                        <Link to="/admin/campain">Campain</Link>
+                        <Link to="/admin/campaign">Campaign</Link>
                     </div>
                     <div>
-                        <Route exact path="/admin/campain" component={CampainPage}  />
+                        <Link to="/admin/campaign">Campaign</Link>
                     </div>
                 </Container>
             </div>
         )
     }
+
+    // render() {
+    //     return(
+    //         <div>
+    //             Hello !!
+    //         </div>
+    //     );
+    // }
 }
 
 export default AdminDashboard

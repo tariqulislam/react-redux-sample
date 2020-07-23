@@ -23,14 +23,18 @@ const attemptLogin = (data, callback) => {
     // console.log(data);
     return () => {
         login(data).then(res => {
-            localStorage.setItem('token', res.data.accessToken);
-            localStorage.setItem('role', JSON.stringify('admin'));
+            let token = localStorage.setItem('token', res.data.accessToken);
+            let role = localStorage.setItem('role', JSON.stringify('admin'));
+
+            console.log(token)
+            console.log(role)
 
             // console.log('Executing Callback')
             callback({ decodedToken: {...parseJwt(res.data.accessToken), role: 'admin'}, status: true, message: 'Login Success!' });
         }).catch(ex => {
-            callback({status: false, message: 'Login Failed!'})
-            console.log(ex)
+            console.log('FAILED');
+            callback({status: false, message: 'Login Failed!'});
+            console.log(ex);
         })
     }
 }

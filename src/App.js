@@ -16,6 +16,8 @@ import NewCandidate from './routes/candidate/new-candidate/NewCandidate';
 import AdminPanel from "./routes/admin-panel/AdminPanel";
 import NotFound from './routes/not-found/404';
 
+import Login from './routes/admin/login/Login';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -104,6 +106,7 @@ class App extends Component {
                     <TopFragment/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
+                        <Route exact path="/admin/login" component={Login}/>
                         <Route exact path="/admin/dashboard" component={AdminDashboard}/>
                         <Route exact path="/admin/campaign" component={CampaignAdmin}/>
                         <Route exact path="/admin/login" component={AdminLogin}/>

@@ -41,6 +41,9 @@ const NewCandidate = (props) => {
         weightUnit
     } = props.location.state;
 
+    console.log(candidate);
+    let email = candidate.email;
+
     return (
         <div style={{padding: '5%'}}>
             <Table striped bordered hover responsive="sm" size="sm">
@@ -58,6 +61,18 @@ const NewCandidate = (props) => {
                         <td>#</td>
                         <td>Name</td>
                         <td>{romajiName}</td>
+                    </tr>
+                }
+                {
+                    email &&
+                    <tr>
+                        <td>#</td>
+                        <td>E-mai</td>
+                        <td>
+                            <NavLink href={`mailto:${email}`} style={{paddingLeft: '0'}}>
+                                {email}
+                            </NavLink>
+                        </td>
                     </tr>
                 }
                 {
@@ -168,7 +183,11 @@ const NewCandidate = (props) => {
                     <tr>
                         <td>#</td>
                         <td>Phone Number</td>
-                        <td>{phoneNumber}</td>
+                        <td>
+                            <NavLink href={`tel:${phoneNumber}`} style={{paddingLeft: '0'}}>
+                                {phoneNumber}
+                            </NavLink>
+                        </td>
                     </tr>
                 }
                 {
@@ -257,7 +276,7 @@ const NewCandidate = (props) => {
                         <td>
                             {candidateWorkExperiences.map((exp) => {
                                 return (
-                                    <Accordion key={uuidv4()}>
+                                    <Accordion key={uuidv4()} style={{cursor: 'pointer'}}>
                                         <Card>
                                             <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
                                                 {exp.companyName}
@@ -281,7 +300,7 @@ const NewCandidate = (props) => {
                         <td>{
                             desiredJobs.map((job) => {
                                 return (
-                                    <Accordion key={uuidv4()}>
+                                    <Accordion key={uuidv4()} style={{cursor: 'pointer'}}>
                                         <Card>
                                             <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
                                                 {job.description}
