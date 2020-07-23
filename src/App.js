@@ -41,8 +41,8 @@ class App extends Component {
             return (
                 <React.Fragment>
                     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                        <Navbar.Brand href="javascript.void(0);">
-                            <Link to="/">GHRN</Link>
+                        <Navbar.Brand href="/">
+                            GHRN
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                         <Navbar.Collapse id="responsive-navbar-nav">
@@ -66,8 +66,8 @@ class App extends Component {
                             </Nav>
 
                             <Nav>
-                                <Nav.Link href="javascript.void(0);">
-                                    <Link to="/candidate/register">Register</Link>
+                                <Nav.Link href="/candidate/register">
+                                    Register
                                 </Nav.Link>
                                 <Nav.Item
                                     style={{
@@ -75,7 +75,7 @@ class App extends Component {
                                         marginTop: "8px",
                                         cursor: "pointer",
                                     }}
-                                    eventKey={2}
+                                    eventkey={2}
                                     onClick={() => this.onLanguageHandle("en")}
                                 >
                                     EN{" "}
@@ -86,7 +86,7 @@ class App extends Component {
                                         marginTop: "8px",
                                         cursor: "pointer",
                                     }}
-                                    eventKey={2}
+                                    eventkey={2}
                                     onClick={() => this.onLanguageHandle("jp")}
                                 >
                                     &nbsp;|&nbsp;JP
@@ -107,7 +107,7 @@ class App extends Component {
                         <Route exact path="/admin/dashboard" component={AdminDashboard}/>
                         <Route exact path="/admin/campaign" component={CampaignAdmin}/>
                         <Route exact path="/admin/login" component={AdminLogin}/>
-                        {/* <Route exact path="/admin/dashboard" component={AdminDashboard} /> */}
+                        <Route exact path="/admin/dashboard" component={AdminDashboard}/>
                         <Route exact path="/candidate/dashboard" component={AdminPanel}/>
                         <Route exact path="/candidate/register" component={CandidateRegister}/>
                         <Route exact path="/candidate/login" component={CandidateLogin}/>

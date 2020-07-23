@@ -8,6 +8,7 @@ export const SAVE_CANDIDATE_INFO = 'SAVE_CANDIDATE_INFO'
 export const saveCandidateInfoFromApi = (formData, callback) => {
     // debugger
     return dispatch => {
+        console.log(formData)
         saveCandidateInfo(formData).then(res => {
             // debugger
             // dispatch
