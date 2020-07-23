@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
 import Home from "./routes/home/Home";
+import Campaign from "./routes/campaign/Campaign";
 import CandidateRegister from "./routes/candidate/register/Register";
 import CompanyRegister from "./routes/company/register/Register";
 import AdminLogin from "./routes/admin/login/Login";
