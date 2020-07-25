@@ -1,8 +1,13 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Table, Button, NavLink, Accordion, Card} from 'react-bootstrap';
 import {v4 as uuidv4} from 'uuid';
 
+import axios from 'axios';
+
+import environment from '../../../environment.json';
+
 const NewCandidate = (props) => {
+
     let {
         candidateWorkExperiences,
         desiredJobs,
@@ -39,10 +44,26 @@ const NewCandidate = (props) => {
         status,
         weight,
         weightUnit
-    } = props.location.state;
+    } = props.location.state || {};
 
     console.log(candidate);
     let email = candidate.email;
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [props.location]);
+
+    useEffect(() => {
+
+        console.log(props)
+
+        let { base_url, api_path } = environment.candidate;
+        console.log(base_url);
+        console.log(api_path);
+
+
+        // axios.get()
+    }, []);
 
     return (
         <div style={{padding: '5%'}}>
