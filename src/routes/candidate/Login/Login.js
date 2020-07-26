@@ -1,16 +1,22 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 
+import './CandidateLogin.css';
+
 export class CandidateLogin extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
 
     render() {
         return (
-            <Container>
-            <Row className="justify-content-md-center">
+            <Container className='main-container'>
+            <Row className="justify-content-md-center inner-container">
                 <Col sm="3"></Col>
-                <Col sm="6">
+                <Col sm="6" className='login-container'>
                 <form style={{ width: "100%" }}>
-                <h3>Sign In</h3>
+                <h3 className='sign-in-banner'>Sign In</h3>
                 <div className="form-group">
                     <label>Email address</label>
                     <input type="email" className="form-control" placeholder="Enter email" />
@@ -28,7 +34,29 @@ export class CandidateLogin extends React.Component {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                <button type="submit" className="btn btn-primary btn-block">Log In</button>
+
+                    {
+                        // Loading while redirecting to the dashboard
+                        this.state.spinner === true &&
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <label className="lds-ellipsis">
+                                <label></label>
+                                <label></label>
+                                <label></label>
+                                <label></label>
+                            </label>
+                        </div>
+                    }
+
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        color: `${this.state.textColor}`,
+                        paddingTop: '5%'
+                    }}>
+                        {this.state.loginMessage}
+                    </div>
              
             </form>
             

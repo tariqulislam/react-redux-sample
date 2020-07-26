@@ -71,38 +71,6 @@ export class AdminDashboard extends React.Component {
     };
 
     render() {
-        // return (
-        //     <div id="wrapper" className="active">
-        //         {/*Sidebar*/}
-        //         {/*Sidebar*/}
-        //         <div id="sidebar-wrapper">
-        //             <ul id="sidebar_menu" className="sidebar-nav">
-        //                 <li className="sidebar-brand"><a id="menu-toggle" href="#">Options<span id="main_icon"
-        //                                                                                      className="glyphicon glyphicon-align-justify"></span></a>
-        //                 </li>
-        //             </ul>
-        //             <ul className="sidebar-nav" id="sidebar">
-        //                 <li><a>Hi<span className="sub_icon glyphicon glyphicon-link"></span></a></li>
-        //                 <li><a>Link1<span className="sub_icon glyphicon glyphicon-link"></span></a></li>
-        //                 <li><a>link2<span className="sub_icon glyphicon glyphicon-link"></span></a></li>
-        //             </ul>
-        //         </div>
-        //
-        //         {/*Page content*/}
-        //         <div id="page-content-wrapper">
-        //             {/*Keep all page content within the page-content inset div!*/}
-        //             <div className="page-content inset">
-        //                 <div className="row">
-        //                     <div className="col-md-12">
-        //                         <CampaignAdmin/>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //
-        //     </div>
-        // );
-
         /*-------------------------------------------------------*/
         /* Inspiration: http://jsbin.com/qusudim/edit?css,output */
         /*-------------------------------------------------------*/
@@ -113,12 +81,14 @@ export class AdminDashboard extends React.Component {
                     <div ref={this.sideBarRef} id="left" className="column-left">
                         {/*<div className="top-left">Top Left</div>*/}
                         <div className="bottom">
-                            {this.getLeftItem('Candidate List', <CandidateList callBackToParentElement={this.callBackToParentElement}/>)}
-                            {this.getLeftItem('Campaign List', <CampaignList callBackToParentElement={this.callBackToParentElement}/>)}
+                            {this.getLeftItem('Candidate List', <CandidateList
+                                callBackToParentElement={this.callBackToParentElement}/>)}
+                            {this.getLeftItem('Campaign List', <CampaignList
+                                callBackToParentElement={this.callBackToParentElement}/>)}
                         </div>
                     </div>
                     <div id="right" className="column-right">
-                        <div className="bottom">
+                        <div className="bottom main-content">
 
                             <div className='content'>
                                 {this.state.viewable}

@@ -15,9 +15,11 @@ import NewCandidate from './routes/candidate/new-candidate/NewCandidate';
 
 import AdminPanel from "./routes/admin-panel/AdminPanel";
 import NotFound from './routes/not-found/404';
-
-import Login from './routes/admin/login/Login';
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ToggleButton from "react-bootstrap/ToggleButton";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 class App extends Component {
     constructor(props) {
@@ -39,7 +41,13 @@ class App extends Component {
         this.props.i18n.changeLanguage(getLanguageVal);
     }
 
+
     render() {
+        const radios = [
+            {name: 'Active', value: '1'},
+            {name: 'Radio', value: '2'},
+            {name: 'Radio', value: '3'},
+        ];
         let TopFragment = () => {
             return (
                 <React.Fragment>
@@ -54,28 +62,70 @@ class App extends Component {
                             </Nav>
 
                             <Nav>
-                                <Nav.Item
-                                    style={{
-                                        color: "white",
-                                        marginTop: "8px",
-                                        cursor: "pointer",
-                                    }}
-                                    eventkey={2}
-                                    onClick={() => this.onLanguageHandle("en")}
-                                >
-                                    EN{" "}
-                                </Nav.Item>
-                                <Nav.Item
-                                    style={{
-                                        color: "white",
-                                        marginTop: "8px",
-                                        cursor: "pointer",
-                                    }}
-                                    eventkey={2}
-                                    onClick={() => this.onLanguageHandle("jp")}
-                                >
-                                    &nbsp;|&nbsp;JP
-                                </Nav.Item>
+
+                                <Nav.Link>
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                                            {this.state.value==='en'?'English':'Japanese'}
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item
+                                                active={this.state.value==='en'}
+                                                style={{color: 'black'}}
+                                                href="#/action-1"
+                                                onClick={() => {
+                                                    this.setState({
+                                                        value: 'en'
+                                                    }, () => {
+                                                        this.onLanguageHandle("en")
+                                                    })
+                                                }}
+                                            >
+                                                English
+                                            </Dropdown.Item>
+                                            <Dropdown.Item
+                                                active={this.state.value==='jp'}
+                                                style={{color: 'black'}}
+                                                href="#/action-2"
+                                                onClick={() => {
+                                                    this.setState({
+                                                        value: 'jp'
+                                                    }, () => {
+                                                        this.onLanguageHandle("jp")
+                                                    })
+                                                }}
+                                            >
+                                                Japanese
+                                            </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </Nav.Link>
+
+                                {/*Below code was for selecting the language of the site. Now it's being handled by the code above.*/}
+                                {/*<Nav.Item*/}
+                                {/*    style={{*/}
+                                {/*        color: "white",*/}
+                                {/*        marginTop: "8px",*/}
+                                {/*        cursor: "pointer",*/}
+                                {/*    }}*/}
+                                {/*    eventkey={2}*/}
+                                {/*    onClick={() => this.onLanguageHandle("en")}*/}
+                                {/*>*/}
+                                {/*    EN{" "}*/}
+                                {/*</Nav.Item>*/}
+                                {/*<Nav.Item*/}
+                                {/*    style={{*/}
+                                {/*        color: "white",*/}
+                                {/*        marginTop: "8px",*/}
+                                {/*        cursor: "pointer",*/}
+                                {/*    }}*/}
+                                {/*    eventkey={2}*/}
+                                {/*    onClick={() => this.onLanguageHandle("jp")}*/}
+                                {/*>*/}
+                                {/*    &nbsp;|&nbsp;JP*/}
+                                {/*</Nav.Item>*/}
+
                                 <Nav.Link href="/candidate/register">
                                     <Button>
                                         Register
@@ -90,18 +140,16 @@ class App extends Component {
 
         return (
             <BrowserRouter>
-                <div>
+                <div className='main-app'>
                     <TopFragment/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/admin/login" component={Login}/>
+                        <Route exact path="/admin/login" component={AdminLogin}/>
+                        <Route exact path="/candidate/login" component={CandidateLogin}/>
                         <Route exact path="/admin/dashboard" component={AdminDashboard}/>
                         <Route exact path="/admin/campaign" component={CampaignAdmin}/>
-                        <Route exact path="/admin/login" component={AdminLogin}/>
-                        <Route exact path="/admin/dashboard" component={AdminDashboard}/>
                         <Route exact path="/candidate/dashboard" component={AdminPanel}/>
                         <Route exact path="/candidate/register" component={CandidateRegister}/>
-                        <Route exact path="/candidate/login" component={CandidateLogin}/>
                         <Route exact path="/candidate/new_one" component={NewCandidate}/>
                         <Route exact path="/company/register" component={CompanyRegister}/>
                         <Route exact component={NotFound}/>

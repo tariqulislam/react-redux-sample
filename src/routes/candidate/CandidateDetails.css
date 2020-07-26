@@ -1,13 +1,13 @@
 /*To hide the scrollbar while scrollability is available.*/
 
-.main {
-    overflow: scroll;
-}
+/*.main {*/
+/*    overflow: scroll;*/
+/*}*/
 
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
+/*.main::-webkit-scrollbar {*/
+/*    width: 0px;*/
+/*    background: transparent;*/
+/*}*/
 
 /*Courtesy: https://stackoverflow.com/a/43186214/5554993*/
 /*Hiding finished.*/

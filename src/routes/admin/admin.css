@@ -189,8 +189,6 @@
 
 }
 
-
-
 .admin-view-top {
     display: flex;
     flex-direction: row;
@@ -283,6 +281,13 @@
     overflow-y: auto;
     /*padding: 20px;*/
 }
+
+/*To hide the inner scroll bar of the component*/
+.main-content::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 
 ul {
     display: inline-flex;

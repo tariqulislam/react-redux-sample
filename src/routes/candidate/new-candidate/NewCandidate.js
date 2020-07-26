@@ -12,7 +12,7 @@ const NewCandidate = (props) => {
         candidateWorkExperiences,
         desiredJobs,
         languages,
-        acceptTermsAndCondition,
+        isAcceptTermsAndCondition,
         birthMonth,
         birthYear,
         birthday,
@@ -44,7 +44,8 @@ const NewCandidate = (props) => {
         status,
         weight,
         weightUnit
-    } = props.location.state || {};
+    } = props.state || props.location.state;
+
 
     console.log(candidate);
     let email = candidate.email;
@@ -62,7 +63,6 @@ const NewCandidate = (props) => {
         console.log(api_path);
 
 
-        // axios.get()
     }, []);
 
     return (
@@ -271,7 +271,7 @@ const NewCandidate = (props) => {
                     <tr>
                         <td>#</td>
                         <td>Terms and Conditions</td>
-                        <td>{acceptTermsAndCondition ? 'Accepted' : 'Rejected'}</td>
+                        <td>{isAcceptTermsAndCondition ? 'Accepted' : 'Rejected'}</td>
                     </tr>
                 }
                 {
@@ -290,7 +290,7 @@ const NewCandidate = (props) => {
                 }
 
                 {
-                    candidateWorkExperiences.length &&
+                    !candidateWorkExperiences && !candidateWorkExperiences.length &&
                     <tr>
                         <td>#</td>
                         <td>Candidate Work Experience</td>
@@ -314,7 +314,7 @@ const NewCandidate = (props) => {
                 }
 
                 {
-                    desiredJobs.length &&
+                    !desiredJobs && !desiredJobs.length &&
                     <tr>
                         <td>#</td>
                         <td>Desired Jobs</td>
@@ -340,7 +340,7 @@ const NewCandidate = (props) => {
                     </tr>
                 }
                 {
-                    languages.length &&
+                    !languages && languages.length &&
                     <tr>
                         <td>#</td>
                         <td>Languages</td>

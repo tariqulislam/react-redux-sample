@@ -18,18 +18,19 @@ class CandidateList extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
-        let {base_url, api_path, service_name} = environment.candidate;
+        // console.log(this.props);
+        let {base_url, api_path} = environment.candidate;
         let controller_url = environment.candidate.controllers.service_name;
 
-        let url = `${base_url}/${api_path}/${controller_url}/`;
+        let url = `${base_url}/${api_path}/${controller_url}`;
+        // console.log(url+'/')
 
-        axios.get(url).then((response) => {
+        axios.get(url+'/').then((response) => {
             response = response.data.data;
-            console.log(response);
 
             this.setState({
-                data: response
+                data: response,
+                base_url: url
             });
         });
     }
@@ -42,7 +43,9 @@ class CandidateList extends React.Component {
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>E-mail</th>
+                        <th>Gender</th>
+                        <th>Currently at</th>
+                        <th>Nationality</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -55,12 +58,17 @@ class CandidateList extends React.Component {
                                     key={idx}
                                     className='single-row'
                                     onClick={(e) => {
-                                        this.props.callBackToParentElement(<CandidateDetails/>);
+                                        // console.log(`${this.state.base_url}/${item.id}`);
+                                        axios.get(`${this.state.base_url}/${item.id}`).then((res)=> {
+                                            this.props.callBackToParentElement(<CandidateDetails callBackToParentElement={this.props.callBackToParentElement} state={res.data.data}/>);
+                                        });
                                     }}
                                 >
                                     <td>{idx + 1}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.email}</td>
+                                    <td>{item.romajiName}</td>
+                                    <td>{item.gender}</td>
+                                    <td>{item.currentLocation}</td>
+                                    <td>{item.nationality}</td>
                                 </tr>
                             )
                         })

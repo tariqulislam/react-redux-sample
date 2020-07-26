@@ -71,12 +71,12 @@ export class AdminLogin extends React.Component {
 
         return (
             loggedIn === false ? (
-                <Container>
-                    <Row className="justify-content-md-center">
+                <Container className='main-container'>
+                    <Row className="justify-content-md-center inner-container">
                         <Col sm="3"></Col>
-                        <Col sm="6">
+                        <Col sm="6" className='login-container'>
                             <form className="login-form" style={{width: "100%"}}>
-                                <h3>Sign In</h3>
+                                <h3 className='sign-in-banner'>Sign In</h3>
                                 <div className="form-group">
                                     <label>Email address</label>
                                     <input
@@ -103,6 +103,14 @@ export class AdminLogin extends React.Component {
                                     />
                                 </div>
 
+                                <div className="form-group">
+                                    <div className="custom-control custom-checkbox">
+                                        <input type="checkbox" className="custom-control-input" id="customCheck1"/>
+                                        <label className="custom-control-label" htmlFor="customCheck1">Remember
+                                            me</label>
+                                    </div>
+                                </div>
+
                                 {/* <div className="form-group">
                   <div className="custom-control custom-checkbox">
                     <input
@@ -121,7 +129,7 @@ export class AdminLogin extends React.Component {
 
                                 <button type="submit" onClick={this.onSubmitAdminForm}
                                         className="btn btn-primary btn-block">
-                                    Submit
+                                    Log In
                                 </button>
 
                                 {
