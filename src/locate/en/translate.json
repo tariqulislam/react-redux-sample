@@ -1,7 +1,7 @@
 {
   "translations": {
     "registration": {
-      "registration_form": "Registration Form",
+      "registration_form": "Candidate Registration Form",
       "full_name": {
         "title": "Name(Full Name)",
         "placeholder": "Please Type Your Name"

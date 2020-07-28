@@ -2,7 +2,9 @@ import React from "react";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {withTranslation} from 'react-i18next'
 import {connect} from 'react-redux'
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
+
+import './Register.css';
 
 import {
     saveCandidateInfoFromApi,
@@ -296,8 +298,9 @@ export class Register extends React.Component {
             chronicDisease,
             japaneseLanguageSkill,
             "desiredJobs": selectedJobs,
-            "status": true
-        }
+            "status": true,
+            "fromRegistrationPage": true
+        };
 
         // debugger
         let validity = document.getElementsByClassName("registration-form");
@@ -307,7 +310,7 @@ export class Register extends React.Component {
             e.preventDefault();
             let callback = () => {
                 this.props.history.push({
-                    pathname: "/candidate/new_one",
+                    pathname: "/candidate/details",
                     state: toBePostedCandidate
                 });
             }
@@ -335,15 +338,22 @@ export class Register extends React.Component {
         }
         // console.log('this is years', years)
         return (
-            <Container>
-                <Row className="justify-content-md-center">
-                    <Col md="auto">
-                        <h3>{t('registration.registration_form')}</h3>
-                    </Col>
-                </Row>
+            <Container className='main-container'>
                 <Row className="justify-content-md-center">
                     <Col md="8">
-                        <Form className="registration-form" style={{width: "100%"}}>
+                        <Form className="registration-form">
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalName"
+                            >
+                                <Form.Label column sm={12} style={{textAlign: 'center'}} className='form-top'>
+                                    <h3>
+                                        {t('registration.registration_form')}
+                                    </h3>
+                                </Form.Label>
+                            </Form.Group>
+
                             <Form.Group
                                 className="form-main-container"
                                 as={Row}
@@ -352,10 +362,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.full_name.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="full-name" type="text"
                                                   placeholder={t('registration.full_name.placeholder')} required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -365,10 +375,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.romanji_name.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="full-name-roman" type="text"
                                                   placeholder={t('registration.romanji_name.placeholder')} required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
 
                             <Form.Group
@@ -379,10 +389,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.nick_name.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="nick-name" type="text"
                                                   placeholder={t('registration.nick_name.placeholder')} required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -392,7 +402,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.country_resident.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <select name="country" className="form-control" required>
                                         {/*<option>-- Select One --</option>*/}
                                         <option
@@ -408,7 +418,7 @@ export class Register extends React.Component {
                                     <Form.Control name="nationality" type="text"
                                                   placeholder={t('registration.country_resident.nationality_placeholder')}
                                                   required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -418,26 +428,30 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.language_you_can_fully_understand.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row name="language">
                                         <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
+                                                           id='language-option'
                                                            type="checkbox"
                                                            required/>{t('registration.language_you_can_fully_understand.check.option0')}
                                         </Col>
                                         <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
+                                                           id='language-option'
                                                            type="checkbox"
                                                            required/>{t('registration.language_you_can_fully_understand.check.option1')}
                                         </Col>
                                         <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
+                                                           id='language-option'
                                                            type="checkbox"
                                                            required/>{t('registration.language_you_can_fully_understand.check.option2')}
                                         </Col>
                                         <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
+                                                           id='language-option'
                                                            type="checkbox"
                                                            required/>{t('registration.language_you_can_fully_understand.check.option3')}
                                         </Col>
                                     </Row>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 key={uuidv4()}
@@ -448,7 +462,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.date_of_birth.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row>
                                         <Col sm={4}>
                                             <select className="form-control" name="year" required>
@@ -476,7 +490,7 @@ export class Register extends React.Component {
                                                            required/></Col>
 
                                     </Row>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
 
                             <Form.Group
@@ -487,7 +501,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.religion.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <select name="religion" className="form-control" required>
                                         <option value="">{t('registration.religion.dropdown.placeholder')}</option>
                                         <option>{t('registration.religion.dropdown.option0')}</option>
@@ -496,8 +510,7 @@ export class Register extends React.Component {
                                         <option>{t('registration.religion.dropdown.option3')}</option>
                                         <option>{t('registration.religion.dropdown.option4')}</option>
                                     </select>
-
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -507,14 +520,14 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.sex.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <select name="sex" className="form-control" required>
                                         <option value="">{t('registration.sex.dropdown.placeholder')}</option>
                                         <option>{t('registration.sex.dropdown.option0')}</option>
                                         <option>{t('registration.sex.dropdown.option1')}</option>
                                         <option>{t('registration.sex.dropdown.option2')}</option>
                                     </select>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -524,9 +537,11 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.half_body_photo.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <input
+                                        hidden
                                         className="form-control" type="file"
+                                        id='upload-image-half'
                                         onChange={(e) => {
                                             console.log(e.target.files)
                                             this.setState({
@@ -535,7 +550,12 @@ export class Register extends React.Component {
                                         }}
                                     />
 
-                                </Col>
+                                    <label htmlFor="upload-image-half" className="upload-button">
+                                        <i className="ui upload icon"></i>
+                                        Upload image
+                                    </label>
+
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -545,8 +565,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.passport_photo.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <input
+                                        hidden
+                                        id='upload-image-passport'
                                         className="form-control" type="file"
                                         onChange={(e) => {
                                             this.setState({
@@ -555,7 +577,11 @@ export class Register extends React.Component {
                                         }}
                                     />
 
-                                </Col>
+                                    <label htmlFor="upload-image-passport" className="upload-button">
+                                        <i className="ui upload icon"></i>
+                                        Upload image
+                                    </label>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -565,7 +591,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.height_weight.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row>
                                         <Col sm={6}><input name="height-value" type="text"
                                                            placeholder={t('registration.height_weight.height.placeholder')}
@@ -593,7 +619,7 @@ export class Register extends React.Component {
                                             </select>
                                         </Col>
                                     </Row>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -603,7 +629,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.eyesight_hearing.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row>
                                         <Col sm={3}>{t('registration.eyesight_hearing.eyesight.title')}</Col>
                                         <Col sm={8}>
@@ -628,7 +654,7 @@ export class Register extends React.Component {
                                             </select>
                                         </Col>
                                     </Row>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -638,7 +664,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.foot_size.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row>
                                         <Col sm={3}><input name="foot-size-value" type="text"
                                                            placeholder={t('registration.foot_size.title')}
@@ -652,7 +678,7 @@ export class Register extends React.Component {
                                             </select>
                                         </Col>
                                     </Row>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -662,10 +688,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.email.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="email" type="text"
                                                   placeholder={t('registration.email.placeholder')} required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -675,10 +701,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.password.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="password" type="password"
                                                   placeholder={t('registration.password.placeholder')} required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -688,10 +714,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.retypepassword.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="retyped-password" type="password"
                                                   placeholder={t('registration.retypepassword.title')} required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -701,10 +727,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.phonenumber.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="phone-number" type="text"
                                                   placeholder={t('registration.phonenumber.placeholder')} required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -714,10 +740,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.facebook.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="facebook" type="text"
                                                   placeholder={t('registration.facebook.placeholder')} required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -727,13 +753,13 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.current_location.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <select name="currentlocation" className="form-control" required>
                                         <option>{t('registration.current_location.dropdown.placeholder')}</option>
                                         <option>{t('registration.current_location.dropdown.option0')}</option>
                                         <option>{t('registration.current_location.dropdown.option1')}</option>
                                     </select>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -744,7 +770,7 @@ export class Register extends React.Component {
                                     {t('registration.current_situation.title')}
                                 </Form.Label>
 
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row>
                                         <Col sm={12}>
                                             <select name="current-situation" className="form-control" required>
@@ -762,10 +788,8 @@ export class Register extends React.Component {
                                             <input name="current-situation-text" type="text" className="form-control"
                                                    required/>
                                         </Col>
-
                                     </Row>
-
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -776,7 +800,7 @@ export class Register extends React.Component {
                                     {t('registration.work_experience.title')}
                                 </Form.Label>
 
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row>
                                         <Col sm={6}>
                                             <select onClick={this.onWorkExperienceSelected} name="work-experience-0"
@@ -811,7 +835,6 @@ export class Register extends React.Component {
                                                    className="form-control work-experience-value" required/>
                                         </Col>
                                     </Row>
-
                                     <Row>
                                         <Col sm={6}>
                                             <select onClick={this.onWorkExperienceSelected} name="work-experience-2"
@@ -829,8 +852,7 @@ export class Register extends React.Component {
                                                    className="form-control work-experience-value" required/>
                                         </Col>
                                     </Row>
-
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -841,7 +863,7 @@ export class Register extends React.Component {
                                     {t('registration.specific_skills.title')}
                                 </Form.Label>
 
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row>
                                         <Col sm={6}>
                                             <select name="skills" className="form-control" required>
@@ -856,7 +878,7 @@ export class Register extends React.Component {
                                             <input name="skills-text" type="text" className="form-control" required/>
                                         </Col>
                                     </Row>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -866,7 +888,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.meritial_status.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Col sm={4}>
                                         <input name="marital" type="radio" value="married"
                                                required/> {t('registration.meritial_status.check.option0')}
@@ -875,7 +897,7 @@ export class Register extends React.Component {
                                         <input name="marital" type="radio" value="unmarried"
                                                required/> {t('registration.meritial_status.check.option1')}
                                     </Col>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
                             <Form.Group
                                 className="form-main-container"
@@ -885,9 +907,9 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.cronic_disease.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Form.Control name="chronic-disease" type="text" required/>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
 
                             <Form.Group
@@ -899,7 +921,7 @@ export class Register extends React.Component {
                                     {t('registration.japanese_language_skills.title')}
                                 </Form.Label>
 
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <select name="japanese-language-skills" className="form-control" required>
                                         <option
                                             value="">{t('registration.japanese_language_skills.dropdown.placeholder')}</option>
@@ -909,7 +931,7 @@ export class Register extends React.Component {
                                         <option>{t('registration.japanese_language_skills.dropdown.option3')}</option>
                                         <option>{t('registration.japanese_language_skills.dropdown.option4')}</option>
                                     </select>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
 
                             <Form.Group
@@ -920,26 +942,30 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.desired_job.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <Row>
                                         <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            id='job-option'
                                                             required/>{t('registration.desired_job.check.option0')}
                                         </Col>
                                         <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            id='job-option'
                                                             required/>{t('registration.desired_job.check.option1')}
                                         </Col>
                                         <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            id='job-option'
                                                             required/>{t('registration.desired_job.check.option2')}
                                         </Col>
                                         <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            id='job-option'
                                                             required/>{t('registration.desired_job.check.option3')}
                                         </Col>
                                         <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            id='job-option'
                                                             required/>{t('registration.desired_job.check.option4')}
                                         </Col>
                                     </Row>
-
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
 
                             <Form.Group
@@ -950,10 +976,10 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3}>
                                     {t('registration.terms_conditions.title')}
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9}>
                                     <textarea name="terms-and-conditions" style={{width: '100%'}} cols="40" rows="5"
                                               required></textarea>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
 
                             <Form.Group
@@ -961,17 +987,16 @@ export class Register extends React.Component {
                                 as={Row}
                                 controlId="formHorizontalCountry"
                             >
-                                <Form.Label column sm={3}>
+                                <Form.Label column sm={3} className='form-bottom-left'>
 
                                 </Form.Label>
-                                <Col sm={9}>
+                                <Form.Label column sm={9} className='form-bottom-right'>
                                     <Button onClick={this.onSubmitCandidateData}
                                             type="submit"> {t('registration.register_to_site.title')} </Button>
-                                </Col>
+                                </Form.Label>
                             </Form.Group>
 
                         </Form>
-
                     </Col>
                 </Row>
             </Container>

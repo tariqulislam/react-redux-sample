@@ -94,17 +94,21 @@ class CandidateDetails extends React.Component {
                     <Col>
                         <Table>
                             <tr>
-                                <td>
-                                    <div
-                                        className="campaign-head"
-                                        style={{backgroundColor: 'green', cursor: 'pointer'}}
-                                        onClick={() => {
-                                            this.props.callBackToParentElement(<CandidateList callBackToParentElement={this.props.callBackToParentElement}/>);
-                                        }}
-                                    >
-                                        Go Back
-                                    </div>
-                                </td>
+                                {
+                                    !this.state.fromRegistrationPage &&
+                                    <td>
+                                        <div
+                                            className="campaign-head"
+                                            style={{backgroundColor: 'green', cursor: 'pointer'}}
+                                            onClick={() => {
+                                                this.props.callBackToParentElement(<CandidateList
+                                                    callBackToParentElement={this.props.callBackToParentElement}/>);
+                                            }}
+                                        >
+                                            Go Back
+                                        </div>
+                                    </td>
+                                }
                                 <td>
                                     <h2>
                                         Candidate Details
@@ -154,7 +158,7 @@ class CandidateDetails extends React.Component {
                                             </tr>
                                         )
                                     }
-                            })
+                                })
                             }
 
 

@@ -38,13 +38,13 @@ class CandidateList extends React.Component {
     render() {
         return (
             <div className='main'>
-                <Table striped bordered hover size='sm'>
+                <Table striped bordered hover size='sm' className='candidate-list-table'>
                     <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
                         <th>Gender</th>
-                        <th>Currently at</th>
+                        <th>Current Location</th>
                         <th>Nationality</th>
                     </tr>
                     </thead>

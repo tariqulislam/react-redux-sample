@@ -12,6 +12,7 @@ import AdminDashboard from "./routes/admin/admin";
 import {withTranslation} from "react-i18next";
 import CampaignAdmin from "./routes/admin/campain/components/campaign";
 import NewCandidate from './routes/candidate/new-candidate/NewCandidate';
+import CandidateDetails from './routes/candidate/CandidateDetails';
 
 import AdminPanel from "./routes/admin-panel/AdminPanel";
 import NotFound from './routes/not-found/404';
@@ -63,15 +64,15 @@ class App extends Component {
 
                             <Nav>
 
-                                <Nav.Link>
+                                <Navbar style={{backgroundColor: 'rgba(0,0,0,0)', padding: '0'}}>
                                     <Dropdown>
                                         <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                                            {this.state.value==='en'?'English':'Japanese'}
+                                            {this.state.value === 'en' ? 'English' : 'Japanese'}
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
                                             <Dropdown.Item
-                                                active={this.state.value==='en'}
+                                                active={this.state.value === 'en'}
                                                 style={{color: 'black'}}
                                                 href="#/action-1"
                                                 onClick={() => {
@@ -85,7 +86,7 @@ class App extends Component {
                                                 English
                                             </Dropdown.Item>
                                             <Dropdown.Item
-                                                active={this.state.value==='jp'}
+                                                active={this.state.value === 'jp'}
                                                 style={{color: 'black'}}
                                                 href="#/action-2"
                                                 onClick={() => {
@@ -100,7 +101,7 @@ class App extends Component {
                                             </Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
-                                </Nav.Link>
+                                </Navbar>
 
                                 {/*Below code was for selecting the language of the site. Now it's being handled by the code above.*/}
                                 {/*<Nav.Item*/}
@@ -151,6 +152,7 @@ class App extends Component {
                         <Route exact path="/candidate/dashboard" component={AdminPanel}/>
                         <Route exact path="/candidate/register" component={CandidateRegister}/>
                         <Route exact path="/candidate/new_one" component={NewCandidate}/>
+                        <Route exact path="/candidate/details" component={CandidateDetails}/>
                         <Route exact path="/company/register" component={CompanyRegister}/>
                         <Route exact component={NotFound}/>
                     </Switch>

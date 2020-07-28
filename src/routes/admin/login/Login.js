@@ -82,7 +82,7 @@ export class AdminLogin extends React.Component {
                                     <input
                                         type="email"
                                         className="form-control"
-                                        placeholder="Enter email"
+                                        placeholder="Username"
                                         onChange={(e) => {
                                             this.setState({email: e.target.value})
                                         }}
@@ -95,7 +95,7 @@ export class AdminLogin extends React.Component {
                                     <input
                                         type="password"
                                         className="form-control"
-                                        placeholder="Enter password"
+                                        placeholder="Password"
                                         onChange={(e) => {
                                             this.setState({password: e.target.value})
                                         }}
@@ -106,8 +106,7 @@ export class AdminLogin extends React.Component {
                                 <div className="form-group">
                                     <div className="custom-control custom-checkbox">
                                         <input type="checkbox" className="custom-control-input" id="customCheck1"/>
-                                        <label className="custom-control-label" htmlFor="customCheck1">Remember
-                                            me</label>
+                                        <label className="custom-control-label remember-me" htmlFor="customCheck1">Remember me</label>
                                     </div>
                                 </div>
 
