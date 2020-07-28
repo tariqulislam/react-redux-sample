@@ -24,7 +24,7 @@ class NotFound extends Component {
                                     Are you lost?
                                 </div>
                                 <div className="description">
-                                    You seem to be somewhere we don't want you to be. Restart your journey &nbsp;
+                                    You seem to be somewhere we don't want you to be. Restart your journey&nbsp;
                                     {/* <Link to={`/${JSON.parse(localStorage.getItem('role'))}/dashboard`}>here.</Link> */}
                                     <Link to={`/`}>here.</Link>
                                 </div>

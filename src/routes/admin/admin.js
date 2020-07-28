@@ -8,6 +8,7 @@ import CampaignList from '../admin/campaign/CampaignList';
 
 import './admin.css';
 import Alert from "react-bootstrap/Alert";
+import CompanyList from "../company/company-list/CompanyList";
 
 
 export class AdminDashboard extends React.Component {
@@ -84,6 +85,8 @@ export class AdminDashboard extends React.Component {
                             {this.getLeftItem('Candidate List', <CandidateList
                                 callBackToParentElement={this.callBackToParentElement}/>)}
                             {this.getLeftItem('Campaign List', <CampaignList
+                                callBackToParentElement={this.callBackToParentElement}/>)}
+                            {this.getLeftItem('Company List', <CompanyList
                                 callBackToParentElement={this.callBackToParentElement}/>)}
                         </div>
                     </div>

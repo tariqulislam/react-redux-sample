@@ -7,7 +7,24 @@
         "base_url": "http://118.179.95.206:8082",
         "controllers": {
             "service_name": "candidates",
-            "base_url": "http://118.179.95.206:8082"
+            "base_url": "http://118.179.95.206:8082",
+            "api": {
+                "all_candidate": "/"
+            }
+        }
+    },
+    "company": {
+        "protocol": "http",
+        "host": "118.179.95.206",
+        "port": "8082",
+        "api_path": "api",
+        "base_url": "http://118.179.95.206:8082",
+        "controllers": {
+            "service_name": "companies",
+            "base_url": "http://118.179.95.206:8082",
+            "api": {
+                "register_company": "registration"
+            }
         }
     }
 }

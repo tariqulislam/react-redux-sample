@@ -93,6 +93,7 @@ class CandidateDetails extends React.Component {
                 <Row>
                     <Col>
                         <Table>
+                            <tbody>
                             <tr>
                                 {
                                     !this.state.fromRegistrationPage &&
@@ -123,7 +124,7 @@ class CandidateDetails extends React.Component {
                                         let value = item.value;
 
                                         return (
-                                            <tr>
+                                            <tr key={idx}>
                                                 <td>
                                                     <div
                                                         className="campaign-head">{this.state.attributeMap[key]}
@@ -137,7 +138,7 @@ class CandidateDetails extends React.Component {
                                         let value = item.value;
 
                                         return (
-                                            <tr>
+                                            <tr key={idx}>
                                                 <td>
                                                     <div
                                                         className="campaign-head">{this.state.attributeMap[key]}
@@ -145,12 +146,12 @@ class CandidateDetails extends React.Component {
                                                 </td>
                                                 <td>
                                                     {
-                                                        Object.entries(value).map(it => {
+                                                        Object.entries(value).map((it, idx) => {
                                                             // console.log(it);
                                                             // it = it[1];
                                                             return (
                                                                 it[1] &&
-                                                                <p>• {this.state.attributeMap[it[0]] || it[1]['name']}: {it[1].description || it[1]['name'] || it[1]}</p>
+                                                                <p key={idx}>• {this.state.attributeMap[it[0]] || it[1]['name']}: {it[1].description || it[1]['name'] || it[1]}</p>
                                                             );
                                                         })
                                                     }
@@ -193,8 +194,8 @@ class CandidateDetails extends React.Component {
                                     <p>• Expert in the company's Prancer technology;</p>
                                 </td>
                             </tr>
+                            </tbody>
                         </Table>
-
                     </Col>
                 </Row>
             </Container>

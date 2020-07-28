@@ -1,13 +1,8 @@
 import React from 'react';
 import Table from "react-bootstrap/Table";
-
-import NewCandidate from '../../../candidate/new-candidate/NewCandidate';
 import CandidateDetails from '../../../candidate/CandidateDetails';
-
 import environment from '../../../../environment.json';
-
 import axios from 'axios';
-
 import '../style/candidateList.css';
 
 class CandidateList extends React.Component {

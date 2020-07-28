@@ -58,3 +58,20 @@
     backdrop-filter: blur(5px);
     border-radius: 15px;
 }
+
+/*On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-width: 650px) {
+
+    .form-bottom-right {
+        text-align: center;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .form-bottom-left {
+        visibility: unset;
+        border-bottom-left-radius: 0px;
+    }
+}
+
+
