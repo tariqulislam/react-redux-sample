@@ -2,12 +2,14 @@ import React from "react";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {withTranslation, Trans} from 'react-i18next';
 import environment from '../../../environment';
+import axios from 'axios';
 
 import './CompanyRegister.css';
 
 export class Register extends React.Component {
 
     companyNameRef = React.createRef();
+    companyCodeRef = React.createRef();
     companyContactRef = React.createRef();
     companyEmailRef = React.createRef();
     companyClassificationRef = React.createRef();
@@ -20,6 +22,18 @@ export class Register extends React.Component {
 
     registerCompany = () => {
         console.log(this.state);
+
+        let URL = 'http://localhost:4000/api/companies/registration';
+        let company = {
+            name: this.state.companyName,
+            username: this.state.companyEmail,
+            email: this.state.companyContact
+        };
+
+        axios.post(URL, company).then((res) => {
+            console.log(res);
+        })
+
     };
 
     /**
@@ -77,6 +91,29 @@ export class Register extends React.Component {
                                     />
                                 </Form.Label>
                             </Form.Group>
+
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalName"
+                            >
+                                <Form.Label column sm={3}>
+                                    Company Code
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <Form.Control
+                                        ref={this.companyCodeRef} type="text"
+                                        onChange={
+                                            this.debounce((e) => {
+                                                this.setState({
+                                                    companyCode: this.companyCodeRef.current.value
+                                                });
+                                            }, 250)
+                                        }
+                                    />
+                                </Form.Label>
+                            </Form.Group>
+
                             <Form.Group
                                 className="form-main-container"
                                 as={Row}
