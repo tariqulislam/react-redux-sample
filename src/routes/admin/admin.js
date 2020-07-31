@@ -6,6 +6,8 @@ import CampaignAdmin from '../campaign/Campaign';
 import CandidateList from '../admin/candidate/component/candidateList';
 import CampaignList from '../admin/campaign/CampaignList';
 
+import Register from '../company/register/Register';
+
 import './admin.css';
 import Alert from "react-bootstrap/Alert";
 import CompanyList from "../company/company-list/CompanyList";
@@ -84,10 +86,11 @@ export class AdminDashboard extends React.Component {
                         <div className="bottom">
                             {this.getLeftItem('Candidate List', <CandidateList
                                 callBackToParentElement={this.callBackToParentElement}/>)}
-                            {this.getLeftItem('Campaign List', <CampaignList
-                                callBackToParentElement={this.callBackToParentElement}/>)}
+                            {/*{this.getLeftItem('Campaign List', <CampaignList*/}
+                            {/*    callBackToParentElement={this.callBackToParentElement}/>)}*/}
                             {this.getLeftItem('Company List', <CompanyList
                                 callBackToParentElement={this.callBackToParentElement}/>)}
+                            {this.getLeftItem('Create Company', <Register/>)}
                         </div>
                     </div>
                     <div id="right" className="column-right">

@@ -1,6 +1,6 @@
 .main-container-company {
     flex: 1 1 auto;
-    height: auto;
+    height: 100%;
     max-width: 100vw !important;
 
     background-image: url('/media/login_background.jpg');
