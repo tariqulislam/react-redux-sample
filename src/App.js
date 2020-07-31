@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
 import Home from "./routes/home/Home";
-import Campaign from "./routes/campaign/Campaign";
 import CandidateRegister from "./routes/candidate/register/Register";
 import CompanyRegister from "./routes/company/register/Register";
 import AdminLogin from "./routes/admin/login/Login";
@@ -21,7 +20,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-
+import Campaign from "./routes/campaign/Campaign";
 class App extends Component {
     constructor(props) {
         super(props);
@@ -146,6 +145,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/admin/login" component={AdminLogin}/>
+                        <Route exact path="/campaign" component={Campaign} />
                         <Route exact path="/candidate/login" component={CandidateLogin}/>
                         <Route exact path="/admin/dashboard" component={AdminDashboard}/>
                         <Route exact path="/admin/campaign" component={CampaignAdmin}/>
