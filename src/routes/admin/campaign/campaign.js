@@ -1,10 +1,63 @@
 import React from "react";
 import { Container, Row, Col, Tabs, Tab, Form, Button } from "react-bootstrap";
+import axios from "axios"
 export default class Campaign extends React.Component {
+  constructor(props) {
+      super(props)
+
+      this.state = {
+        areas: [
+          {id: 2, name: "TOKYO"},
+          {id: 3, name: "YOKOHAMA"},
+          {id: 3, name: "SIATAMA"}
+        ],
+        currency: [
+          {"text": "JP", "symbol": " ¥"},
+          {"text": "USD", "symbol": "$"}
+        ]
+
+      }
+  }
+
+  componentDidMount() {
+     
+  }
+
+  onSubmitGetAllValue = (event) => {
+      event.preventDefault()
+      const data = new FormData(event.target)
+      console.log(data.get("areaId"))
+    /* get form value */
+    let payload = {
+      "areaId": data.get("areaId"),
+      "currency": data.get("currency"),
+      "endSalary": data.get("endSalary"),
+      "japaneseLevel": data.get("japaneseLevel"),
+      "jobDescription": data.get("jobDescription"),
+      "lang":  "en",
+      "languageId": 1,
+      "positionLevel": data.get("positionLevel"),
+      "recruiter": data.get("company"),
+      "specialFeatures": data.get("specialFeatures"),
+      "startSalary": data.get("startSalary")
+    }
+    let url = "http://localhost:4000/api/campaigns"
+    axios.post(url, payload, {
+      headers: {
+          'Content-Type': 'application/json',
+         // 'Authorization': localStorage.getItem('authToken')
+      }
+    }).then(result => {
+        if(result.data) {
+          window.location.replace("/admin/dashboard")
+        }
+    });
+  }
   render() {
     let formBlock = {
       paddingTop: "20px",
     };
+
     return (
       <Container>
         <Row className="justify-content-md-center">
@@ -16,31 +69,31 @@ export default class Campaign extends React.Component {
           <Col md="8">
             <Tabs defaultActiveKey="english" id="uncontrolled-tab-example">
               <Tab eventKey="english" title="English">
-                <Form style={formBlock}>
+                <Form onSubmit={this.onSubmitGetAllValue} style={formBlock}>
                   <Form.Group as={Row} controlId="formHorizontalRecruiter">
                     <Form.Label column sm={4}>
-                      Recruiter
+                      Company
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control type="text" placeholder="Recruiter" />
+                      <Form.Control id="company" name="company" type="text" placeholder="Company" />
                     </Col>
                   </Form.Group>
 
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
-                    <Form.Label column sm={4}>
+                    <Form.Label  column sm={4}>
                       Job Description
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control as="textarea" rows="3" />
+                      <Form.Control name="jobDescription" id="jobDescription" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
 
-                  <Form.Group as={Row} controlId="formHorizontalJapaneseLevel">
+                  <Form.Group as={Row}  controlId="formHorizontalJapaneseLevel">
                     <Form.Label column sm={4}>
                       Japanese Level
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control type="text" placeholder="Japanese Level" />
+                      <Form.Control id="japaneseLevel" name="japaneseLevel" type="text" placeholder="Japanese Level" />
                     </Col>
                   </Form.Group>
 
@@ -49,9 +102,12 @@ export default class Campaign extends React.Component {
                       Position Level
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control column sm={8} as="select">
+                      <Form.Control id="positionLevel" name="positionLevel" column sm={8} as="select">
                         <option>-- SELECT --</option>
-                        <option>EXECUTIVE</option>
+                        <option value="EXECUTIVE">EXECUTIVE</option>
+                        <option value="SENIOR_EXECUTIVE">
+                        SENIOR_EXECUTIVE
+                        </option>
                       </Form.Control>
                     </Col>
                   </Form.Group>
@@ -61,22 +117,21 @@ export default class Campaign extends React.Component {
                       Salary
                     </Form.Label>
                     <Col sm={4}>
-                      <Form.Control type="number" placeholder="Start" />
+                      <Form.Control id="startSalary" name="startSalary" type="number" placeholder="Start" />
                     </Col>
                     <Col sm={4}>
-                      <Form.Control type="number" placeholder="End" />
+                      <Form.Control id="endSalary" name="endSalary" type="number" placeholder="End" />
                     </Col>
                   </Form.Group>
-
                   <Form.Group
                     as={Row}
                     controlId="formHorizontalSpecialFeatures"
                   >
                     <Form.Label column sm={4}>
-                      Special Features
+                      Features
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control column sm={8} as="select">
+                      <Form.Control id="specialFeatures" name="specialFeatures" column sm={8} as="select">
                         <option>-- SELECT --</option>
                         <option value="INTERNATIONAL_TRANSFER">
                           INTERNATIONAL TRANSFER
@@ -85,30 +140,19 @@ export default class Campaign extends React.Component {
                     </Col>
                   </Form.Group>
 
-                  <Form.Group as={Row} controlId="formHorizontalChineseLevel">
-                    <Form.Label column sm={4}>
-                      Chinese Level
-                    </Form.Label>
-                    <Col sm={8}>
-                      <Form.Control type="text" placeholder="Chinese Level" />
-                    </Col>
-                  </Form.Group>
-
-                  <Form.Group as={Row} controlId="formHorizontalCurrency">
+                  <Form.Group as={Row} id="currency" name="currency" controlId="formHorizontalCurrency">
                     <Form.Label column sm={4}>
                       Currency
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control type="number" placeholder="Currency" />
-                    </Col>
-                  </Form.Group>
-
-                  <Form.Group as={Row} controlId="formHorizontalLang">
-                    <Form.Label column sm={4}>
-                      Language
-                    </Form.Label>
-                    <Col sm={8}>
-                      <Form.Control type="number" placeholder="Lang" />
+                    <select name="currency" className="form-control">
+                        {
+                          this.state.currency.map((item, index) => {
+                            return <option value={item.text}>
+                                 {item.text}
+                          </option>})
+                        }
+                      </select>
                     </Col>
                   </Form.Group>
 
@@ -117,25 +161,20 @@ export default class Campaign extends React.Component {
                       Area Name
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control type="text" placeholder="Name" />
-                    </Col>
-                  </Form.Group>
-
-                  <Form.Group as={Row} controlId="formHorizontalSpecialCountry">
-                    <Form.Label column sm={4}>
-                      Country
-                    </Form.Label>
-                    <Col sm={8}>
-                      <Form.Control column sm={8} as="select">
-                        <option>-- SELECT --</option>
-                        <option value="bangladesh">Bangladesh</option>
-                      </Form.Control>
+                      <select id="areaId" name="areaId" className="form-control" >
+                        {
+                          this.state.areas.map((item, index) => {
+                            return <option value={item.id}>
+                                 {item.name}
+                          </option>})
+                        }
+                      </select>
                     </Col>
                   </Form.Group>
 
                   <Form.Group as={Row}>
                     <Col sm={{ span: 8, offset: 4 }}>
-                      <Button type="submit">SAVE</Button>
+                    <button>Save Data</button>
                     </Col>
                   </Form.Group>
                 </Form>

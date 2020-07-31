@@ -14,13 +14,13 @@ class CandidateList extends React.Component {
 
     componentDidMount() {
         // console.log(this.props);
-        let {base_url, api_path} = environment.candidate;
-        let controller_url = environment.candidate.controllers.service_name;
+       // let {base_url, api_path} = environment.candidate;
+       // let controller_url = environment.candidate.controllers.service_name;
 
-        let url = `${base_url}/${api_path}/${controller_url}`;
-        // console.log(url+'/')
+        let url = "http://localhost:4000/api/candidates";
 
-        axios.get(url+'/').then((response) => {
+
+        axios.get(url).then((response) => {
             response = response.data.data;
 
             this.setState({

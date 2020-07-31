@@ -9,7 +9,7 @@ import CampaignList from '../admin/campaign/CampaignList';
 import './admin.css';
 import Alert from "react-bootstrap/Alert";
 import CompanyList from "../company/company-list/CompanyList";
-
+import CampaignCreate from "./campaign/campaign"
 
 export class AdminDashboard extends React.Component {
 
@@ -88,6 +88,7 @@ export class AdminDashboard extends React.Component {
                                 callBackToParentElement={this.callBackToParentElement}/>)}
                             {this.getLeftItem('Company List', <CompanyList
                                 callBackToParentElement={this.callBackToParentElement}/>)}
+                            {this.getLeftItem('Campaign Create', <CampaignCreate callBackToParentElement={this.callBackToParentElement} /> )}    
                         </div>
                     </div>
                     <div id="right" className="column-right">
