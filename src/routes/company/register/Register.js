@@ -2,6 +2,7 @@ import React from "react";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {withTranslation, Trans} from 'react-i18next';
 import environment from '../../../environment';
+import axios from 'axios';
 
 import './CompanyRegister.css';
 
@@ -21,6 +22,18 @@ export class Register extends React.Component {
 
     registerCompany = () => {
         console.log(this.state);
+
+        let URL = 'http://localhost:4000/api/companies/registration';
+        let company = {
+            name: this.state.companyName,
+            username: this.state.companyEmail,
+            email: this.state.companyContact
+        };
+
+        axios.post(URL, company).then((res) => {
+            console.log(res);
+        })
+
     };
 
     /**
