@@ -5,6 +5,13 @@ import "./assets/campaign.scss";
 class Campaign extends Component {
     render() {
         const {campaign} = this.props
+        console.log(campaign)
+        let newCampaign = {}
+        if (campaign) {
+            newCampaign = campaign
+        } else {
+            newCampaign = this.props.location.state.campaign
+        }
         return (
             <Container>
                 <Row style={{paddingTop: "70px", paddingBottom: "20px"}}>
@@ -26,7 +33,7 @@ class Campaign extends Component {
                                 </td>
                                 <td>
                   <span className="star-label">
-                    &#9733;&#9733;&#9733;&#9733;&#9733; {campaign.positionLevel}
+                    &#9733;&#9733;&#9733;&#9733;&#9733; {newCampaign.positionLevel}
                   </span>
                                 </td>
                             </tr>
@@ -34,7 +41,7 @@ class Campaign extends Component {
                                 <td>
                                     <div className="campaign-head">Company</div>
                                 </td>
-                                <td>{campaign.company}</td>
+                                <td>{newCampaign.recruiter}</td>
                             </tr>
                             <tr>
                                 <td>
@@ -46,20 +53,20 @@ class Campaign extends Component {
                                 <td>
                                     <div className="campaign-head">Salary</div>
                                 </td>
-                             <td>Japanese yen JPY {campaign.startSalary} - JPY {campaign.endSalary}</td>
+                             <td>Japanese yen JPY {newCampaign.startSalary} - JPY {newCampaign.endSalary}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div className="campaign-head">Japanese Level</div>
                                 </td>
-                            <td>{campaign.japaneseLevel}</td>
+                            <td>{newCampaign.japaneseLevel}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div className="campaign-head">Job Description</div>
                                 </td>
                                 <td>
-                                    {campaign.jobDescription}
+                                    {newCampaign.jobDescription}
                                 </td>
                             </tr>
                         </Table>

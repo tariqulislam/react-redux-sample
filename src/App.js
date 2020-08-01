@@ -20,8 +20,8 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-import Campaign from "./routes/campaign/Campaign";
-import CampaignCreate from "./routes/admin/campaign/campaign"
+import Campaign from "./routes/campaign/CampaignList";
+import CampaignDetails from "./routes/campaign/Campaign"
 class App extends Component {
     constructor(props) {
         super(props);
@@ -147,9 +147,9 @@ class App extends Component {
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/admin/login" component={AdminLogin}/>
                         <Route exact path="/campaign" component={Campaign} />
+                        <Route exact path="/campaign/details" component={CampaignDetails} />
                         <Route exact path="/candidate/login" component={CandidateLogin}/>
                         <Route exact path="/admin/dashboard" component={AdminDashboard}/>
-                        <Route exact path="/admin/campaign" component={CampaignCreate}/>
                         <Route exact path="/candidate/dashboard" component={AdminPanel}/>
                         <Route exact path="/candidate/register" component={CandidateRegister}/>
                         <Route exact path="/candidate/new_one" component={NewCandidate}/>
