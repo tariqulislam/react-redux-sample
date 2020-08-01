@@ -1,17 +1,14 @@
-import React from 'react'
-import {Link, Route} from 'react-router-dom'
-import {Button, Container, ListGroupItem, Navbar, Row} from 'react-bootstrap'
-
-import CampaignAdmin from '../campaign/Campaign';
+import React, {Fragment} from 'react'
 import CandidateList from '../admin/candidate/component/candidateList';
-import CampaignList from '../admin/campaign/CampaignList';
 
-import Register from '../company/register/Register';
-
-import './admin.css';
-import Alert from "react-bootstrap/Alert";
+import CompanyRegister from '../company/register/Register';
 import CompanyList from "../company/company-list/CompanyList";
 
+import CustomSidebar from '../custom-components/side-bar/CustomSidebar';
+import Dropdown from "react-bootstrap/Dropdown";
+
+import './admin.css';
+import ListGroup from "react-bootstrap/ListGroup";
 
 export class AdminDashboard extends React.Component {
 
@@ -25,47 +22,10 @@ export class AdminDashboard extends React.Component {
 
     componentDidMount() {
         this.setState({
-            viewable: <CandidateList callBackToParentElement={this.callBackToParentElement}/>
+            viewable: <CandidateList/>,
+            viewableName: 'CandidateList'
         })
     }
-
-    closeNav = () => {
-        // this.sideBarRef.current.transform = "translateX(200px)";
-        console.log(this.sideBarRef.current.transform);
-
-
-        // this.sideBarRef.current.style.minWidth = "0 !important";
-        this.sideBarRef.current.style.width = "0";
-        // this.mainRef.current.style.marginLeft = "0px";
-
-    };
-
-    openNav = () => {
-        console.log(this.sideBarRef)
-        // this.sideBarRef.current.style.minWidth = "15% !important";
-        // this.sideBarRef.current.style.width = "";
-        // this.mainRef.current.style.marginLeft = "250px";
-    };
-
-    getLeftItem = (name, stateAttrib) => {
-        return (
-            <Alert
-                variant='dark'
-                className='left-item'
-            >
-                <Alert.Link
-                    href="#"
-                    onClick={() => {
-                        this.setState({
-                            viewable: stateAttrib
-                        })
-                    }}
-                >
-                    {name}
-                </Alert.Link>
-            </Alert>
-        );
-    };
 
     callBackToParentElement = (comp) => {
         this.setState({
@@ -74,33 +34,37 @@ export class AdminDashboard extends React.Component {
     };
 
     render() {
-        /*-------------------------------------------------------*/
-        /* Inspiration: http://jsbin.com/qusudim/edit?css,output */
-        /*-------------------------------------------------------*/
-
         return (
-            <div className='admin-view'>
-                <div className='admin-view-bottom'>
-                    <div ref={this.sideBarRef} id="left" className="column-left">
-                        {/*<div className="top-left">Top Left</div>*/}
-                        <div className="bottom">
-                            {this.getLeftItem('Candidate List', <CandidateList
-                                callBackToParentElement={this.callBackToParentElement}/>)}
-                            {/*{this.getLeftItem('Campaign List', <CampaignList*/}
-                            {/*    callBackToParentElement={this.callBackToParentElement}/>)}*/}
-                            {this.getLeftItem('Company List', <CompanyList
-                                callBackToParentElement={this.callBackToParentElement}/>)}
-                            {this.getLeftItem('Create Company', <Register/>)}
-                        </div>
-                    </div>
-                    <div id="right" className="column-right">
-                        <div className="bottom main-content">
+            <div className='admin-view' style={{height: '100vh', display: 'flex'}}>
+                <CustomSidebar>
+                    <Dropdown.Item active={this.state.viewableName==='CandidateList'} className='item' onClick={() => {
+                        this.setState({
+                            viewable: <CandidateList/>,
+                            viewableName: 'CandidateList'
+                        })
+                    }}>
+                        Candidate List
+                    </Dropdown.Item>
+                    <Dropdown.Item active={this.state.viewableName==='CompanyList'} className='item' onClick={() => {
+                        this.setState({
+                            viewable: <CompanyList/>,
+                            viewableName: 'CompanyList'
+                        })
+                    }}>
+                        Company List
+                    </Dropdown.Item>
+                    <Dropdown.Item active={this.state.viewableName==='CompanyRegister'} className='item' onClick={() => {
+                        this.setState({
+                            viewable: <CompanyRegister/>,
+                            viewableName: 'CompanyRegister'
+                        })
+                    }}>
+                        Create Company
+                    </Dropdown.Item>
+                </CustomSidebar>
 
-                            <div className='content'>
-                                {this.state.viewable}
-                            </div>
-                        </div>
-                    </div>
+                <div id="right" className="admin-dashboard-canvas" style={{flexGrow: '1'}}>
+                    {this.state.viewable}
                 </div>
             </div>
         );

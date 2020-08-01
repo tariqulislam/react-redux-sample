@@ -20,7 +20,7 @@ class CandidateList extends React.Component {
         let url = `${base_url}/${api_path}/${controller_url}`;
         // console.log(url+'/')
 
-        axios.get(url+'/').then((response) => {
+        axios.get(url + '/').then((response) => {
             response = response.data.data;
 
             this.setState({
@@ -30,46 +30,66 @@ class CandidateList extends React.Component {
         });
     }
 
+    reloadCandidateTable = () => {
+        this.setState({
+            candidateId: undefined
+        })
+    };
+
+    candidateTable = () => {
+        return (
+            <Table striped bordered hover size='sm' className='candidate-list-table'>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Current Location</th>
+                    <th>Nationality</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {
+                    this.state.data &&
+                    this.state.data.map((item, idx) => {
+                        return (
+                            <tr
+                                key={idx}
+                                className='single-row'
+                                onClick={(e) => {
+                                    this.setState({
+                                        candidateId: idx + 1,
+                                    });
+                                }}
+                            >
+                                <td>{idx + 1}</td>
+                                <td>{item.romajiName}</td>
+                                <td>{item.gender}</td>
+                                <td>{item.currentLocation}</td>
+                                <td>{item.nationality}</td>
+                            </tr>
+                        )
+                    })
+                }
+                </tbody>
+            </Table>
+        );
+    };
+
     render() {
         return (
             <div className='main'>
-                <Table striped bordered hover size='sm' className='candidate-list-table'>
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>Current Location</th>
-                        <th>Nationality</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
+                {
+                    !this.state.candidateId &&
+                    this.candidateTable()
+                }
+                <div>
                     {
-                        this.state.data &&
-                        this.state.data.map((item, idx) => {
-                            return (
-                                <tr
-                                    key={idx}
-                                    className='single-row'
-                                    onClick={(e) => {
-                                        // console.log(`${this.state.base_url}/${item.id}`);
-                                        axios.get(`${this.state.base_url}/${item.id}`).then((res)=> {
-                                            this.props.callBackToParentElement(<CandidateDetails callBackToParentElement={this.props.callBackToParentElement} state={res.data.data}/>);
-                                        });
-                                    }}
-                                >
-                                    <td>{idx + 1}</td>
-                                    <td>{item.romajiName}</td>
-                                    <td>{item.gender}</td>
-                                    <td>{item.currentLocation}</td>
-                                    <td>{item.nationality}</td>
-                                </tr>
-                            )
-                        })
+                        this.state.candidateId &&
+                        <CandidateDetails id={this.state.candidateId} callBack={this.reloadCandidateTable}/>
                     }
-                    </tbody>
-                </Table>
+                </div>
             </div>
         )
     }

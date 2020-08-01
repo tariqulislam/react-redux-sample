@@ -1,149 +1,15 @@
-
 /*--------------------------------------------------------*/
 /*----Style below is for the second attempt to SideNav----*/
 /*--------------------------------------------------------*/
 
  /*On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-width: 750px) {
-    .admin-view-bottom {
-        flex-direction: column !important;
-    }
+@media screen and (max-width: 750px) {}
 
-    .column-left {
-        width: 100% !important;
-    }
-
-    #left {
-        /*min-width: 0 !important;*/
-    }
-
-    .column-right{
-        width: 100% !important;
-    }
+.item:hover {
+    background-color: #0cd1e8 !important;
 }
 
-.toggle-sidebar {
-    margin-left: 5%;
-    margin-top: 2%;
-}
-
-.admin-view {
-    height: 100%;
-    overflow: hidden;
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    /*background-color: #00b44e;*/
-
-}
-
-.admin-view-top {
-    display: flex;
-    flex-direction: row;
-}
-
-.admin-view-bottom {
-    display: flex;
-    flex-direction: row;
-}
-
-.column-left > div {
-    /*padding: 20px;*/
-    background-color: lightgray;
-    /*overflow-y: unset;*/
-}
-
-.left-item {
-    border-radius: 0!important;
-    background-color: darkgray !important;
-    border-color: gray !important;
-    /*margin-top: 1% !important;*/
-    margin-bottom: 1% !important;
-}
-
-.left-item > a {
-    text-decoration: none !important;
-}
-
-.column-left {
-    /*height: 100%;*/
-    display: flex;
-    flex-direction: column;
-    transition: 0.5s;
-
-    width: 0;
-    /*position: fixed;*/
-    /*z-index: 1;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*padding-top: 60px;*/
-
-}
-
-.column-right {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
-    transition: .5s;
-
-
-    /*background-color: #f3f3f3;*/
-    /*width: 85%;*/
-}
-
-#left {
-    flex-shrink: 0;
-    background-color: white;
-    min-width: 15%;
-}
-
-#right {
-    background-color: #f3f3f3;
-    width: 85%;
-}
-
-.content {
-    height: 100vh;
-    /*overflow-y: hidden;*/
-}
-
-.top-left {
-    flex-shrink: 0;
-    background-color: #333;
-    color: white;
-    /*padding: 20px;*/
-}
-
-.top-right {
-    display: inline-flex;
-    flex-shrink: 0;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-}
-
-.bottom {
-    flex-shrink: 0;
-    flex-grow: 1;
-    overflow-y: auto;
-    /*padding: 20px;*/
-}
-
-/*To hide the inner scroll bar of the component*/
-.main-content::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
-
-
-ul {
-    display: inline-flex;
-    list-style: none;
-    margin: 0;
-}
-
-li {
-    margin-right: 20px;
+.admin-dashboard-canvas {
+    /*background-color: floralwhite;*/
+    /*padding: 5%;*/
 }

@@ -22,6 +22,8 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 
+import CustomSidebar from './routes/custom-components/side-bar/CustomSidebar';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -29,19 +31,16 @@ class App extends Component {
             value: "en",
         };
     }
-
     onLanguageHandle = (event) => {
         this.setState({value: event});
         localStorage.setItem("language", event);
         this.props.i18n.changeLanguage(event);
     };
-
     componentDidMount() {
         let getLanguageVal = localStorage.getItem("language");
         this.setState({value: getLanguageVal});
         this.props.i18n.changeLanguage(getLanguageVal);
     }
-
 
     render() {
         const radios = [
@@ -154,6 +153,9 @@ class App extends Component {
                         <Route exact path="/candidate/new_one" component={NewCandidate}/>
                         <Route exact path="/candidate/details" component={CandidateDetails}/>
                         <Route exact path="/company/register" component={CompanyRegister}/>
+
+                        <Route exact path="/custom-side-bar" component={CustomSidebar}/>
+
                         <Route exact component={NotFound}/>
                     </Switch>
                 </div>

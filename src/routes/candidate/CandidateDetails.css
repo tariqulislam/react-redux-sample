@@ -1,14 +1,34 @@
 /*To hide the scrollbar while scrollability is available.*/
 
-/*.main {*/
-/*    overflow: scroll;*/
-/*}*/
+.candidate-details-main {
+    /*padding-left: 0 !important;*/
+    /*margin-left: 0 !important;*/
+    /*padding-right: 0 !important;*/
+    /*margin-right: 0 !important;*/
+}
 
-/*.main::-webkit-scrollbar {*/
-/*    width: 0px;*/
-/*    background: transparent;*/
-/*}*/
+.candidate-details-head > td {
+    width: 40px;
+}
 
-/*Courtesy: https://stackoverflow.com/a/43186214/5554993*/
-/*Hiding finished.*/
+.candidate-details-td {
+    width: 160px;
+}
 
+.go-back-to-candidate-list-button {
+    background-color: green !important;
+    cursor: pointer;
+}
+
+.go-back-to-candidate-list-button:hover {
+    background-color: dodgerblue !important;
+}
+
+.candidate-details-head {
+    background-color: #303030;
+    width: 160px;
+    color: white;
+    margin-right: 20px;
+    text-align: center;
+    padding: 5px 0px;
+}

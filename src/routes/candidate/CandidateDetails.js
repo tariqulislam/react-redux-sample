@@ -1,9 +1,10 @@
 import React from 'react';
 import {Button, Col, Container, Row, Table} from "react-bootstrap";
-
 import CandidateList from '../admin/candidate/component/candidateList';
+import axios from 'axios';
 
 import './CandidateDetails.css';
+import environment from "../../environment";
 
 class CandidateDetails extends React.Component {
 
@@ -13,73 +14,80 @@ class CandidateDetails extends React.Component {
     }
 
     componentDidMount() {
-        let attributeMap = {
-            id: 'ID',
-            candidateWorkExperiences: 'Work Experience',
-            desiredJobs: 'Desired Jobs',
-            languages: 'Languages',
-            isAcceptTermsAndCondition: 'Terms & Co.',
-            birthMonth: 'Birth Month',
-            birthYear: 'Birth Year',
-            birthday: 'Birth Date',
-            candidate: 'Candidate',
-            chronicDisease: 'Chronic Disease',
-            country: 'Country',
-            currentLocation: 'Currently at',
-            currentSituation: 'Current Situation',
-            currentSituationOption: 'Situation Option',
-            eyeSight: 'Eye Sight',
-            facebookUrl: 'Facebook URL',
-            footSize: 'Foot Size',
-            footSizeUnit: 'Foot Size Unit',
-            gender: 'Gender',
-            hearing: 'Hearing',
-            height: 'Height',
-            heightUnit: 'Height Unit',
-            japaneseLanguageSkill: 'Japanese Skill',
-            maritalStatus: 'Marital Status',
-            nationality: 'Nationality',
-            nickName: 'Nick Name',
-            phoneNumber: 'Phone',
-            religion: 'Religion',
-            retypedPassword: 'Error Code',
-            romajiName: 'Name',
-            selectedStatus: 'Selected Status',
-            specificSkill: 'Skills',
-            specificSkillOption: 'Skill Options',
-            status: 'Status',
-            weight: 'Weight',
-            weightUnit: 'Weight Unit',
-            name: 'Name',
-            username: 'Username',
-            roleName: 'Role Name',
-            email: 'E-mail'
-        };
+        let {id} = this.props;
+        let {base_url, api_path} = environment.candidate;
+        let controller_url = environment.candidate.controllers.service_name;
+        let url = `${base_url}/${api_path}/${controller_url}`;
 
-        let entries = Object.entries(this.props.state || this.props.location.state);
+        axios.get(`${url}/${id}`).then((response) => {
+            let attributeMap = {
+                id: 'ID',
+                candidateWorkExperiences: 'Work Experience',
+                desiredJobs: 'Desired Jobs',
+                languages: 'Languages',
+                isAcceptTermsAndCondition: 'Terms & Co.',
+                birthMonth: 'Birth Month',
+                birthYear: 'Birth Year',
+                birthday: 'Birth Date',
+                candidate: 'Candidate',
+                chronicDisease: 'Chronic Disease',
+                country: 'Country',
+                currentLocation: 'Currently at',
+                currentSituation: 'Current Situation',
+                currentSituationOption: 'Situation Option',
+                eyeSight: 'Eye Sight',
+                facebookUrl: 'Facebook URL',
+                footSize: 'Foot Size',
+                footSizeUnit: 'Foot Size Unit',
+                gender: 'Gender',
+                hearing: 'Hearing',
+                height: 'Height',
+                heightUnit: 'Height Unit',
+                japaneseLanguageSkill: 'Japanese Skill',
+                maritalStatus: 'Marital Status',
+                nationality: 'Nationality',
+                nickName: 'Nick Name',
+                phoneNumber: 'Phone',
+                religion: 'Religion',
+                retypedPassword: 'Error Code',
+                romajiName: 'Name',
+                selectedStatus: 'Selected Status',
+                specificSkill: 'Skills',
+                specificSkillOption: 'Skill Options',
+                status: 'Status',
+                weight: 'Weight',
+                weightUnit: 'Weight Unit',
+                name: 'Name',
+                username: 'Username',
+                roleName: 'Role Name',
+                email: 'E-mail'
+            };
 
-        let assest = [];
+            let entries = Object.entries(response.data.data);
 
-        entries.map(item => {
-            if (attributeMap[item[0]]) {
-                let key = item[0];
-                let value = item[1];
+            let assest = [];
 
-                if (key === 'birthMonth') {
-                    value = this.monthNumberToString[value]
-                } else if (key === 'status') {
-                    value = value === true ? 'True' : 'False'
-                } else if (key === 'isAcceptTermsAndCondition') {
-                    value = value === true ? 'Accepted' : 'Rejected'
+            entries.map(item => {
+                if (attributeMap[item[0]]) {
+                    let key = item[0];
+                    let value = item[1];
+
+                    if (key === 'birthMonth') {
+                        value = this.monthNumberToString[value]
+                    } else if (key === 'status') {
+                        value = value === true ? 'True' : 'False'
+                    } else if (key === 'isAcceptTermsAndCondition') {
+                        value = value === true ? 'Accepted' : 'Rejected'
+                    }
+                    assest.push({key, value});
                 }
-                assest.push({key, value});
-            }
-        });
+            });
 
-        this.setState({
-            entries: assest,
-            attributeMap
-        })
+            this.setState({
+                entries: assest,
+                attributeMap
+            })
+        });
     }
 
     monthNumberToString = {
@@ -89,7 +97,7 @@ class CandidateDetails extends React.Component {
 
     render() {
         return (
-            <Container className='main'>
+            <Container className='candidate-details-main'>
                 <Row>
                     <Col>
                         <Table>
@@ -97,13 +105,11 @@ class CandidateDetails extends React.Component {
                             <tr>
                                 {
                                     !this.state.fromRegistrationPage &&
-                                    <td>
+                                    <td className='candidate-details-td'>
                                         <div
-                                            className="campaign-head"
-                                            style={{backgroundColor: 'green', cursor: 'pointer'}}
+                                            className="candidate-details-head go-back-to-candidate-list-button"
                                             onClick={() => {
-                                                this.props.callBackToParentElement(<CandidateList
-                                                    callBackToParentElement={this.props.callBackToParentElement}/>);
+                                                this.props.callBack();
                                             }}
                                         >
                                             Go Back
@@ -127,7 +133,7 @@ class CandidateDetails extends React.Component {
                                             <tr key={idx}>
                                                 <td>
                                                     <div
-                                                        className="campaign-head">{this.state.attributeMap[key]}
+                                                        className="candidate-details-head">{this.state.attributeMap[key]}
                                                     </div>
                                                 </td>
                                                 <td>{value}</td>
@@ -141,7 +147,7 @@ class CandidateDetails extends React.Component {
                                             <tr key={idx}>
                                                 <td>
                                                     <div
-                                                        className="campaign-head">{this.state.attributeMap[key]}
+                                                        className="candidate-details-head">{this.state.attributeMap[key]}
                                                     </div>
                                                 </td>
                                                 <td>
@@ -164,36 +170,36 @@ class CandidateDetails extends React.Component {
 
 
                             {/*Code below are hidden*/}
-                            <tr style={{visibility: 'hidden'}}>
-                                <td>
-                                    <div className="campaign-head">Recruiter</div>
-                                </td>
-                                <td>Frank Recruitment Group PTE Ltd</td>
-                            </tr>
-                            <tr style={{visibility: 'hidden'}}>
-                                <td>
-                                    <div className="campaign-head">Job Description</div>
-                                </td>
-                                <td>
-                                    <p>
-                                        • Expert implementation of client RTSM applications to
-                                        enable client start-up targets
-                                    </p>
-                                    <p>
-                                        • Primary client engagement contact, responsible for the
-                                        health of the client relationship working with clinical
-                                        study teams to establish RTSM requirements and deliver
-                                        robust RTSM delivery and oversight for study operations.{" "}
-                                    </p>
-                                    <p>
-                                        • Work with product development and Quality Analysts to
-                                        ensure study level applications are designed, configured,
-                                        customized and tested to deliver a high quality, validated
-                                        system to clients.{" "}
-                                    </p>
-                                    <p>• Expert in the company's Prancer technology;</p>
-                                </td>
-                            </tr>
+                            {/*<tr style={{visibility: 'hidden'}}>*/}
+                            {/*    <td>*/}
+                            {/*        <div className="campaign-head">Recruiter</div>*/}
+                            {/*    </td>*/}
+                            {/*    <td>Frank Recruitment Group PTE Ltd</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr style={{visibility: 'hidden'}}>*/}
+                            {/*    <td>*/}
+                            {/*        <div className="campaign-head">Job Description</div>*/}
+                            {/*    </td>*/}
+                            {/*    <td>*/}
+                            {/*        <p>*/}
+                            {/*            • Expert implementation of client RTSM applications to*/}
+                            {/*            enable client start-up targets*/}
+                            {/*        </p>*/}
+                            {/*        <p>*/}
+                            {/*            • Primary client engagement contact, responsible for the*/}
+                            {/*            health of the client relationship working with clinical*/}
+                            {/*            study teams to establish RTSM requirements and deliver*/}
+                            {/*            robust RTSM delivery and oversight for study operations.{" "}*/}
+                            {/*        </p>*/}
+                            {/*        <p>*/}
+                            {/*            • Work with product development and Quality Analysts to*/}
+                            {/*            ensure study level applications are designed, configured,*/}
+                            {/*            customized and tested to deliver a high quality, validated*/}
+                            {/*            system to clients.{" "}*/}
+                            {/*        </p>*/}
+                            {/*        <p>• Expert in the company's Prancer technology;</p>*/}
+                            {/*    </td>*/}
+                            {/*</tr>*/}
                             </tbody>
                         </Table>
                     </Col>
