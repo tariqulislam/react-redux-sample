@@ -76,6 +76,20 @@ export default class Campaign extends React.Component {
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalRecruiter">
                     <Form.Label column sm={4}>
+                      Industry
+                    </Form.Label>
+                    <Col sm={8}>
+                    <Form.Control id="industry" name="industry" column sm={8} as="select">
+                        <option>-- SELECT --</option>
+                        <option value="itandsoft">IT/Software Engineer</option>
+                        <option value="gov">
+                         Governments Works
+                        </option>
+                      </Form.Control>
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
                       Working Hours
                     </Form.Label>
                     <Col sm={8}>
@@ -92,7 +106,7 @@ export default class Campaign extends React.Component {
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
                     <Form.Label  column sm={4}>
-                      English Availibility
+                      English Ability
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control name="note_for_candidate" id="note_for_candidate"   type="text" />
@@ -136,7 +150,7 @@ export default class Campaign extends React.Component {
 
                   <Form.Group as={Row} controlId="formHorizontalPositionLevel">
                     <Form.Label column sm={4}>
-                      Position Level
+                      Occupations
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control id="positionLevel" name="positionLevel" column sm={8} as="select">
@@ -185,7 +199,7 @@ export default class Campaign extends React.Component {
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalAreaName">
                     <Form.Label column sm={4}>
-                      Area Name
+                      Work Location
                     </Form.Label>
                     <Col sm={8}>
                       <select id="areaId" name="areaId" className="form-control" >
@@ -198,6 +212,8 @@ export default class Campaign extends React.Component {
                       </select>
                     </Col>
                   </Form.Group>
+
+            
 
                   <Form.Group as={Row}>
                     <Col sm={{ span: 8, offset: 4 }}>
@@ -214,6 +230,20 @@ export default class Campaign extends React.Component {
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control id="company" name="company" type="text" placeholder="Company" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      業界
+                    </Form.Label>
+                    <Col sm={8}>
+                    <Form.Control id="industry" name="industry" column sm={8} as="select">
+                        <option>-- SELECT --</option>
+                        <option value="itandsoft">IT/Software Engineer</option>
+                        <option value="gov">
+                         Governments Works
+                        </option>
+                      </Form.Control>
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalRecruiter">
@@ -276,12 +306,13 @@ export default class Campaign extends React.Component {
                     </Col>
                   </Form.Group>
 
-                  <Form.Group as={Row} controlId="formHorizontalPositionLevel">
+                  <Form.Group as={Row} controlId="occupations">
                     <Form.Label column sm={4}>
-                    職種
+                    
+                    職業
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="positionLevel" name="positionLevel" column sm={8} as="select">
+                      <Form.Control id="occupations" name="occupations" column sm={8} as="select">
                         <option>-- SELECT --</option>
                         <option value="EXECUTIVE">EXECUTIVE</option>
                         <option value="SENIOR_EXECUTIVE">
@@ -293,7 +324,7 @@ export default class Campaign extends React.Component {
 
                   <Form.Group as={Row} controlId="formHorizontalPositionSalary">
                     <Form.Label column sm={4}>
-                      Salary Range
+                      給料
                     </Form.Label>
                     <Col sm={4}>
                       <Form.Control id="startSalary" name="startSalary" type="number" placeholder="Start" />
@@ -307,15 +338,15 @@ export default class Campaign extends React.Component {
                     controlId="formHorizontalSpecialFeatures"
                   >
                     <Form.Label column sm={4}>
-                      Benefites
+                    従業員給付
                     </Form.Label>
                     <Col sm={8}>
-                    <Form.Control name="features" id="features" as="textarea" rows="3" />
+                    <Form.Control name="benefits" id="benefits" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalRecruiter">
                     <Form.Label column sm={4}>
-                      Contract Period
+                    契約期間
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control id="contract_period" name="contract_period" type="text" placeholder="contract preiod" />
@@ -325,7 +356,7 @@ export default class Campaign extends React.Component {
 
                   <Form.Group as={Row} controlId="formHorizontalAreaName">
                     <Form.Label column sm={4}>
-                      Area Name
+                    勤務地
                     </Form.Label>
                     <Col sm={8}>
                       <select id="areaId" name="areaId" className="form-control" >
@@ -382,7 +413,7 @@ export default class Campaign extends React.Component {
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
                     <Form.Label  column sm={4}>
-                      English Availibility
+                      English Ability
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control name="note_for_candidate" id="note_for_candidate"   type="text" />
@@ -391,10 +422,10 @@ export default class Campaign extends React.Component {
 
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
                     <Form.Label  column sm={4}>
-                      Explanation About Salary
+                      About Company
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control name="explanation_about_salary" id="explanation_about_salary" as="textarea" rows="3" />
+                      <Form.Control name="about_company" id="about_company" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">

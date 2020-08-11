@@ -89,10 +89,10 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Application Condition</div>
+                                    <div className="campaign-head">About Company</div>
                                 </td>
                                 <td>
-                                   8:30 ~ 17:30
+                                  Company Structure
                                 </td>
                             </tr>
                             <tr>
@@ -105,23 +105,10 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Explanation About Salary</div>
-                                </td>
-                                <td>
-                                Assumed annual income: 6.7 million yen to 8.7 million yen
-                        *For desired annual income, we will consult based on past work experience, number of years and skills
-
-                        Bonus:
-
-                        Commuting allowance (full payment) twice a year (June / December ) Complete social insurance, asset saving system, shareholding system, dormitory/company housing system, retirement allowance system (defined contribution pension), acceptance congratulatory system for qualified persons, etc.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     <div className="campaign-head">Holidays</div>
                                 </td>
                                 <td>
-                                   Native Level
+                                   Saturdays and Sundays, National Holiday
                                 </td>
                             </tr>
                             <tr>
@@ -134,7 +121,7 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Nots for Applicant</div>
+                                    <div className="campaign-head">Benefits</div>
                                 </td>
                                 <td>
                                 This job will be introduced and applied via Daijob AGENT.
@@ -146,6 +133,14 @@ Please apply after confirming the following steps.
 
 *Please note that we may not be able to introduce you to this job offer, even if you meet with a Daijob AGENT career consultant, depending on your work experience and desired conditions.
 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">Contract Period</div>
+                                </td>
+                                <td>
+                                    Depending on your work experience and desired conditions.
                                 </td>
                             </tr>
                         </Table>
