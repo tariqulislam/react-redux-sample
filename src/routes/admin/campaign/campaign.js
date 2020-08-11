@@ -11,10 +11,7 @@ export default class Campaign extends React.Component {
           {id: 3, name: "YOKOHAMA"},
           {id: 3, name: "SIATAMA"}
         ],
-        currency: [
-          {"text": "JP", "symbol": " ¥"},
-          {"text": "USD", "symbol": "$"}
-        ]
+        
 
       }
   }
@@ -30,7 +27,6 @@ export default class Campaign extends React.Component {
     /* get form value */
     let payload = {
       "areaId": data.get("areaId"),
-      "currency": data.get("currency"),
       "endSalary": data.get("endSalary"),
       "japaneseLevel": data.get("japaneseLevel"),
       "jobDescription": data.get("jobDescription"),
@@ -65,7 +61,7 @@ export default class Campaign extends React.Component {
             <h3>Campaign</h3>
           </Col>
         </Row>
-        <Row className="justify-content-md-center">
+        <Row style={{height: "2000px"}} className="justify-content-md-center">
           <Col md="8">
             <Tabs defaultActiveKey="english" id="uncontrolled-tab-example">
               <Tab eventKey="english" title="English">
@@ -78,13 +74,45 @@ export default class Campaign extends React.Component {
                       <Form.Control id="company" name="company" type="text" placeholder="Company" />
                     </Col>
                   </Form.Group>
-
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      Working Hours
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="working_hour" name="working_hour" type="text" placeholder="Working Hours" />
+                    </Col>
+                  </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
                     <Form.Label  column sm={4}>
                       Job Description
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control name="jobDescription" id="jobDescription" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      English Availibility
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="note_for_candidate" id="note_for_candidate"   type="text" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      About Company
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="explanation_about_salary" id="explanation_about_salary" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      Holidays
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="holidays" id="holidays" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
 
@@ -94,6 +122,15 @@ export default class Campaign extends React.Component {
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control id="japaneseLevel" name="japaneseLevel" type="text" placeholder="Japanese Level" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      Nearest Station
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="nearest_station" name="nearest_station" type="text" placeholder="Nearest Station" />
                     </Col>
                   </Form.Group>
 
@@ -114,7 +151,7 @@ export default class Campaign extends React.Component {
 
                   <Form.Group as={Row} controlId="formHorizontalPositionSalary">
                     <Form.Label column sm={4}>
-                      Salary
+                      Salary Range
                     </Form.Label>
                     <Col sm={4}>
                       <Form.Control id="startSalary" name="startSalary" type="number" placeholder="Start" />
@@ -128,33 +165,163 @@ export default class Campaign extends React.Component {
                     controlId="formHorizontalSpecialFeatures"
                   >
                     <Form.Label column sm={4}>
-                      Features
+                      Benefits
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="specialFeatures" name="specialFeatures" column sm={8} as="select">
-                        <option>-- SELECT --</option>
-                        <option value="INTERNATIONAL_TRANSFER">
-                          INTERNATIONAL TRANSFER
-                        </option>
-                      </Form.Control>
+                    <Form.Control name="benefits" id="benefits" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
-
-                  <Form.Group as={Row} id="currency" name="currency" controlId="formHorizontalCurrency">
+                  
+                  <Form.Group
+                    as={Row}
+                    controlId="formHorizontalSpecialFeatures"
+                  >
                     <Form.Label column sm={4}>
-                      Currency
+                      Contract Period
                     </Form.Label>
                     <Col sm={8}>
-                    <select name="currency" className="form-control">
+                    <Form.Control name="contract_period" id="contract_period" type="text" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalAreaName">
+                    <Form.Label column sm={4}>
+                      Area Name
+                    </Form.Label>
+                    <Col sm={8}>
+                      <select id="areaId" name="areaId" className="form-control" >
                         {
-                          this.state.currency.map((item, index) => {
-                            return <option value={item.text}>
-                                 {item.text}
+                          this.state.areas.map((item, index) => {
+                            return <option value={item.id}>
+                                 {item.name}
                           </option>})
                         }
                       </select>
                     </Col>
                   </Form.Group>
+
+                  <Form.Group as={Row}>
+                    <Col sm={{ span: 8, offset: 4 }}>
+                    <button>Save Data</button>
+                    </Col>
+                  </Form.Group>
+                </Form>
+              </Tab>
+              <Tab eventKey="japanese" title="日本語">
+              <Form onSubmit={this.onSubmitGetAllValue} style={formBlock}>
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      会社
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="company" name="company" type="text" placeholder="Company" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      労働時間
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="working_hour" name="working_hour" type="text" placeholder="Working Hours" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      仕事内容
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="jobDescription" id="jobDescription" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      英語能力
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="note_for_candidate" id="note_for_candidate"   type="text" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      会社について
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="about_company" id="about_company" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      休日
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="holidays" id="holidays" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row}  controlId="formHorizontalJapaneseLevel">
+                    <Form.Label column sm={4}>
+                      日本語能力
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="japaneseLevel" name="japaneseLevel" type="text" placeholder="Japanese Level" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      最寄り駅
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="nearest_station" name="nearest_station" type="text" placeholder="Nearest Station" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalPositionLevel">
+                    <Form.Label column sm={4}>
+                    職種
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="positionLevel" name="positionLevel" column sm={8} as="select">
+                        <option>-- SELECT --</option>
+                        <option value="EXECUTIVE">EXECUTIVE</option>
+                        <option value="SENIOR_EXECUTIVE">
+                        SENIOR_EXECUTIVE
+                        </option>
+                      </Form.Control>
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalPositionSalary">
+                    <Form.Label column sm={4}>
+                      Salary Range
+                    </Form.Label>
+                    <Col sm={4}>
+                      <Form.Control id="startSalary" name="startSalary" type="number" placeholder="Start" />
+                    </Col>
+                    <Col sm={4}>
+                      <Form.Control id="endSalary" name="endSalary" type="number" placeholder="End" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group
+                    as={Row}
+                    controlId="formHorizontalSpecialFeatures"
+                  >
+                    <Form.Label column sm={4}>
+                      Benefites
+                    </Form.Label>
+                    <Col sm={8}>
+                    <Form.Control name="features" id="features" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      Contract Period
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="contract_period" name="contract_period" type="text" placeholder="contract preiod" />
+                    </Col>
+                  </Form.Group>
+                  
 
                   <Form.Group as={Row} controlId="formHorizontalAreaName">
                     <Form.Label column sm={4}>
@@ -179,7 +346,155 @@ export default class Campaign extends React.Component {
                   </Form.Group>
                 </Form>
               </Tab>
-              <Tab eventKey="japanese" title="Japanese"></Tab>
+              <Tab eventKey="napali" title="napali">
+              <Form onSubmit={this.onSubmitGetAllValue} style={formBlock}>
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      Company
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="company" name="company" type="text" placeholder="Company" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      Working Hours
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="working_hour" name="working_hour" type="text" placeholder="Working Hours" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      Working Hours
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="working_hour" name="working_hour" type="text" placeholder="Working Hours" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      Job Description
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="jobDescription" id="jobDescription" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      English Availibility
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="note_for_candidate" id="note_for_candidate"   type="text" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      Explanation About Salary
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="explanation_about_salary" id="explanation_about_salary" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
+                    <Form.Label  column sm={4}>
+                      Holidays
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control name="holidays" id="holidays" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row}  controlId="formHorizontalJapaneseLevel">
+                    <Form.Label column sm={4}>
+                      Japanese Level
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="japaneseLevel" name="japaneseLevel" type="text" placeholder="Japanese Level" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      Nearest Station
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="nearest_station" name="nearest_station" type="text" placeholder="Nearest Station" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalPositionLevel">
+                    <Form.Label column sm={4}>
+                      Position Level
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="positionLevel" name="positionLevel" column sm={8} as="select">
+                        <option>-- SELECT --</option>
+                        <option value="EXECUTIVE">EXECUTIVE</option>
+                        <option value="SENIOR_EXECUTIVE">
+                        SENIOR_EXECUTIVE
+                        </option>
+                      </Form.Control>
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalPositionSalary">
+                    <Form.Label column sm={4}>
+                      Salary Range
+                    </Form.Label>
+                    <Col sm={4}>
+                      <Form.Control id="startSalary" name="startSalary" type="number" placeholder="Start" />
+                    </Col>
+                    <Col sm={4}>
+                      <Form.Control id="endSalary" name="endSalary" type="number" placeholder="End" />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group
+                    as={Row}
+                    controlId="formHorizontalSpecialFeatures"
+                  >
+                    <Form.Label column sm={4}>
+                      Benefites
+                    </Form.Label>
+                    <Col sm={8}>
+                    <Form.Control name="benefit" id="benefit" as="textarea" rows="3" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalRecruiter">
+                    <Form.Label column sm={4}>
+                      Company
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="company" name="company" type="text" placeholder="Company" />
+                    </Col>
+                  </Form.Group>
+                  
+
+                  <Form.Group as={Row} controlId="formHorizontalAreaName">
+                    <Form.Label column sm={4}>
+                      Area Name
+                    </Form.Label>
+                    <Col sm={8}>
+                      <select id="areaId" name="areaId" className="form-control" >
+                        {
+                          this.state.areas.map((item, index) => {
+                            return <option value={item.id}>
+                                 {item.name}
+                          </option>})
+                        }
+                      </select>
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row}>
+                    <Col sm={{ span: 8, offset: 4 }}>
+                    <button>Save Data</button>
+                    </Col>
+                  </Form.Group>
+                </Form>
+              </Tab>
             </Tabs>
           </Col>
         </Row>

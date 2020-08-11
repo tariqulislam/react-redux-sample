@@ -2,6 +2,7 @@ import React from 'react';
 import Table from "react-bootstrap/Table";
 import axios from "axios"
 import {useHistory} from "react-router-dom"
+import {Container, Row, Col, Button} from "react-bootstrap";
 class CampaignList extends React.Component {
     constructor(props) {
         super(props)
@@ -22,37 +23,119 @@ class CampaignList extends React.Component {
     render() {
         return (
             <div className='main'>
-            
+                <div className="container card p-3">
+                    <div className="row p-2 ml-2">
+                        <h3>Quick Search</h3>
+                    </div>
+                    <div className="row p-2">
+                            <div className="col-3">
+                               <select className="form-control">
+                                   <option>Japan</option>
+                               </select>
+                            </div>
+                            <div className="col-3">
+                            <select className="form-control">
+                                   <option>Japanese</option>
+                               </select>
+                            </div>
+                            <div className="col-3">
+                            <select className="form-control">
+                                   <option>Job Cateogry</option>
+                               </select>
+                            </div>
+                            <div className="col-3">
+                                <input placeholder="search" className="form-control" />
+                            </div>
+                    </div>
+                    <div className="row p-3">
+                        <div className="pull-right">
+                            <button className="btn btn-info">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="container">
+
                 {
                     this.state.campaigns &&
                     this.state.campaigns.map((item, idx) => {
                         return (
-                            <div style={{ background: "wheat", border: "1px solid"}} key={idx} class="media p-3 mb-2">
-                              <span style={{width:"60px", padding: "10px"}} >
-                              <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-newspaper" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M0 2A1.5 1.5 0 0 1 1.5.5h11A1.5 1.5 0 0 1 14 2v12a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 0 14V2zm1.5-.5A.5.5 0 0 0 1 2v12a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V2a.5.5 0 0 0-.5-.5h-11z"/>
-  <path fill-rule="evenodd" d="M15.5 3a.5.5 0 0 1 .5.5V14a1.5 1.5 0 0 1-1.5 1.5h-3v-1h3a.5.5 0 0 0 .5-.5V3.5a.5.5 0 0 1 .5-.5z"/>
-  <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
-</svg>
+                            <Container style={{border: "2px solid", marginTop: "1em", borderRadius: "5px"}}>
+                            <Row style={{paddingTop: "70px", paddingBottom: "20px"}}>
+                                <Col className="text-center">
+                                    <h1 className="campaign-title">Client Service Lead</h1>
+                                    <div className="campaign-title-underline"></div>
+                                    <p className="campaign-title-subtitle text-red">
+                                        <span className="btn-sky">{item.recruiter}</span>
+                                        Company is not publicly visible
+                                    </p>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Table>
+                                        <tr>
+                                            <td>
+                                                <span className="btn-orange">{item.positionLevel}</span>
+                                            </td>
+                                            <td>
+                              <span className="star-label">
+                                &#9733;&#9733;&#9733;&#9733;&#9733; {item.positionLevel}
                               </span>
-                             
-                               
-                        
-                            <div className="media-body">
-                                <h5 className="mt-0">{item.recruiter}</h5>
-                                <p>Position: {item.positionLevel}</p>
-                                <p>Japanese Level: {item.japaneseLevel}</p>
-                                <p>Salary Range: {item.startSalary} ~ {item.endSalary}</p>
-
-                            </div>
-                            <div><button className="btn btn-success" onClick={(e) => {
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div className="campaign-head">Company</div>
+                                            </td>
+                                            <td>{item.recruiter}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div className="campaign-head">Location</div>
+                                            </td>
+                                            <td>Tokyo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div className="campaign-head">Salary</div>
+                                            </td>
+                                         <td>Japanese yen JPY {item.startSalary} ~ {item.endSalary}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div className="campaign-head">Japanese Level</div>
+                                            </td>
+                                        <td>{item.japaneseLevel}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div className="campaign-head">Job Description</div>
+                                            </td>
+                                            <td>
+                                                {item.jobDescription}
+                                            </td>
+                                        </tr>
+                                    </Table>
+                                    <div style={{backgroundColor: "lightgray", paddingTop: "1em"}} className="text-center">
+                                        <p>
+                                            <Button variant="warning" className="btn-bottom" onClick={(e) => {
                                     this.props.history.push("/campaign/details", { campaign: item } );
                              
-                                }}>Details</button></div>
-                          </div>
+                                }}>
+                                                Details
+                                            </Button>
+                                          
+                                        </p>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Container>
                         )
                     })
                 }
+                </div>
+              
         </div>
         );
     }

@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link, Route} from 'react-router-dom'
 import {Button, Container, ListGroupItem, Navbar, Row} from 'react-bootstrap'
-
-import CampaignAdmin from '../campaign/Campaign';
 import CandidateList from '../admin/candidate/component/candidateList';
 import CampaignList from '../admin/campaign/CampaignList';
+
+import Register from '../company/register/Register';
 
 import './admin.css';
 import Alert from "react-bootstrap/Alert";
@@ -85,10 +85,11 @@ export class AdminDashboard extends React.Component {
                             {this.getLeftItem('Candidate List', <CandidateList
                                 callBackToParentElement={this.callBackToParentElement}/>)}
                             {this.getLeftItem('Campaign List', <CampaignList
-                                callBackToParentElement={this.callBackToParentElement}/>)}
+                               callBackToParentElement={this.callBackToParentElement}/>)}
                             {this.getLeftItem('Company List', <CompanyList
                                 callBackToParentElement={this.callBackToParentElement}/>)}
                             {this.getLeftItem('Campaign Create', <CampaignCreate callBackToParentElement={this.callBackToParentElement} /> )}    
+                            {this.getLeftItem('Create Company', <Register/>)}
                         </div>
                     </div>
                     <div id="right" className="column-right">
