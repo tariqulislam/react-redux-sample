@@ -1,15 +1,6 @@
-/*--------------------------------------------------------*/
-/*----Style below is for the second attempt to SideNav----*/
-/*--------------------------------------------------------*/
-
- /*On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+/*On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-width: 750px) {}
 
 .item:hover {
     background-color: #0cd1e8 !important;
-}
-
-.admin-dashboard-canvas {
-    /*background-color: floralwhite;*/
-    /*padding: 5%;*/
 }
