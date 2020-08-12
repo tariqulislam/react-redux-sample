@@ -4,8 +4,16 @@ import "./assets/campaign.scss";
 
 class Campaign extends Component {
     render() {
+        const {campaign} = this.props
+        console.log(campaign)
+        let newCampaign = {}
+        if (campaign) {
+            newCampaign = campaign
+        } else {
+            newCampaign = this.props.location.state.campaign
+        }
         return (
-            <Container>
+            <Container style={{border: "2px solid", marginTop: "1em", borderRadius: "5px"}}>
                 <Row style={{paddingTop: "70px", paddingBottom: "20px"}}>
                     <Col className="text-center">
                         <h1 className="campaign-title">Client Service Lead</h1>
@@ -19,72 +27,130 @@ class Campaign extends Component {
                 <Row>
                     <Col>
                         <Table>
-                            <tr>
+                        <tr>
                                 <td>
-                                    <span className="btn-orange">HIGH CLASS</span>
+                                    <span className="btn-orange">Company Name</span>
                                 </td>
                                 <td>
-                  <span className="star-label">
-                    &#9733;&#9733;&#9733;&#9733;&#9733; Manager Level
-                  </span>
+                                <span className="star-label">
+                                    &#9733;&#9733;&#9733;&#9733;&#9733; {newCampaign.recruiter}
+                                </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Recruiter</div>
+                                    <span className="btn-orange">Occupation Name</span>
                                 </td>
-                                <td>Frank Recruitment Group PTE Ltd</td>
+                                <td>
+                                    <span className="star-label">
+                                        &#9733;&#9733;&#9733;&#9733;&#9733; {newCampaign.positionLevel}
+                                    </span>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Location</div>
+                                    <div className="campaign-head">Industry</div>
                                 </td>
-                                <td>Asia Igkyg Shinjuku JPY</td>
+                                <td>IT/Software Engineering</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">Work Location</div>
+                                </td>
+                                <td>Tokyo</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div className="campaign-head">Salary</div>
                                 </td>
-                                <td>Japanese yen JPY 8000K - JPY 15000K</td>
+                             <td>Japanese yen JPY {newCampaign.startSalary} - JPY {newCampaign.endSalary}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div className="campaign-head">Japanese Level</div>
                                 </td>
-                                <td>Fluent(JLPT Level 1 or NI)</td>
+                            <td>{newCampaign.japaneseLevel}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div className="campaign-head">Job Description</div>
                                 </td>
                                 <td>
-                                    <p>
-                                        • Expert implementation of client RTSM applications to
-                                        enable client start-up targets
-                                    </p>
-                                    <p>
-                                        • Primary client engagement contact, responsible for the
-                                        health of the client relationship working with clinical
-                                        study teams to establish RTSM requirements and deliver
-                                        robust RTSM delivery and oversight for study operations.{" "}
-                                    </p>
-                                    <p>
-                                        • Work with product development and Quality Analysts to
-                                        ensure study level applications are designed, configured,
-                                        customized and tested to deliver a high quality, validated
-                                        system to clients.{" "}
-                                    </p>
-                                    <p>• Expert in the company's Prancer technology;</p>
+                                    {newCampaign.jobDescription}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">Working Hour</div>
+                                </td>
+                                <td>
+                                   8:30 ~ 17:30
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">About Company</div>
+                                </td>
+                                <td>
+                                  Company Structure
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">English Ability</div>
+                                </td>
+                                <td>
+                                   Native Level
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">Holidays</div>
+                                </td>
+                                <td>
+                                   Saturdays and Sundays, National Holiday
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">Nearest Station</div>
+                                </td>
+                                <td>
+                                   Azamino
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">Benefits</div>
+                                </td>
+                                <td>
+                                This job will be introduced and applied via Daijob AGENT.
+Please apply after confirming the following steps.
+
+1. Please apply from the "Apply for this job" button below.
+2. Daijob AGENT will contact you by phone or email.
+3. After having an interview with Daijob AGENT's career consultant, we will introduce the details of the job offer and apply for the company.
+
+*Please note that we may not be able to introduce you to this job offer, even if you meet with a Daijob AGENT career consultant, depending on your work experience and desired conditions.
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">Contract Period</div>
+                                </td>
+                                <td>
+                                    Depending on your work experience and desired conditions.
                                 </td>
                             </tr>
                         </Table>
-                        <div className="text-center">
+                        <div style={{backgroundColor: "lightgray", paddingTop: "1em"}} className="text-center">
                             <p>
                                 <Button variant="warning" className="btn-bottom">
-                                    Like
+                                    Save
                                 </Button>
                                 <Button variant="dark" className="btn-bottom">
-                                    View Full Listing
+                                    Apply
                                 </Button>
                             </p>
                         </div>
