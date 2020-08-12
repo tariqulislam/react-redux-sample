@@ -20,11 +20,13 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import Campaign from "./routes/campaign/CampaignList";
+import CampaignDetails from "./routes/campaign/Campaign";
+
+import AboutUs from './routes/about-us/AboutUs';
 
 import CustomSidebar from './routes/custom-components/side-bar/CustomSidebar';
 
-import Campaign from "./routes/campaign/CampaignList";
-import CampaignDetails from "./routes/campaign/Campaign"
 class App extends Component {
     constructor(props) {
         super(props);
@@ -44,6 +46,8 @@ class App extends Component {
     }
 
     render() {
+        const {t} = this.props;
+
         const radios = [
             {name: 'Active', value: '1'},
             {name: 'Radio', value: '2'},
@@ -54,16 +58,16 @@ class App extends Component {
                 <React.Fragment>
                     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                         <Navbar.Brand href="/">
-                            GHRN
+                            {t('nav-bar.GHRN')}
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
-                                <Nav.Link href="/campaign">Campaign</Nav.Link>
+                                <Nav.Link href="/campaign">{t('nav-bar.jobs')}</Nav.Link>
+                                <Nav.Link href="/about-us">{t('nav-bar.about-us')}</Nav.Link>
                             </Nav>
 
                             <Nav>
-
                                 <Navbar style={{backgroundColor: 'rgba(0,0,0,0)', padding: '0'}}>
                                     <Dropdown>
                                         <Dropdown.Toggle variant="primary" id="dropdown-basic">
@@ -129,7 +133,7 @@ class App extends Component {
 
                                 <Nav.Link href="/candidate/register">
                                     <Button>
-                                        Register
+                                        {t('nav-bar.register')}
                                     </Button>
                                 </Nav.Link>
                             </Nav>
@@ -157,6 +161,7 @@ class App extends Component {
                         <Route exact path="/company/register" component={CompanyRegister}/>
 
                         <Route exact path="/custom-side-bar" component={CustomSidebar}/>
+                        <Route exact path="/about-us" component={AboutUs}/>
 
                         <Route exact component={NotFound}/>
                     </Switch>
@@ -167,3 +172,6 @@ class App extends Component {
 }
 
 export default withTranslation()(App);
+
+
+
