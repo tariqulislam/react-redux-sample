@@ -17,7 +17,7 @@ class CandidateList extends React.Component {
        // let {base_url, api_path} = environment.candidate;
        // let controller_url = environment.candidate.controllers.service_name;
 
-        let url = "http://localhost:8082/api/candidates";
+        let url = "http://localhost:4000/api/candidates";
 
 
         axios.get(url).then((response) => {
