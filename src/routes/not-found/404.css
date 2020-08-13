@@ -1,0 +1,23 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+}
+
+.image {
+    max-width: 100%;
+}
+
+.messages {
+    max-width: 100%;
+}
+
+
+
+
+
+
+
+
+
