@@ -1,19 +1,54 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './AboutUs.css';
-import {Col, Container, Image, Row, Table} from "react-bootstrap";
+import {Button, Col, Container, Image, Row, Table} from "react-bootstrap";
 import {withTranslation} from "react-i18next";
 
+import {Carousel} from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+
 const AboutUs = (props) => {
+    const {t} = props;
 
     const image1 = require('./1.JPEG');
     const image2 = require('./2.JPEG');
     const image3 = require('./3.JPEG');
     const image4 = require('./4.JPEG');
 
-    const {t} = props;
+    const images = [
+        {
+            text: `${t("about-us.images-description.image1")}`,
+            src: image1
+        },
+        {
+            text: `${t("about-us.images-description.image2")}`,
+            src: image2
+        },
+        {
+            text: `${t("about-us.images-description.image3")}`,
+            src: image3
+        },
+        {
+            text: `${t("about-us.images-description.image4")}`,
+            src: image4
+        },
+    ];
+
+    const [imageList, setImageList] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    useEffect(() => {
+        setImageList(images);
+    }, []);
+
+    useEffect(() => {
+        setSelectedImage(imageList[imageList.length / 2]);
+    }, [imageList]);
+
 
     return (
         <Container>
+
             <Row>
                 <Col>
                     <Table>
@@ -47,6 +82,7 @@ const AboutUs = (props) => {
                                 <p>・ {t("about-us.company-business-content-value.paragraph2")}</p>
                                 <p>・ {t("about-us.company-business-content-value.paragraph3")}</p>
                                 <p>・ {t("about-us.company-business-content-value.paragraph4")}</p>
+                                <p>・ {t("about-us.company-business-content-value.paragraph5")}</p>
                             </td>
                         </tr>
 
@@ -81,24 +117,24 @@ const AboutUs = (props) => {
                 </Col>
             </Row>
 
-            <div className="slider-holder">
-                <span id="slider-image-1"></span>
-                <span id="slider-image-2"></span>
-                <span id="slider-image-3"></span>
-                <span id="slider-image-4"></span>
-                <div className="image-holder">
-                    <img src={image1} className="slider-image"/>
-                    <img src={image2} className="slider-image"/>
-                    <img src={image3} className="slider-image"/>
-                    <img src={image4} className="slider-image"/>
+            <Row style={{justifyContent: 'center'}}>
+                <div>
+                    <Carousel>
+                        {
+                            imageList.map((currentImage, key) =>
+                                <div>
+                                    <img
+                                        className="d-block w-100"
+                                        src={currentImage.src}
+                                        alt={currentImage.text}
+                                    />
+                                    <p className="legend">{t(`about-us.images-description.image${key + 1}`)}</p>
+                                </div>
+                            )
+                        }
+                    </Carousel>
                 </div>
-                <div className="button-holder">
-                    <a href="#slider-image-1" className="slider-change"></a>
-                    <a href="#slider-image-2" className="slider-change"></a>
-                    <a href="#slider-image-3" className="slider-change"></a>
-                    <a href="#slider-image-4" className="slider-change"></a>
-                </div>
-            </div>
+            </Row>
         </Container>
     );
 };

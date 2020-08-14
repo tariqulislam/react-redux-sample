@@ -363,6 +363,12 @@
             }
         },
         "about-us": {
+            "images-description": {
+                "image1": "There is also a smoking booth",
+                "image2": "There is a big table and TV",
+                "image3": "You can relax on the sofa",
+                "image4": "Water server also has a buddy"
+            },
             "company-name-key": "Company Name",
             "company-name-value": "Career Next Co., Ltd.",
             "company-business-content-key": "Business Content",

@@ -358,6 +358,12 @@
             }
         },
         "about-us": {
+            "images-description": {
+                "image1": "喫煙ブースもあります♪",
+                "image2": "大きなテーブル・テレビあります♪",
+                "image3": "ソファーでゆっくりくつろげます♪",
+                "image4": "ウォータサーバもバディスタあります♪"
+            },
             "company-name-key": "会社名",
             "company-name-value": "キャリアネクスト株式会社",
             "company-business-content-key": "事業内容",
@@ -367,7 +373,7 @@
                 "paragraph1": "人材派遣",
                 "paragraph2": "人材紹介",
                 "paragraph3": "請負",
-                "paragraph4": "登録支援機関 Support Organization",
+                "paragraph4": "登録支援機関",
                 "paragraph5": "求人サイト運営・管理"
             },
             "company-corporate-website-key": "企業WEBサイト",

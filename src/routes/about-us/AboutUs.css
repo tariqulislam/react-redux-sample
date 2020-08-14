@@ -1,15 +1,30 @@
+.carousel-root > .carousel-slider {
+    width: 50% !important;
+    align-self: center !important;
+}
+
+.carousel-root {
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+}
+
 .about-us-td {
     width: 160px;
 }
 
 .about-us-company-name {
     background-color: green !important;
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
-.about-us-company-name:hover {
-    background-color: dodgerblue !important;
-}
+/*.about-us-company-name:hover {*/
+/*    background-color: dodgerblue !important;*/
+/*}*/
 
 .about-us-head > td {
     width: 40px;
