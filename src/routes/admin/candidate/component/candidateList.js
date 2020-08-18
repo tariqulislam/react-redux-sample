@@ -4,6 +4,7 @@ import CandidateDetails from '../../../candidate/CandidateDetails';
 import environment from '../../../../environment.json';
 import axios from 'axios';
 import '../style/candidateList.css';
+import SideBar from "../../sidebar"
 
 class CandidateList extends React.Component {
 
@@ -39,7 +40,11 @@ class CandidateList extends React.Component {
 
     candidateTable = () => {
         return (
-            <Table striped bordered hover size='sm' className='candidate-list-table'>
+            <div class="d-flex" id="wrapper">
+                <SideBar />
+                <div style={{width: "85%"}} id="page-content-wrapper">
+                <div class="container-fluid">
+                <Table striped bordered hover size='sm' className='candidate-list-table'>
                 <thead>
                 <tr>
                     <th>#</th>
@@ -75,6 +80,11 @@ class CandidateList extends React.Component {
                 }
                 </tbody>
             </Table>
+        
+                </div>
+                </div>
+
+            </div>
         );
     };
 

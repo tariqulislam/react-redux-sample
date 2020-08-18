@@ -2,6 +2,7 @@ import React from 'react';
 import Table from "react-bootstrap/Table";
 import axios from "axios"
 import CampaignDetails from "../../../routes/campaign/Campaign"
+import SideBar from "../sidebar"
 class CampaignList extends React.Component {
     constructor(props) {
         super(props)
@@ -11,7 +12,7 @@ class CampaignList extends React.Component {
     }
 
     componentDidMount() {
-        let url = "http://localhost:4000/api/campaigns"
+        let url = "http://localhost:4000/api/campaigns?lang=en"
         axios.get(url).then(result => {
             debugger
             this.setState({campaigns: result.data.data})
@@ -21,8 +22,11 @@ class CampaignList extends React.Component {
 
     render() {
         return (
-            <div className='main'>
-            <Table striped bordered hover size='sm' className='candidate-list-table'>
+            <div class="d-flex" id="wrapper">
+                <SideBar />
+                <div style={{width: "85%"}} id="page-content-wrapper">
+                    <div class="container-fluid">
+                    <Table striped bordered hover size='sm' className='candidate-list-table'>
                 <thead>
                 <tr>
                     <th>#</th>
@@ -36,17 +40,16 @@ class CampaignList extends React.Component {
                 {
                     this.state.campaigns &&
                     this.state.campaigns.map((item, idx) => {
+                        debugger
                         return (
+                       
                             <tr
                                 key={idx}
                                 className='single-row'
-                                onClick={(e) => {
-                                        this.props.callBackToParentElement(<CampaignDetails campaign={item} />);
-                                }}
                             >
                                 <td>{item.id}</td>
                                 <td>{item.recruiter}</td>
-                                <td>{item.positionLevel}</td>
+                                <td>{item.positionLevel.name}</td>
                                 <td>{item.startSalary} ~ {item.endSalary}</td>
                                 <td>{item.japaneseLevel}</td>
                             </tr>
@@ -55,15 +58,16 @@ class CampaignList extends React.Component {
                 }
                 </tbody>
             </Table>
-        </div>
+                    </div>
+                </div>
+
+            </div>
+           
         );
     }
 }
 
-export {
-    CampaignList as default
-}
-
+export default CampaignList
 
 
 

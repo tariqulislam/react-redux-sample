@@ -43,7 +43,7 @@ class Campaign extends Component {
                                 </td>
                                 <td>
                                     <span className="star-label">
-                                        &#9733;&#9733;&#9733;&#9733;&#9733; {newCampaign.positionLevel}
+                                        &#9733;&#9733;&#9733;&#9733;&#9733; {newCampaign.positionLevel && newCampaign.positionLevel.name }
                                     </span>
                                 </td>
                             </tr>
@@ -51,13 +51,15 @@ class Campaign extends Component {
                                 <td>
                                     <div className="campaign-head">Industry</div>
                                 </td>
-                                <td>IT/Software Engineering</td>
+                                <td>{newCampaign.industry && newCampaign.industry.name}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div className="campaign-head">Work Location</div>
                                 </td>
-                                <td>Tokyo</td>
+                                <td>
+                                    {newCampaign.workLocation && newCampaign.workLocation.name}
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -70,6 +72,14 @@ class Campaign extends Component {
                                     <div className="campaign-head">Japanese Level</div>
                                 </td>
                             <td>{newCampaign.japaneseLevel}</td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="campaign-head">English Level</div>
+                                </td>
+                            <td>{newCampaign.englishLevel}</td>
+                            
                             </tr>
                             <tr>
                                 <td>
@@ -84,7 +94,7 @@ class Campaign extends Component {
                                     <div className="campaign-head">Working Hour</div>
                                 </td>
                                 <td>
-                                   8:30 ~ 17:30
+                                   {newCampaign.workingHours}
                                 </td>
                             </tr>
                             <tr>
@@ -92,15 +102,7 @@ class Campaign extends Component {
                                     <div className="campaign-head">About Company</div>
                                 </td>
                                 <td>
-                                  Company Structure
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="campaign-head">English Ability</div>
-                                </td>
-                                <td>
-                                   Native Level
+                                  {newCampaign.aboutCompany}
                                 </td>
                             </tr>
                             <tr>
@@ -108,7 +110,7 @@ class Campaign extends Component {
                                     <div className="campaign-head">Holidays</div>
                                 </td>
                                 <td>
-                                   Saturdays and Sundays, National Holiday
+                                   {newCampaign.holidays}
                                 </td>
                             </tr>
                             <tr>
@@ -116,7 +118,7 @@ class Campaign extends Component {
                                     <div className="campaign-head">Nearest Station</div>
                                 </td>
                                 <td>
-                                   Azamino
+                                   {newCampaign.nearestStation}
                                 </td>
                             </tr>
                             <tr>
@@ -124,14 +126,7 @@ class Campaign extends Component {
                                     <div className="campaign-head">Benefits</div>
                                 </td>
                                 <td>
-                                This job will be introduced and applied via Daijob AGENT.
-Please apply after confirming the following steps.
-
-1. Please apply from the "Apply for this job" button below.
-2. Daijob AGENT will contact you by phone or email.
-3. After having an interview with Daijob AGENT's career consultant, we will introduce the details of the job offer and apply for the company.
-
-*Please note that we may not be able to introduce you to this job offer, even if you meet with a Daijob AGENT career consultant, depending on your work experience and desired conditions.
+                                    {newCampaign.benefits}
 
                                 </td>
                             </tr>
@@ -140,11 +135,11 @@ Please apply after confirming the following steps.
                                     <div className="campaign-head">Contract Period</div>
                                 </td>
                                 <td>
-                                    Depending on your work experience and desired conditions.
+                                    {newCampaign.contractPeriod}
                                 </td>
                             </tr>
                         </Table>
-                        <div style={{backgroundColor: "lightgray", paddingTop: "1em"}} className="text-center">
+                        <div style={{backgroundColor: "lightgray", paddingTop: "1em", marginBottom:"100px"}} className="text-center">
                             <p>
                                 <Button variant="warning" className="btn-bottom">
                                     Save

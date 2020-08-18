@@ -4,37 +4,66 @@ import axios from "axios"
 export default class Campaign extends React.Component {
   constructor(props) {
       super(props)
-
       this.state = {
-        areas: [
-          {id: 2, name: "TOKYO"},
-          {id: 3, name: "YOKOHAMA"},
-          {id: 3, name: "SIATAMA"}
-        ],
-        
-
+        areas: [],
+        positionLevels: [],
+        industries: []
       }
   }
 
   componentDidMount() {
-     
+     /* load area */
+     let url = "http://localhost:4000/api/areas"
+        axios.get(url).then(result => {
+           
+            this.setState({areas: result.data.data})
+        })
+
+      let urlPosition = "http://localhost:4000/api/positionLevel"
+        axios.get(urlPosition).then(result => {
+          
+          this.setState({positionLevels: result.data.data})
+        })
+
+      let urlIndustry = "http://localhost:4000/api/industry?lang=en"
+
+      axios.get(urlIndustry).then(result => {
+        debugger
+        this.setState({industries: result.data})
+      })
+
   }
 
   onSubmitGetAllValue = (event) => {
+    debugger
       event.preventDefault()
       const data = new FormData(event.target)
       console.log(data.get("areaId"))
+
+
     /* get form value */
     let payload = {
-      "areaId": data.get("areaId"),
+      "workLocation": {
+          "id": data.get("areaId")
+      },
+      "industry": {
+          "id": data.get("industry")
+      },
+      "benefits": data.get("benefits"),
+      "contractPeriod": data.get("contract_period"),
+      "englishLevel": data.get("englishLevel"),
+      "nearestStation": data.get("nearest_station"),
+      "workingHours": data.get("working_hour"),
+      "aboutCompany": data.get("about_company"),
       "endSalary": data.get("endSalary"),
       "japaneseLevel": data.get("japaneseLevel"),
       "jobDescription": data.get("jobDescription"),
-      "lang":  "en",
-      "languageId": 1,
-      "positionLevel": data.get("positionLevel"),
+      "holidays": data.get("holiday"),
+      "lang":  data.get("lang"),
+      "positionLevel": {
+        "id": data.get("positionLevel")
+      },
       "recruiter": data.get("company"),
-      "specialFeatures": data.get("specialFeatures"),
       "startSalary": data.get("startSalary")
     }
     let url = "http://localhost:4000/api/campaigns"
@@ -44,6 +73,7 @@ export default class Campaign extends React.Component {
          // 'Authorization': localStorage.getItem('authToken')
       }
     }).then(result => {
+      debugger
         if(result.data) {
           window.location.replace("/admin/dashboard")
         }
@@ -71,6 +101,7 @@ export default class Campaign extends React.Component {
                       Company
                     </Form.Label>
                     <Col sm={8}>
+                      <input type="hidden" name="lang" id="lang" value="en" />
                       <Form.Control id="company" name="company" type="text" placeholder="Company" />
                     </Col>
                   </Form.Group>
@@ -80,11 +111,14 @@ export default class Campaign extends React.Component {
                     </Form.Label>
                     <Col sm={8}>
                     <Form.Control id="industry" name="industry" column sm={8} as="select">
-                        <option>-- SELECT --</option>
-                        <option value="itandsoft">IT/Software Engineer</option>
-                        <option value="gov">
-                         Governments Works
-                        </option>
+                        <option value="0">-- SELECT --</option>
+                        {
+                          this.state.industries &&
+                          this.state.industries.map((item, index) => {
+                            debugger
+                            return <option value={item.id}>{item.name}</option>
+                          })
+                        }
                       </Form.Control>
                     </Col>
                   </Form.Group>
@@ -104,21 +138,13 @@ export default class Campaign extends React.Component {
                       <Form.Control name="jobDescription" id="jobDescription" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
-                  <Form.Group as={Row} controlId="formHorizontalJobDescription">
-                    <Form.Label  column sm={4}>
-                      English Ability
-                    </Form.Label>
-                    <Col sm={8}>
-                      <Form.Control name="note_for_candidate" id="note_for_candidate"   type="text" />
-                    </Col>
-                  </Form.Group>
-
+                 
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
                     <Form.Label  column sm={4}>
                       About Company
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control name="explanation_about_salary" id="explanation_about_salary" as="textarea" rows="3" />
+                      <Form.Control name="about_company" id="about_company" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
@@ -126,7 +152,7 @@ export default class Campaign extends React.Component {
                       Holidays
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control name="holidays" id="holidays" as="textarea" rows="3" />
+                      <Form.Control name="holiday" id="holiday" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
 
@@ -136,6 +162,15 @@ export default class Campaign extends React.Component {
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control id="japaneseLevel" name="japaneseLevel" type="text" placeholder="Japanese Level" />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row}  controlId="formHorizontalJapaneseLevel">
+                    <Form.Label column sm={4}>
+                      English Level
+                    </Form.Label>
+                    <Col sm={8}>
+                      <Form.Control id="englishLevel" name="englishLevel" type="text" placeholder="Japanese Level" />
                     </Col>
                   </Form.Group>
 
@@ -154,11 +189,13 @@ export default class Campaign extends React.Component {
                     </Form.Label>
                     <Col sm={8}>
                       <Form.Control id="positionLevel" name="positionLevel" column sm={8} as="select">
-                        <option>-- SELECT --</option>
-                        <option value="EXECUTIVE">EXECUTIVE</option>
-                        <option value="SENIOR_EXECUTIVE">
-                        SENIOR_EXECUTIVE
-                        </option>
+                        <option value={0}>-- SELECT --</option>
+                        {
+                          this.state.positionLevels &&
+                          this.state.positionLevels.map((item, index) => {
+                          return <option value={item.id}>{item.name}</option>
+                          })
+                        }
                       </Form.Control>
                     </Col>
                   </Form.Group>
@@ -203,7 +240,9 @@ export default class Campaign extends React.Component {
                     </Form.Label>
                     <Col sm={8}>
                       <select id="areaId" name="areaId" className="form-control" >
+                      <option value={0}>-- SELECT --</option>
                         {
+                          this.state.areas &&
                           this.state.areas.map((item, index) => {
                             return <option value={item.id}>
                                  {item.name}
@@ -312,7 +351,7 @@ export default class Campaign extends React.Component {
                     職業
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="occupations" name="occupations" column sm={8} as="select">
+                      <Form.Control id="positionLevel" name="positionLevel" column sm={8} as="select">
                         <option>-- SELECT --</option>
                         <option value="EXECUTIVE">EXECUTIVE</option>
                         <option value="SENIOR_EXECUTIVE">

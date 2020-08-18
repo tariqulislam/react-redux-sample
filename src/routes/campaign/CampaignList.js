@@ -13,7 +13,7 @@ class CampaignList extends React.Component {
     }
 
     componentDidMount() {
-        let url = "http://localhost:4000/api/campaigns"
+        let url = "http://localhost:4000/api/campaigns?lang=en"
         axios.get(url).then(result => {
             this.setState({campaigns: result.data.data})
         })
@@ -76,11 +76,11 @@ class CampaignList extends React.Component {
                                     <Table>
                                         <tr>
                                             <td>
-                                                <span className="btn-orange">{item.positionLevel}</span>
+                                                <span className="btn-orange">{item.positionLevel && item.positionLevel.name}</span>
                                             </td>
                                             <td>
                               <span className="star-label">
-                                &#9733;&#9733;&#9733;&#9733;&#9733; {item.positionLevel}
+                                &#9733;&#9733;&#9733;&#9733;&#9733; {item.positionLevel && item.positionLevel.name}
                               </span>
                                             </td>
                                         </tr>

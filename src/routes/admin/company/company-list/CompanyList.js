@@ -1,9 +1,8 @@
 import React from 'react';
 import './CompanyList.css';
-import environment from '../../../environment';
 import axios from 'axios';
 import Table from "react-bootstrap/Table";
-import CandidateDetails from "../../candidate/CandidateDetails";
+import SideBar from "../../sidebar"
 
 class CompanyList extends React.Component {
 
@@ -49,7 +48,11 @@ class CompanyList extends React.Component {
 
     render() {
         return (
-            <div className='company-main'>
+            <div class="d-flex" id="wrapper">
+            <SideBar />
+            <div style={{width: "85%"}} id="page-content-wrapper">
+                <div class="container-fluid">
+  
                 <Table striped bordered hover size='sm' className='company-list-table'>
                     <thead>
                     <tr>
@@ -72,9 +75,6 @@ class CompanyList extends React.Component {
                                     onClick={(e) => {
                                         // console.log(`${this.state.base_url}/${item.id}`);
                                         axios.get(`${this.state.base_url}/${item.id}`).then((res) => {
-                                            this.props.callBackToParentElement(<CandidateDetails
-                                                callBackToParentElement={this.props.callBackToParentElement}
-                                                state={res.data.data}/>);
                                         });
                                     }}
                                 >
@@ -89,6 +89,8 @@ class CompanyList extends React.Component {
                     }
                     </tbody>
                 </Table>
+            </div>
+            </div>
             </div>
         );
     }

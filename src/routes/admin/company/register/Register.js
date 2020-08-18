@@ -1,10 +1,9 @@
 import React from "react";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {withTranslation, Trans} from 'react-i18next';
-import environment from '../../../environment';
 import axios from 'axios';
 
-import './CompanyRegister.css';
+import SideBar from "../../sidebar"
 
 export class Register extends React.Component {
 
@@ -56,7 +55,10 @@ export class Register extends React.Component {
     render() {
         const {t} = this.props
         return (
-            <Container className='main-container-company'>
+            <div class="d-flex" id="wrapper">
+            <SideBar />
+            <div style={{width: "85%"}} id="page-content-wrapper">
+            <div class="container-fluid">
                 <Row className="justify-content-md-center">
                     <Col md="8">
                         <Form style={{width: "100%", marginTop: '5%', marginBottom: '5%'}}>
@@ -221,58 +223,7 @@ export class Register extends React.Component {
                                 </Form.Label>
                             </Form.Group>
 
-                            {/* <Form.Group
-                className="form-main-container"
-                as={Row}
-                controlId="formHorizontalCountry"
-              >
-                <Form.Label column sm={3}>
-                  {t('registration.religion.title')}
-                </Form.Label>
-                <Col sm={9}>
-                    <select name="religion" className="form-control">
-                        <option>-- No Religion --</option>
-                        <option> Buddist </option>
-                        <opton> Cristen </opton>
-                        <option>Muslim</option>
-                        <option>Jdusim</option>
-                        <option>Others</option>
-                    </select>
-              
-                </Col>
-              </Form.Group>
-              <Form.Group
-                className="form-main-container"
-                as={Row}
-                controlId="formHorizontalCountry"
-              >
-                <Form.Label column sm={3}>
-                  {t('registration.sex.title')}
-                </Form.Label>
-                <Col sm={9}>
-                    <select name="religion" className="form-control">
-                        <option>--  Select One --</option>
-                        <option> Male </option>
-                        <option> Female </option>
-                        <option>Others</option>
-                    </select>
-              
-                </Col>
-              </Form.Group>
-              <Form.Group
-                className="form-main-container"
-                as={Row}
-                controlId="formHorizontalCountry"
-              >
-                <Form.Label column sm={3}>
-                  {t('registration.half_body_photo.title')}
-                </Form.Label>
-                <Col sm={9}>
-                   <input className="form-control" type="file" />
-              
-                </Col>
-              </Form.Group>
-              */}
+                          
                             <Form.Group
                                 className="form-main-container"
                                 as={Row}
@@ -292,7 +243,9 @@ export class Register extends React.Component {
 
                     </Col>
                 </Row>
-            </Container>
+            </div>
+            </div>
+            </div>
         );
     }
 }

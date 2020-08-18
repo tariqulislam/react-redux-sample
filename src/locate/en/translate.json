@@ -1,5 +1,73 @@
 {
     "translations": {
+        "campaign": {
+            "recruiter": {
+                "title": "Company",
+                "placeholder": "Please Enter company information"
+            },
+            "workLocation": {
+                "title": "Work Location",
+                "dropdown": {
+                    "option0": "please select one"
+                }
+            },
+            "positionLevel": {
+                "title": "Occupation",
+                "dropdown": {
+                    "option0": "please select one"
+                }
+            },
+            "startSalary": {
+                "title": "Start Salary",
+                "value": "please enter start salary"
+            },
+            "endSalary": {
+                "title": "End Salary",
+                "placeholder": "please enter end salary"
+            },
+            "japaneseLevel": {
+                "title": "Japanese Proficency",
+                "placeholder": "please enter the value"
+            },
+            "englishLevel": {
+                "title": "English Proficency",
+                "placeholder": "please enter the value"
+            },
+            "jobDescription": {
+                "title": "Job Description",
+                "placeholder": "please enter the job description"
+            },
+            "industry": {
+                "title": "Industry",
+                "dropdown": {
+                    "option0": "Select one industry"
+                }
+            },
+            "workingHours": {
+                "title": "Working Hour",
+                "placeholder": "Please enter vlaue"
+            },
+            "aboutCompany": {
+                "title": "About Company",
+                "placeholder": "please enter value"
+            },
+            "holidays": {
+                "title": "Holiday Info",
+                "placeholder": "Please enter holiday info"
+            },
+            "nearestStation": {
+                "title": "Nearest Station",
+                "placeholder": "Please enter nearest Station"
+            },
+            "benefits": {
+                "title": "Benefits",
+                "placeholder": "please enter benefits"
+            },
+            "contractPeriod": {
+                "title": "contract period",
+                "placeholder": "please enter contract period"
+            }
+        },
         "registration": {
             "registration_form": "Candidate Registration Form",
             "full_name": {
