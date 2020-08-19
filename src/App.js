@@ -17,6 +17,7 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import Campaign from "./routes/campaign/CampaignList";
 import CampaignDetails from "./routes/campaign/Campaign";
+import CampaignCreate from "./routes/admin/campaign/campaign";
 
 import AboutUs from './routes/about-us/AboutUs';
 
@@ -142,6 +143,7 @@ class App extends Component {
                         <Route exact path="/admin/campaign/list" component={CampaignList}/>
                         <Route exact path="/admin/company/list" component={CompanyList} />
                         <Route exact path="/admin/company/register" component={AdminCompanyRegister} />
+                        <Route exact path="/admin/campaign/create" component={CampaignCreate} />
 
                         <Route exact component={NotFound}/>
                     </Switch>

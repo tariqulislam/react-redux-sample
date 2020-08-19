@@ -1,13 +1,17 @@
 import React from "react";
 import { Container, Row, Col, Tabs, Tab, Form, Button } from "react-bootstrap";
 import axios from "axios"
+import SideBar from "../sidebar"
 export default class Campaign extends React.Component {
   constructor(props) {
       super(props)
       this.state = {
         areas: [],
         positionLevels: [],
-        industries: []
+        industries: [],
+        areasJP: [],
+        positionLevelsJP: [],
+        industriesJP: []
       }
   }
 
@@ -28,14 +32,31 @@ export default class Campaign extends React.Component {
       let urlIndustry = "http://localhost:4000/api/industry?lang=en"
 
       axios.get(urlIndustry).then(result => {
-        debugger
+        
         this.setState({industries: result.data})
+      })
+
+      /* load Japanese Area */
+      let urlJP = "http://localhost:4000/api/areas?lang=jp"
+      axios.get(urlJP).then(result => {
+          this.setState({areasJP: result.data.data})
+      })
+
+    let urlPositionJP = "http://localhost:4000/api/positionLevel?lang=jp"
+      axios.get(urlPositionJP).then(result => {
+        this.setState({positionLevelsJP: result.data.data})
+      })
+    
+      let urlIndustryJP = "http://localhost:4000/api/industry?lang=jp"
+
+      axios.get(urlIndustryJP).then(result => {
+        this.setState({industriesJP: result.data})
       })
 
   }
 
   onSubmitGetAllValue = (event) => {
-    debugger
+    
       event.preventDefault()
       const data = new FormData(event.target)
       console.log(data.get("areaId"))
@@ -73,19 +94,69 @@ export default class Campaign extends React.Component {
          // 'Authorization': localStorage.getItem('authToken')
       }
     }).then(result => {
-      debugger
+      
         if(result.data) {
           window.location.replace("/admin/dashboard")
         }
     });
   }
+
+  onSubmitGetAllValueJP = (event) => {
+      debugger
+      event.preventDefault()
+      const data = new FormData(event.target)
+      console.log(data.get("areaIdJP"))
+
+
+    /* get form value */
+    let payload = {
+      "workLocation": {
+          "id": data.get("areaIdJP")
+      },
+      "industry": {
+          "id": data.get("industryJP")
+      },
+      "benefits": data.get("benefitsJP"),
+      "contractPeriod": data.get("contract_periodJP"),
+      "englishLevel": data.get("englishLevelJP"),
+      "nearestStation": data.get("nearest_stationJP"),
+      "workingHours": data.get("working_hourJP"),
+      "aboutCompany": data.get("about_companyJP"),
+      "endSalary": data.get("endSalaryJP"),
+      "japaneseLevel": data.get("japaneseLevelJP"),
+      "jobDescription": data.get("jobDescriptionJP"),
+      "holidays": data.get("holidayJP"),
+      "lang":  data.get("langJP"),
+      "positionLevel": {
+        "id": data.get("positionLevelJP")
+      },
+      "recruiter": data.get("companyJP"),
+      "startSalary": data.get("startSalaryJP")
+    }
+    let url = "http://localhost:4000/api/campaigns"
+    axios.post(url, payload, {
+      headers: {
+          'Content-Type': 'application/json',
+         // 'Authorization': localStorage.getItem('authToken')
+      }
+    }).then(result => {
+      
+        if(result.data) {
+          window.location.replace("/admin/dashboard")
+        }
+    });
+  }
+
   render() {
     let formBlock = {
       paddingTop: "20px",
     };
 
     return (
-      <Container>
+      <div class="d-flex" id="wrapper">
+                <SideBar />
+        <div style={{width: "85%"}} id="page-content-wrapper">
+           <Container>
         <Row className="justify-content-md-center">
           <Col md="auto">
             <h3>Campaign</h3>
@@ -115,7 +186,7 @@ export default class Campaign extends React.Component {
                         {
                           this.state.industries &&
                           this.state.industries.map((item, index) => {
-                            debugger
+                            
                             return <option value={item.id}>{item.name}</option>
                           })
                         }
@@ -262,13 +333,14 @@ export default class Campaign extends React.Component {
                 </Form>
               </Tab>
               <Tab eventKey="japanese" title="日本語">
-              <Form onSubmit={this.onSubmitGetAllValue} style={formBlock}>
+              <Form onSubmit={this.onSubmitGetAllValueJP} style={formBlock}>
                   <Form.Group as={Row} controlId="formHorizontalRecruiter">
                     <Form.Label column sm={4}>
                       会社
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="company" name="company" type="text" placeholder="Company" />
+                      <input type="hidden" value="jp" name="jp_lang" id="jp_lang" />
+                      <Form.Control id="companyJP" name="companyJP" type="text" placeholder="会社" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalRecruiter">
@@ -276,12 +348,15 @@ export default class Campaign extends React.Component {
                       業界
                     </Form.Label>
                     <Col sm={8}>
-                    <Form.Control id="industry" name="industry" column sm={8} as="select">
-                        <option>-- SELECT --</option>
-                        <option value="itandsoft">IT/Software Engineer</option>
-                        <option value="gov">
-                         Governments Works
-                        </option>
+                    <Form.Control id="industryJP" name="industryJP" column sm={8} as="select">
+                        <option>-- 1つを選択してください --</option>
+                        {
+                          this.state.industriesJP &&
+                          this.state.industriesJP.map((item, index) => {
+                            
+                            return <option value={item.id}>{item.name}</option>
+                          })
+                        }
                       </Form.Control>
                     </Col>
                   </Form.Group>
@@ -290,7 +365,7 @@ export default class Campaign extends React.Component {
                       労働時間
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="working_hour" name="working_hour" type="text" placeholder="Working Hours" />
+                      <Form.Control id="working_hourJP" name="working_hourJP" type="text" placeholder="労働時間" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
@@ -298,7 +373,7 @@ export default class Campaign extends React.Component {
                       仕事内容
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control name="jobDescription" id="jobDescription" as="textarea" rows="3" />
+                      <Form.Control name="jobDescriptionJP" id="jobDescriptionJP" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
@@ -306,7 +381,7 @@ export default class Campaign extends React.Component {
                       英語能力
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control name="note_for_candidate" id="note_for_candidate"   type="text" />
+                      <Form.Control name="englishLevelJP" id="englishLevelJP"  placeholder="英語能力"  type="text" />
                     </Col>
                   </Form.Group>
 
@@ -315,7 +390,7 @@ export default class Campaign extends React.Component {
                       会社について
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control name="about_company" id="about_company" as="textarea" rows="3" />
+                      <Form.Control name="about_companyJP" id="about_companyJP" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalJobDescription">
@@ -323,7 +398,7 @@ export default class Campaign extends React.Component {
                       休日
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control name="holidays" id="holidays" as="textarea" rows="3" />
+                      <Form.Control name="holidaysJP" id="holidaysJP" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
 
@@ -332,7 +407,7 @@ export default class Campaign extends React.Component {
                       日本語能力
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="japaneseLevel" name="japaneseLevel" type="text" placeholder="Japanese Level" />
+                      <Form.Control id="japaneseLevelJP" name="japaneseLevelJP" type="text" placeholder="日本語能力" />
                     </Col>
                   </Form.Group>
 
@@ -341,7 +416,7 @@ export default class Campaign extends React.Component {
                       最寄り駅
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="nearest_station" name="nearest_station" type="text" placeholder="Nearest Station" />
+                      <Form.Control id="nearest_stationJP" name="nearest_stationJP" type="text" placeholder="最寄り駅" />
                     </Col>
                   </Form.Group>
 
@@ -351,12 +426,14 @@ export default class Campaign extends React.Component {
                     職業
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="positionLevel" name="positionLevel" column sm={8} as="select">
-                        <option>-- SELECT --</option>
-                        <option value="EXECUTIVE">EXECUTIVE</option>
-                        <option value="SENIOR_EXECUTIVE">
-                        SENIOR_EXECUTIVE
-                        </option>
+                      <Form.Control id="positionLevelJP" name="positionLevelJP" column sm={8} as="select">
+                        <option>--　1つ選択してください --</option>
+                        {
+                          this.state.positionLevelsJP &&
+                          this.state.positionLevelsJP.map((item, index) => {
+                          return <option value={item.id}>{item.name}</option>
+                          })
+                        }
                       </Form.Control>
                     </Col>
                   </Form.Group>
@@ -366,10 +443,10 @@ export default class Campaign extends React.Component {
                       給料
                     </Form.Label>
                     <Col sm={4}>
-                      <Form.Control id="startSalary" name="startSalary" type="number" placeholder="Start" />
+                      <Form.Control id="startSalaryJP" name="startSalaryJP" type="number" />
                     </Col>
                     <Col sm={4}>
-                      <Form.Control id="endSalary" name="endSalary" type="number" placeholder="End" />
+                      <Form.Control id="endSalaryJP" name="endSalaryJP" type="number" />
                     </Col>
                   </Form.Group>
                   <Form.Group
@@ -380,7 +457,7 @@ export default class Campaign extends React.Component {
                     従業員給付
                     </Form.Label>
                     <Col sm={8}>
-                    <Form.Control name="benefits" id="benefits" as="textarea" rows="3" />
+                    <Form.Control name="benefitsJP" id="benefitsJP" as="textarea" rows="3" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalRecruiter">
@@ -388,7 +465,7 @@ export default class Campaign extends React.Component {
                     契約期間
                     </Form.Label>
                     <Col sm={8}>
-                      <Form.Control id="contract_period" name="contract_period" type="text" placeholder="contract preiod" />
+                      <Form.Control id="contract_periodJP" name="contract_periodJP" type="text" placeholder="契約期間" />
                     </Col>
                   </Form.Group>
                   
@@ -398,9 +475,11 @@ export default class Campaign extends React.Component {
                     勤務地
                     </Form.Label>
                     <Col sm={8}>
-                      <select id="areaId" name="areaId" className="form-control" >
+                      <select id="areaIdJP" name="areaIdJP" className="form-control" >
+                      <option value={0}>-- １つ選択してください --</option>
                         {
-                          this.state.areas.map((item, index) => {
+                          this.state.areasJP &&
+                          this.state.areasJP.map((item, index) => {
                             return <option value={item.id}>
                                  {item.name}
                           </option>})
@@ -569,6 +648,8 @@ export default class Campaign extends React.Component {
           </Col>
         </Row>
       </Container>
+      </div>
+      </div>
     );
   }
 }
