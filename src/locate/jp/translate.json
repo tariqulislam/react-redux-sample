@@ -17,6 +17,9 @@
           "option0": "一つ選択してください"
         }
       },
+      "salary": {
+        "title": "給料"
+      },
       "startSalary": {
         "title": "給与を開始",
         "value": "値を入力してください"

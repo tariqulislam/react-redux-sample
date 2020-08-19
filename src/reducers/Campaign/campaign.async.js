@@ -1,13 +1,7 @@
 import axios from 'axios'
 
-export const saveCampaignInfo = async (formData) => {
-    let url = "/camoaign/save"
-    const saveAllCandidateInfo = await axios.post(url, formData, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authToken')
-        }
-    });
-
-    return saveAllCandidateInfo
+export const loadCampaingByLang = async (lang) => {
+    let url = `http://localhost:4000/api/campaigns?lang=${lang}`
+    const campaignByLang = axios.get(url)
+    return campaignByLang
 }

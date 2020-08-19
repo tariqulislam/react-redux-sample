@@ -5,6 +5,9 @@
                 "title": "Company",
                 "placeholder": "Please Enter company information"
             },
+            "salary": {
+                "title": "Salary"
+            },
             "workLocation": {
                 "title": "Work Location",
                 "dropdown": {

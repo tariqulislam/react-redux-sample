@@ -2,16 +2,15 @@ import React, {Component} from "react";
 import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
 import Home from "./routes/home/Home";
 import CandidateRegister from "./routes/candidate/register/Register";
-import CompanyRegister from "./routes/company/register/Register";
 import AdminLogin from "./routes/admin/login/Login";
 import "./assets/App.css";
-import {Navbar, Nav} from "react-bootstrap";
+import {Navbar, Nav, FormCheck} from "react-bootstrap";
 import CandidateLogin from "./routes/candidate/Login/Login";
 import AdminDashboard from "./routes/admin/dashboard";
 import {withTranslation} from "react-i18next";
 import CandidateDetails from './routes/candidate/CandidateDetails';
 
-import CanidateAdminPanel from "./routes/candidate_panel/AdminPanel";
+import CandidateDashboard from "./routes/candidate/dashboard";
 import NotFound from './routes/not-found/404';
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -25,8 +24,13 @@ import CandidateList from './routes/admin/candidate/component/candidateList';
 
 import AdminCompanyRegister from './routes/admin/company/register/Register';
 import CompanyList from "./routes/admin/company/company-list/CompanyList";
+import AdminCampaignDetails from "./routes/admin/campaign/campaigndetails";
 
 import CampaignList from "./routes/admin/campaign/CampaignList"
+
+import {connect} from "react-redux"
+import {onSelectedLanguage} from "./reducers/Home/home.reducer"
+import {loadCampaign} from "./reducers/Campaign/campain.reducer"
 
 class App extends Component {
     constructor(props) {
@@ -36,9 +40,14 @@ class App extends Component {
         };
     }
     onLanguageHandle = (event) => {
+    
         this.setState({value: event});
         localStorage.setItem("language", event);
+        this.props.onSelectedLanguage(event)
         this.props.i18n.changeLanguage(event);
+
+        /* load the campaign */
+        this.props.loadCampaignListByLang(event)
     };
     componentDidMount() {
         let getLanguageVal = localStorage.getItem("language");
@@ -79,7 +88,6 @@ class App extends Component {
                                             <Dropdown.Item
                                                 active={this.state.value === 'en'}
                                                 style={{color: 'black'}}
-                                                href="#/action-1"
                                                 onClick={() => {
                                                     this.setState({
                                                         value: 'en'
@@ -93,7 +101,6 @@ class App extends Component {
                                             <Dropdown.Item
                                                 active={this.state.value === 'jp'}
                                                 style={{color: 'black'}}
-                                                href="#/action-2"
                                                 onClick={() => {
                                                     this.setState({
                                                         value: 'jp'
@@ -132,7 +139,7 @@ class App extends Component {
                         <Route exact path="/campaign/details" component={CampaignDetails} />
                         <Route exact path="/candidate/login" component={CandidateLogin}/>
                         <Route exact path="/admin/dashboard" component={AdminDashboard}/>
-                        <Route exact path="/candidate/dashboard" component={CanidateAdminPanel}/>
+                        <Route exact path="/candidate/dashboard" component={CandidateDashboard}/>
                         <Route exact path="/candidate/register" component={CandidateRegister}/>
                         <Route exact path="/candidate/details" component={CandidateDetails}/>
 
@@ -142,6 +149,7 @@ class App extends Component {
                         <Route path="/admin/candidate/list" component={CandidateList}/>
                         <Route exact path="/admin/campaign/list" component={CampaignList}/>
                         <Route exact path="/admin/company/list" component={CompanyList} />
+                        <Route exact path="/admin/campaign/details/:id" component={AdminCampaignDetails} />
                         <Route exact path="/admin/company/register" component={AdminCompanyRegister} />
                         <Route exact path="/admin/campaign/create" component={CampaignCreate} />
 
@@ -153,7 +161,19 @@ class App extends Component {
     }
 }
 
-export default withTranslation()(App);
+const mapStateToProps = (state) => ({
+    selectedLanguage: state.home.selectedLanguage,
+});
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadCampaignListByLang: (lang) => dispatch(loadCampaign(lang)),
+        onSelectedLanguage: (lang) => dispatch(onSelectedLanguage(lang))
+    }
+}
+
+    
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(App));
 
 
 

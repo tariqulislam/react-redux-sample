@@ -53,19 +53,17 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    showInfo: state.home.showInfo,
+
 });
 
-const mapDispatchToProps = (dispatch) =>
-    bindActionCreators(
-        {
-            showParagraphInfo,
-            hideParagraphInfo,
-            getAllPostForFromApi,
-            goToAboutPage: () => push("/about-us"),
-        },
-        dispatch
-    );
+const mapDispatchToProps = dispatch => {
+    return {
+     
+        
+    }
+}
+
+    
 
 export default withTranslation()(
     connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -4,11 +4,8 @@ import {
     Link,
 } from "react-router-dom"
 
-import './admin.css';
 
 export class SideBar extends React.Component {
-   
-
     render() {
         return (
             <div style={{width: "15%", height: "70em"}} class="bg-light border-right" id="sidebar-wrapper">
@@ -25,4 +22,3 @@ export class SideBar extends React.Component {
 }
 
 export default SideBar
-

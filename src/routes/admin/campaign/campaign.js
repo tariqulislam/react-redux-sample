@@ -17,13 +17,13 @@ export default class Campaign extends React.Component {
 
   componentDidMount() {
      /* load area */
-     let url = "http://localhost:4000/api/areas"
+     let url = "http://localhost:4000/api/areas?lang=en"
         axios.get(url).then(result => {
            
             this.setState({areas: result.data.data})
         })
 
-      let urlPosition = "http://localhost:4000/api/positionLevel"
+      let urlPosition = "http://localhost:4000/api/positionLevel?lang=en"
         axios.get(urlPosition).then(result => {
           
           this.setState({positionLevels: result.data.data})
@@ -102,7 +102,6 @@ export default class Campaign extends React.Component {
   }
 
   onSubmitGetAllValueJP = (event) => {
-      debugger
       event.preventDefault()
       const data = new FormData(event.target)
       console.log(data.get("areaIdJP"))
@@ -125,7 +124,7 @@ export default class Campaign extends React.Component {
       "endSalary": data.get("endSalaryJP"),
       "japaneseLevel": data.get("japaneseLevelJP"),
       "jobDescription": data.get("jobDescriptionJP"),
-      "holidays": data.get("holidayJP"),
+      "holidays": data.get("holidaysJP"),
       "lang":  data.get("langJP"),
       "positionLevel": {
         "id": data.get("positionLevelJP")
@@ -339,7 +338,7 @@ export default class Campaign extends React.Component {
                       会社
                     </Form.Label>
                     <Col sm={8}>
-                      <input type="hidden" value="jp" name="jp_lang" id="jp_lang" />
+                      <input type="hidden" value="jp" name="langJP" id="langJP" />
                       <Form.Control id="companyJP" name="companyJP" type="text" placeholder="会社" />
                     </Col>
                   </Form.Group>

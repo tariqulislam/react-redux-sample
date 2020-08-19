@@ -1,8 +1,8 @@
 import React from 'react';
 import Table from "react-bootstrap/Table";
 import axios from "axios"
-import CampaignDetails from "../../../routes/campaign/Campaign"
 import SideBar from "../sidebar"
+import {withRouter} from "react-router-dom"
 class CampaignList extends React.Component {
     constructor(props) {
         super(props)
@@ -12,9 +12,8 @@ class CampaignList extends React.Component {
     }
 
     componentDidMount() {
-        let url = "http://localhost:4000/api/campaigns?lang=en"
+        let url = "http://localhost:4000/api/campaigns"
         axios.get(url).then(result => {
-            debugger
             this.setState({campaigns: result.data.data})
         })
     }
@@ -26,7 +25,7 @@ class CampaignList extends React.Component {
                 <SideBar />
                 <div style={{width: "85%"}} id="page-content-wrapper">
                     <div class="container-fluid">
-                    <Table striped bordered hover size='sm' className='candidate-list-table'>
+                <Table striped bordered hover size='sm' className='candidate-list-table'>
                 <thead>
                 <tr>
                     <th>#</th>
@@ -40,12 +39,15 @@ class CampaignList extends React.Component {
                 {
                     this.state.campaigns &&
                     this.state.campaigns.map((item, idx) => {
-                        debugger
                         return (
                        
                             <tr
                                 key={idx}
                                 className='single-row'
+                                onClick={(e) => {
+
+                                    this.props.history.push(`/admin/campaign/details/${item.id}`)
+                                }}
                             >
                                 <td>{item.id}</td>
                                 <td>{item.recruiter}</td>
@@ -67,7 +69,7 @@ class CampaignList extends React.Component {
     }
 }
 
-export default CampaignList
+export default withRouter(CampaignList)
 
 
 

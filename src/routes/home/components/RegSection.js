@@ -5,15 +5,6 @@ import { withTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export class RegSection extends React.Component {
-  //   candidateOnClick = () => {
-  //       debugger
-  //      this.props.history.push('/candidate/register')
-  //   }
-
-  //   companyOnClick = () => {
-  //       debugger
-  //       this.props.history.push('/company/register')
-  //   }
 
   render() {
     const { t } = this.props;

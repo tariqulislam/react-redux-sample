@@ -301,8 +301,6 @@ export class Register extends React.Component {
             "status": true,
             "fromRegistrationPage": true
         };
-
-        // debugger
         let validity = document.getElementsByClassName("registration-form");
         validity = validity[0].checkValidity();
 

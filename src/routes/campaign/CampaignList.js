@@ -1,26 +1,24 @@
 import React from 'react';
 import Table from "react-bootstrap/Table";
-import axios from "axios"
-import {useHistory} from "react-router-dom"
 import {Container, Row, Col, Button} from "react-bootstrap";
+import {withTranslation} from "react-i18next"
+import {connect} from 'react-redux'
+
+import {loadCampaign} from "../../reducers/Campaign/campain.reducer"
 class CampaignList extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            campaigns: [],
-            viewable: null,
-        }
     }
 
     componentDidMount() {
-        let url = "http://localhost:4000/api/campaigns?lang=en"
-        axios.get(url).then(result => {
-            this.setState({campaigns: result.data.data})
-        })
+        const {loadCampaignListByLang} = this.props
+        let language = localStorage.getItem("language")
+        loadCampaignListByLang(language)
     }
 
 
     render() {
+        const {t} = this.props
         return (
             <div className='main'>
                 <div className="container card p-3">
@@ -57,8 +55,8 @@ class CampaignList extends React.Component {
                 <div className="container">
 
                 {
-                    this.state.campaigns &&
-                    this.state.campaigns.map((item, idx) => {
+                    this.props.campaigns &&
+                    this.props.campaigns.map((item, idx) => {
                         return (
                             <Container style={{border: "2px solid", marginTop: "1em", borderRadius: "5px"}}>
                             <Row style={{paddingTop: "70px", paddingBottom: "20px"}}>
@@ -86,31 +84,31 @@ class CampaignList extends React.Component {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div className="campaign-head">Company</div>
+                        <div className="campaign-head">{t("campaign.recruiter.title")}</div>
                                             </td>
                                             <td>{item.recruiter}</td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div className="campaign-head">Location</div>
+                                                <div className="campaign-head">{t("campaign.workLocation.title")}</div>
                                             </td>
-                                            <td>Tokyo</td>
+                        <td>{item.workLocation.name}</td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div className="campaign-head">Salary</div>
+                                                <div className="campaign-head">{t("campaign.salary.title")}</div>
                                             </td>
-                                         <td>Japanese yen JPY {item.startSalary} ~ {item.endSalary}</td>
+                                         <td> {item.startSalary} ~ {item.endSalary}</td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div className="campaign-head">Japanese Level</div>
+                                                <div className="campaign-head">{t("campaign.japaneseLevel.title")}</div>
                                             </td>
                                         <td>{item.japaneseLevel}</td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div className="campaign-head">Job Description</div>
+                                                <div className="campaign-head">{t("campaign.jobDescription.title")}</div>
                                             </td>
                                             <td>
                                                 {item.jobDescription}
@@ -141,13 +139,18 @@ class CampaignList extends React.Component {
     }
 }
 
-export {
-    CampaignList as default
+
+
+const mapStateToProps = state => {
+    return {
+        campaigns: state.campaign.campaigns
+    }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        loadCampaignListByLang: (lang) => dispatch(loadCampaign(lang)),
+    }
+}
 
-
-
-
-
-
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(CampaignList))

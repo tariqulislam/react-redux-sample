@@ -1,46 +1,37 @@
-import {saveCampaignInfo} from './campaign.async'
+import {loadCampaingByLang} from './campaign.async'
 /** Action Type */
-export const SAVE_COFIRMATION = 'SAVE_COFIRMATION'
 
-/** Action Creator */
-export function saveConfirmation(payload) {
+export const LOAD_CAMPAING = 'LOAD_CAMPAING'
+
+
+export function loadCampaingByLanguageChange (payload) {
     return {
-        type: SAVE_COFIRMATION,
+        type:  LOAD_CAMPAING,
         payload
     }
 }
 
-export const saveCampaign = (formData) => {
-    debugger
-    const {name, details} = formData
-
+export const loadCampaign = (lang) => {
     return dispatch => {
-
-        let msg = 'save successfully'
-        dispatch(saveConfirmation(msg))
-        saveCampaignInfo(formData)
-            .then(res => {
-                debugger
-                let resMsg = res.successMsg
-                dispatch(saveConfirmation(resMsg))
+        loadCampaingByLang(lang)
+        .then(res => {
+            dispatch(loadCampaingByLanguageChange(res.data.data))
         })
     }
-
-} 
+}
 
 /** State */
 const initialState = {
     message: '',
     msgType: '',
-
+    campaigns: []
 }
 
 /** reducers */
 export default (state=initialState, action) => {
     switch(action.type) {
-        case SAVE_COFIRMATION:
-            debugger
-            return {...state, successMsg: action.payload}
+        case LOAD_CAMPAING:
+            return {...state, campaigns: action.payload}
         default:
             return state
     }

@@ -1,10 +1,17 @@
 import React, {Component} from "react";
 import {Container, Row, Col, Table, Button} from "react-bootstrap";
 import "./assets/campaign.scss";
+import {withTranslation} from "react-i18next"
 
 class Campaign extends Component {
+
+    componentDidMount() {
+
+    }
+
     render() {
-        const {campaign} = this.props
+
+        const {campaign, t} = this.props
         console.log(campaign)
         let newCampaign = {}
         if (campaign) {
@@ -29,7 +36,7 @@ class Campaign extends Component {
                         <Table>
                         <tr>
                                 <td>
-                                    <span className="btn-orange">Company Name</span>
+                                    <span className="btn-orange">{t("campaign.recruiter.title")}</span>
                                 </td>
                                 <td>
                                 <span className="star-label">
@@ -39,7 +46,7 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <span className="btn-orange">Occupation Name</span>
+                                    <span className="btn-orange">{t("campaign.positionLevel.title")}</span>
                                 </td>
                                 <td>
                                     <span className="star-label">
@@ -49,13 +56,13 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Industry</div>
+                                    <div className="campaign-head">{t("campaign.industry.title")}</div>
                                 </td>
                                 <td>{newCampaign.industry && newCampaign.industry.name}</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Work Location</div>
+        <div className="campaign-head">{t("campaign.workLocation.title")}</div>
                                 </td>
                                 <td>
                                     {newCampaign.workLocation && newCampaign.workLocation.name}
@@ -63,27 +70,27 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Salary</div>
+        <div className="campaign-head">{t("campaign.salary.title")}</div>
                                 </td>
                              <td>Japanese yen JPY {newCampaign.startSalary} - JPY {newCampaign.endSalary}</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Japanese Level</div>
+        <div className="campaign-head">{t("campaign.japaneseLevel.title")}</div>
                                 </td>
                             <td>{newCampaign.japaneseLevel}</td>
 
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">English Level</div>
+                                    <div className="campaign-head">{t("campaign.englishLevel.title")}</div>
                                 </td>
                             <td>{newCampaign.englishLevel}</td>
                             
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Job Description</div>
+        <div className="campaign-head">{t("campaign.japaneseLevel.title")}</div>
                                 </td>
                                 <td>
                                     {newCampaign.jobDescription}
@@ -91,7 +98,7 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Working Hour</div>
+        <div className="campaign-head">{t("campaign.workingHours.title")}</div>
                                 </td>
                                 <td>
                                    {newCampaign.workingHours}
@@ -99,7 +106,7 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">About Company</div>
+        <div className="campaign-head">{t("campaign.aboutCompany.title")}</div>
                                 </td>
                                 <td>
                                   {newCampaign.aboutCompany}
@@ -107,7 +114,7 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Holidays</div>
+                            <div className="campaign-head">{t("campaign.holidays.title")}</div>
                                 </td>
                                 <td>
                                    {newCampaign.holidays}
@@ -115,7 +122,7 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Nearest Station</div>
+                      <div className="campaign-head">{t("campaign.nearestStation.title")}</div>
                                 </td>
                                 <td>
                                    {newCampaign.nearestStation}
@@ -123,7 +130,7 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Benefits</div>
+                        <div className="campaign-head">{t("campaign.benefits.title")}</div>
                                 </td>
                                 <td>
                                     {newCampaign.benefits}
@@ -132,7 +139,7 @@ class Campaign extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="campaign-head">Contract Period</div>
+                                    <div className="campaign-head">{t("campaign.contractPeriod.title")}</div>
                                 </td>
                                 <td>
                                     {newCampaign.contractPeriod}
@@ -156,4 +163,4 @@ class Campaign extends Component {
     }
 }
 
-export default Campaign;
+export default withTranslation()(Campaign)
