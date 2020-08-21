@@ -15,17 +15,24 @@ class Campaign extends Component {
         let campaign = this.props.location.state.campaign
         /** check userinfo to canidate is */
         let getCandidate = JSON.parse(localStorage.getItem("user"))
-        let language = localStorage.getItem("language")
+        let language = localStorage.get("language")
         if(getCandidate) {
 
-            let postValue = {"campaign": { "id": campaign.id},
-                            "candidate": {"id": getCandidate.id},
-                            "lang": language,}
+            let postValue = {
+                            "campaign": {
+                                "id": campaign.id
+                            
+                            },
+                            "candidate": {
+                                "id": getCandidate.id
+                            },
+                            "lang": language,
+                        }
             /** get canidate id */
-            let url = "http://localhost:4000/api/campaigndetails"
+            let url = "/api/campaigndetails"
             axios.post(url, postValue, {headers: {'content-type': 'application/json' }
             }).then(res => {
-                    debugger
+
             })
             /* save into api call */
 
@@ -174,7 +181,7 @@ class Campaign extends Component {
                         <div style={{backgroundColor: "lightgray", paddingTop: "1em", marginBottom:"100px"}} className="text-center">
                             <p>
                                 <button  onClick={this.onApplyCampaignInfo} variant="dark" className="btn-bottom">
-                                    Apply
+                                    Confirm
                                 </button>
                             </p>
                         </div>

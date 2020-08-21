@@ -306,13 +306,7 @@ export class Register extends React.Component {
 
         if (validity === true) {
             e.preventDefault();
-            let callback = () => {
-                this.props.history.push({
-                    pathname: "/candidate/details",
-                    state: toBePostedCandidate
-                });
-            }
-            this.props.saveCandidateInfoForm(toBePostedCandidate, callback);
+            this.props.saveCandidateInfoForm(toBePostedCandidate);
         }
     }
 
@@ -1006,7 +1000,7 @@ const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => {
     return {
-        saveCandidateInfoForm: (formData, callback) => dispatch(saveCandidateInfoFromApi(formData, callback)),
+        saveCandidateInfoForm: (formData) => dispatch(saveCandidateInfoFromApi(formData)),
         // saveCandidateHalfBodyPhoto: (imageData) => dispatch(saveCandidateHalfBodyPhotoThroughAPI(imageData)),
         // saveCandidatePassport: (imageData) => dispatch(saveCandidatePassportThroughAPI(imageData))
     }

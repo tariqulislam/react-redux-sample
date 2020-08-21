@@ -25,6 +25,10 @@ import CandidateList from './routes/admin/candidate/component/candidateList';
 import AdminCompanyRegister from './routes/admin/company/register/Register';
 import CompanyList from "./routes/admin/company/company-list/CompanyList";
 import AdminCampaignDetails from "./routes/admin/campaign/campaigndetails";
+import AdminCampaignAppliedList from "./routes/admin/campaign/appliedcampaignlist";
+import AdminCampaignAppliedDetails from "./routes/admin/campaign/appliedcampaingdetails";
+
+import AdminCandidateDetails from "./routes/admin/candidate/component/candidate";
 
 import CampaignList from "./routes/admin/campaign/CampaignList"
 
@@ -141,17 +145,20 @@ class App extends Component {
                         <Route exact path="/admin/dashboard" component={AdminDashboard}/>
                         <Route exact path="/candidate/dashboard" component={CandidateDashboard}/>
                         <Route exact path="/candidate/register" component={CandidateRegister}/>
-                        <Route exact path="/candidate/details" component={CandidateDetails}/>
+                        <Route exact path="/candidate/details/:id" component={CandidateDetails}/>
 
                         <Route exact path="/about-us" component={AboutUs}/>
 
 
                         <Route path="/admin/candidate/list" component={CandidateList}/>
+                        <Route path="/admin/candidate/details/:id" component={AdminCandidateDetails}/>
                         <Route exact path="/admin/campaign/list" component={CampaignList}/>
                         <Route exact path="/admin/company/list" component={CompanyList} />
                         <Route exact path="/admin/campaign/details/:id" component={AdminCampaignDetails} />
                         <Route exact path="/admin/company/register" component={AdminCompanyRegister} />
                         <Route exact path="/admin/campaign/create" component={CampaignCreate} />
+                        <Route exact path="/admin/campaign/applied/list" component={AdminCampaignAppliedList} />
+                        <Route exact path="/admin/campaign/applied/details/:id" component={AdminCampaignAppliedDetails} />
 
                         <Route exact component={NotFound}/>
                     </Switch>

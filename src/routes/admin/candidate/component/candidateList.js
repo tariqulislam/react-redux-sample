@@ -1,11 +1,9 @@
 import React from 'react';
 import Table from "react-bootstrap/Table";
-import CandidateDetails from '../../../candidate/CandidateDetails';
-import environment from '../../../../environment.json';
 import axios from 'axios';
 import '../style/candidateList.css';
 import SideBar from "../../sidebar"
-
+import {withRouter} from "react-router-dom"
 class CandidateList extends React.Component {
 
     constructor(props) {
@@ -14,12 +12,7 @@ class CandidateList extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.props);
-       // let {base_url, api_path} = environment.candidate;
-       // let controller_url = environment.candidate.controllers.service_name;
-
         let url = "http://localhost:4000/api/candidates";
-
 
         axios.get(url).then((response) => {
             // alert(response);
@@ -32,19 +25,14 @@ class CandidateList extends React.Component {
         });
     }
 
-    reloadCandidateTable = () => {
-        this.setState({
-            candidateId: undefined
-        })
-    };
 
-    candidateTable = () => {
+    render() {
         return (
             <div class="d-flex" id="wrapper">
                 <SideBar />
                 <div style={{width: "85%"}} id="page-content-wrapper">
                 <div class="container-fluid">
-                <Table striped bordered hover size='sm' className='candidate-list-table'>
+                <Table striped bordered hover size='sm' className='candidate-list-table mt-3'>
                 <thead>
                 <tr>
                     <th>#</th>
@@ -64,12 +52,11 @@ class CandidateList extends React.Component {
                                 key={idx}
                                 className='single-row'
                                 onClick={(e) => {
-                                    this.setState({
-                                        candidateId: idx + 1,
-                                    });
+                                    debugger
+                                   this.props.history.push(`/admin/candidate/details/${item.id}`)
                                 }}
                             >
-                                <td>{idx + 1}</td>
+                                <td>{item.id}</td>
                                 <td>{item.romajiName}</td>
                                 <td>{item.gender}</td>
                                 <td>{item.currentLocation}</td>
@@ -86,27 +73,7 @@ class CandidateList extends React.Component {
 
             </div>
         );
-    };
-
-    render() {
-        return (
-            <div className='main'>
-                {
-                    !this.state.candidateId &&
-                    this.candidateTable()
-                }
-                <div>
-                    {
-                        this.state.candidateId &&
-                        <CandidateDetails id={this.state.candidateId} callBack={this.reloadCandidateTable}/>
-                    }
-                </div>
-            </div>
-        )
     }
 }
 
-
-export {
-    CandidateList as default
-}
+export default withRouter(CandidateList)

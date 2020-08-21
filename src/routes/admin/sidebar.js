@@ -17,6 +17,7 @@ export class SideBar extends React.Component {
                 <Link className="list-group-item list-group-item-action bg-light" to="/admin/campaign/list">Campaign List</Link>
                 <Link className="list-group-item list-group-item-action bg-light" to="/admin/campaign/create">Create Campaign</Link>
                 <Link className="list-group-item list-group-item-action bg-light" to="/admin/company/list">Company List</Link>
+                <Link className="list-group-item list-group-item-action bg-light" to="/admin/campaign/applied/list">Applied Campaign</Link>
                 <Link className="list-group-item list-group-item-action bg-light" to="/admin/company/register">Company Registration</Link>
             </div>
         </div>

@@ -4,7 +4,7 @@ import axios from "axios"
 import SideBar from "../sidebar"
 import {withRouter} from "react-router-dom"
 
-class CandidateDashboard extends React.Component {
+class AppliedCampaignList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -74,7 +74,7 @@ class CandidateDashboard extends React.Component {
     }
 }
 
-export default withRouter(CandidateDashboard)
+export default withRouter(AppliedCampaignList)
 
 
 

@@ -98,10 +98,10 @@
       "language_you_can_fully_understand": {
         "title": "あなたが完全に理解できる言語",
         "check": {
-          "option0": "日本人",
+          "option0": "日本語",
           "option1": "ベトナム人",
           "option2": "英語",
-          "option3": "その他"
+          "option3": "他の"
         }
       },
       "language_you_can_fully_understand_check": {

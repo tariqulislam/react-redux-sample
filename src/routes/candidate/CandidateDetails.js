@@ -1,10 +1,8 @@
 import React from 'react';
-import {Button, Col, Container, Row, Table} from "react-bootstrap";
-import CandidateList from '../admin/candidate/component/candidateList';
+import {Col, Container, Row, Table} from "react-bootstrap";
 import axios from 'axios';
-
+import {withRouter} from "react-router-dom"
 import './CandidateDetails.css';
-import environment from "../../environment";
 
 class CandidateDetails extends React.Component {
 
@@ -14,12 +12,11 @@ class CandidateDetails extends React.Component {
     }
 
     componentDidMount() {
-        let {id} = this.props;
-        let {base_url, api_path} = environment.candidate;
-        let controller_url = environment.candidate.controllers.service_name;
-        let url = `${base_url}/${api_path}/${controller_url}`;
+        const {match} = this.props
+        const id = match.params.id
+        let url = `http://localhost:4000/api/candidates/${id}`;
 
-        axios.get(`${url}/${id}`).then((response) => {
+        axios.get(url).then((response) => {
             let attributeMap = {
                 id: 'ID',
                 candidateWorkExperiences: 'Work Experience',
@@ -109,7 +106,7 @@ class CandidateDetails extends React.Component {
                                         <div
                                             className="candidate-details-head go-back-to-candidate-list-button"
                                             onClick={() => {
-                                                this.props.callBack();
+                                               // this.props.callBack();
                                             }}
                                         >
                                             Go Back
@@ -168,38 +165,6 @@ class CandidateDetails extends React.Component {
                                 })
                             }
 
-
-                            {/*Code below are hidden*/}
-                            {/*<tr style={{visibility: 'hidden'}}>*/}
-                            {/*    <td>*/}
-                            {/*        <div className="campaign-head">Recruiter</div>*/}
-                            {/*    </td>*/}
-                            {/*    <td>Frank Recruitment Group PTE Ltd</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr style={{visibility: 'hidden'}}>*/}
-                            {/*    <td>*/}
-                            {/*        <div className="campaign-head">Job Description</div>*/}
-                            {/*    </td>*/}
-                            {/*    <td>*/}
-                            {/*        <p>*/}
-                            {/*            • Expert implementation of client RTSM applications to*/}
-                            {/*            enable client start-up targets*/}
-                            {/*        </p>*/}
-                            {/*        <p>*/}
-                            {/*            • Primary client engagement contact, responsible for the*/}
-                            {/*            health of the client relationship working with clinical*/}
-                            {/*            study teams to establish RTSM requirements and deliver*/}
-                            {/*            robust RTSM delivery and oversight for study operations.{" "}*/}
-                            {/*        </p>*/}
-                            {/*        <p>*/}
-                            {/*            • Work with product development and Quality Analysts to*/}
-                            {/*            ensure study level applications are designed, configured,*/}
-                            {/*            customized and tested to deliver a high quality, validated*/}
-                            {/*            system to clients.{" "}*/}
-                            {/*        </p>*/}
-                            {/*        <p>• Expert in the company's Prancer technology;</p>*/}
-                            {/*    </td>*/}
-                            {/*</tr>*/}
                             </tbody>
                         </Table>
                     </Col>
@@ -209,13 +174,4 @@ class CandidateDetails extends React.Component {
     }
 };
 
-export {
-    CandidateDetails as default
-}
-
-
-
-
-
-
-
+export default withRouter(CandidateDetails)

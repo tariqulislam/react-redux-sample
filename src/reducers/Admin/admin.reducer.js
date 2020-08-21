@@ -25,9 +25,14 @@ const attemptLogin = (data, callback) => {
         login(data).then(res => {
             let token = localStorage.setItem('token', res.data.accessToken);
             let role = localStorage.setItem('role', JSON.stringify('admin'));
+            
+            const parsetoken = parseJwt(res.data.accessToken)
 
-            console.log(token)
-            console.log(role)
+            const adminUser = parsetoken.user
+
+            const adminRole = adminUser.authorities[0].authority
+            localStorage.setItem("admin_role", adminRole)
+            localStorage.setItem("admin_user", JSON.stringify(adminUser))
 
             // console.log('Executing Callback')
             callback({ decodedToken: {...parseJwt(res.data.accessToken), role: 'admin'}, status: true, message: 'Login Success!' });
