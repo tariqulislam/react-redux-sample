@@ -17,7 +17,7 @@ class AppliedCampaingDetails extends Component {
         const {match} = this.props
         const id = match.params.id
         
-        let url = `http://localhost:4000/api/campaigndetails/${id}`
+        let url = `http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigndetails/${id}`
         axios.get(url).then(result => {
             this.setState({newCampaign: result.data.data})
         })
@@ -43,7 +43,7 @@ class AppliedCampaingDetails extends Component {
                             "lang": language,
                             "approved": true}
             /** get canidate id */
-            let url = `http://localhost:4000/api/campaigndetails/${campaign.id}`
+            let url = `hhttp://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigndetails/${campaign.id}`
             axios.post(url, postValue, {headers: {'content-type': 'application/json' }
             }).then(res => {
                   if(res.status === 201) {

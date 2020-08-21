@@ -16,7 +16,7 @@ class Campaign extends Component {
         const {match} = this.props
         const id = match.params.id
         
-        let url = `http://localhost:4000/api/campaigns/${id}`
+        let url = `http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigns/${id}`
         axios.get(url).then(result => {
             this.setState({newCampaign: result.data.data})
         })

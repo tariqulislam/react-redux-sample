@@ -12,7 +12,7 @@ class CampaignList extends React.Component {
     }
 
     componentDidMount() {
-        let url = "http://localhost:4000/api/campaigns"
+        let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigns"
         axios.get(url).then(result => {
             this.setState({campaigns: result.data.data})
         })

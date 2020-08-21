@@ -28,7 +28,7 @@ export class CandidateLogin extends React.Component {
         const data = new FormData(event.target)
         console.log(data.get("email"))
 
-        let url = "http://localhost:4000/api/auth/signin";
+        let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/auth/signin";
 
         const credential = {
             password: data.get("password"),

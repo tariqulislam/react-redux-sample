@@ -22,7 +22,7 @@ class Campaign extends Component {
                             "candidate": {"id": getCandidate.id},
                             "lang": language,}
             /** get canidate id */
-            let url = "http://localhost:4000/api/campaigndetails"
+            let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigndetails"
             axios.post(url, postValue, {headers: {'content-type': 'application/json' }
             }).then(res => {
                     debugger

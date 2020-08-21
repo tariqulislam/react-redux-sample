@@ -22,7 +22,7 @@ export class Register extends React.Component {
     registerCompany = () => {
         console.log(this.state);
 
-        let URL = 'http://localhost:4000/api/companies/registration';
+        let URL = 'http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/companies/registration';
         let company = {
             name: this.state.companyName,
             username: this.state.companyEmail,
