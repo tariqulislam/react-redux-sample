@@ -4,6 +4,7 @@ import {withRouter} from "react-router-dom"
 
 import './CandidateLogin.css';
 import axios from "axios"
+import environment from "../../../environment.json"
 
 const parseJwt = (token) => {
     var base64Url = token.split('.')[1];
@@ -28,7 +29,7 @@ export class CandidateLogin extends React.Component {
         const data = new FormData(event.target)
         console.log(data.get("email"))
 
-        let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/auth/signin";
+        let url = `http://${environment.api_url}/api/auth/signin`;
 
         const credential = {
             password: data.get("password"),

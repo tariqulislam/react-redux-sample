@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import axios from "axios"
 import SideBar from "../sidebar"
 import {withRouter} from "react-router-dom"
+import environment from "../../../environment.json"
 class CampaignList extends React.Component {
     constructor(props) {
         super(props)
@@ -12,7 +13,7 @@ class CampaignList extends React.Component {
     }
 
     componentDidMount() {
-        let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigns"
+        let url = `http://${environment.api_url}/api/campaigns`
         axios.get(url).then(result => {
             this.setState({campaigns: result.data.data})
         })

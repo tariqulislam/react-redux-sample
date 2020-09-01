@@ -1,7 +1,7 @@
 import axios from 'axios';
-
+import environment from "../../environment.json"
 const login = async (credential) => {
-    let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/auth/signin";
+    let url = `http://${environment.api_url}/api/auth/signin`;
 
     return await axios.post(url, credential, {
         headers: {

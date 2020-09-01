@@ -4,6 +4,8 @@ import axios from 'axios';
 import {withRouter} from "react-router-dom"
 import './CandidateDetails.css';
 
+import environment from "../../environment.json"
+
 class CandidateDetails extends React.Component {
 
     constructor(props) {
@@ -14,7 +16,7 @@ class CandidateDetails extends React.Component {
     componentDidMount() {
         const {match} = this.props
         const id = match.params.id
-        let url = `http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/candidates/${id}`;
+        let url = `http://${environment.api_url}/api/candidates/${id}`;
 
         axios.get(url).then((response) => {
             let attributeMap = {
