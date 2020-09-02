@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 
-export class CandidateLogin extends React.Component {
+export class CompanyLogin extends React.Component {
 
     render() {
         return (
@@ -40,4 +40,4 @@ export class CandidateLogin extends React.Component {
     }
 }
 
-export default CandidateLogin;
+export default CompanyLogin;

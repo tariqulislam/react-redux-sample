@@ -4,7 +4,6 @@ import {withTranslation, Trans} from 'react-i18next';
 import axios from 'axios';
 
 import SideBar from "../../sidebar"
-import environment from "../../../../environment.json"
 
 export class Register extends React.Component {
 

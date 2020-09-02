@@ -4,9 +4,9 @@ import {
     Link,
 } from "react-router-dom"
 
-import './admin.css';
+import './company.css';
 
-export class SideBar extends React.Component {
+export class CompanySidebar extends React.Component {
    
 
     render() {
@@ -25,5 +25,5 @@ export class SideBar extends React.Component {
     }
 }
 
-export default SideBar
+export default CompanySidebar
 

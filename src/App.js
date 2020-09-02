@@ -22,7 +22,7 @@ import AboutUs from './routes/about-us/AboutUs';
 
 import CandidateList from './routes/admin/candidate/component/candidateList';
 
-import AdminCompanyRegister from './routes/admin/company/register/Register';
+import AdminCompanyRegister from './routes/company/register/Register';
 import CompanyList from "./routes/admin/company/company-list/CompanyList";
 import AdminCampaignDetails from "./routes/admin/campaign/campaigndetails";
 import AdminCampaignAppliedList from "./routes/admin/campaign/appliedcampaignlist";
@@ -35,6 +35,8 @@ import CampaignList from "./routes/admin/campaign/CampaignList"
 import {connect} from "react-redux"
 import {onSelectedLanguage} from "./reducers/Home/home.reducer"
 import {loadCampaign} from "./reducers/Campaign/campain.reducer"
+import {CompanySidebar} from "./routes/company/CompanySidebar";
+import {CompanyLogin} from "./routes/company/Login/Login";
 
 class App extends Component {
     constructor(props) {
@@ -43,8 +45,9 @@ class App extends Component {
             value: "en",
         };
     }
+
     onLanguageHandle = (event) => {
-    
+
         this.setState({value: event});
         localStorage.setItem("language", event);
         this.props.onSelectedLanguage(event)
@@ -53,6 +56,7 @@ class App extends Component {
         /* load the campaign */
         this.props.loadCampaignListByLang(event)
     };
+
     componentDidMount() {
         let getLanguageVal = localStorage.getItem("language");
         this.setState({value: getLanguageVal});
@@ -119,7 +123,7 @@ class App extends Component {
                                     </Dropdown>
                                 </Navbar>
 
-                              
+
                                 <Nav.Link href="/candidate/register">
                                     <Button>
                                         {t('nav-bar.register')}
@@ -139,8 +143,8 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/admin/login" component={AdminLogin}/>
-                        <Route exact path="/campaign" component={Campaign} />
-                        <Route exact path="/campaign/details" component={CampaignDetails} />
+                        <Route exact path="/campaign" component={Campaign}/>
+                        <Route exact path="/campaign/details" component={CampaignDetails}/>
                         <Route exact path="/candidate/login" component={CandidateLogin}/>
                         <Route exact path="/admin/dashboard" component={AdminDashboard}/>
                         <Route exact path="/candidate/dashboard" component={CandidateDashboard}/>
@@ -153,12 +157,15 @@ class App extends Component {
                         <Route path="/admin/candidate/list" component={CandidateList}/>
                         <Route path="/admin/candidate/details/:id" component={AdminCandidateDetails}/>
                         <Route exact path="/admin/campaign/list" component={CampaignList}/>
-                        <Route exact path="/admin/company/list" component={CompanyList} />
-                        <Route exact path="/admin/campaign/details/:id" component={AdminCampaignDetails} />
-                        <Route exact path="/admin/company/register" component={AdminCompanyRegister} />
-                        <Route exact path="/admin/campaign/create" component={CampaignCreate} />
-                        <Route exact path="/admin/campaign/applied/list" component={AdminCampaignAppliedList} />
-                        <Route exact path="/admin/campaign/applied/details/:id" component={AdminCampaignAppliedDetails} />
+                        <Route exact path="/admin/company/list" component={CompanyList}/>
+                        <Route exact path="/admin/campaign/details/:id" component={AdminCampaignDetails}/>
+                        <Route exact path="/company/register" component={AdminCompanyRegister}/>
+                        <Route exact path="/company/dashboard" component={CompanySidebar}/>
+                        <Route exact path="/company/login" component={CompanyLogin}/>
+                        <Route exact path="/admin/campaign/create" component={CampaignCreate}/>
+                        <Route exact path="/admin/campaign/applied/list" component={AdminCampaignAppliedList}/>
+                        <Route exact path="/admin/campaign/applied/details/:id"
+                               component={AdminCampaignAppliedDetails}/>
 
                         <Route exact component={NotFound}/>
                     </Switch>
@@ -179,7 +186,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-    
+
 export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(App));
 
 
