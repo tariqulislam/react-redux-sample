@@ -1,31 +1,6 @@
 {
-    "candidate": {
-        "protocol": "http",
-        "host": "localhost",
-        "port": "8082",
-        "api_path": "api",
-        "base_url": "http://localhost:8082",
-        "controllers": {
-            "service_name": "candidates",
-            "base_url": "http://localhost:8082",
-            "api": {
-                "all_candidate": "/"
-            }
-        }
-    },
-    "company": {
-        "protocol": "http",
-        "host": "localhost",
-        "port": "40000",
-        "api_path": "api",
-        "base_url": "http://localhost:8082",
-        "controllers": {
-            "service_name": "companies",
-            "base_url": "http://localhost:8082",
-            "api": {
-                "register_company": "registration"
-            }
-        }
-    }
+  "api_url":  "localhost:4000",
+  "dev_api_url": "ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000"
+
 }
 

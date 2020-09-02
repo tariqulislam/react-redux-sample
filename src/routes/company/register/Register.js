@@ -3,7 +3,7 @@ import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {withTranslation, Trans} from 'react-i18next';
 import axios from 'axios';
 
-import SideBar from "../../admin/sidebar"
+import SideBar from "../../sidebar"
 
 export class Register extends React.Component {
 
@@ -22,7 +22,7 @@ export class Register extends React.Component {
     registerCompany = () => {
         console.log(this.state);
 
-        let URL = 'http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/companies/registration';
+        let URL = `http://${environment.api_url}/api/companies/registration`;
         let company = {
             name: this.state.companyName,
             username: this.state.companyEmail,

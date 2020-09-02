@@ -1,22 +1,23 @@
-# Docker Image which is used as foundation to create
-# a custom Docker Image with this Dockerfile
-FROM node:10
- 
-# A directory within the virtualized Docker environment
-# Becomes more relevant when using Docker Compose later
-WORKDIR /usr/src/app
- 
-# Copies package.json and package-lock.json to Docker environment
-COPY package*.json ./
- 
-# Installs all node packages
-RUN npm install
- 
-# Copies everything over to Docker environment
+FROM node:10-alpine as builder
+
+# install and cache app dependencies
+COPY package.json package-lock.json ./
+RUN npm install && mkdir /react-frontend && mv ./node_modules ./react-frontend
+
+WORKDIR /react-frontend
+
 COPY . .
- 
-# Uses port which is used by the actual application
-EXPOSE 3000
- 
-# Finally runs the application∂
-CMD [ "npm", "start" ]
+
+RUN npm run build
+
+
+
+# ------------------------------------------------------
+# Production Build
+# ------------------------------------------------------
+FROM nginx:1.16.0-alpine
+COPY --from=builder /react-frontend/build /usr/share/nginx/html
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
