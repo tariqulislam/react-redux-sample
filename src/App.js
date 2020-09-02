@@ -22,7 +22,7 @@ import AboutUs from './routes/about-us/AboutUs';
 
 import CandidateList from './routes/admin/candidate/component/candidateList';
 
-import AdminCompanyRegister from './routes/admin/company/register/Register';
+import AdminCompanyRegister from './routes/company/register/Register';
 import CompanyList from "./routes/admin/company/company-list/CompanyList";
 import AdminCampaignDetails from "./routes/admin/campaign/campaigndetails";
 import AdminCampaignAppliedList from "./routes/admin/campaign/appliedcampaignlist";
@@ -155,7 +155,7 @@ class App extends Component {
                         <Route exact path="/admin/campaign/list" component={CampaignList}/>
                         <Route exact path="/admin/company/list" component={CompanyList} />
                         <Route exact path="/admin/campaign/details/:id" component={AdminCampaignDetails} />
-                        <Route exact path="/admin/company/register" component={AdminCompanyRegister} />
+                        <Route exact path="/company/register" component={AdminCompanyRegister} />
                         <Route exact path="/admin/campaign/create" component={CampaignCreate} />
                         <Route exact path="/admin/campaign/applied/list" component={AdminCampaignAppliedList} />
                         <Route exact path="/admin/campaign/applied/details/:id" component={AdminCampaignAppliedDetails} />

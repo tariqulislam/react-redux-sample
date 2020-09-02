@@ -3,7 +3,7 @@ import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {withTranslation, Trans} from 'react-i18next';
 import axios from 'axios';
 
-import SideBar from "../../sidebar"
+import SideBar from "../../admin/sidebar"
 
 export class Register extends React.Component {
 
