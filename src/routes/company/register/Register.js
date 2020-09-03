@@ -56,7 +56,6 @@ export class Register extends React.Component {
         const {t} = this.props
         return (
             <div class="d-flex" id="wrapper">
-            <SideBar />
             <div style={{width: "85%"}} id="page-content-wrapper">
             <div class="container-fluid">
                 <Row className="justify-content-md-center">
