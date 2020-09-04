@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../style/candidateList.css';
 import SideBar from "../../sidebar"
 import {withRouter} from "react-router-dom"
+import environment from "../../../../environment.json"
 class CandidateList extends React.Component {
 
     constructor(props) {
@@ -12,7 +13,7 @@ class CandidateList extends React.Component {
     }
 
     componentDidMount() {
-        let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/candidates";
+        let url = `http://${environment.api_url}/api/candidates`;
 
         axios.get(url).then((response) => {
             // alert(response);

@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col, Tabs, Tab, Form, Button } from "react-bootstrap";
 import axios from "axios"
 import SideBar from "../sidebar"
+import environment from "../../../environment.json"
 export default class Campaign extends React.Component {
   constructor(props) {
       super(props)
@@ -17,19 +18,19 @@ export default class Campaign extends React.Component {
 
   componentDidMount() {
      /* load area */
-     let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/areas?lang=en"
+     let url = `http://${environment.api_url}/api/areas?lang=en`
         axios.get(url).then(result => {
            
             this.setState({areas: result.data.data})
         })
 
-      let urlPosition = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/positionLevel?lang=en"
+      let urlPosition = `http://${environment.api_url}/api/positionLevel?lang=en`
         axios.get(urlPosition).then(result => {
           
           this.setState({positionLevels: result.data.data})
         })
 
-      let urlIndustry = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/industry?lang=en"
+      let urlIndustry = `http://${environment.api_url}/api/industry?lang=en`
 
       axios.get(urlIndustry).then(result => {
         
@@ -37,17 +38,17 @@ export default class Campaign extends React.Component {
       })
 
       /* load Japanese Area */
-      let urlJP = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/areas?lang=jp"
+      let urlJP = `http://${environment.api_url}/api/areas?lang=jp`
       axios.get(urlJP).then(result => {
           this.setState({areasJP: result.data.data})
       })
 
-    let urlPositionJP = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/positionLevel?lang=jp"
+    let urlPositionJP = `http://${environment.api_url}/api/positionLevel?lang=jp`
       axios.get(urlPositionJP).then(result => {
         this.setState({positionLevelsJP: result.data.data})
       })
     
-      let urlIndustryJP = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/industry?lang=jp"
+      let urlIndustryJP = `http://${environment.api_url}/api/industry?lang=jp`
 
       axios.get(urlIndustryJP).then(result => {
         this.setState({industriesJP: result.data})
@@ -87,7 +88,7 @@ export default class Campaign extends React.Component {
       "recruiter": data.get("company"),
       "startSalary": data.get("startSalary")
     }
-    let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigns"
+    let url = `http://${environment.api_url}/api/campaigns`
     axios.post(url, payload, {
       headers: {
           'Content-Type': 'application/json',
@@ -132,7 +133,7 @@ export default class Campaign extends React.Component {
       "recruiter": data.get("companyJP"),
       "startSalary": data.get("startSalaryJP")
     }
-    let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigns"
+    let url = `http://${environment.api_url}/api/campaigns`
     axios.post(url, payload, {
       headers: {
           'Content-Type': 'application/json',

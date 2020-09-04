@@ -1,8 +1,8 @@
 import axios from 'axios'
-
+import environment from "../../environment.json"
 export const saveCandidateInfo = async (formData) => {
 
-    let url = "http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/candidates/registration";
+    let url = `http://${environment.api_url}/api/candidates/registration`;
     const saveAllCandidateInfo = await axios.post(url, formData, {
         headers: {
             'Content-Type': 'application/json'

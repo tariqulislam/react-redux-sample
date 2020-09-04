@@ -5,6 +5,7 @@ import {withRouter} from "react-router-dom"
 import axios from "axios"
 import SideBar from "../sidebar"
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import environment from "../../../environment.json"
 class AppliedCampaingDetails extends Component {
     constructor(props) {
         super(props)
@@ -17,7 +18,7 @@ class AppliedCampaingDetails extends Component {
         const {match} = this.props
         const id = match.params.id
         
-        let url = `http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigndetails/${id}`
+        let url = `http://${environment.api_url}/api/campaigndetails/${id}`
         axios.get(url).then(result => {
             this.setState({newCampaign: result.data.data})
         })
@@ -43,7 +44,7 @@ class AppliedCampaingDetails extends Component {
                             "lang": language,
                             "approved": true}
             /** get canidate id */
-            let url = `hhttp://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/campaigndetails/${campaign.id}`
+            let url = `hhttp://${environment.api_url}/api/campaigndetails/${campaign.id}`
             axios.post(url, postValue, {headers: {'content-type': 'application/json' }
             }).then(res => {
                   if(res.status === 201) {

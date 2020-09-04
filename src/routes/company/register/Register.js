@@ -3,16 +3,9 @@ import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {withTranslation, Trans} from 'react-i18next';
 import axios from 'axios';
 
-import SideBar from "../../admin/sidebar"
+import environment from "../../../environment.json"
 
 export class Register extends React.Component {
-
-    companyNameRef = React.createRef();
-    companyCodeRef = React.createRef();
-    companyContactRef = React.createRef();
-    companyEmailRef = React.createRef();
-    companyClassificationRef = React.createRef();
-    companyTermsAndConditions = React.createRef();
 
     constructor(props) {
         super(props);
@@ -22,7 +15,7 @@ export class Register extends React.Component {
     registerCompany = () => {
         console.log(this.state);
 
-        let URL = 'http://ec2-18-224-16-47.us-east-2.compute.amazonaws.com:4000/api/companies/registration';
+        let URL = `http://${environment.api_url}/api/companies/registration`;
         let company = {
             name: this.state.companyName,
             username: this.state.companyEmail,
@@ -35,22 +28,7 @@ export class Register extends React.Component {
 
     };
 
-    /**
-     * Answer from: https://stackoverflow.com/a/57763036/5554993
-     *
-     * The following two methods send socket server a signal that user has stopped typing.
-     *
-     * @param {*} callback
-     * @param {*} wait
-     */
-    debounce = (callback, wait) => {
-        let timeout;
-        return (...args) => {
-            const context = this;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => callback.apply(context, args), wait);
-        };
-    };
+
 
     render() {
         const {t} = this.props
@@ -81,14 +59,8 @@ export class Register extends React.Component {
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <Form.Control
-                                        ref={this.companyNameRef} type="text"
-                                        onChange={
-                                            this.debounce((e) => {
-                                                this.setState({
-                                                    companyName: this.companyNameRef.current.value
-                                                });
-                                            }, 250)
-                                        }
+                                        name="companyName"
+                                        
                                     />
                                 </Form.Label>
                             </Form.Group>
@@ -103,14 +75,8 @@ export class Register extends React.Component {
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <Form.Control
-                                        ref={this.companyCodeRef} type="text"
-                                        onChange={
-                                            this.debounce((e) => {
-                                                this.setState({
-                                                    companyCode: this.companyCodeRef.current.value
-                                                });
-                                            }, 250)
-                                        }
+                                         type="text"
+                                         name="companyCode"
                                     />
                                 </Form.Label>
                             </Form.Group>
@@ -125,14 +91,8 @@ export class Register extends React.Component {
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <Form.Control
-                                        ref={this.companyContactRef} type="text"
-                                        onChange={
-                                            this.debounce((e) => {
-                                                this.setState({
-                                                    companyContact: this.companyContactRef.current.value
-                                                });
-                                            }, 250)
-                                        }
+                                        name="companyContact"
+                                       
                                     />
                                 </Form.Label>
                             </Form.Group>
@@ -147,14 +107,38 @@ export class Register extends React.Component {
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <Form.Control
-                                        ref={this.companyEmailRef} type="text"
-                                        onChange={
-                                            this.debounce((e) => {
-                                                this.setState({
-                                                    companyEmail: this.companyEmailRef.current.value
-                                                });
-                                            }, 250)
-                                        }
+                                        name="companyEmail"
+                                      
+                                    />
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalRomajiName"
+                            >
+                                <Form.Label column sm={3}>
+                                    Password
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <Form.Control
+                                        name="companyPassword"
+                                       
+                                    />
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalRomajiName"
+                            >
+                                <Form.Label column sm={3}>
+                                   Retype Password
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <Form.Control
+                                        name="retypePassword"
+                                        
                                     />
                                 </Form.Label>
                             </Form.Group>
@@ -170,31 +154,13 @@ export class Register extends React.Component {
                                     <select
                                         ref={this.companyClassificationRef}
                                         name="country" className="form-control"
-                                        onChange={
-                                            this.debounce((e) => {
-                                                this.setState({
-                                                    companyClassification: this.companyClassificationRef.current.value
-                                                });
-                                            }, 250)
-                                        }
+                                       
                                     >
                                         <option>-- Select One --</option>
                                         <option>IT</option>
                                         <option>Marketing</option>
                                         <option>Manufacturer</option>
                                     </select>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalRomajiName"
-                            >
-                                <Form.Label column sm={3}>
-                                    Contact Person
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-
                                 </Form.Label>
                             </Form.Group>
                             <Form.Group
@@ -210,13 +176,7 @@ export class Register extends React.Component {
                                         ref={this.companyTermsAndConditions}
                                         style={{width: '100%'}} cols="40"
                                         rows="5"
-                                        onChange={
-                                            this.debounce((e) => {
-                                                this.setState({
-                                                    companyTermsAndConditions: this.companyTermsAndConditions.current.value
-                                                });
-                                            }, 250)
-                                        }
+                                        
                                     >
                                     </textarea>
                                 </Form.Label>
