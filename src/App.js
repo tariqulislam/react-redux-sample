@@ -37,6 +37,7 @@ import {onSelectedLanguage} from "./reducers/Home/home.reducer"
 import {loadCampaign} from "./reducers/Campaign/campain.reducer"
 import {CompanySidebar} from "./routes/company/CompanySidebar";
 import {CompanyLogin} from "./routes/company/Login/Login";
+import ProfileUpdate from "./routes/candidate/profile/update"
 
 class App extends Component {
     constructor(props) {
@@ -163,6 +164,7 @@ class App extends Component {
                         <Route exact path="/company/dashboard" component={CompanySidebar}/>
                         <Route exact path="/company/login" component={CompanyLogin}/>
                         <Route exact path="/admin/campaign/create" component={CampaignCreate}/>
+                        <Route exact path="/candidate/profile" component={ProfileUpdate}  />
                         <Route exact path="/admin/campaign/applied/list" component={AdminCampaignAppliedList}/>
                         <Route exact path="/admin/campaign/applied/details/:id"
                                component={AdminCampaignAppliedDetails}/>

@@ -1,18 +1,16 @@
 import React from "react";
-import {Container, Row, Col, Form, Button} from "react-bootstrap";
+import {Container, Row, Col, Form, Button, Tab, Tabs} from "react-bootstrap";
 import {withTranslation} from 'react-i18next'
 import {connect} from 'react-redux'
 import {v4 as uuidv4} from 'uuid';
-
-import './Register.css';
-
+import SideBar from "../sidebar"
 import {
     saveCandidateInfoFromApi,
     saveCandidateHalfBodyPhotoThroughAPI,
     saveCandidatePassportThroughAPI
 } from '../../../reducers/Candidate/candidate.reducer'
 
-export class Register extends React.Component {
+export class Profile extends React.Component {
 
     constructor(props) {
         super(props)
@@ -330,11 +328,17 @@ export class Register extends React.Component {
         }
         // console.log('this is years', years)
         return (
-            <Container className='main-container'>
-                <Row className="justify-content-md-center">
+            <div class="d-flex" id="wrapper">
+            <SideBar />
+            <div style={{width: "85%"}} id="page-content-wrapper">
+         
+            <Container >
+                <Row className="justify-content-md-center pt-4">
                     <Col md="8">
-                        <Form className="registration-form">
-                            <Form.Group
+                    <Tabs defaultActiveKey="personalInfo" id="uncontrolled-tab-example">
+                    <Tab eventKey="personalInfo" title="Personal">
+                        <Form id="personalInfo">
+                        <Form.Group
                                 className="form-main-container"
                                 as={Row}
                                 controlId="formHorizontalName"
@@ -396,12 +400,12 @@ export class Register extends React.Component {
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <select name="country" className="form-control" required>
-                                        {/*<option>-- Select One --</option>*/}
+
                                         <option
                                             value="">{t('registration.country_resident.dropdown.placeholder')}</option>
-                                        {/*<option>Japan </option>*/}
+
                                         <option>{t('registration.country_resident.dropdown.option0')}</option>
-                                        {/*<option>Nepal</option>*/}
+
                                         <option>{t('registration.country_resident.dropdown.option1')}</option>
                                         {/*<option>Vitnam</option>*/}
                                         <option>{t('registration.country_resident.dropdown.option2')}</option>
@@ -521,60 +525,8 @@ export class Register extends React.Component {
                                     </select>
                                 </Form.Label>
                             </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.half_body_photo.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <input
-                                        hidden
-                                        className="form-control" type="file"
-                                        id='upload-image-half'
-                                        onChange={(e) => {
-                                            console.log(e.target.files)
-                                            this.setState({
-                                                halfBodyPhoto: e.target.files[0]
-                                            })
-                                        }}
-                                    />
-
-                                    <label htmlFor="upload-image-half" className="upload-button">
-                                        <i className="ui upload icon"></i>
-                                        Upload image
-                                    </label>
-
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.passport_photo.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <input
-                                        hidden
-                                        id='upload-image-passport'
-                                        className="form-control" type="file"
-                                        onChange={(e) => {
-                                            this.setState({
-                                                passportPhoto: e.target.files[0]
-                                            })
-                                        }}
-                                    />
-
-                                    <label htmlFor="upload-image-passport" className="upload-button">
-                                        <i className="ui upload icon"></i>
-                                        Upload image
-                                    </label>
-                                </Form.Label>
-                            </Form.Group>
+                    
+                            
                             <Form.Group
                                 className="form-main-container"
                                 as={Row}
@@ -672,118 +624,14 @@ export class Register extends React.Component {
                                     </Row>
                                 </Form.Label>
                             </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.email.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="email" type="text"
-                                                  placeholder={t('registration.email.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.password.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="password" type="password"
-                                                  placeholder={t('registration.password.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.retypepassword.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="retyped-password" type="password"
-                                                  placeholder={t('registration.retypepassword.title')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.phonenumber.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="phone-number" type="text"
-                                                  placeholder={t('registration.phonenumber.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.facebook.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="facebook" type="text"
-                                                  placeholder={t('registration.facebook.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.current_location.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <select name="currentlocation" className="form-control" required>
-                                        <option>{t('registration.current_location.dropdown.placeholder')}</option>
-                                        <option>{t('registration.current_location.dropdown.option0')}</option>
-                                        <option>{t('registration.current_location.dropdown.option1')}</option>
-                                    </select>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.current_situation.title')}
-                                </Form.Label>
-
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={12}>
-                                            <select name="current-situation" className="form-control" required>
-                                                <option
-                                                    value="">{t('registration.current_situation.dropdown.placeholder')}</option>
-                                                <option>{t('registration.current_situation.dropdown.option0')}</option>
-                                                <option>{t('registration.current_situation.dropdown.option1')}</option>
-                                                <option>{t('registration.current_situation.dropdown.option2')}</option>
-                                                <option>{t('registration.current_situation.dropdown.option3')}</option>
-                                            </select>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col sm={12}>
-                                            <input name="current-situation-text" type="text" className="form-control"
-                                                   required/>
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
+                            
+                        </Form>
+                    </Tab>
+                    <Tab eventKey="workExperience" title="workExperience">
+                       <Form className="workExperience">
+                                   
+                            
+                       <Form.Group
                                 className="form-main-container"
                                 as={Row}
                                 controlId="formHorizontalCountry"
@@ -965,20 +813,6 @@ export class Register extends React.Component {
                                 as={Row}
                                 controlId="formHorizontalCountry"
                             >
-                                <Form.Label column sm={3}>
-                                    {t('registration.terms_conditions.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <textarea name="terms-and-conditions" style={{width: '100%'}} cols="40" rows="5"
-                                              required></textarea>
-                                </Form.Label>
-                            </Form.Group>
-
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
                                 <Form.Label column sm={3} className='form-bottom-left'>
 
                                 </Form.Label>
@@ -988,10 +822,199 @@ export class Register extends React.Component {
                                 </Form.Label>
                             </Form.Group>
 
+                       </Form>
+                    </Tab>
+                    <Tab eventKey="settings" title="settings">
+                        <Form className="settingForm">
+
+                        <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalFullName"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.email.title')}
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <Form.Control name="email" type="text"
+                                                  placeholder={t('registration.email.placeholder')} required/>
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalFullName"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.password.title')}
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <Form.Control name="password" type="password"
+                                                  placeholder={t('registration.password.placeholder')} required/>
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalFullName"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.retypepassword.title')}
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <Form.Control name="retyped-password" type="password"
+                                                  placeholder={t('registration.retypepassword.title')} required/>
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalFullName"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.phonenumber.title')}
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <Form.Control name="phone-number" type="text"
+                                                  placeholder={t('registration.phonenumber.placeholder')} required/>
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalFullName"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.facebook.title')}
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <Form.Control name="facebook" type="text"
+                                                  placeholder={t('registration.facebook.placeholder')} required/>
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalCountry"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.current_location.title')}
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <select name="currentlocation" className="form-control" required>
+                                        <option>{t('registration.current_location.dropdown.placeholder')}</option>
+                                        <option>{t('registration.current_location.dropdown.option0')}</option>
+                                        <option>{t('registration.current_location.dropdown.option1')}</option>
+                                    </select>
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalCountry"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.current_situation.title')}
+                                </Form.Label>
+
+                                <Form.Label column sm={9}>
+                                    <Row>
+                                        <Col sm={12}>
+                                            <select name="current-situation" className="form-control" required>
+                                                <option
+                                                    value="">{t('registration.current_situation.dropdown.placeholder')}</option>
+                                                <option>{t('registration.current_situation.dropdown.option0')}</option>
+                                                <option>{t('registration.current_situation.dropdown.option1')}</option>
+                                                <option>{t('registration.current_situation.dropdown.option2')}</option>
+                                                <option>{t('registration.current_situation.dropdown.option3')}</option>
+                                            </select>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col sm={12}>
+                                            <input name="current-situation-text" type="text" className="form-control"
+                                                   required/>
+                                        </Col>
+                                    </Row>
+                                </Form.Label>
+                            </Form.Group>
+                            
                         </Form>
+                    </Tab>
+                    <Tab eventKey="photoUpload" title="Photos">
+                        <Form id="frmPhotoUpload">
+                        <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalCountry"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.half_body_photo.title')}
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <input
+                                        hidden
+                                        className="form-control" type="file"
+                                        id='upload-image-half'
+                                        onChange={(e) => {
+                                            console.log(e.target.files)
+                                            this.setState({
+                                                halfBodyPhoto: e.target.files[0]
+                                            })
+                                        }}
+                                    />
+
+                                    <label htmlFor="upload-image-half" className="upload-button">
+                                        <i className="ui upload icon"></i>
+                                        Upload image
+                                    </label>
+
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group
+                                className="form-main-container"
+                                as={Row}
+                                controlId="formHorizontalCountry"
+                            >
+                                <Form.Label column sm={3}>
+                                    {t('registration.passport_photo.title')}
+                                </Form.Label>
+                                <Form.Label column sm={9}>
+                                    <input
+                                        hidden
+                                        id='upload-image-passport'
+                                        className="form-control" type="file"
+                                        onChange={(e) => {
+                                            this.setState({
+                                                passportPhoto: e.target.files[0]
+                                            })
+                                        }}
+                                    />
+
+                                    <label htmlFor="upload-image-passport" className="upload-button">
+                                        <i className="ui upload icon"></i>
+                                        Upload image
+                                    </label>
+                                </Form.Label>
+                            </Form.Group>
+       
+                    
+                        </Form>
+                    </Tab>
+                                          
+                    
+                    </Tabs>
+                </Col>
+                </Row>
+                <Row className="justify-content-md-center">
+                    <Col md="8">
+
                     </Col>
                 </Row>
+                
             </Container>
+            </div>
+            </div>
         );
     }
 }
@@ -1006,7 +1029,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(Register))
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(Profile))
 
 
 
