@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Container, Row, Table} from "react-bootstrap";
+import {Col, Row, Table} from "react-bootstrap";
 import axios from 'axios';
 import {withRouter} from "react-router-dom"
 import './CandidateDetails.css';

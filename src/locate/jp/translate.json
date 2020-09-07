@@ -276,13 +276,14 @@
         "title": "サイトに登録"
       }
     },
-    "company_reg_page": {
-      "name": "",
-      "contact_number": "",
-      "company_email": "",
-      "contact_person": "",
-      "industry_classification": "",
-      "terms_and_condition": ""
+    "company_registration": {
+      "company_registration_form": "会社登録フォーム",
+      "name": "会社の名前",
+      "email": "会社のメール",
+      "password": "パスワード",
+      "retype_password": "パスワードを再入力",
+      "terms_and_condition": "規約と条件",
+      "register": "登録"
     },
     "homepage": {
       "counter_section": {

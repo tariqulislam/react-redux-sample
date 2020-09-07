@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './AboutUs.css';
-import {Button, Col, Container, Image, Row, Table} from "react-bootstrap";
+import {Col, Container, Row, Table} from "react-bootstrap";
 import {withTranslation} from "react-i18next";
 
 import {Carousel} from 'react-responsive-carousel';

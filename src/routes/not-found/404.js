@@ -7,10 +7,6 @@ import {Image} from "react-bootstrap";
 
 class NotFound extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='not-found'>

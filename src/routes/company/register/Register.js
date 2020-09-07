@@ -2,7 +2,7 @@ import React from "react";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {withTranslation, Trans} from 'react-i18next';
 import axios from 'axios';
-
+import "../company.css"
 import environment from "../../../environment.json"
 
 export class Register extends React.Component {
@@ -37,7 +37,7 @@ export class Register extends React.Component {
     render() {
         const {t} = this.props
         return (
-            <div class="d-flex" id="wrapper">
+            <div class="d-flex main-container"  id="wrapper">
             <div style={{width: "85%"}} id="page-content-wrapper">
             <div class="container-fluid">
                 <Row className="justify-content-md-center">
@@ -49,7 +49,7 @@ export class Register extends React.Component {
                                 controlId="formHorizontalName"
                             >
                                 <Form.Label column sm={12} style={{textAlign: 'center'}} className='form-top-company'>
-                                    <h3>Company Registration Form</h3>
+                                    <h3>{t("company_registration.company_registration_form")}</h3>
                                 </Form.Label>
                             </Form.Group>
 
@@ -59,7 +59,7 @@ export class Register extends React.Component {
                                 controlId="formHorizontalName"
                             >
                                 <Form.Label column sm={3}>
-                                    Company Name
+                                    {t("company_registration.name")}
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <Form.Control
@@ -77,7 +77,7 @@ export class Register extends React.Component {
                                 controlId="formHorizontalRomajiName"
                             >
                                 <Form.Label column sm={3}>
-                                    Company Email
+                                {t("company_registration.email")}
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <Form.Control
@@ -92,7 +92,7 @@ export class Register extends React.Component {
                                 controlId="formHorizontalRomajiName"
                             >
                                 <Form.Label column sm={3}>
-                                    Password
+                                {t("company_registration.password")}
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <Form.Control
@@ -107,7 +107,7 @@ export class Register extends React.Component {
                                 controlId="formHorizontalRomajiName"
                             >
                                 <Form.Label column sm={3}>
-                                   Retype Password
+                                {t("company_registration.retype_password")}
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <Form.Control
@@ -122,7 +122,7 @@ export class Register extends React.Component {
                                 controlId="formHorizontalCountry"
                             >
                                 <Form.Label column sm={3}>
-                                    {t('registration.terms_conditions.title')}
+                                    {t('company_registration.terms_and_condition')}
                                 </Form.Label>
                                 <Form.Label column sm={9}>
                                     <textarea
@@ -146,7 +146,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={9} className='form-bottom-right-company'>
                                     <Button type="submit"
                                     >
-                                        Register
+                                        {t('company_registration.register')}
                                     </Button>
                                 </Form.Label>
                             </Form.Group>

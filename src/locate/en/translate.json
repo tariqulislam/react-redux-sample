@@ -270,13 +270,14 @@
                 "title": "Register To Site"
             }
         },
-        "company_reg_page": {
+        "company_registration": {
+            "company_registration_form": "Company Registration Form",
             "name": "Company Name",
-            "contact_number": "Contact Number",
-            "company_email": "",
-            "contact_person": "",
-            "industry_classification": "",
-            "terms_and_condition": ""
+            "email": "Company Email",
+            "password": "Password",
+            "retype_password": "Retype Password",
+            "terms_and_condition": "Terms & Condition",
+            "register": "Register"
         },
         "homepage": {
             "counter_section": {

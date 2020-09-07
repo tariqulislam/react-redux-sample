@@ -25,8 +25,6 @@ class CompanyAppliedCampaingDetails extends Component {
     }
 
     onApporvedAppliedCampaign = (event) => {
-        debugger
-        let props = this.props
         let campaign = this.state.newCampaign
         /** check userinfo to canidate is */
         let getAdmin = JSON.parse(localStorage.getItem("admin_user"))

@@ -23,8 +23,8 @@ const attemptLogin = (data, callback) => {
     // console.log(data);
     return () => {
         login(data).then(res => {
-            let token = localStorage.setItem('token', res.data.accessToken);
-            let role = localStorage.setItem('role', JSON.stringify('admin'));
+           // let token = localStorage.setItem('token', res.data.accessToken);
+           // let role = localStorage.setItem('role', JSON.stringify('admin'));
             
             const parsetoken = parseJwt(res.data.accessToken)
 

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Home from "./routes/home/Home";
 import CandidateRegister from "./routes/candidate/register/Register";
 import AdminLogin from "./routes/admin/login/Login";
 import "./assets/App.css";
-import {Navbar, Nav, FormCheck} from "react-bootstrap";
+import {Navbar, Nav} from "react-bootstrap";
 import CandidateLogin from "./routes/candidate/Login/Login";
 import AdminDashboard from "./routes/admin/dashboard";
 import {withTranslation} from "react-i18next";
@@ -35,21 +35,20 @@ import CampaignList from "./routes/admin/campaign/CampaignList"
 import {connect} from "react-redux"
 import {onSelectedLanguage} from "./reducers/Home/home.reducer"
 import {loadCampaign} from "./reducers/Campaign/campain.reducer"
-import {CompanySidebar} from "./routes/company/CompanySidebar";
 import {CompanyLogin} from "./routes/company/Login/Login";
 import ProfileUpdate from "./routes/candidate/profile/update"
 
 import CompanyCandidateList from "./routes/company/candidate/component/candidateList"
 import CompanyCandidateDetails from "./routes/company/candidate/component/candidate"
 import CompanyCampaignCreate from "./routes/company/campaign/campaign"
-import CompanyCampainList from "./routes/campaign/CampaignList"
-import CompanyCampaignDetails from "./routes/campaign/Campaign"
+import CompanyCampainList from "./routes/company/campaign/CampaignList"
+import CompanyCampaignDetails from "./routes/company/campaign/campaigndetails"
 import CompanyAppliedCampaignList from "./routes/company/campaign/appliedcampaignlist"
 import CompanyAppliedCampaignDetails from "./routes/company/campaign/appliedcampaingdetails"
 
 import CandidateAppliedCampaignList from "./routes/candidate/campaign/appliedcampaignlist"
 import CandidateAppliedCampaignDetails from "./routes/candidate/campaign/appliedcampaingdetails"
-
+import CompanyDashboard from "./routes/company/dashboard"
 class App extends Component {
     constructor(props) {
         super(props);
@@ -78,11 +77,6 @@ class App extends Component {
     render() {
         const {t} = this.props;
 
-        const radios = [
-            {name: 'Active', value: '1'},
-            {name: 'Radio', value: '2'},
-            {name: 'Radio', value: '3'},
-        ];
         let TopFragment = () => {
             return (
                 <React.Fragment>
@@ -171,15 +165,16 @@ class App extends Component {
                         <Route exact path="/admin/campaign/list" component={CampaignList}/>
                         <Route exact path="/admin/company/list" component={CompanyList}/>
                         <Route exact path="/admin/campaign/details/:id" component={AdminCampaignDetails}/>
-                        <Route exact path="/company/register" component={AdminCompanyRegister}/>
-                        <Route exact path="/company/dashboard" component={CompanySidebar}/>
-                        <Route exact path="/company/login" component={CompanyLogin}/>
+                       
                         <Route exact path="/admin/campaign/create" component={CampaignCreate}/>
                         <Route exact path="/candidate/profile" component={ProfileUpdate}  />
                         <Route exact path="/admin/campaign/applied/list" component={AdminCampaignAppliedList}/>
                         <Route exact path="/admin/campaign/applied/details/:id"
                                component={AdminCampaignAppliedDetails}/>
                         
+                        <Route exact path="/company/register" component={AdminCompanyRegister}/>
+                        <Route exact path="/company/dashboard" component={CompanyDashboard} />
+                        <Route exact path="/company/login" component={CompanyLogin}/>
                         <Route path="/company/candidate/list" component={CompanyCandidateList}/>
                         <Route path="/company/candidate/details/:id" component={CompanyCandidateDetails}/>
                         <Route exact path="/company/campaign/list" component={CompanyCampainList}/>

@@ -1,12 +1,4 @@
 import React, {Component} from "react";
-import {push} from "react-router-redux";
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import {
-    showParagraphInfo,
-    hideParagraphInfo,
-    getAllPostForFromApi,
-} from "../../reducers/Home/home.reducer";
 import {Image} from "react-bootstrap";
 import {withTranslation} from "react-i18next";
 import RegSection from "./components/RegSection";
@@ -52,19 +44,4 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-
-});
-
-const mapDispatchToProps = dispatch => {
-    return {
-     
-        
-    }
-}
-
-    
-
-export default withTranslation()(
-    connect(mapStateToProps, mapDispatchToProps)(Home)
-);
+export default withTranslation()(Home)

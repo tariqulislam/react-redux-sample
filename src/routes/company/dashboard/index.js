@@ -1,5 +1,5 @@
 import React from 'react'
-import SideBar from "../../candidate/sidebar";
+import SideBar from "../sidebar";
 
 
 export class CompanyDashboard extends React.Component {
