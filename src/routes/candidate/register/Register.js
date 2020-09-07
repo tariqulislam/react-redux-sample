@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Row, Col, Form, Button} from "react-bootstrap";
+import {Container, Row, Col, Form, Button, Alert} from "react-bootstrap";
 import {withTranslation} from 'react-i18next'
 import {connect} from 'react-redux'
 import {v4 as uuidv4} from 'uuid';
@@ -20,7 +20,8 @@ export class Register extends React.Component {
             retypepassword: null,
             name: null,
             name_romaji: null,
-            username: null
+            username: null,
+            showAlert: false
         }
     }
 
@@ -77,7 +78,12 @@ export class Register extends React.Component {
         if (validity === true) {
             e.preventDefault();
             this.props.saveCandidateInfoForm(toBePostedCandidate);
+            this.setState({showAlert: true})
         }
+    }
+
+    setShow = () => {
+        this.setState({showAlert: false})
     }
 
     render() {
@@ -86,8 +92,23 @@ export class Register extends React.Component {
         return (
             <Container className='main-container'>
                 <Row className="justify-content-md-center">
-                    <Col md="8">
-                        <Form className="registration-form">
+                    <Col md="8" className="pt-2">
+                    {
+                        this.state.showAlert &&
+                                <Alert onClose={() => this.setShow()}  variant={this.props.status === 201? "success": "danger"}  dismissible>
+                                <Alert.Heading>
+                                    {this.props.message}
+                                </Alert.Heading>
+                                <p>
+                                    {
+                                        this.props.status === 201? "Please Go to Login page to access the candidate features":
+                                            "please try Again"
+                                    }
+                                </p>
+                                </Alert>
+                    }
+                  
+                        <Form  className="registration-form">
                             <Form.Group
                                 className="form-main-container border-0"
                                 as={Row}
@@ -202,7 +223,12 @@ export class Register extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => {
+    return {
+         message: state.candidate.message,
+         status: state.candidate.status
+    }
+}
 
 const mapDispatchToProps = dispatch => {
     return {

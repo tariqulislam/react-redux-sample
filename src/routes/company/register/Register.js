@@ -12,17 +12,21 @@ export class Register extends React.Component {
         this.state = {};
     };
 
-    registerCompany = () => {
-        console.log(this.state);
+    registerCompany = (event) => {
+        debugger
+        event.preventDefault()
+        const data = new FormData(event.target)
 
         let URL = `http://${environment.api_url}/api/companies/registration`;
         let company = {
-            name: this.state.companyName,
-            username: this.state.companyEmail,
-            email: this.state.companyContact
+            name: data.get("companyName"),
+            username: data.get("companyName"),
+            email: data.get("companyEmail"),
+            password: data.get("companyPassword")
         };
 
         axios.post(URL, company).then((res) => {
+            debugger
             console.log(res);
         })
 
@@ -38,7 +42,7 @@ export class Register extends React.Component {
             <div class="container-fluid">
                 <Row className="justify-content-md-center">
                     <Col md="8">
-                        <Form style={{width: "100%", marginTop: '5%', marginBottom: '5%'}}>
+                        <Form onSubmit={this.registerCompany} style={{width: "100%", marginTop: '5%', marginBottom: '5%'}}>
                             <Form.Group
                                 className="form-main-container"
                                 as={Row}
@@ -65,38 +69,8 @@ export class Register extends React.Component {
                                 </Form.Label>
                             </Form.Group>
 
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalName"
-                            >
-                                <Form.Label column sm={3}>
-                                    Company Code
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control
-                                         type="text"
-                                         name="companyCode"
-                                    />
-                                </Form.Label>
-                            </Form.Group>
 
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalRomajiName"
-                            >
-                                <Form.Label column sm={3}>
-                                    Company Contact
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control
-                                        name="companyContact"
-                                       
-                                    />
-                                </Form.Label>
-                            </Form.Group>
-
+                       
                             <Form.Group
                                 className="form-main-container"
                                 as={Row}
@@ -148,27 +122,6 @@ export class Register extends React.Component {
                                 controlId="formHorizontalCountry"
                             >
                                 <Form.Label column sm={3}>
-                                    Industry Classification
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <select
-                                        ref={this.companyClassificationRef}
-                                        name="country" className="form-control"
-                                       
-                                    >
-                                        <option>-- Select One --</option>
-                                        <option>IT</option>
-                                        <option>Marketing</option>
-                                        <option>Manufacturer</option>
-                                    </select>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
                                     {t('registration.terms_conditions.title')}
                                 </Form.Label>
                                 <Form.Label column sm={9}>
@@ -191,8 +144,7 @@ export class Register extends React.Component {
                                 <Form.Label column sm={3} className='form-bottom-left-company'>
                                 </Form.Label>
                                 <Form.Label column sm={9} className='form-bottom-right-company'>
-                                    <Button type="button"
-                                            onClick={this.registerCompany}
+                                    <Button type="submit"
                                     >
                                         Register
                                     </Button>

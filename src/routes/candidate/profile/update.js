@@ -331,23 +331,24 @@ export class Profile extends React.Component {
             <div class="d-flex" id="wrapper">
             <SideBar />
             <div style={{width: "85%"}} id="page-content-wrapper">
-         
+            
             <Container >
+            <Row column sm={12}  className='justify-content-md-center pt-4'>
+                                    <h3>
+                                        {t('registration.registration_form')}
+                                    </h3>
+            </Row>
                 <Row className="justify-content-md-center pt-4">
                     <Col md="8">
                     <Tabs defaultActiveKey="personalInfo" id="uncontrolled-tab-example">
-                    <Tab eventKey="personalInfo" title="Personal">
+                    <Tab eventKey="personalInfo" className="pb-2" style={{backgroundColor:"lightgray"}} title="Personal">
                         <Form id="personalInfo">
                         <Form.Group
                                 className="form-main-container"
                                 as={Row}
                                 controlId="formHorizontalName"
                             >
-                                <Form.Label column sm={12} style={{textAlign: 'center'}} className='form-top'>
-                                    <h3>
-                                        {t('registration.registration_form')}
-                                    </h3>
-                                </Form.Label>
+                              
                             </Form.Group>
 
                             <Form.Group
@@ -624,10 +625,15 @@ export class Profile extends React.Component {
                                     </Row>
                                 </Form.Label>
                             </Form.Group>
-                            
+                            <div className="d-flex pt-2">
+                                <div className="col-6"></div>
+                                <div style={{textAlign: "right"}}  className="col-6 ">
+                                    <Button type="submit">Update</Button>
+                                </div>
+                            </div>
                         </Form>
                     </Tab>
-                    <Tab eventKey="workExperience" title="workExperience">
+                    <Tab eventKey="workExperience" className="pb-2" style={{backgroundColor:"lightgray"}} title="Work Experience">
                        <Form className="workExperience">
                                    
                             
@@ -808,23 +814,16 @@ export class Profile extends React.Component {
                                 </Form.Label>
                             </Form.Group>
 
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3} className='form-bottom-left'>
-
-                                </Form.Label>
-                                <Form.Label column sm={9} className='form-bottom-right'>
-                                    <Button onClick={this.onSubmitCandidateData}
-                                            type="submit"> {t('registration.register_to_site.title')} </Button>
-                                </Form.Label>
-                            </Form.Group>
-
+            
+                            <div className="d-flex pt-2">
+                                <div className="col-6"></div>
+                                <div style={{textAlign: "right"}}  className="col-6 ">
+                                    <Button type="submit">Update</Button>
+                                </div>
+                            </div>
                        </Form>
                     </Tab>
-                    <Tab eventKey="settings" title="settings">
+                    <Tab eventKey="settings" className="pb-2" style={{backgroundColor:"lightgray"}} title="settings">
                         <Form className="settingForm">
 
                         <Form.Group
@@ -938,10 +937,15 @@ export class Profile extends React.Component {
                                     </Row>
                                 </Form.Label>
                             </Form.Group>
-                            
+                            <div className="d-flex pt-2">
+                                <div className="col-6"></div>
+                                <div style={{textAlign: "right"}}  className="col-6 ">
+                                    <Button type="submit">Update</Button>
+                                </div>
+                            </div>
                         </Form>
                     </Tab>
-                    <Tab eventKey="photoUpload" title="Photos">
+                    <Tab eventKey="photoUpload" className="pb-2" style={{backgroundColor:"lightgray"}} title="Photos">
                         <Form id="frmPhotoUpload">
                         <Form.Group
                                 className="form-main-container"
@@ -997,7 +1001,12 @@ export class Profile extends React.Component {
                                     </label>
                                 </Form.Label>
                             </Form.Group>
-       
+                            <div className="d-flex pt-2">
+                                <div className="col-6"></div>
+                                <div style={{textAlign: "right"}}  className="col-6 ">
+                                    <Button type="submit">Update</Button>
+                                </div>
+                            </div>
                     
                         </Form>
                     </Tab>

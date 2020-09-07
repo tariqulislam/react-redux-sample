@@ -38,7 +38,6 @@ export class CandidateLogin extends React.Component {
 
         axios.post(url, credential, { headers: {'content-type': 'application/json'}
             }).then(result => {
-                debugger
                 const parsetoken = parseJwt(result.data.accessToken)
 
                 const user = parsetoken.user
@@ -80,7 +79,6 @@ export class CandidateLogin extends React.Component {
                             <button className="btn btn-primary btn-block">Log In</button>
 
                             {
-                                // Loading while redirecting to the dashboard
                                 this.state.spinner === true &&
                                 <div style={{display: 'flex', justifyContent: 'center'}}>
                                     <label className="lds-ellipsis">

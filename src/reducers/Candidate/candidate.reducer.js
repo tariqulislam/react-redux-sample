@@ -1,6 +1,7 @@
 import { saveCandidateInfo } from './candidate.async'
 import {push} from "react-router-redux"
 export const SAVE_CANDIDATE_INFO = 'SAVE_CANDIDATE_INFO'
+export const MESSAGE_ALERT_DATA = 'MESSAGE_ALERT_DATA'
 
 export function storeCandidateInfo(payload) {
     return {
@@ -8,7 +9,15 @@ export function storeCandidateInfo(payload) {
         payload
     }
 }
-export const saveCandidateInfoFromApi = (formData) => {
+
+export function messageAlertInfo(payload) {
+    return {
+        type: MESSAGE_ALERT_DATA,
+        payload
+    }
+}
+
+export const saveCandidateInfoFromApi = (formData, form) => {
     return dispatch => {
         console.log(formData)
         saveCandidateInfo(formData).then(res => {
@@ -16,19 +25,21 @@ export const saveCandidateInfoFromApi = (formData) => {
             if(res.status === 201) {
                 let candidateInfo = res.data.data
                 dispatch(storeCandidateInfo(candidateInfo))
-                window.location.href =`/candidate/details/${candidateInfo.id}`
-               // dispatch(push(`/candidate/details/${candidateInfo.id}`))
+                dispatch(messageAlertInfo({message: res.message, status:res.status}))
+                form.reset()
             }
            
         }).catch(ex => {
-           console.log(ex)
+            debugger
+            dispatch(messageAlertInfo({message: ex.response.data.error.message, status: ex.response.status}))
         })
     }
 }
 
 const initialState = {
     candidateInfo: null,
-    message: null
+    message: null,
+    status: null
 }
 
 export default (state=initialState, action) => {
@@ -36,7 +47,15 @@ export default (state=initialState, action) => {
         case SAVE_CANDIDATE_INFO:
             return {
                 ...state,
-                message: action.payload
+                candidateInfo: action.payload
             }
+        case MESSAGE_ALERT_DATA:
+            return {
+                ...state,
+                message: action.payload.message,
+                status: action.payload.status
+            }
+        default:
+            return state
     }
 }
