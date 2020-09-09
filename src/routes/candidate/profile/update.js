@@ -16,13 +16,66 @@ export class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            updatedCandidateInfo: {},
             email: null,
             password: null,
             retypepassword: null,
             name: null,
-            name_romaji: null,
-            username: null
+            romajiName: null,
+            username: null,
+            country: null,
+            nationality: null,
+            birthMonth: null,
+            birthYear: null,
+            birthday: null,
+            religion: null,
+            gender: null,
+            heightUnit: null,
+            height: null,
+            weight: null,
+            weightUnit: null,
+            eyeSight: null,
+            hearing: null,
+            footSize: null,
+            footSizeUnit: null,
+            phoneNumber: null,
+            facebook: null,
+            currentSituation: null,
+            currentLocation: null,
+            currentSituationOption: null,
+            specificSkills: null,
+            specificSkillsOption: null,
+            marital: null,
+            chronicDisease: null,
+            japaneseLanguageSkill: null,
+            workExperience0: null,
+            workExperience0Value: null,
+            workExperience1: null,
+            workExperience1Value: null,
+            workExperience2: null,
+            workExperience2Value: null,
         }
+    }
+
+    componentDidMount() {
+        let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
+        let url = `http://${environment.api_url}/api/candidates/${getCandidateInfo.id}`;
+        axios.get(url).then(res => {
+            if (res.status === 200) {
+                let candidateInfo = res.data && res.data.data
+                console.log("candidate info", candidateInfo)
+                this.setState({ updatedCandidateInfo: candidateInfo })
+                let workExperience = candidateInfo.candidateWorkExperience
+                this.setState({
+                    workExperience0: workExperience[0].name,
+                    workExperience0Value: workExperience[0].companyName,
+                    workExperience1: workExperience[1].name,
+                    workExperience1Value: workExperience[1].companyName,
+                    workExperience2: workExperience[2].name,
+                    workExperience2Value: workExperience[2].companyName,
+                })
+            }
+        })
     }
 
     /**
@@ -84,9 +137,9 @@ export class Profile extends React.Component {
      * Solution by Brian Woodward, borrowed from here: https://stackoverflow.com/a/38845805/5554993
      * Only the function is borrowed and re-factored as per need.
      */
-    onWorkExperienceValueEntered = () => {
+    onWorkExperienceValueEntered = (e) => {
         let el = document.getElementsByClassName('work-experience-value');
-
+        this.setState({[e.target.id]: e.target.value})
         var atLeastOneChecked = false;//at least one cb is checked
         for (let i = 0; i < el.length; i++) {
             if (el[i].value.length > 0) {
@@ -105,16 +158,13 @@ export class Profile extends React.Component {
         }
     }
 
-    
+
     updatePersonalInfo = (e) => {
         e.preventDefault()
         let fullName = document.getElementsByName("full-name");
         fullName = fullName[0].value;
         let romajiName = document.getElementsByName("full-name-roman");
         romajiName = romajiName[0].value;
-
-        let nickName = document.getElementsByName("nick-name");
-        nickName = nickName[0].value;
 
         let country = document.getElementsByName("country");
         country = country[0].value;
@@ -171,7 +221,6 @@ export class Profile extends React.Component {
             id: getCandidateInfo.id,
             acceptTermsAndCondition: true,
             romajiName,
-            nickName,
             country,
             nationality,
             "languages": selectedLanguages,
@@ -179,7 +228,7 @@ export class Profile extends React.Component {
             "birthMonth": monthOfBirth,
             "birthday": dayOfBirth,
             religion,
-            "gender": sex.toUpperCase(),
+            "gender": sex,
             height,
             heightUnit,
             weight,
@@ -191,10 +240,26 @@ export class Profile extends React.Component {
         }
 
         let url = `http://${environment.api_url}/api/candidates/details-update`;
-        axios.put(url, toBePostedCandidate, {headers: {'Content-Type': 'application/json'}}).then(res => {
+        axios.put(url, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
             debugger
         });
 
+        // let langUrl = `http://${environment.api_url}/api/candidates/candidate-languages`;
+        // axios.put(langUrl, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
+        //     debugger
+        // });
+       
+
+    }
+
+    onChangeValue = (event) => {
+        if(event.target.type === "radio") {
+            debugger
+            this.setState({[event.target.name]: event.target.value})
+        } else {
+            this.setState({ [event.target.id]: event.target.value })
+        }
+        
     }
 
     updateWorkExperience = (e) => {
@@ -218,17 +283,10 @@ export class Profile extends React.Component {
         skill = skill[0].value;
         let skillText = document.getElementsByName("skills-text");
         skillText = skillText[0].value;
-
-        let maritalStatus = document.getElementsByName("marital");
-        let selectedStatus;
+        
+        let selectedStatus = this.state.marital;
         // maritalStatus = maritalStatus[0].value;
-
-        maritalStatus.forEach(lan => {
-            if (lan.checked === true) {
-                selectedStatus = lan.parentNode.innerText;
-            }
-        })
-
+       
         let chronicDisease = document.getElementsByName("chronic-disease");
         chronicDisease = chronicDisease[0].value;
 
@@ -276,22 +334,16 @@ export class Profile extends React.Component {
         }
 
         let url = `http://${environment.api_url}/api/candidates/candidate-work-experience`;
-        axios.put(url, submitedData, {headers: {'Content-Type': 'application/json'}}).then(res => {
+        axios.put(url, submitedData, { headers: { 'Content-Type': 'application/json' } }).then(res => {
             debugger
         });
 
     }
 
-    updateSettingInfo = (e) => {
-
-    }
-
 
     onSubmitCandidateSetting = (e) => {
-         e.preventDefault();
+        e.preventDefault();
 
-       
-     
         let phoneNumber = document.getElementsByName("phone-number");
         phoneNumber = phoneNumber[0].value;
 
@@ -316,19 +368,19 @@ export class Profile extends React.Component {
             currentSituation,
             currentSituationOption,
             "status": true,
-           
+
         };
         let url = `http://${environment.api_url}/api/candidates/settings`;
-        axios.put(url, toBePostedCandidate, {headers: {'Content-Type': 'application/json'}}).then(res => {
+        axios.put(url, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
             debugger
         });
     }
 
     render() {
         const { t } = this.props
-        
-        /** get Candidate Name */
 
+        /** get Candidate Name */
+        const { updatedCandidateInfo } = this.state
         let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
 
 
@@ -379,6 +431,7 @@ export class Profile extends React.Component {
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
                                                     <Form.Control name="full-name" type="text" value={getCandidateInfo.name}
+
                                                         placeholder={t('registration.full_name.placeholder')} required />
                                                 </Form.Label>
                                             </Form.Group>
@@ -391,22 +444,10 @@ export class Profile extends React.Component {
                                                     {t('registration.romanji_name.title')}
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
-                                                    <Form.Control name="full-name-roman" type="text"
+                                                    <Form.Control name="full-name-roman" type="text" id="romajiName"
+                                                        onChange={this.onChangeValue}
+                                                        value={this.state.romajiName || (updatedCandidateInfo && updatedCandidateInfo.romajiName)}
                                                         placeholder={t('registration.romanji_name.placeholder')} required />
-                                                </Form.Label>
-                                            </Form.Group>
-
-                                            <Form.Group
-                                                className="form-main-container"
-                                                as={Row}
-                                                controlId="formHorizontalRomajiName"
-                                            >
-                                                <Form.Label column sm={3}>
-                                                    {t('registration.nick_name.title')}
-                                                </Form.Label>
-                                                <Form.Label column sm={9}>
-                                                    <Form.Control name="nick-name" type="text"
-                                                        placeholder={t('registration.nick_name.placeholder')} required />
                                                 </Form.Label>
                                             </Form.Group>
                                             <Form.Group
@@ -418,19 +459,17 @@ export class Profile extends React.Component {
                                                     {t('registration.country_resident.title')}
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
-                                                    <select name="country" className="form-control" required>
+                                                    <select id="country" onChange={this.onChangeValue} name="country" value={this.state.country || (updatedCandidateInfo && updatedCandidateInfo.country)} className="form-control" required>
 
                                                         <option
                                                             value="">{t('registration.country_resident.dropdown.placeholder')}</option>
-
                                                         <option>{t('registration.country_resident.dropdown.option0')}</option>
-
                                                         <option>{t('registration.country_resident.dropdown.option1')}</option>
-                                                        {/*<option>Vitnam</option>*/}
                                                         <option>{t('registration.country_resident.dropdown.option2')}</option>
                                                     </select>
                                                     <br />
-                                                    <Form.Control name="nationality" type="text"
+                                                    <Form.Control onChange={this.onChangeValue} id="nationality" name="nationality" type="text"
+                                                        value={this.state.nationality || (updatedCandidateInfo && updatedCandidateInfo.nationality)}
                                                         placeholder={t('registration.country_resident.nationality_placeholder')}
                                                         required />
                                                 </Form.Label>
@@ -480,7 +519,11 @@ export class Profile extends React.Component {
                                                 <Form.Label column sm={9}>
                                                     <Row>
                                                         <Col sm={4}>
-                                                            <select className="form-control" name="year" required>
+                                                            <select className="form-control"
+                                                                id="birthYear"
+                                                                onChange={this.onChangeValue}
+                                                                value={this.state.birthYear || (updatedCandidateInfo && updatedCandidateInfo.birthYear)}
+                                                                name="year" required>
                                                                 <option
                                                                     value="">{t('registration.date_of_birth.year_placeholder')}</option>
                                                                 {
@@ -490,7 +533,7 @@ export class Profile extends React.Component {
                                                                 }
                                                             </select>
                                                         </Col>
-                                                        <Col sm={4}><select className="form-control" name="month" required>
+                                                        <Col sm={4}><select id="birthMonth" onChange={this.onChangeValue} className="form-control" value={this.state.birthMonth || (updatedCandidateInfo && updatedCandidateInfo.birthMonth)} name="month" required>
                                                             <option
                                                                 value="">{t('registration.date_of_birth.month_placeholder')}</option>
                                                             {
@@ -500,7 +543,8 @@ export class Profile extends React.Component {
                                                             }
                                                         </select>
                                                         </Col>
-                                                        <Col sm={4}><input className="form-control" type="text" name="day"
+                                                        <Col sm={4}><input id="birthday" onChange={this.onChangeValue} className="form-control" type="text" name="day"
+                                                            value={this.state.birthday || (updatedCandidateInfo && updatedCandidateInfo.birthday)}
                                                             placeholder={t('registration.date_of_birth.day_placeholder')}
                                                             required /></Col>
 
@@ -517,7 +561,11 @@ export class Profile extends React.Component {
                                                     {t('registration.religion.title')}
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
-                                                    <select name="religion" className="form-control" required>
+                                                    <select name="religion"
+                                                        id="religion"
+                                                        onChange={this.onChangeValue}
+                                                        value={this.state.religion || (updatedCandidateInfo && updatedCandidateInfo.religion)}
+                                                        className="form-control" required>
                                                         <option value="">{t('registration.religion.dropdown.placeholder')}</option>
                                                         <option>{t('registration.religion.dropdown.option0')}</option>
                                                         <option>{t('registration.religion.dropdown.option1')}</option>
@@ -536,7 +584,11 @@ export class Profile extends React.Component {
                                                     {t('registration.sex.title')}
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
-                                                    <select name="sex" className="form-control" required>
+                                                    <select name="sex"
+                                                        id="gender"
+                                                        onChange={this.onChangeValue}
+                                                        className="form-control"
+                                                        value={this.state.gender || (updatedCandidateInfo && updatedCandidateInfo.gender)} required>
                                                         <option value="">{t('registration.sex.dropdown.placeholder')}</option>
                                                         <option>{t('registration.sex.dropdown.option0')}</option>
                                                         <option>{t('registration.sex.dropdown.option1')}</option>
@@ -557,10 +609,17 @@ export class Profile extends React.Component {
                                                 <Form.Label column sm={9}>
                                                     <Row>
                                                         <Col sm={6}><input name="height-value" type="text"
+                                                            id="height"
+                                                            onChange={this.onChangeValue}
+                                                            value={this.state.height || (updatedCandidateInfo && updatedCandidateInfo.height)}
                                                             placeholder={t('registration.height_weight.height.placeholder')}
                                                             className="form-control" required /></Col>
                                                         <Col sm={6}>
-                                                            <select name="height-unit" className="form-control" required>
+                                                            <select name="height-unit"
+                                                                id="heightUnit"
+                                                                onChange={this.onChangeValue}
+                                                                value={this.state.heightUnit || (updatedCandidateInfo && updatedCandidateInfo.heightUnit)}
+                                                                className="form-control" required>
                                                                 <option
                                                                     value="">{t('registration.height_weight.height.unit_placeholder')}</option>
                                                                 <option>{t('registration.height_weight.height.option0')}</option>
@@ -571,10 +630,13 @@ export class Profile extends React.Component {
                                                     <Row style={{ height: '10px' }}></Row>
                                                     <Row>
                                                         <Col sm={6}><input name="weight-value" type="text"
+                                                            id="weight"
+                                                            onChange={this.onChangeValue}
+                                                            value={this.state.weight || (updatedCandidateInfo && updatedCandidateInfo.weight)}
                                                             placeholder={t('registration.height_weight.weight.placeholder')}
                                                             className="form-control" required /></Col>
                                                         <Col sm={6}>
-                                                            <select name="weight-unit" className="form-control" required>
+                                                            <select value={updatedCandidateInfo && updatedCandidateInfo.weightUnit} name="weight-unit" className="form-control" required>
                                                                 <option
                                                                     value="">{t('registration.height_weight.weight.unit_placeholder')}</option>
                                                                 <option>{t('registration.height_weight.weight.option0')}</option>
@@ -596,7 +658,13 @@ export class Profile extends React.Component {
                                                     <Row>
                                                         <Col sm={3}>{t('registration.eyesight_hearing.eyesight.title')}</Col>
                                                         <Col sm={8}>
-                                                            <select name="eyesight" className="form-control" required>
+                                                            <select
+                                                                id="eyeSight"
+                                                                onChange={this.onChangeValue}
+                                                                value={this.state.eyeSight || (updatedCandidateInfo && updatedCandidateInfo.eyeSight)}
+
+                                                                name="eyesight"
+                                                                className="form-control" required>
                                                                 <option
                                                                     value="">{t('registration.eyesight_hearing.eyesight.placeholder')}</option>
                                                                 <option>{t('registration.eyesight_hearing.eyesight.option0')}</option>
@@ -609,7 +677,13 @@ export class Profile extends React.Component {
                                                     <Row>
                                                         <Col sm={3}>{t('registration.eyesight_hearing.hearing.title')}</Col>
                                                         <Col sm={8}>
-                                                            <select name="hearing" className="form-control" required>
+                                                            <select
+                                                                id="hearing"
+                                                                onChange={this.onChangeValue}
+                                                                value={this.state.hearing || (updatedCandidateInfo && updatedCandidateInfo.hearing)}
+
+                                                                name="hearing" className="form-control"
+                                                                required>
                                                                 <option
                                                                     value="">{t('registration.eyesight_hearing.hearing.placeholder')}</option>
                                                                 <option>{t('registration.eyesight_hearing.hearing.option0')}</option>
@@ -630,10 +704,19 @@ export class Profile extends React.Component {
                                                 <Form.Label column sm={9}>
                                                     <Row>
                                                         <Col sm={3}><input name="foot-size-value" type="text"
+                                                            id="footSize"
+                                                            onChange={this.onChangeValue}
+                                                            value={this.state.footSize || (updatedCandidateInfo && updatedCandidateInfo.footSize)}
+
                                                             placeholder={t('registration.foot_size.title')}
                                                             className="form-control" required /></Col>
                                                         <Col sm={8}>
-                                                            <select name="foot-size-unit" className="form-control" required>
+                                                            <select
+                                                                id="footSizeUnit"
+                                                                onChange={this.onChangeValue}
+                                                                value={this.state.footSizeUnit || (updatedCandidateInfo && updatedCandidateInfo.footSizeUnit)}
+
+                                                                name="foot-size-unit" className="form-control" required>
                                                                 <option
                                                                     value="">{t('registration.foot_size.dropdown.placeholder')}</option>
                                                                 <option>{t('registration.foot_size.dropdown.option0')}</option>
@@ -667,7 +750,11 @@ export class Profile extends React.Component {
                                                 <Form.Label column sm={9}>
                                                     <Row>
                                                         <Col sm={6}>
-                                                            <select onClick={this.onWorkExperienceSelected} name="work-experience-0"
+                                                            <select onClick={this.onWorkExperienceSelected}
+                                                            id="workExperience0"
+                                                            onChange={this.onChangeValue}
+                                                            value={this.state.workExperience0}
+                                                            name="work-experience-0"
                                                                 className="form-control work-experience" required>
                                                                 <option
                                                                     value="">{t('registration.work_experience.dropdown.placeholder0')}</option>
@@ -678,6 +765,8 @@ export class Profile extends React.Component {
                                                         </Col>
                                                         <Col sm={6}>
                                                             <input onChange={this.onWorkExperienceValueEntered}
+                                                                id="workExperience0Value"
+                                                                value={this.state.workExperience0Value}
                                                                 name="work-experience-0-value" type="text"
                                                                 className="form-control work-experience-value" required />
                                                         </Col>
@@ -685,6 +774,9 @@ export class Profile extends React.Component {
                                                     <Row>
                                                         <Col sm={6}>
                                                             <select onClick={this.onWorkExperienceSelected} name="work-experience-1"
+                                                                  id="workExperience1"
+                                                                  onChange={this.onChangeValue}
+                                                                  value={this.state.workExperience1}
                                                                 className="form-control work-experience" required>
                                                                 <option
                                                                     value="">{t('registration.work_experience.dropdown.placeholder1')}</option>
@@ -695,6 +787,8 @@ export class Profile extends React.Component {
                                                         </Col>
                                                         <Col sm={6}>
                                                             <input onChange={this.onWorkExperienceValueEntered}
+                                                                   id="workExperience1Value"
+                                                                   value={this.state.workExperience1Value}
                                                                 name="work-experience-1-value" type="text"
                                                                 className="form-control work-experience-value" required />
                                                         </Col>
@@ -702,6 +796,9 @@ export class Profile extends React.Component {
                                                     <Row>
                                                         <Col sm={6}>
                                                             <select onClick={this.onWorkExperienceSelected} name="work-experience-2"
+                                                              id="workExperience2"
+                                                              onChange={this.onChangeValue}
+                                                              value={this.state.workExperience2}
                                                                 className="form-control work-experience" required>
                                                                 <option
                                                                     value="">{t('registration.work_experience.dropdown.placeholder2')}</option>
@@ -712,6 +809,8 @@ export class Profile extends React.Component {
                                                         </Col>
                                                         <Col sm={6}>
                                                             <input onChange={this.onWorkExperienceValueEntered}
+                                                                 id="workExperience2Value"
+                                                                 value={this.state.workExperience2Value}
                                                                 name="work-experience-2-value" type="text"
                                                                 className="form-control work-experience-value" required />
                                                         </Col>
@@ -730,7 +829,11 @@ export class Profile extends React.Component {
                                                 <Form.Label column sm={9}>
                                                     <Row>
                                                         <Col sm={6}>
-                                                            <select name="skills" className="form-control" required>
+                                                            <select
+                                                            id="specificSkills"
+                                                            onChange={this.onChangeValue}
+                                                            value={this.state.specificSkills || (updatedCandidateInfo && updatedCandidateInfo.specificSkills)}
+                                                            name="skills" className="form-control" required>
                                                                 <option
                                                                     value="">{t('registration.specific_skills.dropdown.placeholder')}</option>
                                                                 <option>{t('registration.specific_skills.dropdown.option0')}</option>
@@ -739,7 +842,11 @@ export class Profile extends React.Component {
                                                             </select>
                                                         </Col>
                                                         <Col sm={6}>
-                                                            <input name="skills-text" type="text" className="form-control" required />
+                                                            <input name="skills-text" type="text" 
+                                                              id="specificSkillsOption"
+                                                              onChange={this.onChangeValue}
+                                                              value={this.state.specificSkillsOption || (updatedCandidateInfo && updatedCandidateInfo.specificSkillsOption)}
+                                                            className="form-control" required />
                                                         </Col>
                                                     </Row>
                                                 </Form.Label>
@@ -755,10 +862,14 @@ export class Profile extends React.Component {
                                                 <Form.Label column sm={9}>
                                                     <Col sm={4}>
                                                         <input name="marital" type="radio" value="married"
+                                                            onChange={this.onChangeValue}
+                                                            checked={this.state.marital === "married" || (updatedCandidateInfo && updatedCandidateInfo.maritalStatus) === "married"}
                                                             required /> {t('registration.meritial_status.check.option0')}
                                                     </Col>
                                                     <Col sm={4}>
                                                         <input name="marital" type="radio" value="unmarried"
+                                                            checked={this.state.marital === "unmarried" || (updatedCandidateInfo && updatedCandidateInfo.maritalStatus)  === "unmarried"}
+                                                        onChange={this.onChangeValue}
                                                             required /> {t('registration.meritial_status.check.option1')}
                                                     </Col>
                                                 </Form.Label>
@@ -772,7 +883,11 @@ export class Profile extends React.Component {
                                                     {t('registration.cronic_disease.title')}
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
-                                                    <Form.Control name="chronic-disease" type="text" required />
+                                                    <Form.Control
+                                                    id="chronicDisease"
+                                                    onChange={this.onChangeValue}
+                                                    value={this.state.chronicDisease || (updatedCandidateInfo && updatedCandidateInfo.chronicDisease)}
+                                                    name="chronic-disease" type="text" required />
                                                 </Form.Label>
                                             </Form.Group>
 
@@ -786,7 +901,12 @@ export class Profile extends React.Component {
                                                 </Form.Label>
 
                                                 <Form.Label column sm={9}>
-                                                    <select name="japanese-language-skills" className="form-control" required>
+                                                    <select 
+                                                    name="japanese-language-skills" 
+                                                    id="japaneseLanguageSkill"
+                                                    onChange={this.onChangeValue}
+                                                    value={this.state.japaneseLanguageSkill || (updatedCandidateInfo && updatedCandidateInfo.japaneseLanguageSkill)}
+                                                    className="form-control" required>
                                                         <option
                                                             value="">{t('registration.japanese_language_skills.dropdown.placeholder')}</option>
                                                         <option>{t('registration.japanese_language_skills.dropdown.option0')}</option>
@@ -857,7 +977,7 @@ export class Profile extends React.Component {
                                                         placeholder={t('registration.email.placeholder')} required />
                                                 </Form.Label>
                                             </Form.Group>
-                                       
+
                                             <Form.Group
                                                 className="form-main-container"
                                                 as={Row}
@@ -868,6 +988,9 @@ export class Profile extends React.Component {
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
                                                     <Form.Control name="phone-number" type="text"
+                                                        id="phoneNumber"
+                                                        onChange={this.onChangeValue}
+                                                        value={this.state.phoneNumber || (updatedCandidateInfo && updatedCandidateInfo.phoneNumber)}
                                                         placeholder={t('registration.phonenumber.placeholder')} required />
                                                 </Form.Label>
                                             </Form.Group>
@@ -881,6 +1004,9 @@ export class Profile extends React.Component {
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
                                                     <Form.Control name="facebook" type="text"
+                                                        id="phoneNumber"
+                                                        onChange={this.onChangeValue}
+                                                        value={this.state.phoneNumber || (updatedCandidateInfo && updatedCandidateInfo.phoneNumber)}
                                                         placeholder={t('registration.facebook.placeholder')} required />
                                                 </Form.Label>
                                             </Form.Group>
@@ -893,7 +1019,11 @@ export class Profile extends React.Component {
                                                     {t('registration.current_location.title')}
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
-                                                    <select name="currentlocation" className="form-control" required>
+                                                    <select
+                                                    id="currentLocation"
+                                                    onChange={this.onChangeValue}
+                                                    value={this.state.currentLocation || (updatedCandidateInfo && updatedCandidateInfo.currentLocation)}
+                                                    name="currentlocation" className="form-control" required>
                                                         <option>{t('registration.current_location.dropdown.placeholder')}</option>
                                                         <option>{t('registration.current_location.dropdown.option0')}</option>
                                                         <option>{t('registration.current_location.dropdown.option1')}</option>
@@ -912,7 +1042,11 @@ export class Profile extends React.Component {
                                                 <Form.Label column sm={9}>
                                                     <Row>
                                                         <Col sm={12}>
-                                                            <select name="current-situation" className="form-control" required>
+                                                            <select 
+                                                             id="currentSituation"
+                                                             onChange={this.onChangeValue}
+                                                             value={this.state.currentSituation || (updatedCandidateInfo && updatedCandidateInfo.currentSituation)}
+                                                             name="current-situation" className="form-control" required>
                                                                 <option
                                                                     value="">{t('registration.current_situation.dropdown.placeholder')}</option>
                                                                 <option>{t('registration.current_situation.dropdown.option0')}</option>
@@ -925,6 +1059,10 @@ export class Profile extends React.Component {
                                                     <Row>
                                                         <Col sm={12}>
                                                             <input name="current-situation-text" type="text" className="form-control"
+                                                                 id="currentSituationOption"
+                                                                 onChange={this.onChangeValue}
+                                                                 value={this.state.currentSituationOption || (updatedCandidateInfo && updatedCandidateInfo.currentSituationOption)}
+                                                        
                                                                 required />
                                                         </Col>
                                                     </Row>
