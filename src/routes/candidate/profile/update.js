@@ -1004,9 +1004,9 @@ export class Profile extends React.Component {
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
                                                     <Form.Control name="facebook" type="text"
-                                                        id="phoneNumber"
+                                                        id="facebook"
                                                         onChange={this.onChangeValue}
-                                                        value={this.state.phoneNumber || (updatedCandidateInfo && updatedCandidateInfo.phoneNumber)}
+                                                        value={this.state.facebook || (updatedCandidateInfo && updatedCandidateInfo.facebookUrl)}
                                                         placeholder={t('registration.facebook.placeholder')} required />
                                                 </Form.Label>
                                             </Form.Group>
