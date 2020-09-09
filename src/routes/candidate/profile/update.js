@@ -1,15 +1,16 @@
 import React from "react";
-import {Container, Row, Col, Form, Button, Tab, Tabs} from "react-bootstrap";
-import {withTranslation} from 'react-i18next'
-import {connect} from 'react-redux'
-import {v4 as uuidv4} from 'uuid';
+import { Container, Row, Col, Form, Button, Tab, Tabs } from "react-bootstrap";
+import { withTranslation } from 'react-i18next'
+import { connect } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid';
 import SideBar from "../sidebar"
 import {
     saveCandidateInfoFromApi,
     saveCandidateHalfBodyPhotoThroughAPI,
     saveCandidatePassportThroughAPI
 } from '../../../reducers/Candidate/candidate.reducer'
-
+import environment from "../../../environment.json"
+import axios from "axios"
 export class Profile extends React.Component {
 
     constructor(props) {
@@ -104,9 +105,9 @@ export class Profile extends React.Component {
         }
     }
 
-    onSubmitCandidateData = (e) => {
-        // e.preventDefault();
-
+    
+    updatePersonalInfo = (e) => {
+        e.preventDefault()
         let fullName = document.getElementsByName("full-name");
         fullName = fullName[0].value;
         let romajiName = document.getElementsByName("full-name-roman");
@@ -144,9 +145,6 @@ export class Profile extends React.Component {
         let sex = document.getElementsByName("sex");
         sex = sex[0].value;
 
-        // Half Body Picture
-        // Passport Picture
-
         let height = document.getElementsByName("height-value");
         height = height[0].value
         let heightUnit = document.getElementsByName("height-unit");
@@ -167,28 +165,40 @@ export class Profile extends React.Component {
         let footSizeUnit = document.getElementsByName("foot-size-unit");
         footSizeUnit = footSizeUnit[0].value;
 
-        let email = document.getElementsByName("email");
-        email = email[0].value;
+        let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
 
-        let password = document.getElementsByName("password");
-        password = password[0].value;
-        let retypedPassword = document.getElementsByName("retyped-password");
-        retypedPassword = retypedPassword[0].value;
+        let toBePostedCandidate = {
+            id: getCandidateInfo.id,
+            acceptTermsAndCondition: true,
+            romajiName,
+            nickName,
+            country,
+            nationality,
+            "languages": selectedLanguages,
+            "birthYear": yearOfBirth,
+            "birthMonth": monthOfBirth,
+            "birthday": dayOfBirth,
+            religion,
+            "gender": sex.toUpperCase(),
+            height,
+            heightUnit,
+            weight,
+            weightUnit,
+            eyeSight,
+            hearing,
+            footSize,
+            footSizeUnit
+        }
 
-        let phoneNumber = document.getElementsByName("phone-number");
-        phoneNumber = phoneNumber[0].value;
+        let url = `http://${environment.api_url}/api/candidates/details-update`;
+        axios.put(url, toBePostedCandidate, {headers: {'Content-Type': 'application/json'}}).then(res => {
+            debugger
+        });
 
-        let facebookUrl = document.getElementsByName("facebook");
-        facebookUrl = facebookUrl[0].value;
+    }
 
-        let currentLocation = document.getElementsByName("currentlocation");
-        currentLocation = currentLocation[0].value;
-
-        let currentSituation = document.getElementsByName("current-situation");
-        currentSituation = currentSituation[0].value;
-
-        let currentSituationOption = document.getElementsByName("current-situation-text");
-        currentSituationOption = currentSituationOption[0].value;
+    updateWorkExperience = (e) => {
+        e.preventDefault()
 
         let workExperience0 = document.getElementsByName("work-experience-0");
         workExperience0 = workExperience0[0].value;
@@ -237,44 +247,11 @@ export class Profile extends React.Component {
             }
         })
 
-        let termsAndConditions = document.getElementsByName("terms-and-conditions");
-        termsAndConditions = termsAndConditions[0].value;
+        debugger
+        let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
 
-        let toBePostedCandidate = {
-
-            acceptTermsAndCondition: true,
-
-            romajiName,
-            nickName,
-            country,
-            nationality,
-            "languages": selectedLanguages,
-            "birthYear": yearOfBirth,
-            "birthMonth": monthOfBirth,
-            "birthday": dayOfBirth,
-            religion,
-            "gender": sex.toUpperCase(),
-            height,
-            heightUnit,
-            weight,
-            weightUnit,
-            eyeSight,
-            hearing,
-            footSize,
-            footSizeUnit,
-            "candidate": {
-                lang: '',
-                email,
-                "name": fullName,
-                password,
-                "username": email   //  No username found.
-            },
-            retypedPassword,
-            phoneNumber,
-            facebookUrl,
-            currentLocation,
-            currentSituation,
-            currentSituationOption,
+        let submitedData = {
+            "id": getCandidateInfo.id,
             "candidateWorkExperiences": [
                 {
                     "companyName": workExperience0Value,
@@ -296,23 +273,64 @@ export class Profile extends React.Component {
             chronicDisease,
             japaneseLanguageSkill,
             "desiredJobs": selectedJobs,
-            "status": true,
-            "fromRegistrationPage": true
-        };
-        let validity = document.getElementsByClassName("registration-form");
-        validity = validity[0].checkValidity();
-
-        if (validity === true) {
-            e.preventDefault();
-            this.props.saveCandidateInfoForm(toBePostedCandidate);
         }
+
+        let url = `http://${environment.api_url}/api/candidates/candidate-work-experience`;
+        axios.put(url, submitedData, {headers: {'Content-Type': 'application/json'}}).then(res => {
+            debugger
+        });
+
+    }
+
+    updateSettingInfo = (e) => {
+
+    }
+
+
+    onSubmitCandidateSetting = (e) => {
+         e.preventDefault();
+
+       
+     
+        let phoneNumber = document.getElementsByName("phone-number");
+        phoneNumber = phoneNumber[0].value;
+
+        let facebookUrl = document.getElementsByName("facebook");
+        facebookUrl = facebookUrl[0].value;
+
+        let currentLocation = document.getElementsByName("currentlocation");
+        currentLocation = currentLocation[0].value;
+
+        let currentSituation = document.getElementsByName("current-situation");
+        currentSituation = currentSituation[0].value;
+
+        let currentSituationOption = document.getElementsByName("current-situation-text");
+        currentSituationOption = currentSituationOption[0].value;
+
+        let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
+        let toBePostedCandidate = {
+            "id": getCandidateInfo.id,
+            phoneNumber,
+            facebookUrl,
+            currentLocation,
+            currentSituation,
+            currentSituationOption,
+            "status": true,
+           
+        };
+        let url = `http://${environment.api_url}/api/candidates/settings`;
+        axios.put(url, toBePostedCandidate, {headers: {'Content-Type': 'application/json'}}).then(res => {
+            debugger
+        });
     }
 
     render() {
-        const {t} = this.props
-        // console.log('-------------------------')
-        // console.log(this.state)
-        // console.log('-------------------------')
+        const { t } = this.props
+        
+        /** get Candidate Name */
+
+        let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
+
 
         let initYear = 1971;
         let yearCount = 2050;
@@ -329,700 +347,675 @@ export class Profile extends React.Component {
         // console.log('this is years', years)
         return (
             <div class="d-flex" id="wrapper">
-            <SideBar />
-            <div style={{width: "85%"}} id="page-content-wrapper">
-            
-            <Container >
-            <Row column sm={12}  className='justify-content-md-center pt-4'>
-                                    <h3>
-                                        {t('registration.registration_form')}
-                                    </h3>
-            </Row>
-                <Row className="justify-content-md-center pt-4">
-                    <Col md="8">
-                    <Tabs defaultActiveKey="personalInfo" id="uncontrolled-tab-example">
-                    <Tab eventKey="personalInfo" className="pb-2" style={{backgroundColor:"lightgray"}} title="Personal">
-                        <Form id="personalInfo">
-                        <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalName"
-                            >
-                              
-                            </Form.Group>
+                <SideBar />
+                <div style={{ width: "85%" }} id="page-content-wrapper">
 
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.full_name.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="full-name" type="text"
-                                                  placeholder={t('registration.full_name.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalRomajiName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.romanji_name.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="full-name-roman" type="text"
-                                                  placeholder={t('registration.romanji_name.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
+                    <Container >
+                        <Row column sm={12} className='justify-content-md-center pt-4'>
+                            <h3>
+                                {t('registration.registration_form')}
+                            </h3>
+                        </Row>
+                        <Row className="justify-content-md-center pt-4">
+                            <Col md="8">
+                                <Tabs defaultActiveKey="personalInfo" id="uncontrolled-tab-example">
+                                    <Tab eventKey="personalInfo" className="pb-2" style={{ backgroundColor: "lightgray" }} title="Personal">
+                                        <Form onSubmit={this.updatePersonalInfo} id="personalInfo">
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalName"
+                                            >
 
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalRomajiName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.nick_name.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="nick-name" type="text"
-                                                  placeholder={t('registration.nick_name.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.country_resident.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <select name="country" className="form-control" required>
+                                            </Form.Group>
 
-                                        <option
-                                            value="">{t('registration.country_resident.dropdown.placeholder')}</option>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.full_name.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Form.Control name="full-name" type="text" value={getCandidateInfo.name}
+                                                        placeholder={t('registration.full_name.placeholder')} required />
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalRomajiName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.romanji_name.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Form.Control name="full-name-roman" type="text"
+                                                        placeholder={t('registration.romanji_name.placeholder')} required />
+                                                </Form.Label>
+                                            </Form.Group>
 
-                                        <option>{t('registration.country_resident.dropdown.option0')}</option>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalRomajiName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.nick_name.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Form.Control name="nick-name" type="text"
+                                                        placeholder={t('registration.nick_name.placeholder')} required />
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.country_resident.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <select name="country" className="form-control" required>
 
-                                        <option>{t('registration.country_resident.dropdown.option1')}</option>
-                                        {/*<option>Vitnam</option>*/}
-                                        <option>{t('registration.country_resident.dropdown.option2')}</option>
-                                    </select>
-                                    <br/>
-                                    <Form.Control name="nationality" type="text"
-                                                  placeholder={t('registration.country_resident.nationality_placeholder')}
-                                                  required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalRomajiName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.language_you_can_fully_understand.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Row name="language">
-                                        <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
-                                                           id='language-option'
-                                                           type="checkbox"
-                                                           required/>{t('registration.language_you_can_fully_understand.check.option0')}
-                                        </Col>
-                                        <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
-                                                           id='language-option'
-                                                           type="checkbox"
-                                                           required/>{t('registration.language_you_can_fully_understand.check.option1')}
-                                        </Col>
-                                        <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
-                                                           id='language-option'
-                                                           type="checkbox"
-                                                           required/>{t('registration.language_you_can_fully_understand.check.option2')}
-                                        </Col>
-                                        <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
-                                                           id='language-option'
-                                                           type="checkbox"
-                                                           required/>{t('registration.language_you_can_fully_understand.check.option3')}
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                key={uuidv4()}
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalRomajiName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.date_of_birth.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={4}>
-                                            <select className="form-control" name="year" required>
-                                                <option
-                                                    value="">{t('registration.date_of_birth.year_placeholder')}</option>
-                                                {
-                                                    years.map(item => {
-                                                        return (<option key={item} value={item}>{item}</option>)
-                                                    })
-                                                }
-                                            </select>
-                                        </Col>
-                                        <Col sm={4}><select className="form-control" name="month" required>
-                                            <option
-                                                value="">{t('registration.date_of_birth.month_placeholder')}</option>
-                                            {
-                                                months.map(item => {
-                                                    return (<option key={uuidv4()} value={item}>{item}</option>)
-                                                })
-                                            }
-                                        </select>
-                                        </Col>
-                                        <Col sm={4}><input className="form-control" type="text" name="day"
-                                                           placeholder={t('registration.date_of_birth.day_placeholder')}
-                                                           required/></Col>
+                                                        <option
+                                                            value="">{t('registration.country_resident.dropdown.placeholder')}</option>
 
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
+                                                        <option>{t('registration.country_resident.dropdown.option0')}</option>
 
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.religion.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <select name="religion" className="form-control" required>
-                                        <option value="">{t('registration.religion.dropdown.placeholder')}</option>
-                                        <option>{t('registration.religion.dropdown.option0')}</option>
-                                        <option>{t('registration.religion.dropdown.option1')}</option>
-                                        <option>{t('registration.religion.dropdown.option2')}</option>
-                                        <option>{t('registration.religion.dropdown.option3')}</option>
-                                        <option>{t('registration.religion.dropdown.option4')}</option>
-                                    </select>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.sex.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <select name="sex" className="form-control" required>
-                                        <option value="">{t('registration.sex.dropdown.placeholder')}</option>
-                                        <option>{t('registration.sex.dropdown.option0')}</option>
-                                        <option>{t('registration.sex.dropdown.option1')}</option>
-                                        <option>{t('registration.sex.dropdown.option2')}</option>
-                                    </select>
-                                </Form.Label>
-                            </Form.Group>
-                    
-                            
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.height_weight.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={6}><input name="height-value" type="text"
-                                                           placeholder={t('registration.height_weight.height.placeholder')}
-                                                           className="form-control" required/></Col>
-                                        <Col sm={6}>
-                                            <select name="height-unit" className="form-control" required>
-                                                <option
-                                                    value="">{t('registration.height_weight.height.unit_placeholder')}</option>
-                                                <option>{t('registration.height_weight.height.option0')}</option>
-                                                <option>{t('registration.height_weight.height.option1')}</option>
-                                            </select>
-                                        </Col>
-                                    </Row>
-                                    <Row style={{height: '10px'}}></Row>
-                                    <Row>
-                                        <Col sm={6}><input name="weight-value" type="text"
-                                                           placeholder={t('registration.height_weight.weight.placeholder')}
-                                                           className="form-control" required/></Col>
-                                        <Col sm={6}>
-                                            <select name="weight-unit" className="form-control" required>
-                                                <option
-                                                    value="">{t('registration.height_weight.weight.unit_placeholder')}</option>
-                                                <option>{t('registration.height_weight.weight.option0')}</option>
-                                                <option>{t('registration.height_weight.weight.option1')}</option>
-                                            </select>
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.eyesight_hearing.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={3}>{t('registration.eyesight_hearing.eyesight.title')}</Col>
-                                        <Col sm={8}>
-                                            <select name="eyesight" className="form-control" required>
-                                                <option
-                                                    value="">{t('registration.eyesight_hearing.eyesight.placeholder')}</option>
-                                                <option>{t('registration.eyesight_hearing.eyesight.option0')}</option>
-                                                <option>{t('registration.eyesight_hearing.eyesight.option1')}</option>
-                                                <option>{t('registration.eyesight_hearing.eyesight.option2')}</option>
-                                            </select>
-                                        </Col>
-                                    </Row>
-                                    <Row style={{height: '10px'}}></Row>
-                                    <Row>
-                                        <Col sm={3}>{t('registration.eyesight_hearing.hearing.title')}</Col>
-                                        <Col sm={8}>
-                                            <select name="hearing" className="form-control" required>
-                                                <option
-                                                    value="">{t('registration.eyesight_hearing.hearing.placeholder')}</option>
-                                                <option>{t('registration.eyesight_hearing.hearing.option0')}</option>
-                                                <option>{t('registration.eyesight_hearing.hearing.option1')}</option>
-                                            </select>
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.foot_size.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={3}><input name="foot-size-value" type="text"
-                                                           placeholder={t('registration.foot_size.title')}
-                                                           className="form-control" required/></Col>
-                                        <Col sm={8}>
-                                            <select name="foot-size-unit" className="form-control" required>
-                                                <option
-                                                    value="">{t('registration.foot_size.dropdown.placeholder')}</option>
-                                                <option>{t('registration.foot_size.dropdown.option0')}</option>
-                                                <option>{t('registration.foot_size.dropdown.option1')}</option>
-                                            </select>
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
-                            <div className="d-flex pt-2">
-                                <div className="col-6"></div>
-                                <div style={{textAlign: "right"}}  className="col-6 ">
-                                    <Button type="submit">Update</Button>
-                                </div>
-                            </div>
-                        </Form>
-                    </Tab>
-                    <Tab eventKey="workExperience" className="pb-2" style={{backgroundColor:"lightgray"}} title="Work Experience">
-                       <Form className="workExperience">
-                                   
-                            
-                       <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.work_experience.title')}
-                                </Form.Label>
+                                                        <option>{t('registration.country_resident.dropdown.option1')}</option>
+                                                        {/*<option>Vitnam</option>*/}
+                                                        <option>{t('registration.country_resident.dropdown.option2')}</option>
+                                                    </select>
+                                                    <br />
+                                                    <Form.Control name="nationality" type="text"
+                                                        placeholder={t('registration.country_resident.nationality_placeholder')}
+                                                        required />
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalRomajiName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.language_you_can_fully_understand.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Row name="language">
+                                                        <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
+                                                            id='language-option'
+                                                            type="checkbox"
+                                                            required />{t('registration.language_you_can_fully_understand.check.option0')}
+                                                        </Col>
+                                                        <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
+                                                            id='language-option'
+                                                            type="checkbox"
+                                                            required />{t('registration.language_you_can_fully_understand.check.option1')}
+                                                        </Col>
+                                                        <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
+                                                            id='language-option'
+                                                            type="checkbox"
+                                                            required />{t('registration.language_you_can_fully_understand.check.option2')}
+                                                        </Col>
+                                                        <Col sm={3}><input onClick={this.onSelectedCheckBox} name="language-check"
+                                                            id='language-option'
+                                                            type="checkbox"
+                                                            required />{t('registration.language_you_can_fully_understand.check.option3')}
+                                                        </Col>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                key={uuidv4()}
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalRomajiName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.date_of_birth.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Row>
+                                                        <Col sm={4}>
+                                                            <select className="form-control" name="year" required>
+                                                                <option
+                                                                    value="">{t('registration.date_of_birth.year_placeholder')}</option>
+                                                                {
+                                                                    years.map(item => {
+                                                                        return (<option key={item} value={item}>{item}</option>)
+                                                                    })
+                                                                }
+                                                            </select>
+                                                        </Col>
+                                                        <Col sm={4}><select className="form-control" name="month" required>
+                                                            <option
+                                                                value="">{t('registration.date_of_birth.month_placeholder')}</option>
+                                                            {
+                                                                months.map(item => {
+                                                                    return (<option key={uuidv4()} value={item}>{item}</option>)
+                                                                })
+                                                            }
+                                                        </select>
+                                                        </Col>
+                                                        <Col sm={4}><input className="form-control" type="text" name="day"
+                                                            placeholder={t('registration.date_of_birth.day_placeholder')}
+                                                            required /></Col>
 
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={6}>
-                                            <select onClick={this.onWorkExperienceSelected} name="work-experience-0"
-                                                    className="form-control work-experience" required>
-                                                <option
-                                                    value="">{t('registration.work_experience.dropdown.placeholder0')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option0')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option1')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option2')}</option>
-                                            </select>
-                                        </Col>
-                                        <Col sm={6}>
-                                            <input onChange={this.onWorkExperienceValueEntered}
-                                                   name="work-experience-0-value" type="text"
-                                                   className="form-control work-experience-value" required/>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col sm={6}>
-                                            <select onClick={this.onWorkExperienceSelected} name="work-experience-1"
-                                                    className="form-control work-experience" required>
-                                                <option
-                                                    value="">{t('registration.work_experience.dropdown.placeholder1')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option0')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option1')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option2')}</option>
-                                            </select>
-                                        </Col>
-                                        <Col sm={6}>
-                                            <input onChange={this.onWorkExperienceValueEntered}
-                                                   name="work-experience-1-value" type="text"
-                                                   className="form-control work-experience-value" required/>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col sm={6}>
-                                            <select onClick={this.onWorkExperienceSelected} name="work-experience-2"
-                                                    className="form-control work-experience" required>
-                                                <option
-                                                    value="">{t('registration.work_experience.dropdown.placeholder2')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option0')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option1')}</option>
-                                                <option>{t('registration.work_experience.dropdown.option2')}</option>
-                                            </select>
-                                        </Col>
-                                        <Col sm={6}>
-                                            <input onChange={this.onWorkExperienceValueEntered}
-                                                   name="work-experience-2-value" type="text"
-                                                   className="form-control work-experience-value" required/>
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.specific_skills.title')}
-                                </Form.Label>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
 
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={6}>
-                                            <select name="skills" className="form-control" required>
-                                                <option
-                                                    value="">{t('registration.specific_skills.dropdown.placeholder')}</option>
-                                                <option>{t('registration.specific_skills.dropdown.option0')}</option>
-                                                <option>{t('registration.specific_skills.dropdown.option1')}</option>
-                                                <option>{t('registration.specific_skills.dropdown.option2')}</option>
-                                            </select>
-                                        </Col>
-                                        <Col sm={6}>
-                                            <input name="skills-text" type="text" className="form-control" required/>
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalRomajiName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.meritial_status.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Col sm={4}>
-                                        <input name="marital" type="radio" value="married"
-                                               required/> {t('registration.meritial_status.check.option0')}
-                                    </Col>
-                                    <Col sm={4}>
-                                        <input name="marital" type="radio" value="unmarried"
-                                               required/> {t('registration.meritial_status.check.option1')}
-                                    </Col>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalRomajiName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.cronic_disease.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="chronic-disease" type="text" required/>
-                                </Form.Label>
-                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.religion.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <select name="religion" className="form-control" required>
+                                                        <option value="">{t('registration.religion.dropdown.placeholder')}</option>
+                                                        <option>{t('registration.religion.dropdown.option0')}</option>
+                                                        <option>{t('registration.religion.dropdown.option1')}</option>
+                                                        <option>{t('registration.religion.dropdown.option2')}</option>
+                                                        <option>{t('registration.religion.dropdown.option3')}</option>
+                                                        <option>{t('registration.religion.dropdown.option4')}</option>
+                                                    </select>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.sex.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <select name="sex" className="form-control" required>
+                                                        <option value="">{t('registration.sex.dropdown.placeholder')}</option>
+                                                        <option>{t('registration.sex.dropdown.option0')}</option>
+                                                        <option>{t('registration.sex.dropdown.option1')}</option>
+                                                        <option>{t('registration.sex.dropdown.option2')}</option>
+                                                    </select>
+                                                </Form.Label>
+                                            </Form.Group>
 
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.japanese_language_skills.title')}
-                                </Form.Label>
 
-                                <Form.Label column sm={9}>
-                                    <select name="japanese-language-skills" className="form-control" required>
-                                        <option
-                                            value="">{t('registration.japanese_language_skills.dropdown.placeholder')}</option>
-                                        <option>{t('registration.japanese_language_skills.dropdown.option0')}</option>
-                                        <option>{t('registration.japanese_language_skills.dropdown.option1')}</option>
-                                        <option>{t('registration.japanese_language_skills.dropdown.option2')}</option>
-                                        <option>{t('registration.japanese_language_skills.dropdown.option3')}</option>
-                                        <option>{t('registration.japanese_language_skills.dropdown.option4')}</option>
-                                    </select>
-                                </Form.Label>
-                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.height_weight.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Row>
+                                                        <Col sm={6}><input name="height-value" type="text"
+                                                            placeholder={t('registration.height_weight.height.placeholder')}
+                                                            className="form-control" required /></Col>
+                                                        <Col sm={6}>
+                                                            <select name="height-unit" className="form-control" required>
+                                                                <option
+                                                                    value="">{t('registration.height_weight.height.unit_placeholder')}</option>
+                                                                <option>{t('registration.height_weight.height.option0')}</option>
+                                                                <option>{t('registration.height_weight.height.option1')}</option>
+                                                            </select>
+                                                        </Col>
+                                                    </Row>
+                                                    <Row style={{ height: '10px' }}></Row>
+                                                    <Row>
+                                                        <Col sm={6}><input name="weight-value" type="text"
+                                                            placeholder={t('registration.height_weight.weight.placeholder')}
+                                                            className="form-control" required /></Col>
+                                                        <Col sm={6}>
+                                                            <select name="weight-unit" className="form-control" required>
+                                                                <option
+                                                                    value="">{t('registration.height_weight.weight.unit_placeholder')}</option>
+                                                                <option>{t('registration.height_weight.weight.option0')}</option>
+                                                                <option>{t('registration.height_weight.weight.option1')}</option>
+                                                            </select>
+                                                        </Col>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.eyesight_hearing.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Row>
+                                                        <Col sm={3}>{t('registration.eyesight_hearing.eyesight.title')}</Col>
+                                                        <Col sm={8}>
+                                                            <select name="eyesight" className="form-control" required>
+                                                                <option
+                                                                    value="">{t('registration.eyesight_hearing.eyesight.placeholder')}</option>
+                                                                <option>{t('registration.eyesight_hearing.eyesight.option0')}</option>
+                                                                <option>{t('registration.eyesight_hearing.eyesight.option1')}</option>
+                                                                <option>{t('registration.eyesight_hearing.eyesight.option2')}</option>
+                                                            </select>
+                                                        </Col>
+                                                    </Row>
+                                                    <Row style={{ height: '10px' }}></Row>
+                                                    <Row>
+                                                        <Col sm={3}>{t('registration.eyesight_hearing.hearing.title')}</Col>
+                                                        <Col sm={8}>
+                                                            <select name="hearing" className="form-control" required>
+                                                                <option
+                                                                    value="">{t('registration.eyesight_hearing.hearing.placeholder')}</option>
+                                                                <option>{t('registration.eyesight_hearing.hearing.option0')}</option>
+                                                                <option>{t('registration.eyesight_hearing.hearing.option1')}</option>
+                                                            </select>
+                                                        </Col>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.foot_size.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Row>
+                                                        <Col sm={3}><input name="foot-size-value" type="text"
+                                                            placeholder={t('registration.foot_size.title')}
+                                                            className="form-control" required /></Col>
+                                                        <Col sm={8}>
+                                                            <select name="foot-size-unit" className="form-control" required>
+                                                                <option
+                                                                    value="">{t('registration.foot_size.dropdown.placeholder')}</option>
+                                                                <option>{t('registration.foot_size.dropdown.option0')}</option>
+                                                                <option>{t('registration.foot_size.dropdown.option1')}</option>
+                                                            </select>
+                                                        </Col>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <div className="d-flex pt-2">
+                                                <div className="col-6"></div>
+                                                <div style={{ textAlign: "right" }} className="col-6 ">
+                                                    <Button type="submit">Update</Button>
+                                                </div>
+                                            </div>
+                                        </Form>
+                                    </Tab>
+                                    <Tab eventKey="workExperience" className="pb-2" style={{ backgroundColor: "lightgray" }} title="Work Experience">
+                                        <Form onSubmit={this.updateWorkExperience} className="workExperience">
 
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.desired_job.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.work_experience.title')}
+                                                </Form.Label>
+
+                                                <Form.Label column sm={9}>
+                                                    <Row>
+                                                        <Col sm={6}>
+                                                            <select onClick={this.onWorkExperienceSelected} name="work-experience-0"
+                                                                className="form-control work-experience" required>
+                                                                <option
+                                                                    value="">{t('registration.work_experience.dropdown.placeholder0')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option0')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option1')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option2')}</option>
+                                                            </select>
+                                                        </Col>
+                                                        <Col sm={6}>
+                                                            <input onChange={this.onWorkExperienceValueEntered}
+                                                                name="work-experience-0-value" type="text"
+                                                                className="form-control work-experience-value" required />
+                                                        </Col>
+                                                    </Row>
+                                                    <Row>
+                                                        <Col sm={6}>
+                                                            <select onClick={this.onWorkExperienceSelected} name="work-experience-1"
+                                                                className="form-control work-experience" required>
+                                                                <option
+                                                                    value="">{t('registration.work_experience.dropdown.placeholder1')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option0')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option1')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option2')}</option>
+                                                            </select>
+                                                        </Col>
+                                                        <Col sm={6}>
+                                                            <input onChange={this.onWorkExperienceValueEntered}
+                                                                name="work-experience-1-value" type="text"
+                                                                className="form-control work-experience-value" required />
+                                                        </Col>
+                                                    </Row>
+                                                    <Row>
+                                                        <Col sm={6}>
+                                                            <select onClick={this.onWorkExperienceSelected} name="work-experience-2"
+                                                                className="form-control work-experience" required>
+                                                                <option
+                                                                    value="">{t('registration.work_experience.dropdown.placeholder2')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option0')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option1')}</option>
+                                                                <option>{t('registration.work_experience.dropdown.option2')}</option>
+                                                            </select>
+                                                        </Col>
+                                                        <Col sm={6}>
+                                                            <input onChange={this.onWorkExperienceValueEntered}
+                                                                name="work-experience-2-value" type="text"
+                                                                className="form-control work-experience-value" required />
+                                                        </Col>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.specific_skills.title')}
+                                                </Form.Label>
+
+                                                <Form.Label column sm={9}>
+                                                    <Row>
+                                                        <Col sm={6}>
+                                                            <select name="skills" className="form-control" required>
+                                                                <option
+                                                                    value="">{t('registration.specific_skills.dropdown.placeholder')}</option>
+                                                                <option>{t('registration.specific_skills.dropdown.option0')}</option>
+                                                                <option>{t('registration.specific_skills.dropdown.option1')}</option>
+                                                                <option>{t('registration.specific_skills.dropdown.option2')}</option>
+                                                            </select>
+                                                        </Col>
+                                                        <Col sm={6}>
+                                                            <input name="skills-text" type="text" className="form-control" required />
+                                                        </Col>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalRomajiName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.meritial_status.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Col sm={4}>
+                                                        <input name="marital" type="radio" value="married"
+                                                            required /> {t('registration.meritial_status.check.option0')}
+                                                    </Col>
+                                                    <Col sm={4}>
+                                                        <input name="marital" type="radio" value="unmarried"
+                                                            required /> {t('registration.meritial_status.check.option1')}
+                                                    </Col>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalRomajiName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.cronic_disease.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Form.Control name="chronic-disease" type="text" required />
+                                                </Form.Label>
+                                            </Form.Group>
+
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.japanese_language_skills.title')}
+                                                </Form.Label>
+
+                                                <Form.Label column sm={9}>
+                                                    <select name="japanese-language-skills" className="form-control" required>
+                                                        <option
+                                                            value="">{t('registration.japanese_language_skills.dropdown.placeholder')}</option>
+                                                        <option>{t('registration.japanese_language_skills.dropdown.option0')}</option>
+                                                        <option>{t('registration.japanese_language_skills.dropdown.option1')}</option>
+                                                        <option>{t('registration.japanese_language_skills.dropdown.option2')}</option>
+                                                        <option>{t('registration.japanese_language_skills.dropdown.option3')}</option>
+                                                        <option>{t('registration.japanese_language_skills.dropdown.option4')}</option>
+                                                    </select>
+                                                </Form.Label>
+                                            </Form.Group>
+
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.desired_job.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Row>
+                                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
                                                             id='job-option'
-                                                            required/>{t('registration.desired_job.check.option0')}
-                                        </Col>
-                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            required />{t('registration.desired_job.check.option0')}
+                                                        </Col>
+                                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
                                                             id='job-option'
-                                                            required/>{t('registration.desired_job.check.option1')}
-                                        </Col>
-                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            required />{t('registration.desired_job.check.option1')}
+                                                        </Col>
+                                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
                                                             id='job-option'
-                                                            required/>{t('registration.desired_job.check.option2')}
-                                        </Col>
-                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            required />{t('registration.desired_job.check.option2')}
+                                                        </Col>
+                                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
                                                             id='job-option'
-                                                            required/>{t('registration.desired_job.check.option3')}
-                                        </Col>
-                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
+                                                            required />{t('registration.desired_job.check.option3')}
+                                                        </Col>
+                                                        <Col sm={3}> <input onClick={this.onSelectedCheckBox} name="job" type="checkbox"
                                                             id='job-option'
-                                                            required/>{t('registration.desired_job.check.option4')}
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
+                                                            required />{t('registration.desired_job.check.option4')}
+                                                        </Col>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
 
-            
-                            <div className="d-flex pt-2">
-                                <div className="col-6"></div>
-                                <div style={{textAlign: "right"}}  className="col-6 ">
-                                    <Button type="submit">Update</Button>
-                                </div>
-                            </div>
-                       </Form>
-                    </Tab>
-                    <Tab eventKey="settings" className="pb-2" style={{backgroundColor:"lightgray"}} title="settings">
-                        <Form className="settingForm">
 
-                        <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.email.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="email" type="text"
-                                                  placeholder={t('registration.email.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.password.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="password" type="password"
-                                                  placeholder={t('registration.password.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.retypepassword.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="retyped-password" type="password"
-                                                  placeholder={t('registration.retypepassword.title')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.phonenumber.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="phone-number" type="text"
-                                                  placeholder={t('registration.phonenumber.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalFullName"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.facebook.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <Form.Control name="facebook" type="text"
-                                                  placeholder={t('registration.facebook.placeholder')} required/>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.current_location.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <select name="currentlocation" className="form-control" required>
-                                        <option>{t('registration.current_location.dropdown.placeholder')}</option>
-                                        <option>{t('registration.current_location.dropdown.option0')}</option>
-                                        <option>{t('registration.current_location.dropdown.option1')}</option>
-                                    </select>
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.current_situation.title')}
-                                </Form.Label>
+                                            <div className="d-flex pt-2">
+                                                <div className="col-6"></div>
+                                                <div style={{ textAlign: "right" }} className="col-6 ">
+                                                    <Button type="submit">Update</Button>
+                                                </div>
+                                            </div>
+                                        </Form>
+                                    </Tab>
+                                    <Tab eventKey="settings" className="pb-2" style={{ backgroundColor: "lightgray" }} title="settings">
+                                        <Form onSubmit={this.onSubmitCandidateSetting} className="settingForm">
 
-                                <Form.Label column sm={9}>
-                                    <Row>
-                                        <Col sm={12}>
-                                            <select name="current-situation" className="form-control" required>
-                                                <option
-                                                    value="">{t('registration.current_situation.dropdown.placeholder')}</option>
-                                                <option>{t('registration.current_situation.dropdown.option0')}</option>
-                                                <option>{t('registration.current_situation.dropdown.option1')}</option>
-                                                <option>{t('registration.current_situation.dropdown.option2')}</option>
-                                                <option>{t('registration.current_situation.dropdown.option3')}</option>
-                                            </select>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col sm={12}>
-                                            <input name="current-situation-text" type="text" className="form-control"
-                                                   required/>
-                                        </Col>
-                                    </Row>
-                                </Form.Label>
-                            </Form.Group>
-                            <div className="d-flex pt-2">
-                                <div className="col-6"></div>
-                                <div style={{textAlign: "right"}}  className="col-6 ">
-                                    <Button type="submit">Update</Button>
-                                </div>
-                            </div>
-                        </Form>
-                    </Tab>
-                    <Tab eventKey="photoUpload" className="pb-2" style={{backgroundColor:"lightgray"}} title="Photos">
-                        <Form id="frmPhotoUpload">
-                        <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.half_body_photo.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <input
-                                        hidden
-                                        className="form-control" type="file"
-                                        id='upload-image-half'
-                                        onChange={(e) => {
-                                            console.log(e.target.files)
-                                            this.setState({
-                                                halfBodyPhoto: e.target.files[0]
-                                            })
-                                        }}
-                                    />
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalFullName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.email.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Form.Control name="email" value={getCandidateInfo.username} type="text" disabled
+                                                        placeholder={t('registration.email.placeholder')} required />
+                                                </Form.Label>
+                                            </Form.Group>
+                                       
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalFullName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.phonenumber.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Form.Control name="phone-number" type="text"
+                                                        placeholder={t('registration.phonenumber.placeholder')} required />
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalFullName"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.facebook.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <Form.Control name="facebook" type="text"
+                                                        placeholder={t('registration.facebook.placeholder')} required />
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.current_location.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <select name="currentlocation" className="form-control" required>
+                                                        <option>{t('registration.current_location.dropdown.placeholder')}</option>
+                                                        <option>{t('registration.current_location.dropdown.option0')}</option>
+                                                        <option>{t('registration.current_location.dropdown.option1')}</option>
+                                                    </select>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.current_situation.title')}
+                                                </Form.Label>
 
-                                    <label htmlFor="upload-image-half" className="upload-button">
-                                        <i className="ui upload icon"></i>
+                                                <Form.Label column sm={9}>
+                                                    <Row>
+                                                        <Col sm={12}>
+                                                            <select name="current-situation" className="form-control" required>
+                                                                <option
+                                                                    value="">{t('registration.current_situation.dropdown.placeholder')}</option>
+                                                                <option>{t('registration.current_situation.dropdown.option0')}</option>
+                                                                <option>{t('registration.current_situation.dropdown.option1')}</option>
+                                                                <option>{t('registration.current_situation.dropdown.option2')}</option>
+                                                                <option>{t('registration.current_situation.dropdown.option3')}</option>
+                                                            </select>
+                                                        </Col>
+                                                    </Row>
+                                                    <Row>
+                                                        <Col sm={12}>
+                                                            <input name="current-situation-text" type="text" className="form-control"
+                                                                required />
+                                                        </Col>
+                                                    </Row>
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <div className="d-flex pt-2">
+                                                <div className="col-6"></div>
+                                                <div style={{ textAlign: "right" }} className="col-6 ">
+                                                    <Button type="submit">Update</Button>
+                                                </div>
+                                            </div>
+                                        </Form>
+                                    </Tab>
+                                    <Tab eventKey="photoUpload" className="pb-2" style={{ backgroundColor: "lightgray" }} title="Photos">
+                                        <Form id="frmPhotoUpload">
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.half_body_photo.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <input
+                                                        hidden
+                                                        className="form-control" type="file"
+                                                        id='upload-image-half'
+                                                        onChange={(e) => {
+                                                            console.log(e.target.files)
+                                                            this.setState({
+                                                                halfBodyPhoto: e.target.files[0]
+                                                            })
+                                                        }}
+                                                    />
+
+                                                    <label htmlFor="upload-image-half" className="upload-button">
+                                                        <i className="ui upload icon"></i>
                                         Upload image
                                     </label>
 
-                                </Form.Label>
-                            </Form.Group>
-                            <Form.Group
-                                className="form-main-container"
-                                as={Row}
-                                controlId="formHorizontalCountry"
-                            >
-                                <Form.Label column sm={3}>
-                                    {t('registration.passport_photo.title')}
-                                </Form.Label>
-                                <Form.Label column sm={9}>
-                                    <input
-                                        hidden
-                                        id='upload-image-passport'
-                                        className="form-control" type="file"
-                                        onChange={(e) => {
-                                            this.setState({
-                                                passportPhoto: e.target.files[0]
-                                            })
-                                        }}
-                                    />
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <Form.Group
+                                                className="form-main-container"
+                                                as={Row}
+                                                controlId="formHorizontalCountry"
+                                            >
+                                                <Form.Label column sm={3}>
+                                                    {t('registration.passport_photo.title')}
+                                                </Form.Label>
+                                                <Form.Label column sm={9}>
+                                                    <input
+                                                        hidden
+                                                        id='upload-image-passport'
+                                                        className="form-control" type="file"
+                                                        onChange={(e) => {
+                                                            this.setState({
+                                                                passportPhoto: e.target.files[0]
+                                                            })
+                                                        }}
+                                                    />
 
-                                    <label htmlFor="upload-image-passport" className="upload-button">
-                                        <i className="ui upload icon"></i>
+                                                    <label htmlFor="upload-image-passport" className="upload-button">
+                                                        <i className="ui upload icon"></i>
                                         Upload image
                                     </label>
-                                </Form.Label>
-                            </Form.Group>
-                            <div className="d-flex pt-2">
-                                <div className="col-6"></div>
-                                <div style={{textAlign: "right"}}  className="col-6 ">
-                                    <Button type="submit">Update</Button>
-                                </div>
-                            </div>
-                    
-                        </Form>
-                    </Tab>
-                                          
-                    
-                    </Tabs>
-                </Col>
-                </Row>
-                <Row className="justify-content-md-center">
-                    <Col md="8">
+                                                </Form.Label>
+                                            </Form.Group>
+                                            <div className="d-flex pt-2">
+                                                <div className="col-6"></div>
+                                                <div style={{ textAlign: "right" }} className="col-6 ">
+                                                    <Button type="submit">Update</Button>
+                                                </div>
+                                            </div>
 
-                    </Col>
-                </Row>
-                
-            </Container>
-            </div>
+                                        </Form>
+                                    </Tab>
+
+
+                                </Tabs>
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-md-center">
+                            <Col md="8">
+
+                            </Col>
+                        </Row>
+
+                    </Container>
+                </div>
             </div>
         );
     }

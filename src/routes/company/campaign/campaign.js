@@ -53,16 +53,20 @@ export default class CompanyCampaign extends React.Component {
       axios.get(urlIndustryJP).then(result => {
         this.setState({industriesJP: result.data})
       })
+     
+
+
 
   }
 
   onSubmitGetAllValue = (event) => {
+    debugger
     
-      event.preventDefault()
-      const data = new FormData(event.target)
-      console.log(data.get("areaId"))
+    event.preventDefault()
+    const data = new FormData(event.target)
+    console.log(data.get("areaId"))
 
-
+    let company = JSON.parse(localStorage.getItem("company"))
     /* get form value */
     let payload = {
       "workLocation": {
@@ -71,6 +75,9 @@ export default class CompanyCampaign extends React.Component {
       "industry": {
           "id": data.get("industry")
       },
+      "companyUser": {
+        "id": company.id
+       },
       "benefits": data.get("benefits"),
       "contractPeriod": data.get("contract_period"),
       "englishLevel": data.get("englishLevel"),
@@ -103,9 +110,12 @@ export default class CompanyCampaign extends React.Component {
   }
 
   onSubmitGetAllValueJP = (event) => {
+    debugger
       event.preventDefault()
       const data = new FormData(event.target)
       console.log(data.get("areaIdJP"))
+
+    let company = JSON.parse(localStorage.getItem("company"))
 
 
     /* get form value */
@@ -115,6 +125,9 @@ export default class CompanyCampaign extends React.Component {
       },
       "industry": {
           "id": data.get("industryJP")
+      },
+      "companyUser": {
+          "id": company.id
       },
       "benefits": data.get("benefitsJP"),
       "contractPeriod": data.get("contract_periodJP"),
@@ -142,7 +155,7 @@ export default class CompanyCampaign extends React.Component {
     }).then(result => {
       
         if(result.data) {
-          window.location.replace("/admin/dashboard")
+          window.location.replace("/company/campaign/list")
         }
     });
   }
@@ -151,6 +164,8 @@ export default class CompanyCampaign extends React.Component {
     let formBlock = {
       paddingTop: "20px",
     };
+
+    let companyInfo = JSON.parse(localStorage.getItem("company"))
 
     return (
       <div class="d-flex" id="wrapper">
@@ -173,7 +188,7 @@ export default class CompanyCampaign extends React.Component {
                     </Form.Label>
                     <Col sm={8}>
                       <input type="hidden" name="lang" id="lang" value="en" />
-                      <Form.Control id="company" name="company" type="text" placeholder="Company" />
+                      <Form.Control id="company" name="company" type="text" value={companyInfo.name} placeholder="Company" />
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row} controlId="formHorizontalRecruiter">

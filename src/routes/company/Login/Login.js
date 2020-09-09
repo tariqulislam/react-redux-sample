@@ -24,7 +24,7 @@ export class CompanyLogin extends React.Component {
         }
     }
 
-    onSubmitLoginCandidate = (event) => {
+    onSubmitLoginAdmin = (event) => {
         event.preventDefault()
         const data = new FormData(event.target)
         console.log(data.get("email"))
@@ -38,15 +38,16 @@ export class CompanyLogin extends React.Component {
 
         axios.post(url, credential, { headers: {'content-type': 'application/json'}
             }).then(result => {
+                debugger
                 const parsetoken = parseJwt(result.data.accessToken)
 
                 const user = parsetoken.user
 
                 const userRole = user.authorities[0].authority
-                localStorage.setItem("user_role", userRole)
-                localStorage.setItem("user", JSON.stringify(user))
+                localStorage.setItem("company_role", userRole)
+                localStorage.setItem("company", JSON.stringify(user))
 
-                this.props.history.push("/candidate/dashboard")
+                this.props.history.push("/company/dashboard")
             })
     }
 
@@ -56,7 +57,7 @@ export class CompanyLogin extends React.Component {
                 <Row className="justify-content-md-center inner-container">
                     <Col sm="3"></Col>
                     <Col sm="6" className='login-container'>
-                        <form onSubmit={this.onSubmitLoginCandidate} style={{width: "100%"}}>
+                        <form onSubmit={this.onSubmitLoginAdmin} style={{width: "100%"}}>
                             <h3 className='sign-in-banner'>Sign In</h3>
                             <div className="form-group">
                                 <label>Email address</label>

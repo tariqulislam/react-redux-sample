@@ -17,7 +17,7 @@ export function messageAlertInfo(payload) {
     }
 }
 
-export const saveCandidateInfoFromApi = (formData, form) => {
+export const saveCandidateInfoFromApi = (formData) => {
     return dispatch => {
         console.log(formData)
         saveCandidateInfo(formData).then(res => {
@@ -26,7 +26,6 @@ export const saveCandidateInfoFromApi = (formData, form) => {
                 let candidateInfo = res.data.data
                 dispatch(storeCandidateInfo(candidateInfo))
                 dispatch(messageAlertInfo({message: res.message, status:res.status}))
-                form.reset()
             }
            
         }).catch(ex => {
