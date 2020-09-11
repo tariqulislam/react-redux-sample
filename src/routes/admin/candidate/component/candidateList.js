@@ -33,7 +33,7 @@ class CandidateList extends React.Component {
                 <SideBar />
                 <div style={{width: "85%"}} id="page-content-wrapper">
                 <div class="container-fluid">
-                <Table striped bordered hover size='sm' className='candidate-list-table mt-3'>
+                <Table striped bordered hover size='rg' className='candidate-list-table mt-3'>
                 <thead>
                 <tr>
                     <th>#</th>
