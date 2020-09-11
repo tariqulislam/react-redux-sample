@@ -46,7 +46,6 @@ import CompanyCampaignDetails from "./routes/company/campaign/campaigndetails"
 import CompanyAppliedCampaignList from "./routes/company/campaign/appliedcampaignlist"
 import CompanyAppliedCampaignDetails from "./routes/company/campaign/appliedcampaingdetails"
 
-import CandidateAppliedCampaignList from "./routes/candidate/campaign/appliedcampaignlist"
 import CandidateAppliedCampaignDetails from "./routes/candidate/campaign/appliedcampaingdetails"
 import CompanyDashboard from "./routes/company/dashboard"
 import thankyou from  "./routes/thankyou";
@@ -188,7 +187,6 @@ class App extends Component {
                         <Route exact path="/company/campaign/applied/details/:id"
                                component={CompanyAppliedCampaignDetails}/>
                         
-                        <Route exact path="/candidate/campaign/list" component={CandidateAppliedCampaignList} />
                         <Route exact path="/candidate/campaign/applied/details/:id" component={CandidateAppliedCampaignDetails} />
                         <Route exact path="/thankyou" component={thankyou} />
 
