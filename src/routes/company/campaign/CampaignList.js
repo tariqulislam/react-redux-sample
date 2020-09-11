@@ -17,7 +17,7 @@ class CompanyCampaignList extends React.Component {
         if(companyInfo) {
             let url = `http://${environment.api_url}/api/campaigns/company/${companyInfo.id}`
             axios.get(url).then(result => {
-                debugger
+                
                 this.setState({campaigns: result.data.data})
             })
         }

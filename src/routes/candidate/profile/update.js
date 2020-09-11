@@ -61,7 +61,7 @@ export class Profile extends React.Component {
         let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
         let url = `http://${environment.api_url}/api/candidates/${getCandidateInfo.id}`;
         axios.get(url).then(res => {
-            debugger
+            
             if (res.status === 200) {
                 let candidateInfo = res.data && res.data.data
                 console.log("candidate info", candidateInfo)
@@ -183,7 +183,7 @@ export class Profile extends React.Component {
 
         let language = document.getElementsByName("language-check");
         let selectedLanguages = [];
-        debugger
+        
         language.forEach(lan => {
             if (lan.checked === true) {
                 selectedLanguages.push({
@@ -256,14 +256,14 @@ export class Profile extends React.Component {
 
         let languageUrl = `http://${environment.api_url}/api/candidates/candidate-languages`;
         axios.put(languageUrl, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
-            debugger
+            
         });
 
     }
 
     onChangeValue = (event) => {
         if(event.target.type === "radio") {
-            debugger
+            
             this.setState({[event.target.name]: event.target.value})
         } else {
             this.setState({ [event.target.id]: event.target.value })
@@ -314,7 +314,7 @@ export class Profile extends React.Component {
             }
         })
 
-        debugger
+        
         let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
 
         let submitedData = {
@@ -344,7 +344,7 @@ export class Profile extends React.Component {
 
         let url = `http://${environment.api_url}/api/candidates/candidate-work-experience`;
         axios.put(url, submitedData, { headers: { 'Content-Type': 'application/json' } }).then(res => {
-            debugger
+            
         });
 
     }
@@ -381,7 +381,7 @@ export class Profile extends React.Component {
         };
         let url = `http://${environment.api_url}/api/candidates/settings`;
         axios.put(url, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
-            debugger
+            
         });
     }
 
@@ -648,7 +648,7 @@ export class Profile extends React.Component {
                                                             <select
                                                             id="weightUnit"
                                                             onChange={this.onChangeValue}
-                                                            value={updatedCandidateInfo && updatedCandidateInfo.weightUnit} 
+                                                            value={this.state.weightUnit || (updatedCandidateInfo && updatedCandidateInfo.weightUnit)} 
                                                             name="weight-unit" className="form-control" required>
                                                                 <option
                                                                     value="">{t('registration.height_weight.weight.unit_placeholder')}</option>
