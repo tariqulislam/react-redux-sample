@@ -3,46 +3,31 @@ import './CompanyList.css';
 import axios from 'axios';
 import Table from "react-bootstrap/Table";
 import SideBar from "../../sidebar"
+import environment from "../../../../environment.json"
 
 class CompanyList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            companyList: []
+        };
     }
 
     componentDidMount() {
-        // let {base_url, api_path} = environment.company;
-        // let {service_name} = environment.company.controllers;
-        // let {register_company} = environment.company.controllers.api;
-        //
-        // let url = `${base_url}/${api_path}/${service_name}/${register_company}`;
-        // console.log(url)
+     
+        let url = `http://${environment.api_url}/api/companies`;
 
-        let companyList = [
-            {
-                name: 'Star Tech Ltd.',
-                contact: '352/South West Lane, New Hampshire',
-                email: 'star.tech@gmail.com',
-                classification: 'IT Company'
-            },
-            {
-                name: 'Ryan Computers Ltd.',
-                contact: 'East Shewrapara, Dhaka',
-                email: 'ryans.computers@yahoo.com',
-                classification: 'Computer wholesale Company'
-            },
-            {
-                name: 'Biostar ShowBizz',
-                contact: '15, Yemen Road, Yemen',
-                email: 'bio.star@gmail.com',
-                classification: 'Drama Company'
-            }
-        ];
+        axios.get(url).then((response) => {
+            debugger
+            let companyList = response.data.data;
 
-        this.setState({
-            data: companyList
-        })
+            this.setState({
+                companyList: companyList,
+            });
+        });
+
+       
 
     }
 
@@ -51,38 +36,40 @@ class CompanyList extends React.Component {
             <div class="d-flex" id="wrapper">
             <SideBar />
             <div style={{width: "85%"}} id="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container-fluid pt-3">
   
-                <Table striped bordered hover size='sm' className='company-list-table'>
+                <Table striped bordered hover size='rg' className='company-list-table'>
                     <thead>
                     <tr>
                         <th>#</th>
                         <th>Company Name</th>
                         <th>Contact</th>
                         <th>Email</th>
-                        <th>Classification</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
 
                     {
-                        this.state.data &&
-                        this.state.data.map((item, idx) => {
+                        this.state.companyList &&
+                        this.state.companyList.map((item, idx) => {
                             return (
                                 <tr
                                     key={idx}
                                     className='company-single-row'
                                     onClick={(e) => {
                                         // console.log(`${this.state.base_url}/${item.id}`);
-                                        axios.get(`${this.state.base_url}/${item.id}`).then((res) => {
+                                        axios.get(`/admin/company/details/${item.id}`).then((res) => {
                                         });
                                     }}
                                 >
-                                    <td>{idx + 1}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.contact}</td>
+                                    <td>{item.id}</td>
+                                    <td>{item.companyUser && item.companyUser.name}</td>
+                                    <td>{item.companyAddress}</td>
                                     <td>{item.email}</td>
-                                    <td>{item.classification}</td>
+                                    <td><button className="btn btn-success btn-sm mr-1">Generate Coupon</button>
+                                        <button className="btn btn-warning btn-sm">Details</button>
+                                    </td>
                                 </tr>
                             )
                         })

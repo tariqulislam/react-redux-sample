@@ -461,7 +461,17 @@
             "GHRN": "GHRN",
             "jobs": "Jobs",
             "about-us": "About Us",
-            "register": "Register"
+            "register": "Register",
+            "candidate_login": "Candidate Login",
+            "company_login": "Company Login",
+            "admin_login": "Admin Login"
+        },
+        "side-menu": {
+            "candidate-list": "Candidate List",
+            "campaign-list": "Campaign List",
+            "create-campaign": "Create Campaign",
+            "company-list": "Company List",
+            "applied_campaign": "Applied Campaign"
         }
     }
 }

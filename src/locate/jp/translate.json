@@ -457,7 +457,17 @@
       "GHRN": "仕事",
       "jobs": "レイチェル",
       "about-us": "私たちに関しては",
-      "register": "登録"
+      "register": "登録",
+      "candidate_login": "候補者ログイン",
+      "company_login": "会社ログイン",
+      "admin_login": "管理者ログイン"
+    },
+    "side-menu": {
+      "candidate-list": "Candidate List",
+      "campaign-list": "Campaign List",
+      "create-campaign": "Create Campaign",
+      "company-list": "Company List",
+      "applied_campaign": "Applied Campaign"
     }
   }
 }

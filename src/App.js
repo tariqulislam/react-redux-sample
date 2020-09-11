@@ -89,6 +89,9 @@ class App extends Component {
                             <Nav className="mr-auto">
                                 <Nav.Link href="/campaign">{t('nav-bar.jobs')}</Nav.Link>
                                 <Nav.Link href="/about-us">{t('nav-bar.about-us')}</Nav.Link>
+                                <Nav.Link href="/candidate/login">{t('nav-bar.candidate_login')}</Nav.Link>
+                                <Nav.Link href="/company/login">{t('nav-bar.company_login')}</Nav.Link>
+                                <Nav.Link href="/admin/login">{t('nav-bar.admin_login')}</Nav.Link>
                             </Nav>
 
                             <Nav>

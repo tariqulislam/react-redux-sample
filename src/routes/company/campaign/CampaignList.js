@@ -25,8 +25,8 @@ class CompanyCampaignList extends React.Component {
             <div class="d-flex" id="wrapper">
                 <SideBar />
                 <div style={{width: "85%"}} id="page-content-wrapper">
-                    <div class="container-fluid">
-                <Table striped bordered hover size='sm' className='candidate-list-table'>
+                    <div class="container-fluid pt-4">
+                <Table striped bordered hover size='rg' className='candidate-list-table '>
                 <thead>
                 <tr>
                     <th>#</th>

@@ -61,19 +61,28 @@ export class Profile extends React.Component {
         let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
         let url = `http://${environment.api_url}/api/candidates/${getCandidateInfo.id}`;
         axios.get(url).then(res => {
+            debugger
             if (res.status === 200) {
                 let candidateInfo = res.data && res.data.data
                 console.log("candidate info", candidateInfo)
                 this.setState({ updatedCandidateInfo: candidateInfo })
                 let workExperience = candidateInfo.candidateWorkExperience
-                this.setState({
-                    workExperience0: workExperience[0].name,
-                    workExperience0Value: workExperience[0].companyName,
-                    workExperience1: workExperience[1].name,
-                    workExperience1Value: workExperience[1].companyName,
-                    workExperience2: workExperience[2].name,
-                    workExperience2Value: workExperience[2].companyName,
-                })
+                if(workExperience.length >=1) {
+                    this.setState({
+                        workExperience0: workExperience[0].name,
+                        workExperience0Value: workExperience[0].companyName,
+                        workExperience1: workExperience[1].name,
+                        workExperience1Value: workExperience[1].companyName,
+                        workExperience2: workExperience[2].name,
+                        workExperience2Value: workExperience[2].companyName,
+                    })
+                }
+
+                let languages = candidateInfo.languages;
+                if (languages.length >= 1) {
+                    
+                }
+              
             }
         })
     }
@@ -174,14 +183,15 @@ export class Profile extends React.Component {
 
         let language = document.getElementsByName("language-check");
         let selectedLanguages = [];
+        debugger
         language.forEach(lan => {
             if (lan.checked === true) {
                 selectedLanguages.push({
-                    "name": lan.parentNode.innerText
+                    "name": lan.parentNode.innerText.trim()
                 });
             }
         })
-
+        
         let yearOfBirth = document.getElementsByName("year");
         yearOfBirth = yearOfBirth[0].value;
         let monthOfBirth = document.getElementsByName("month");
@@ -239,16 +249,15 @@ export class Profile extends React.Component {
             footSizeUnit
         }
 
-        let url = `http://${environment.api_url}/api/candidates/details-update`;
-        axios.put(url, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
+        // let url = `http://${environment.api_url}/api/candidates/details-update`;
+        // axios.put(url, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
+        
+        // });
+
+        let languageUrl = `http://${environment.api_url}/api/candidates/candidate-languages`;
+        axios.put(languageUrl, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
             debugger
         });
-
-        // let langUrl = `http://${environment.api_url}/api/candidates/candidate-languages`;
-        // axios.put(langUrl, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
-        //     debugger
-        // });
-       
 
     }
 
@@ -636,7 +645,11 @@ export class Profile extends React.Component {
                                                             placeholder={t('registration.height_weight.weight.placeholder')}
                                                             className="form-control" required /></Col>
                                                         <Col sm={6}>
-                                                            <select value={updatedCandidateInfo && updatedCandidateInfo.weightUnit} name="weight-unit" className="form-control" required>
+                                                            <select
+                                                            id="weightUnit"
+                                                            onChange={this.onChangeValue}
+                                                            value={updatedCandidateInfo && updatedCandidateInfo.weightUnit} 
+                                                            name="weight-unit" className="form-control" required>
                                                                 <option
                                                                     value="">{t('registration.height_weight.weight.unit_placeholder')}</option>
                                                                 <option>{t('registration.height_weight.weight.option0')}</option>

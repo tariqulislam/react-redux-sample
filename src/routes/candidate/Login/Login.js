@@ -1,6 +1,6 @@
 import React from 'react'
-import {Container, Row, Col} from 'react-bootstrap'
-import {withRouter} from "react-router-dom"
+import { Container, Row, Col , Alert} from 'react-bootstrap'
+import { withRouter } from "react-router-dom"
 
 import './CandidateLogin.css';
 import axios from "axios"
@@ -9,7 +9,7 @@ import environment from "../../../environment.json"
 const parseJwt = (token) => {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
 
@@ -20,7 +20,10 @@ export class CandidateLogin extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            spinner: false
+            spinner: false,
+            showMessage: false,
+            message: "",
+            status: ""
         }
     }
 
@@ -36,8 +39,10 @@ export class CandidateLogin extends React.Component {
             username: data.get("username")
         }
 
-        axios.post(url, credential, { headers: {'content-type': 'application/json'}
-            }).then(result => {
+        axios.post(url, credential, {
+            headers: { 'content-type': 'application/json' }
+        }).then(result => {
+            debugger
                 const parsetoken = parseJwt(result.data.accessToken)
 
                 const user = parsetoken.user
@@ -47,7 +52,10 @@ export class CandidateLogin extends React.Component {
                 localStorage.setItem("user", JSON.stringify(user))
 
                 this.props.history.push("/candidate/dashboard")
-            })
+
+        }).catch(ex => {
+            this.setState({ status: "danger", showMessage: true, message: "Wrong username or password" })
+        })
     }
 
     render() {
@@ -56,21 +64,27 @@ export class CandidateLogin extends React.Component {
                 <Row className="justify-content-md-center inner-container">
                     <Col sm="3"></Col>
                     <Col sm="6" className='login-container'>
-                        <form onSubmit={this.onSubmitLoginCandidate} style={{width: "100%"}}>
+                        <form onSubmit={this.onSubmitLoginCandidate} style={{ width: "100%" }}>
+                           
                             <h3 className='sign-in-banner'>Sign In</h3>
+                            {
+                                this.state.showMessage && <Alert variant={this.state.status}>
+                                    {this.state.message}
+                                </Alert>
+                            }
                             <div className="form-group">
                                 <label>Email address</label>
-                                <input type="email" name="username" id="username" className="form-control" placeholder="Username"/>
+                                <input type="email" name="username" id="username" className="form-control" placeholder="Username" />
                             </div>
 
                             <div className="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" id="password" className="form-control" placeholder="Password"/>
+                                <input type="password" name="password" id="password" className="form-control" placeholder="Password" />
                             </div>
 
                             <div className="form-group">
                                 <div className="custom-control custom-checkbox">
-                                    <input type="checkbox" className="custom-control-input" id="customCheck1"/>
+                                    <input type="checkbox" className="custom-control-input" id="customCheck1" />
                                     <label className="custom-control-label remember-me" htmlFor="customCheck1">Remember
                                         me</label>
                                 </div>
@@ -80,7 +94,7 @@ export class CandidateLogin extends React.Component {
 
                             {
                                 this.state.spinner === true &&
-                                <div style={{display: 'flex', justifyContent: 'center'}}>
+                                <div style={{ display: 'flex', justifyContent: 'center' }}>
                                     <label className="lds-ellipsis">
                                         <label></label>
                                         <label></label>

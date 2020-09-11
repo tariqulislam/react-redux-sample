@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Tabs, Tab, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Tabs, Tab, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios"
 import SideBar from "../sidebar"
 import environment from "../../../environment.json"
@@ -12,7 +12,10 @@ export default class CompanyCampaign extends React.Component {
         industries: [],
         areasJP: [],
         positionLevelsJP: [],
-        industriesJP: []
+        industriesJP: [],
+        showAlert: false,
+        status: "",
+        message: ""
       }
   }
 
@@ -59,14 +62,13 @@ export default class CompanyCampaign extends React.Component {
 
   }
 
-  onSubmitGetAllValue = (event) => {
-    debugger
-    
+  onSubmitGetAllValue = (event) => {    
     event.preventDefault()
     const data = new FormData(event.target)
     console.log(data.get("areaId"))
 
     let company = JSON.parse(localStorage.getItem("company"))
+
     /* get form value */
     let payload = {
       "workLocation": {
@@ -97,26 +99,24 @@ export default class CompanyCampaign extends React.Component {
     }
     let url = `http://${environment.api_url}/api/campaigns`
     axios.post(url, payload, {
-      headers: {
-          'Content-Type': 'application/json',
+      headers: {'Content-Type': 'application/json',
          // 'Authorization': localStorage.getItem('authToken')
       }
     }).then(result => {
-      
         if(result.data) {
-          window.location.replace("/admin/dashboard")
+          this.setState({showAlert: true, message: "Campain Has Created Successfully. You can see it at Campaign List", status: "success"})
         }
-    });
+    }).catch(err => {
+        this.setState({showAlert: true, message: "Something went wrong when during creating campaign.", status: "danger"})
+    })
   }
 
   onSubmitGetAllValueJP = (event) => {
-    debugger
       event.preventDefault()
       const data = new FormData(event.target)
       console.log(data.get("areaIdJP"))
 
     let company = JSON.parse(localStorage.getItem("company"))
-
 
     /* get form value */
     let payload = {
@@ -155,8 +155,11 @@ export default class CompanyCampaign extends React.Component {
     }).then(result => {
       
         if(result.data) {
-          window.location.replace("/company/campaign/list")
+          this.setState({showAlert: true, message: "Campain Has Created Successfully. You can see it at Campaign List", status: "success"})
         }
+        
+    }).catch(ex => {
+      this.setState({showAlert: true, message: "Something went wrong when during creating campaign.", status: "danger"})
     });
   }
 
@@ -171,10 +174,21 @@ export default class CompanyCampaign extends React.Component {
       <div class="d-flex" id="wrapper">
                 <SideBar />
         <div style={{width: "85%"}} id="page-content-wrapper">
-           <Container>
+          <Container>
         <Row className="justify-content-md-center">
           <Col md="auto">
             <h3>Campaign</h3>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            {
+              this.state.showAlert &&
+              <Alert key={0} variant={this.state.status}>
+                {this.state.message}
+              </Alert>
+            }
+        
           </Col>
         </Row>
         <Row style={{height: "2000px"}} className="justify-content-md-center">

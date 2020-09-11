@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { withTranslation, Trans } from 'react-i18next';
 import axios from 'axios';
 import "../company.css"
@@ -7,27 +7,31 @@ import environment from "../../../environment.json"
 
 export class Register extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            showAlertMessage: false,
+            message: "",
+            status: ""
+        }
+    }
+
     registerCompany = (event) => {
-        debugger
         event.preventDefault()
         const data = new FormData(event.target)
 
         let URL = `http://${environment.api_url}/api/companies/registration`;
         let company = {
-            companyName: data.get("companyName"),
-            email: data.get("companyEmail"),
-            companyUser: {
-                name: data.get("companyName"),
-                password: data.get("companyPassword"),
-                username: data.get("companyEmail"),
-                email: data.get("companyEmail"),
-            }
-            
+            name: data.get("companyName"),
+            password: data.get("companyPassword"),
+            username: data.get("companyEmail"),
+            email: data.get("companyEmail")
         };
 
         axios.post(URL, company).then((res) => {
-            debugger
-            console.log(res);
+            window.location = "/company/login"
+        }).catch(ex => {
+            this.setState({showAlertMessage: true, message: "Something went wrong when create the company", status: "danger"})
         })
 
     };
@@ -38,6 +42,7 @@ export class Register extends React.Component {
         return (
             <div class="d-flex main-container" id="wrapper">
                 <div style={{ width: "85%" }} id="page-content-wrapper">
+
                     <div class="container-fluid">
                         <Row className="justify-content-md-center">
                             <Col md="8">
@@ -51,7 +56,9 @@ export class Register extends React.Component {
                                             <h3>{t("company_registration.company_registration_form")}</h3>
                                         </Form.Label>
                                     </Form.Group>
-
+                                    {
+                                        this.state.showAlertMessage &&      <Alert variant={this.state.status}>{this.state.message}</Alert>
+                                    }
                                     <Form.Group
                                         className="form-main-container"
                                         as={Row}
