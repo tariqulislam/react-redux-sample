@@ -31,7 +31,7 @@ class CandidateDashboard extends React.Component {
                 <SideBar />
                 <div style={{width: "85%"}} id="page-content-wrapper">
                     <div class="container-fluid">
-                <Table striped bordered hover size='sm' className='candidate-list-table mt-3'>
+                <Table striped bordered hover size='rg' className='candidate-list-table mt-3'>
                 <thead>
                 <tr>
                     <th>#</th>
@@ -53,7 +53,7 @@ class CandidateDashboard extends React.Component {
                                 className='single-row'
                                 onClick={(e) => {
 
-                                    this.props.history.push(`/admin/campaign/applied/details/${item.campaign && item.campaign.id}`)
+                                    this.props.history.push(`/candidate/campaign/applied/details/${item.id}`)
                                 }}
                             >
                                 <td>{item.id}</td>
