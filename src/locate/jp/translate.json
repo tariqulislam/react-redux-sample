@@ -463,11 +463,14 @@
       "admin_login": "管理者ログイン"
     },
     "side-menu": {
-      "candidate-list": "Candidate List",
-      "campaign-list": "Campaign List",
-      "create-campaign": "Create Campaign",
-      "company-list": "Company List",
-      "applied_campaign": "Applied Campaign"
+      "candidate-list": "候補者リスト",
+      "campaign-list": "キャンペーン一覧",
+      "create-campaign": "キャンペーンを作成",
+      "company-list": "会社一覧",
+      "applied_campaign": "適用キャンペーン",
+      "candidate_profile": "候補者プロフィール",
+      "dashboard": "ダッシュボード",
+      "company_profile": "会社のプロフィール"
     }
   }
 }

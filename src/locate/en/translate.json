@@ -471,7 +471,10 @@
             "campaign-list": "Campaign List",
             "create-campaign": "Create Campaign",
             "company-list": "Company List",
-            "applied_campaign": "Applied Campaign"
+            "applied_campaign": "Applied Campaign",
+            "candidate_profile": "Candidate Profile",
+            "dashboard": "Dashboard",
+            "company_profile": "Company Profile"
         }
     }
 }
