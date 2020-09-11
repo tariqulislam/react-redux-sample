@@ -19,7 +19,7 @@ class CompanyList extends React.Component {
         let url = `http://${environment.api_url}/api/companies`;
 
         axios.get(url).then((response) => {
-            debugger
+            
             let companyList = response.data.data;
 
             this.setState({

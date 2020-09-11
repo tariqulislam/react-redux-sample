@@ -1,6 +1,8 @@
 {
     "translations": {
         "campaign": {
+            "apply": "Apply",
+            "details": "Details",
             "recruiter": {
                 "title": "Company",
                 "placeholder": "Please Enter company information"

@@ -16,7 +16,7 @@ class CandidateAppliedCampaignList extends React.Component {
     componentDidMount() {
         let url = `http://${environment.api_url}/api/campaigndetails`
         axios.get(url).then(result => {
-            debugger
+            
             this.setState({campaigns: result.data.data})
         })
     }

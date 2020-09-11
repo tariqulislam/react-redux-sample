@@ -13,11 +13,15 @@ class CandidateDashboard extends React.Component {
     }
 
     componentDidMount() {
-        let url = `http://${environment.api_url}/api/campaigndetails`
-        axios.get(url).then(result => {
-            debugger
-            this.setState({campaigns: result.data.data})
-        })
+        let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
+        if(getCandidateInfo) {
+            let url = `http://${environment.api_url}/api/campaigndetails/candidate/${getCandidateInfo.id}`
+            axios.get(url).then(result => {
+                
+                this.setState({campaigns: result.data.data})
+            })
+        }
+      
     }
 
 
@@ -49,15 +53,15 @@ class CandidateDashboard extends React.Component {
                                 className='single-row'
                                 onClick={(e) => {
 
-                                    this.props.history.push(`/admin/campaign/applied/details/${item.id}`)
+                                    this.props.history.push(`/admin/campaign/applied/details/${item.campaign && item.campaign.id}`)
                                 }}
                             >
                                 <td>{item.id}</td>
-                                <td>{item.campaign.industry.name}</td>
-                                <td>{item.campaign.recruiter}</td>
-                                <td>{item.candidate.username} ( {item.candidate.name})</td>
-                                <td>{item.campaign.startSalary} ~ {item.campaign.endSalary}</td>
-                                <td>{item.campaign.contractPeriod}</td>
+                                <td>{item.campaign && item.campaign.industry && item.campaign.industry.name}</td>
+                                <td>{item.campaign && item.campaign.recruiter}</td>
+                                <td>{item.candidate && item.campaign.username} ( {item.candidate && item.campaign.name})</td>
+                                <td>{item.campaign && item.campaign.startSalary} ~ {item.campaign && item.campaign.endSalary}</td>
+                                <td>{item.campaign && item.campaign.contractPeriod}</td>
                               
                             </tr>
                         )

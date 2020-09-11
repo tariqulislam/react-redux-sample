@@ -61,11 +61,10 @@ class CampaignList extends React.Component {
                             <Container style={{border: "2px solid", marginTop: "1em", borderRadius: "5px"}}>
                             <Row style={{paddingTop: "70px", paddingBottom: "20px"}}>
                                 <Col className="text-center">
-                                    <h1 className="campaign-title">Client Service Lead</h1>
+                                    <h1 className="campaign-title">{item.positionLevel && item.positionLevel.name.toUpperCase()}</h1>
                                     <div className="campaign-title-underline"></div>
                                     <p className="campaign-title-subtitle text-red">
-                                        <span className="btn-sky">{item.recruiter}</span>
-                                        Company is not publicly visible
+                                        <span className="btn-sky">{item.recruiter}</span> 
                                     </p>
                                 </Col>
                             </Row>
@@ -118,10 +117,10 @@ class CampaignList extends React.Component {
                                     <div style={{backgroundColor: "lightgray", paddingTop: "1em"}} className="text-center">
                                         <p>
                                             <Button variant="warning" className="btn-bottom" onClick={(e) => {
-                                    this.props.history.push("/campaign/details", { campaign: item } );
-                             
-                                }}>
-                                                Details
+                                                        this.props.history.push("/campaign/details", { campaign: item } );
+                                                
+                                                    }}>
+                                                {t("campaign.details")}
                                             </Button>
                                           
                                         </p>

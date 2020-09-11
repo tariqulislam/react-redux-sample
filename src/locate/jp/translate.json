@@ -1,6 +1,8 @@
 {
   "translations": {
     "campaign": {
+      "apply": "適用する",
+      "details": "細部",
       "recruiter": {
         "title": "会社",
         "placeholder": "会社の名前は入力してくだしゃい"

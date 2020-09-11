@@ -13,10 +13,15 @@ class CompanyCampaignList extends React.Component {
     }
 
     componentDidMount() {
-        let url = `http://${environment.api_url}/api/campaigns`
-        axios.get(url).then(result => {
-            this.setState({campaigns: result.data.data})
-        })
+        let companyInfo = JSON.parse(localStorage.getItem("company"))
+        if(companyInfo) {
+            let url = `http://${environment.api_url}/api/campaigns/company/${companyInfo.id}`
+            axios.get(url).then(result => {
+                debugger
+                this.setState({campaigns: result.data.data})
+            })
+        }
+        
     }
 
 
@@ -46,15 +51,14 @@ class CompanyCampaignList extends React.Component {
                                 key={idx}
                                 className='single-row'
                                 onClick={(e) => {
-
-                                    this.props.history.push(`/admin/campaign/details/${item.id}`)
+                                    this.props.history.push(`/company/campaign/details/${item && item.id}`)
                                 }}
                             >
                                 <td>{item.id}</td>
-                                <td>{item.recruiter}</td>
-                                <td>{item.positionLevel.name}</td>
-                                <td>{item.startSalary} ~ {item.endSalary}</td>
-                                <td>{item.japaneseLevel}</td>
+                                <td>{item && item.recruiter}</td>
+                                <td>{item && item.positionLevel && item.positionLevel.name}</td>
+                                <td>{item && item.startSalary} ~ {item.endSalary}</td>
+                                <td>{item && item.japaneseLevel}</td>
                             </tr>
                         )
                     })

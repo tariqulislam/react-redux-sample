@@ -42,7 +42,7 @@ export class CandidateLogin extends React.Component {
         axios.post(url, credential, {
             headers: { 'content-type': 'application/json' }
         }).then(result => {
-            debugger
+            
                 const parsetoken = parseJwt(result.data.accessToken)
 
                 const user = parsetoken.user

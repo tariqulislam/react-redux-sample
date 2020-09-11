@@ -21,7 +21,7 @@ export const saveCandidateInfoFromApi = (formData) => {
     return dispatch => {
         console.log(formData)
         saveCandidateInfo(formData).then(res => {
-            debugger
+            
             if(res.status === 201) {
                 let candidateInfo = res.data.data
                 dispatch(storeCandidateInfo(candidateInfo))
@@ -29,7 +29,7 @@ export const saveCandidateInfoFromApi = (formData) => {
             }
            
         }).catch(ex => {
-            debugger
+            
             dispatch(messageAlertInfo({message: ex.response.data.error.message, status: ex.response.status}))
         })
     }

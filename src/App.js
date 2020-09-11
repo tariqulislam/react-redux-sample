@@ -49,6 +49,7 @@ import CompanyAppliedCampaignDetails from "./routes/company/campaign/appliedcamp
 import CandidateAppliedCampaignList from "./routes/candidate/campaign/appliedcampaignlist"
 import CandidateAppliedCampaignDetails from "./routes/candidate/campaign/appliedcampaingdetails"
 import CompanyDashboard from "./routes/company/dashboard"
+import thankyou from  "./routes/thankyou";
 class App extends Component {
     constructor(props) {
         super(props);
@@ -189,6 +190,7 @@ class App extends Component {
                         
                         <Route exact path="/candidate/campaign/list" component={CandidateAppliedCampaignList} />
                         <Route exact path="/candidate/campaign/applied/details/:id" component={CandidateAppliedCampaignDetails} />
+                        <Route exact path="/thankyou" component={thankyou} />
 
                         <Route exact component={NotFound}/>
                     </Switch>

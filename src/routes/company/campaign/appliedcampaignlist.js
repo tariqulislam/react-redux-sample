@@ -14,10 +14,15 @@ class CompanyAppliedCampaignList extends React.Component {
     }
 
     componentDidMount() {
-        let url = `http://${environment.api_url}/api/campaigndetails`
-        axios.get(url).then(result => {
-            this.setState({campaigns: result.data.data})
-        })
+        let companyInfo = JSON.parse(localStorage.getItem("company"))
+        if(companyInfo) {
+            let url = `http://${environment.api_url}/api/campaigndetails/company/${companyInfo.id}`
+            axios.get(url).then(result => {
+                
+                this.setState({campaigns: result.data.data})
+            })
+        }
+       
     }
 
 
@@ -27,7 +32,7 @@ class CompanyAppliedCampaignList extends React.Component {
                 <SideBar />
                 <div style={{width: "85%"}} id="page-content-wrapper">
                     <div class="container-fluid">
-                <Table striped bordered hover size='sm' className='candidate-list-table mt-3'>
+                <Table striped bordered hover size='rg' className='candidate-list-table mt-3'>
                 <thead>
                 <tr>
                     <th>#</th>
@@ -49,11 +54,11 @@ class CompanyAppliedCampaignList extends React.Component {
                                 className='single-row'
                                 onClick={(e) => {
 
-                                    this.props.history.push(`/admin/campaign/applied/details/${item.id}`)
+                                    this.props.history.push(`/company/campaign/applied/details/${item.id}`)
                                 }}
                             >
                                 <td>{item.id}</td>
-                                <td>{item.campaign.industry.name}</td>
+                                <td>{item.campaign && item.campaign.industry && item.campaign.industry.name}</td>
                                 <td>{item.campaign.recruiter}</td>
                                 <td>{item.candidate.username} ( {item.candidate.name})</td>
                                 <td>{item.campaign.startSalary} ~ {item.campaign.endSalary}</td>

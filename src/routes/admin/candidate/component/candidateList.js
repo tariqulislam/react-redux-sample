@@ -53,7 +53,7 @@ class CandidateList extends React.Component {
                                 key={idx}
                                 className='single-row'
                                 onClick={(e) => {
-                                    debugger
+                                    
                                    this.props.history.push(`/admin/candidate/details/${item.id}`)
                                 }}
                             >

@@ -19,8 +19,6 @@ i18n
     /* When react i18next not finding any language to as default in borwser */
     fallbackLng: "en",
 
-    /* debugger For Development environment */
-
     /*
     *   If set to TRUE, the i18next.js console.logs a message with the language it's using each time a page renders.
     *   I am Shamin Asfaq, and I have turned the debugging to FALSE, because the console.log messages are bugging me.

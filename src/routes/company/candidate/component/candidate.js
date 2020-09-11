@@ -13,7 +13,7 @@ class CompanyCandidateDetails extends React.Component {
     }
 
     componentDidMount() {
-        debugger
+        
         const {match} = this.props
         const id = match.params.id
         let url = `http://${environment.api_url}/api/candidates/${id}`;
