@@ -249,10 +249,10 @@ export class Profile extends React.Component {
             footSizeUnit
         }
 
-        // let url = `http://${environment.api_url}/api/candidates/details-update`;
-        // axios.put(url, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
+        let url = `http://${environment.api_url}/api/candidates/details-update`;
+        axios.put(url, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
         
-        // });
+        });
 
         let languageUrl = `http://${environment.api_url}/api/candidates/candidate-languages`;
         axios.put(languageUrl, toBePostedCandidate, { headers: { 'Content-Type': 'application/json' } }).then(res => {
