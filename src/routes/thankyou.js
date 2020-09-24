@@ -2,7 +2,7 @@ import React from 'react'
 import { withTranslation } from "react-i18next";
 
 
-export class SideBar extends React.Component {
+export class ThankYouPage extends React.Component {
 
 
     render() {
@@ -23,7 +23,7 @@ export class SideBar extends React.Component {
     }
 }
 
-export default withTranslation()(SideBar)
+export default withTranslation()(ThankYouPage)
 
 
 

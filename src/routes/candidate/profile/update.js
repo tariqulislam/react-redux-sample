@@ -16,6 +16,7 @@ export class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            countries: [],
             updatedCandidateInfo: {},
             email: null,
             password: null,
@@ -60,6 +61,7 @@ export class Profile extends React.Component {
     componentDidMount() {
         let getCandidateInfo = JSON.parse(localStorage.getItem("user"))
         let url = `http://${environment.api_url}/api/candidates/${getCandidateInfo.id}`;
+       
         axios.get(url).then(res => {
             
             if (res.status === 200) {
@@ -85,6 +87,9 @@ export class Profile extends React.Component {
               
             }
         })
+
+
+   
     }
 
     /**
@@ -175,8 +180,16 @@ export class Profile extends React.Component {
         let romajiName = document.getElementsByName("full-name-roman");
         romajiName = romajiName[0].value;
 
-        let country = document.getElementsByName("country");
-        country = country[0].value;
+        let getCountry = document.getElementsByName("country");
+        let countryId = +getCountry[0].value;
+        let country = {}
+        /**get country */
+
+        let newCountry = this.props.countries.forEach((item, index) => {
+            if(item.id ===countryId) {
+                country = item
+            } 
+        })
 
         let nationality = document.getElementsByName("nationality");
         nationality = nationality[0].value;
@@ -468,13 +481,15 @@ export class Profile extends React.Component {
                                                     {t('registration.country_resident.title')}
                                                 </Form.Label>
                                                 <Form.Label column sm={9}>
-                                                    <select id="country" onChange={this.onChangeValue} name="country" value={this.state.country || (updatedCandidateInfo && updatedCandidateInfo.country)} className="form-control" required>
-
-                                                        <option
-                                                            value="">{t('registration.country_resident.dropdown.placeholder')}</option>
-                                                        <option>{t('registration.country_resident.dropdown.option0')}</option>
-                                                        <option>{t('registration.country_resident.dropdown.option1')}</option>
-                                                        <option>{t('registration.country_resident.dropdown.option2')}</option>
+                                                    <select id="country" onChange={this.onChangeValue} name="country" value={this.state.country || (updatedCandidateInfo && updatedCandidateInfo.country && updatedCandidateInfo.country.id )} className="form-control" required>
+                                                        {
+                                                            this.props.filteredCountries &&
+                                                                this.props.filteredCountries.map((item, index) => {
+                                                                    return (
+                                                                        <option value={item.value}>{item.text}</option>
+                                                                    )
+                                                                })
+                                                        }
                                                     </select>
                                                     <br />
                                                     <Form.Control onChange={this.onChangeValue} id="nationality" name="nationality" type="text"
@@ -1172,7 +1187,10 @@ export class Profile extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+    filteredCountries: state.candidate.filteredCountries,
+    countries: state.candidate.countries
+})
 
 const mapDispatchToProps = dispatch => {
     return {

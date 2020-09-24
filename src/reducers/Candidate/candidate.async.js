@@ -37,3 +37,11 @@ export const saveCandidatePhotoPassport = async (imageData) => {
     return uploadPassportPhoto;
 }
 
+
+export const getAllCountriesByApi = async () => {
+    let countriesUrl = `http://${environment.api_url}/api/country`;
+   const getAllCountries = await  axios.get(countriesUrl)
+
+    return  getAllCountries
+}
+

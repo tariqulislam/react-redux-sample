@@ -466,7 +466,8 @@
             "register": "Register",
             "candidate_login": "Candidate Login",
             "company_login": "Company Login",
-            "admin_login": "Admin Login"
+            "admin_login": "Admin Login",
+            "hr_database": "HR Database"
         },
         "side-menu": {
             "candidate-list": "Candidate List",
@@ -477,6 +478,23 @@
             "candidate_profile": "Candidate Profile",
             "dashboard": "Dashboard",
             "company_profile": "Company Profile"
+        },
+        "hr-database": {
+            "weight": "Weight",
+            "height": "Height",
+            "date_of_birth": "Date of Birth",
+            "expert_in": "Expert In",
+            "language_proficency": "Language Profecency",
+            "japanese_language": "Japanese",
+            "english_language": "English",
+            "button": {
+                "applicant_info": "Applicant Info",
+                "company_info": "Company Info"
+            },
+            "search": {
+                "title": "Search",
+                "search_by_country": "Search By Country"
+            }
         }
     }
 }

@@ -462,7 +462,8 @@
       "register": "登録",
       "candidate_login": "候補者ログイン",
       "company_login": "会社ログイン",
-      "admin_login": "管理者ログイン"
+      "admin_login": "管理者ログイン",
+      "hr_database": "人事データベース"
     },
     "side-menu": {
       "candidate-list": "候補者リスト",
@@ -473,6 +474,23 @@
       "candidate_profile": "候補者プロフィール",
       "dashboard": "ダッシュボード",
       "company_profile": "会社のプロフィール"
-    }
+    },
+    "hr-database": {
+      "weight": "重量",
+      "height": "高さ",
+      "date_of_birth": "生年月日",
+      "expert_in": "の専門家",
+      "language_proficency": "言語能力",
+      "japanese_language": "日本語",
+      "english_language": "英語",
+      "button": {
+          "applicant_info": "申請者情報",
+          "company_info": "会社情報"
+      },
+      "search": {
+          "title": "検索",
+          "search_by_country": "国で検索"
+      }
+  }
   }
 }

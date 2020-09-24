@@ -1,7 +1,24 @@
-import { saveCandidateInfo } from './candidate.async'
+import { saveCandidateInfo, getAllCountriesByApi } from './candidate.async'
 import {push} from "react-router-redux"
 export const SAVE_CANDIDATE_INFO = 'SAVE_CANDIDATE_INFO'
 export const MESSAGE_ALERT_DATA = 'MESSAGE_ALERT_DATA'
+
+export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES'
+export const GET_LANGUAGE_WISE_COUNTRIES= 'GET_LANGUAGE_WISE_COUNTRIES'
+
+export function getLanguageWiseCountries (payload) {
+    return {
+        type: GET_LANGUAGE_WISE_COUNTRIES,
+        payload
+    }
+}
+
+export function getAllCountries (payload) {
+    return {
+        type: GET_ALL_COUNTRIES,
+        payload
+    }
+}
 
 export function storeCandidateInfo(payload) {
     return {
@@ -14,6 +31,36 @@ export function messageAlertInfo(payload) {
     return {
         type: MESSAGE_ALERT_DATA,
         payload
+    }
+}
+
+export const getAllCountriesFromApi = (lang) => {
+    return dispatch => {
+        getAllCountriesByApi().then(res => {
+            let countries = res.data.data
+            dispatch(getAllCountries(countries))
+
+            let newCountries = []
+            if (countries) {
+                countries.forEach((item, index) => {
+                    let tempCountry = {}
+                    if (lang === "en") {
+                    tempCountry =  {
+                            text: item.name,
+                            value: item.id
+                        }
+                    } else if (lang === "jp") {
+                        tempCountry = {
+                            text: item.jpname,
+                            value: item.id
+                        }
+                    }
+                
+                    newCountries.push(tempCountry)
+                })
+                 dispatch(getLanguageWiseCountries(newCountries))
+                }
+            })
     }
 }
 
@@ -38,7 +85,9 @@ export const saveCandidateInfoFromApi = (formData) => {
 const initialState = {
     candidateInfo: null,
     message: null,
-    status: null
+    status: null,
+    countries: [],
+    filteredCountries: []
 }
 
 export default (state=initialState, action) => {
@@ -53,6 +102,16 @@ export default (state=initialState, action) => {
                 ...state,
                 message: action.payload.message,
                 status: action.payload.status
+            }
+        case GET_ALL_COUNTRIES:
+            return {
+                ...state,
+                countries: action.payload
+            }
+        case GET_LANGUAGE_WISE_COUNTRIES:
+            return {
+                ...state,
+                filteredCountries: action.payload
             }
         default:
             return state
