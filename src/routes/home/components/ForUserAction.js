@@ -104,7 +104,7 @@ export class ForUserAction extends React.Component {
 
         return (
             <React.Fragment>
-                <Container className="padding-bottom-120">
+                <Container>
                     <Row>
                         <Col xs={12} md={4}>
                             <div style={userCard}>

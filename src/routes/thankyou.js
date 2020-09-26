@@ -9,14 +9,14 @@ export class ThankYouPage extends React.Component {
         const { t } = this.props
         return (
             <div class="jumbotron text-center">
-                <h1 class="display-3">Thank You For Applying!</h1>
-                <p class="lead"><strong>We will  email for</strong> for further instructions on how to complete your procedure.</p>
+                <h1 class="display-3">{t("thank-you-page.title")}</h1>
+                <p class="lead">{t("thank-you-page.subtitle")}</p>
                 <hr />
                     <p>
-                        Having trouble? <a href="">Contact us</a>
+                    {t("thank-you-page.contact_link.title")}? <a href=""> {t("thank-you-page.contact_link.link")}</a>
                     </p>
                     <p class="lead">
-                        <a class="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+                        <a class="btn btn-primary btn-sm" href="/" role="button"> {t("thank-you-page.button")}</a>
                     </p>
           </div>
         );

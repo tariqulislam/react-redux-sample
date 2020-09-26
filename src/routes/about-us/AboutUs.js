@@ -4,7 +4,7 @@ import {Col, Container, Row, Table} from "react-bootstrap";
 import {withTranslation} from "react-i18next";
 
 import {Carousel} from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "./carousel.css";
 
 
 const AboutUs = (props) => {
@@ -85,7 +85,26 @@ const AboutUs = (props) => {
                                 <p>・ {t("about-us.company-business-content-value.paragraph5")}</p>
                             </td>
                         </tr>
-
+                        <tr>
+                            <td>
+                                <div className="about-us-head">
+                                    {t("about-us.phone_number.title")}
+                                </div>
+                            </td>
+                            <td>
+                            {t("about-us.phone_number.value")}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div className="about-us-head">
+                                    {t("about-us.email_address.title")}
+                                </div>
+                            </td>
+                            <td>
+                            {t("about-us.email_address.value")}
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 <div className="about-us-head">
@@ -93,7 +112,7 @@ const AboutUs = (props) => {
                                 </div>
                             </td>
                             <td>
-                                <a href='https://careernext.jp/' target='_blank' style={{textDecoration: 'none'}}>
+                                <a href='https://tsunagu-japan.com/' target='_blank' style={{textDecoration: 'none'}}>
                                     {t("about-us.company-corporate-website-value")}
                                 </a>
                             </td>

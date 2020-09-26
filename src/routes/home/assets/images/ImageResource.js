@@ -11,7 +11,7 @@ const IMAGE_RESOURCE = {
   },
   initialSection: {
     howItworkEn: require("./en/howitworks_en.png"),
-    howItworkJp: require("./candidate/two.png"),
+    howItworkJp: require("./jp/howitworks_jp.png"),
   },
   regSection: {
     companyImg: require("./regsection/company.jpg"),

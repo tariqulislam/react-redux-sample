@@ -75,6 +75,7 @@
         },
         "registration": {
             "registration_form": "Candidate Registration Form",
+            "language_certificate": "Language Certificate",
             "full_name": {
                 "title": "Name(Full Name)",
                 "placeholder": "Please Type Your Name"
@@ -300,16 +301,16 @@
             },
             "candidate_process": {
                 "title": "For Candidate",
-                "notes": "If you are new to GHRN",
-                "one": "Scout system site GHRN where you can scout registered personnel",
-                "two": "GHRN that can (come) scout from companies all over Japan",
-                "three": "GHRN finds a variety of ways to work in Japan",
-                "four": "A site that introduces foreigners who want to work in Japan (including those living in Japan) to Japanese companies GHRN"
+                "notes": "IF YOU ARE TO TSUNAGU",
+                "one": "Scout system site TSUNAGU where you can scout registered personnel",
+                "two": "TSUNAGU that can (come) scout from companies all over Japan",
+                "three": "TSUNAGU finds a variety of ways to work in Japan",
+                "four": "A site that introduces foreigners who want to work in Japan (including those living in Japan) to Japanese companies TSUNAGU"
             },
             "initial_section": {
-                "title": "What is GHRN？",
+                "title": "What is TSUNAGU？",
                 "leftMsg": {
-                    "one": "GHRN (GlobalHumanResourceNetwork) is for foreigners who want to work in Japan who are registered on this site or who are already living in Japan (international students or working) Is a site where you can scout the right human resources",
+                    "one": "TSUNAGU (GlobalHumanResourceNetwork) is for foreigners who want to work in Japan who are registered on this site or who are already living in Japan (international students or working) Is a site where you can scout the right human resources",
                     "two": "If you find a person you are interested in, register the job search information on the site and scout. The job information will be converted into the native language of the scouting personnel and sent to the person on this site.",
                     "three": "The registrant who receives the scout will view the job search information and decide whether to take the scout.",
                     "four": "The registrant who receives the scout will view the job search information and decide whether to take the scout.",
@@ -455,12 +456,20 @@
                 "paragraph5": "Recruitment Site Operation and Management"
             },
             "company-corporate-website-key": "Corporate Website",
-            "company-corporate-website-value": "https://careernext.jp/",
+            "company-corporate-website-value": "https://tsunagu-japan.com/",
+            "phone_number": {
+                "title": "Phone Number",
+                "value": "042-740-8163"
+            },
+            "email_address": {
+                "title": "Email Address",
+                "value": "info@careernext.jp"
+            }, 
             "location-key": "Location",
             "location-value": "2B, Nishino Building 2-16-4 Yokoyama, Chuo-ku, Sagamihara City, Kanagawa Prefecture"
         },
         "nav-bar": {
-            "GHRN": "GHRN",
+            "GHRN": "TSUNAGU",
             "jobs": "Jobs",
             "about-us": "About Us",
             "register": "Register",
@@ -495,6 +504,15 @@
                 "title": "Search",
                 "search_by_country": "Search By Country"
             }
-        }
+        },
+        "thank-you-page": {
+            "title": "Thank You For Applying!",
+            "subtitle": "We will email for further instructions on how to complete your procedure.",
+            "contact_link": {
+              "title": "Having trouble",
+              "link": "Contact Us"
+            },
+            "button": "Continue with Homepage"
+          }
     }
 }

@@ -75,6 +75,7 @@
     },
     "registration": {
       "registration_form": "登録用紙",
+      "language_certificate": "言語証明書",
       "full_name": {
         "title": " 名前(氏名)",
         "placeholder": "お名前を入力してください"
@@ -306,16 +307,16 @@
       },
       "candidate_process": {
         "title": "候補者",
-        "notes": "初めての方はこちらへGHRNとは",
-        "one": "登録人材をスカウトできるスカウトシステムサイトGHRN",
-        "two": "日本の各地の企業からスカウトができる（来る）GHRN",
-        "three": "日本での働き方はいろいろ、希望する仕事が見つかるGHRN",
-        "four": "日本で働きたい外国人の方（日本在留の方も含め）を日本の企業に紹介するサイトGHRN"
+        "notes": "初めての方はこちらへTSUNAGUとは",
+        "one": "登録人材をスカウトできるスカウトシステムサイトTSUNAGU",
+        "two": "日本の各地の企業からスカウトができる（来る）TSUNAGU",
+        "three": "日本での働き方はいろいろ、希望する仕事が見つかるTSUNAGU",
+        "four": "日本で働きたい外国人の方（日本在留の方も含め）を日本の企業に紹介するサイトTSUNAGU"
       },
       "initial_section": {
-        "title": "GHRNとは？",
+        "title": "TSUNAGUとは？",
         "leftMsg": {
-          "one": "GHRN（GlobalHumanResourceNetwork）は、 当サイトに登録している日本で働きたい外国人の方や既に日本に在留している（留学生、就労中の方）外国人の方々を、日本各地の企業様が条件に合った人材をスカウトできるサイトです",
+          "one": "TSUNAGU（GlobalHumanResourceNetwork）は、 当サイトに登録している日本で働きたい外国人の方や既に日本に在留している（留学生、就労中の方）外国人の方々を、日本各地の企業様が条件に合った人材をスカウトできるサイトです",
           "two": "気になった人材が見つかれば、求職情報をサイトに登録しスカウトをします。 当サイト内で求職情報をスカウト人材の母国語に変換し本人に送信します。",
           "three": "スカウトを受けた登録者は求職情報を閲覧し、スカウトを受けるか判断します。",
           "four": "スカウトを受けた登録者は求職情報を閲覧し、スカウトを受けるか判断します。",
@@ -441,7 +442,14 @@
       "company-name-key": "会社名",
       "company-name-value": "キャリアネクスト株式会社",
       "company-business-content-key": "事業内容",
-      "company-business-content-value": "人材総合サービス\n・人材派遣\n・人材紹介\n・請負\n・登録支援機関\n・求人サイト運営・管理",
+      "phone_number": {
+        "title": "電話番号",
+        "value": "042-740-8163"
+      },
+      "email_address": {
+        "title": "電子メールアドレス",
+        "value": "info@careernext.jp"
+      }, 
       "company-business-content-value": {
         "h2": "人材総合サービス",
         "paragraph1": "人材派遣",
@@ -451,12 +459,12 @@
         "paragraph5": "求人サイト運営・管理"
       },
       "company-corporate-website-key": "企業WEBサイト",
-      "company-corporate-website-value": "https://careernext.jp/",
+      "company-corporate-website-value": "https://tsunagu-japan.com/",
       "location-key": "所在地",
       "location-value": "神奈川県相模原市中央区横山2-16-4西野ビル2B"
     },
     "nav-bar": {
-      "GHRN": "仕事",
+      "GHRN": "TSUNAGU",
       "jobs": "レイチェル",
       "about-us": "私たちに関しては",
       "register": "登録",
@@ -491,6 +499,15 @@
           "title": "検索",
           "search_by_country": "国で検索"
       }
-  }
+    },
+    "thank-you-page": {
+      "title": "お申し込みいただきありがとうございます",
+      "subtitle": "あなたの手順を完了する方法の詳細な手順についてはメールでお知らせします。",
+      "contact_link": {
+        "title": "困った",
+        "link": "お問い合わせ"
+      },
+      "button": "ホームページに進む"
+    }
   }
 }

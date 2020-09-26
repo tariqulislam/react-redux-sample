@@ -15,22 +15,20 @@ export class ForCandidate extends React.Component {
       color: "white",
       height: "50px",
       fontSize: "30px",
-      paddingLeft: "20px",
     };
 
     let designCounterNote = {
-      backgroundColor: "#de5383",
+      backgroundColor: "gray",
       color: "white",
-      height: "150px",
-      fontSize: "30px",
-      paddingLeft: "20px",
+      height: "50px",
+      fontSize: "20px"
     };
 
     let DayTimeStyle = {
       float: "left",
-      border: "2px solid white",
-      padding: "5px",
-      marginTop: "5px",
+      border: "1px solid white",
+      marginTop: "4px",
+      padding: "6px"
     };
     return (
       <React.Fragment>
@@ -38,7 +36,7 @@ export class ForCandidate extends React.Component {
           <Row className="padding-bottom-30">
             <Col xs={12} md={2}></Col>
             <Col xs={12} md={8} className="text-center">
-              <h1 className="title">{t("homepage.candidate_process.title")}</h1>
+              <h1 style={{marginTop: "40px"}}>{t("homepage.candidate_process.title")}</h1>
               <div className="title-underline"></div>
               <p className="title-subtitle text-red">User My Page Candidate</p>
             </Col>

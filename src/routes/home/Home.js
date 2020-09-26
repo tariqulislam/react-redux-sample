@@ -18,6 +18,7 @@ class Home extends Component {
     render() {
         let bannerStyle = {
             width: "100%",
+            height: "50em"
         };
         const selectedLanguage = localStorage.getItem("language");
         return (
@@ -32,12 +33,11 @@ class Home extends Component {
                 <ForCandidate/>
                 <InitialSection selectedLanguage={selectedLanguage}/>
                 <RegSection/>
+                <ForUserAction/>
                 <ForCompanyFeature/>
                 <ForUserFeature/>
                 <ForSpecificSkill/>
                 <ForSyupanFeature/>
-                <ForUserAction/>
-                <ForContact/>
                 <ForFooter/>
             </>
         );

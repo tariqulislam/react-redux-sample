@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { Media } from "react-bootstrap"
 import { withTranslation } from "react-i18next";
-import jpFlag from "./jp-flag.jpg"
 import manImg from "./man.png"
 import environment from "../../environment.json"
 import axios from "axios"
@@ -48,8 +47,8 @@ class HrdatabaseView extends Component {
                                         <Media.Body>
                                             <h5>{item.candidate && item.candidate.name}<img src={environment.host_url + (item.country && item.country.flag_url && item.country.flag_url)} width={40} height={30} className="mr-3 ml-3" alt="country image" /></h5>
                                             <div className="d-flex float-right">
-                                                <button className="btn btn-warning btn-sm mr-1">{t("hr-database.button.applicant_info")}</button>
-                                                <button className="btn btn-success btn-sm">{t("hr-database.button.company_info")}</button>
+                                                <a href="/company/login" className="btn btn-warning btn-sm mr-1">{t("hr-database.button.applicant_info")}</a>
+                                                <a href="/about-us" className="btn btn-success btn-sm">{t("hr-database.button.company_info")}</a>
                                             </div>
                                             <div className="clearfix"></div>
                                             <div className="row pt-3">
@@ -63,7 +62,7 @@ class HrdatabaseView extends Component {
                                             </div>
                                             <div className="row pt-2">
                                                 <div className="col-sm">{t("hr-database.japanese_language")}: {item.japaneseLanguageSkill}</div>
-                                                <div className="col-sm">{t("hr-database.english_language")}English: {item.englishLanguageSkill}</div>
+                                                <div className="col-sm">{t("hr-database.english_language")}: {item.englishLanguageSkill}</div>
                                             </div>
                                         </Media.Body>
                                     </Media>

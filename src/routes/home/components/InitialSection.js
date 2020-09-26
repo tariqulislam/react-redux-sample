@@ -20,9 +20,9 @@ export class InitialSection extends React.Component {
           <Row className="padding-bottom-30">
             <Col xs={12} md={2}></Col>
             <Col xs={12} md={8} className="text-center">
-              <h1 className="title">{t("homepage.initial_section.title")}</h1>
+              <h1 style={{marginTop: "20px"}}>{t("homepage.initial_section.title")}</h1>
               <div className="title-underline"></div>
-              <p className="title-subtitle text-red">What is GHRN?</p>
+              <p className="title-subtitle text-red">What is TSUNAGU?</p>
             </Col>
             <Col xs={12} md={2}></Col>
           </Row>

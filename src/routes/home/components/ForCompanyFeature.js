@@ -12,7 +12,7 @@ export class ForCompanyFeature extends React.Component {
           <Row className="padding-bottom-30">
             <Col md={2}></Col>
             <Col className="text-center">
-              <h1 className="title">
+              <h1 style={{paddingTop:"30px"}}>
                 {t("homepage.company_feature_section.title")}
               </h1>
               <div className="title-underline"></div>
