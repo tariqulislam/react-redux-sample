@@ -11,7 +11,7 @@ export class ForCandidate extends React.Component {
       width: "auto",
     };
     let designFooterNote = {
-      backgroundColor: "green",
+      backgroundColor: "#06bf06",
       color: "white",
       height: "50px",
       fontSize: "30px",
@@ -38,7 +38,6 @@ export class ForCandidate extends React.Component {
             <Col xs={12} md={8} className="text-center">
               <h1 style={{marginTop: "40px"}}>{t("homepage.candidate_process.title")}</h1>
               <div className="title-underline"></div>
-              <p className="title-subtitle text-red">User My Page Candidate</p>
             </Col>
             <Col xs={12} md={2}></Col>
           </Row>

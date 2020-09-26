@@ -65,7 +65,7 @@ export class ForUserAction extends React.Component {
         };
 
         let itemOne = {
-            backgroundImage: `url(${IMAGE_RESOURCE.syupanFeatureSection.featureOne})`,
+            backgroundImage: `url(${IMAGE_RESOURCE.regSection.companyImg})`,
         };
         let itemTwo = {
             backgroundImage: `url(${IMAGE_RESOURCE.syupanFeatureSection.featureTwo})`,
@@ -101,7 +101,7 @@ export class ForUserAction extends React.Component {
             float: "right",
             color: "WHITE",
         };
-
+        
         return (
             <React.Fragment>
                 <Container>
@@ -129,13 +129,17 @@ export class ForUserAction extends React.Component {
                                     </div>
                                 </div>
 
-                                <div style={cardFooter}>
-                                    <Button style={{...CardBtn, ...CardBtnLeft}}>
+                                <div className="d-flex" style={cardFooter}>
+                                    
+                                    <Button onClick={() => {
+                                         window.location.href = "/company/login"
+                                    }} style={{...CardBtn, ...CardBtnLeft}}>
                                         {t("homepage.user_action_section.item-one.btn-left")}
                                     </Button>
                                     <Button
                                         style={{...CardBtn, ...CardBtnRight}}
                                         onClick={() => {
+                                            window.location.href = "/company/login"
                                         }}
                                     >
                                         {t("homepage.user_action_section.item-one.btn-right")}
@@ -146,7 +150,7 @@ export class ForUserAction extends React.Component {
                         <Col xs={12} md={4}>
                             <div style={userCard}>
                                 <div style={cardTitle} className="bg-aqua">
-                                    {t("homepage.user_action_section.item-two.title")}
+                                     {t("homepage.regsection.for_user_title")}
                                 </div>
 
                                 <div style={cardContentWrapper}>
@@ -166,14 +170,16 @@ export class ForUserAction extends React.Component {
                                     </div>
                                 </div>
 
-                                <div style={cardFooter}>
-                                    <Button style={{...CardBtn, ...CardBtnLeft}}>
+                                <div className="d-flex" style={cardFooter}>
+                                    <Button onClick={() => {
+                                            window.location.href = '/candidate/login';
+                                        }} style={{...CardBtn, ...CardBtnLeft}}>
                                         {t("homepage.user_action_section.item-two.btn-left")}
                                     </Button>
                                     <Button
                                         style={{...CardBtn, ...CardBtnRight}}
                                         onClick={() => {
-                                            window.location.href = '/admin/login';
+                                            window.location.href = '/candidate/login';
                                         }}
                                     >
                                         {t("homepage.user_action_section.item-two.btn-right")}
@@ -206,14 +212,18 @@ export class ForUserAction extends React.Component {
                                     </div>
                                 </div>
 
-                                <div style={cardFooter}>
-                                    <Button style={{...CardBtn, ...CardBtnLeft}}>
+                                <div className="d-flex" style={cardFooter}>
+                                    <Button
+                                     onClick={() => {
+                                        window.location.href = '/admin/login';
+                                    }}
+                                    style={{...CardBtn, ...CardBtnLeft}}>
                                         {t("homepage.user_action_section.item-three.btn-left")}
                                     </Button>
                                     <Button
                                         style={{...CardBtn, ...CardBtnRight}}
                                         onClick={() => {
-                                            window.location.href = '/candidate/login';
+                                            window.location.href = '/admin/login';
                                         }}
                                     >
                                         {t("homepage.user_action_section.item-three.btn-right")}

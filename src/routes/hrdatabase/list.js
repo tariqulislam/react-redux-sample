@@ -76,9 +76,9 @@ class HrdatabaseView extends Component {
                         <div className="row">
                             <div className="col-12  bg-light border"><h4 className="m-1">{t("hr-database.search.title")}</h4></div>
                             <div className="col-12">
-                                <h6>{t("hr-database.search.search_by_country")}</h6>
+                                <h6 className="pt-2">{t("hr-database.search.search_by_country")}</h6>
                                 <div className="mt-2">
-                                    <ul style={{ listStyle: "none" }}>
+                                    <ul style={{ listStyle: "none", paddingLeft: "0" }}>
                                         {this.props.filteredCountries &&
                                             this.props.filteredCountries.map((item, index) => {
                                                 return (

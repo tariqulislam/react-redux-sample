@@ -388,17 +388,17 @@
           "btn-right": "MYページログイン"
         },
         "item-two": {
-          "title": "外国人の方へ",
+          "title": "候補者の方へ",
           "content-title": "Japanで就職",
           "content-heading": "For User",
           "btn-left": "企業向けTOPページ",
           "btn-right": "MYページログイン"
         },
         "item-three": {
-          "title": "支援機関の方へ",
+          "title": "管理者の方へ",
           "content-title": "Japanで就職",
-          "content-heading": "For Support",
-          "btn-left": "支援機関向けTOPページ",
+          "content-heading": "管理用",
+          "btn-left": "管理者TOPページ",
           "btn-right": "MYページログイン"
         }
       },

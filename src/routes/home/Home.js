@@ -32,7 +32,6 @@ class Home extends Component {
                 </div>
                 <ForCandidate/>
                 <InitialSection selectedLanguage={selectedLanguage}/>
-                <RegSection/>
                 <ForUserAction/>
                 <ForCompanyFeature/>
                 <ForUserFeature/>

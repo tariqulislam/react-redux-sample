@@ -387,23 +387,23 @@
             "user_action_section": {
                 "item-one": {
                     "title": "For companies",
-                    "content-title": "Get a job in Japan",
+                    "content-title": "post a job in Japan",
                     "content-heading": "For Company",
                     "btn-left": "Top page for companies",
                     "btn-right": "My Page Login"
                 },
                 "item-two": {
-                    "title": "For foreigners",
+                    "title": "For Candidate",
                     "content-title": "Get a job in Japan",
                     "content-heading": "For User",
-                    "btn-left": "Top page for companies",
+                    "btn-left": "Top page for candidate",
                     "btn-right": "My Page Login"
                 },
                 "item-three": {
-                    "title": "To support organizations",
-                    "content-title": "Get a job in Japan",
-                    "content-heading": "For Support",
-                    "btn-left": "TOP page for support ",
+                    "title": "For Admin",
+                    "content-title": "Manage job posting",
+                    "content-heading": "For Management",
+                    "btn-left": "TOP page for Admin ",
                     "btn-right": "My Page Login"
                 }
             },
@@ -502,7 +502,7 @@
             },
             "search": {
                 "title": "Search",
-                "search_by_country": "Search By Country"
+                "search_by_country": "SEARCH BY COUNTRY"
             }
         },
         "thank-you-page": {
