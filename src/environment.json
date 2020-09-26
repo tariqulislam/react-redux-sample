@@ -1,7 +1,8 @@
 {
-  "api_url":  "localhost:4000",
-  "dev_api_url": "ec2-18-224-16-47.us-east-2.compute.amazonaws.com",
-  "host_url": "http://localhost:3000"
+  "api_url":  "ec2-18-224-16-47.us-east-2.compute.amazonaws.com",
+  "dev_api_url": "localhost:4000",
+  "host_url": "ec2-3-133-58-5.us-east-2.compute.amazonaws.com",
+  "dev_host_url": "http://localhost:3000"
 
 }
 
