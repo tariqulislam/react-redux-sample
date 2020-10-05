@@ -12,7 +12,8 @@ class HrdatabaseView extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+            data: [],
+            genders: []
         }
     }
 
@@ -24,6 +25,7 @@ class HrdatabaseView extends Component {
                 data: response.data.data
             });
         });
+
     }
 
     render() {

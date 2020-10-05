@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom"
 import './CandidateLogin.css';
 import axios from "axios"
 import environment from "../../../environment.json"
+import {withTranslation} from "react-i18next"
 
 const parseJwt = (token) => {
     var base64Url = token.split('.')[1];
@@ -59,6 +60,7 @@ export class CandidateLogin extends React.Component {
     }
 
     render() {
+        const {t} = this.props
         return (
             <Container className='main-container'>
                 <Row className="justify-content-md-center inner-container">
@@ -66,31 +68,31 @@ export class CandidateLogin extends React.Component {
                     <Col sm="6" className='login-container'>
                         <form onSubmit={this.onSubmitLoginCandidate} style={{ width: "100%" }}>
                            
-                            <h3 className='sign-in-banner'>Sign In</h3>
+                            <h3 className='sign-in-banner'>{t("login-page.candidate_title")}</h3>
                             {
                                 this.state.showMessage && <Alert variant={this.state.status}>
                                     {this.state.message}
                                 </Alert>
                             }
                             <div className="form-group">
-                                <label>Email address</label>
+                                <label>{t("login-page.email_address")}</label>
                                 <input type="email" name="username" id="username" className="form-control" placeholder="Username" />
                             </div>
 
                             <div className="form-group">
-                                <label>Password</label>
+                                <label>{t("login-page.password")}</label>
                                 <input type="password" name="password" id="password" className="form-control" placeholder="Password" />
                             </div>
 
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <div className="custom-control custom-checkbox">
                                     <input type="checkbox" className="custom-control-input" id="customCheck1" />
                                     <label className="custom-control-label remember-me" htmlFor="customCheck1">Remember
                                         me</label>
                                 </div>
-                            </div>
+                            </div> */}
 
-                            <button className="btn btn-primary btn-block">Log In</button>
+                            <button className="btn btn-primary btn-block">{t("login-page.candidate_login_button")}</button>
 
                             {
                                 this.state.spinner === true &&
@@ -118,9 +120,15 @@ export class CandidateLogin extends React.Component {
                     </Col>
                     <Col sm="3"></Col>
                 </Row>
+                <Row className="justify-content-md-center">
+                    <div sm="3"></div>
+                    <div sm="6"></div>
+                    <div sm="3" className="register-container text-center"><a className="btn btn-success" href="/candidate/register">{t("login-page.candidate_register_button")}</a></div>
+                   
+                </Row>
             </Container>
         )
     }
 }
 
-export default withRouter(CandidateLogin)
+export default withTranslation()(withRouter(CandidateLogin))

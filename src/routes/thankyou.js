@@ -13,10 +13,10 @@ export class ThankYouPage extends React.Component {
                 <p class="lead">{t("thank-you-page.subtitle")}</p>
                 <hr />
                     <p>
-                    {t("thank-you-page.contact_link.title")}? <a href=""> {t("thank-you-page.contact_link.link")}</a>
+                    {t("thank-you-page.contact_link.title")}? <a href="/about-us"> {t("thank-you-page.contact_link.link")}</a>
                     </p>
                     <p class="lead">
-                        <a class="btn btn-primary btn-sm" href="/" role="button"> {t("thank-you-page.button")}</a>
+                        <a class="btn btn-primary btn-sm" href="/"> {t("thank-you-page.button")}</a>
                     </p>
           </div>
         );

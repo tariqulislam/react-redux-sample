@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Container, Row, Col, Table, Button} from "react-bootstrap";
+import {Container, Row, Col, Table} from "react-bootstrap";
 import "./assets/campaign.scss";
 import {withTranslation} from "react-i18next"
 import {withRouter} from "react-router-dom"

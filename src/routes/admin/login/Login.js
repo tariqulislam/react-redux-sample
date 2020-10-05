@@ -1,11 +1,10 @@
 import React from "react";
 import {Container, Row, Col} from "react-bootstrap";
-import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 import {attemptLogin} from '../../../reducers/Admin/admin.reducer'
 import {Redirect} from "react-router";
 import './asset/css/style.css';
-
+import {withTranslation} from "react-i18next"
 export class AdminLogin extends React.Component {
 
     constructor(props) {
@@ -68,7 +67,8 @@ export class AdminLogin extends React.Component {
         if (role === undefined || role === null) {
             loggedIn = false;
         }
-
+        const {t} = this.props
+        console.log("this is props", this.props)
         return (
             loggedIn === false ? (
                 <Container className='main-container'>
@@ -76,9 +76,9 @@ export class AdminLogin extends React.Component {
                         <Col sm="3"></Col>
                         <Col sm="6" className='login-container'>
                             <form className="login-form" style={{width: "100%"}}>
-                                <h3 className='sign-in-banner'>Sign In</h3>
+                            <h3 className='sign-in-banner'>{t("login-page.admin_title")}</h3>
                                 <div className="form-group">
-                                    <label>Email address</label>
+                                    <label>{t("login-page.email_address")}</label>
                                     <input
                                         type="email"
                                         className="form-control"
@@ -91,7 +91,7 @@ export class AdminLogin extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label>Password</label>
+                                    <label>{t("login-page.password")}</label>
                                     <input
                                         type="password"
                                         className="form-control"
@@ -103,20 +103,18 @@ export class AdminLogin extends React.Component {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                     <div className="custom-control custom-checkbox">
                                         <input type="checkbox" className="custom-control-input" id="customCheck1"/>
                                         <label className="custom-control-label remember-me" htmlFor="customCheck1">Remember me</label>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <button type="submit" onClick={this.onSubmitAdminForm}
                                         className="btn btn-primary btn-block">
-                                    Log In
+                                    {t("login-page.admin_login_button")}
                                 </button>
-
                                 {
-                                    // Loading while redirecting to the dashboard
                                     this.state.spinner === true &&
                                     <div style={{display: 'flex', justifyContent: 'center'}}>
                                         <label className="lds-ellipsis">
@@ -165,4 +163,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminLogin);
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(AdminLogin));

@@ -35,6 +35,19 @@
     padding-top: 0%;
 }
 
+.register-container {
+    padding: 2em;
+    margin-top: 20px;
+    width: 20em;
+    /*margin-left: 5vw;*/
+    /*margin-right: 5vw;*/
+    background-color: rgba(255, 255, 255, .15);
+    background-color: rgba(0, 0, 0, .15);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+}
+
+
 .login-container {
     padding: 1%;
 

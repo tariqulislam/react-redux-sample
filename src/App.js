@@ -36,7 +36,7 @@ import {connect} from "react-redux"
 import {onSelectedLanguage} from "./reducers/Home/home.reducer"
 import {loadCampaign} from "./reducers/Campaign/campain.reducer"
 import {getAllCountriesFromApi} from "./reducers/Candidate/candidate.reducer"
-import {CompanyLogin} from "./routes/company/Login/Login";
+import CompanyLogin from "./routes/company/Login/Login";
 import ProfileUpdate from "./routes/candidate/profile/update"
 
 import CompanyCandidateList from "./routes/company/candidate/component/candidateList"
@@ -133,8 +133,17 @@ class App extends Component {
                                 <Nav.Link href="/company/login">{t('nav-bar.company_login')}</Nav.Link>
                                 <Nav.Link href="/admin/login">{t('nav-bar.admin_login')}</Nav.Link>
                             </Nav>
-
                             <Nav>
+                            <Nav.Link href="/candidate/register">
+                                    <Button>
+                                        {t('nav-bar.candidate_register')}
+                                    </Button>
+                            </Nav.Link>
+                            <Nav.Link href="/company/register">
+                                    <Button>
+                                        {t('nav-bar.company_register')}
+                                    </Button>
+                            </Nav.Link>
                                 <Navbar style={{backgroundColor: 'rgba(0,0,0,0)', padding: '0'}}>
                                     <Dropdown>
                                         <Dropdown.Toggle variant="primary" id="dropdown-basic">
@@ -171,13 +180,6 @@ class App extends Component {
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </Navbar>
-
-
-                                <Nav.Link href="/candidate/register">
-                                    <Button>
-                                        {t('nav-bar.register')}
-                                    </Button>
-                                </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

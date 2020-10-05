@@ -444,12 +444,41 @@
       "company-business-content-key": "事業内容",
       "phone_number": {
         "title": "電話番号",
-        "value": "042-740-8163"
+        "value": "(+81) 42-704-8162"
+      },
+      "ceo": {
+        "title": "代表取締役",
+        "value": "新倉 俊朗"
+      },
+      "capital": {
+        "title": "資本金",
+        "value": "2,000万円(資本準備金含む)"
+      },
+      "established": {
+        "title": "設立",
+        "value": "2016年3月"
+      },
+      "access": {
+        "title": "アクセス",
+        "value": "JR横浜線 相模原駅より神奈中バス上溝行き「高校入口」徒歩2分。JR相模線 上溝駅 徒歩17分"
+      },
+      "permission": {
+        "title": "許可番号",
+        "value1": "登録支援機関 20登-004025",
+        "value2": "有料職業紹介事業許可 14-ユ-301451",
+        "value3": "一般労働者派遣事業 派14-303021"
       },
       "email_address": {
         "title": "電子メールアドレス",
         "value": "info@careernext.jp"
-      }, 
+      },
+      "financial_institute": {
+        "title": "取引金融機関",
+        "value1": "みずほ銀行",
+        "value2": "横浜銀行",
+        "value3": "平塚信用金庫",
+        "value4": "住友SBIネット銀行"
+      },
       "company-business-content-value": {
         "h2": "人材総合サービス",
         "paragraph1": "人材派遣",
@@ -459,7 +488,7 @@
         "paragraph5": "求人サイト運営・管理"
       },
       "company-corporate-website-key": "企業WEBサイト",
-      "company-corporate-website-value": "https://tsunagu-japan.com/",
+      "company-corporate-website-value": "https://careernext.jp/",
       "location-key": "所在地",
       "location-value": "神奈川県相模原市中央区横山2-16-4西野ビル2B"
     },
@@ -467,7 +496,8 @@
       "GHRN": "TSUNAGU",
       "jobs": "レイチェル",
       "about-us": "私たちに関しては",
-      "register": "登録",
+      "candidate_register": "候補者登録",
+      "company_register": "会社登録",
       "candidate_login": "候補者ログイン",
       "company_login": "会社ログイン",
       "admin_login": "管理者ログイン",
@@ -480,8 +510,21 @@
       "company-list": "会社一覧",
       "applied_campaign": "適用キャンペーン",
       "candidate_profile": "候補者プロフィール",
+      "canidate_details": "候補者の詳細",
       "dashboard": "ダッシュボード",
       "company_profile": "会社のプロフィール"
+    },
+    "login-page": {
+      "company_title": "会社のログイン",
+      "candidate_title": "候補者ログイン",
+      "admin_title": "管理者ログイン",
+      "email_address": "電子メールアドレス",
+      "password": "パスワード",
+      "candidate_login_button": "候補者としてログイン",
+      "admin_login_button": "管理者としてログイン",
+      "company_login_button": "会社としてログイン",
+      "company_register_button": "会社として登録する",
+      "candidate_register_button": "候補者として登録する"
     },
     "hr-database": {
       "weight": "重量",
@@ -492,12 +535,12 @@
       "japanese_language": "日本語",
       "english_language": "英語",
       "button": {
-          "applicant_info": "申請者情報",
-          "company_info": "会社情報"
+        "applicant_info": "申請者情報",
+        "company_info": "会社情報"
       },
       "search": {
-          "title": "検索",
-          "search_by_country": "国で検索"
+        "title": "検索",
+        "search_by_country": "国で検索"
       }
     },
     "thank-you-page": {

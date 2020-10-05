@@ -456,10 +456,39 @@
                 "paragraph5": "Recruitment Site Operation and Management"
             },
             "company-corporate-website-key": "Corporate Website",
-            "company-corporate-website-value": "https://tsunagu-japan.com/",
+            "company-corporate-website-value": "https://careernext.jp",
             "phone_number": {
                 "title": "Phone Number",
-                "value": "042-740-8163"
+                "value": "(+81) 42-704-8162"
+            },
+            "ceo": {
+                "title": "CEO",
+                "value": "Toshiro Niikura"
+            },
+            "capital": {
+                "title": "Capital",
+                "value": "20 million yen (including capital reserve)"
+            },
+            "established": {
+                "title": "Established",
+                "value": "March 2016"
+            },
+            "access": {
+                "title": "Access",
+                "value": "2 minutes walk from 'High School Entrance' bound for Kamimizo on the Kanagawa Bus from Sagamihara Station on the JR Yokohama Line 17 minutes walk from Kamimizo Station on the JR Sagami Line"
+            },
+            "permission": {
+                "title": "Permission number",
+                "value1": "Registration support organization 20 Noboru-004025",
+                "value2": "Paid Employment Placement Business Permit 14-Yu-301451",
+                "value3":  "General worker dispatch business group 14-303021"
+            },
+            "financial_institute": {
+                "title": "Financial institution",
+                "value1": "Mizuho Bank",
+                "value2": "Bank of Yokohama",
+                "value3": "Hiratsuka Shinkin Bank",
+                "value4": "Sumitomo SBI Net Bank"
             },
             "email_address": {
                 "title": "Email Address",
@@ -472,11 +501,24 @@
             "GHRN": "TSUNAGU",
             "jobs": "Jobs",
             "about-us": "About Us",
-            "register": "Register",
+            "company_register": "Register Company",
+            "candidate_register": "Register Candidate",
             "candidate_login": "Candidate Login",
             "company_login": "Company Login",
             "admin_login": "Admin Login",
             "hr_database": "HR Database"
+        },
+        "login-page": {
+            "company_title": "Company Login",
+            "candidate_title": "Candidate Login",
+            "admin_title": "Admin Login",
+            "email_address": "Email",
+            "password": "Password",
+            "candidate_login_button": "Login as Candidate",
+            "admin_login_button": "Login as Admin",
+            "company_login_button": "Login as Company",
+            "company_register_button": "Register as company",
+            "candidate_register_button": "Register as Candidate"
         },
         "side-menu": {
             "candidate-list": "Candidate List",
@@ -484,6 +526,7 @@
             "create-campaign": "Create Campaign",
             "company-list": "Company List",
             "applied_campaign": "Applied Campaign",
+            "canidate_details": "候補者の詳細",
             "candidate_profile": "Candidate Profile",
             "dashboard": "Dashboard",
             "company_profile": "Company Profile"

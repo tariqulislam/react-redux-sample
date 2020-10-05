@@ -1,10 +1,13 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
+import axios from "axios"
+import {withTranslation} from "react-i18next"
 import {withRouter} from "react-router-dom"
 
 import './login.css';
-import axios from "axios"
+
 import environment from "../../../environment.json"
+
 
 const parseJwt = (token) => {
     var base64Url = token.split('.')[1];
@@ -24,7 +27,7 @@ export class CompanyLogin extends React.Component {
         }
     }
 
-    onSubmitLoginAdmin = (event) => {
+    onSubmitLoginCompany = (event) => {
         event.preventDefault()
         const data = new FormData(event.target)
         console.log(data.get("email"))
@@ -52,32 +55,34 @@ export class CompanyLogin extends React.Component {
     }
 
     render() {
+        const {t} = this.props
         return (
             <Container className='main-container'>
-                <Row className="justify-content-md-center inner-container">
+                
+                <Row className="justify-content-md-center">
                     <Col sm="3"></Col>
                     <Col sm="6" className='login-container'>
-                        <form onSubmit={this.onSubmitLoginAdmin} style={{width: "100%"}}>
-                            <h3 className='sign-in-banner'>Sign In</h3>
+                        <form onSubmit={this.onSubmitLoginCompany} style={{width: "100%"}}>
+        <h3 className='sign-in-banner'>{t("login-page.company_title")}</h3>
                             <div className="form-group">
-                                <label>Email address</label>
+                             <label>{t("login-page.email_address")}</label>
                                 <input type="email" name="username" id="username" className="form-control" placeholder="Username"/>
                             </div>
 
                             <div className="form-group">
-                                <label>Password</label>
+                            <label>{t("login-page.password")}</label>
                                 <input type="password" name="password" id="password" className="form-control" placeholder="Password"/>
                             </div>
 
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <div className="custom-control custom-checkbox">
                                     <input type="checkbox" className="custom-control-input" id="customCheck1"/>
                                     <label className="custom-control-label remember-me" htmlFor="customCheck1">Remember
                                         me</label>
                                 </div>
-                            </div>
+                            </div> */}
 
-                            <button className="btn btn-primary btn-block">Log In</button>
+                        <button className="btn btn-primary btn-block">{t("login-page.company_login_button")}</button>
 
                             {
                                 this.state.spinner === true &&
@@ -104,10 +109,16 @@ export class CompanyLogin extends React.Component {
 
                     </Col>
                     <Col sm="3"></Col>
+                    <div className="clearfix"></div>
+                </Row>
+                <Row className="justify-content-md-center">
+                    <div sm="3"></div>
+                    <div sm="6" className="register-container text-center"><a style={{width: "100%"}} className="btn btn-success" href="/company/register">{t("login-page.company_register_button")}</a></div>
+                    <div sm="3"></div>
                 </Row>
             </Container>
         )
     }
 }
 
-export default withRouter(CompanyLogin)
+export default withTranslation()(withRouter(CompanyLogin));

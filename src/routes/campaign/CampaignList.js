@@ -6,10 +6,6 @@ import { connect } from 'react-redux'
 import "./assets/campaign.scss"
 import { loadCampaign } from "../../reducers/Campaign/campain.reducer"
 class CampaignList extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount() {
         const { loadCampaignListByLang } = this.props
         let language = localStorage.getItem("language")

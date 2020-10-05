@@ -68,8 +68,6 @@ const AboutUs = (props) => {
                                 </h2>
                             </td>
                         </tr>
-
-
                         <tr>
                             <td>
                                 <div className="about-us-head">
@@ -103,6 +101,71 @@ const AboutUs = (props) => {
                             </td>
                             <td>
                             {t("about-us.email_address.value")}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div className="about-us-head">
+                                    {t("about-us.ceo.title")}
+                                </div>
+                            </td>
+                            <td>
+                            {t("about-us.ceo.value")}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div className="about-us-head">
+                                    {t("about-us.capital.title")}
+                                </div>
+                            </td>
+                            <td>
+                            {t("about-us.capital.value")}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div className="about-us-head">
+                                    {t("about-us.established.title")}
+                                </div>
+                            </td>
+                            <td>
+                            {t("about-us.established.value")}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div className="about-us-head">
+                                    {t("about-us.access.title")}
+                                </div>
+                            </td>
+                            <td>
+                            {t("about-us.access.value")}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div className="about-us-head">
+                                    {t("about-us.permission.title")}
+                                </div>
+                            </td>
+                            <td>
+                              <div> {t("about-us.permission.value1")}</div>  
+                              <div> {t("about-us.permission.value2")}</div>
+                              <div> {t("about-us.permission.value3")}</div>  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div className="about-us-head">
+                                    {t("about-us.financial_institute.title")}
+                                </div>
+                            </td>
+                            <td>
+                              <div> {t("about-us.financial_institute.value1")}</div>  
+                              <div> {t("about-us.financial_institute.value2")}</div>
+                              <div> {t("about-us.financial_institute.value3")}</div>
+                              <div> {t("about-us.financial_institute.value4")}</div>  
                             </td>
                         </tr>
                         <tr>

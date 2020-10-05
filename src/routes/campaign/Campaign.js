@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Table, Button } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import "./assets/campaign.scss";
 import { withTranslation } from "react-i18next"
 import axios from "axios"
@@ -7,8 +7,7 @@ import environment from "../../environment.json"
 class Campaign extends Component {
 
     onApplyCampaignInfo = () => {
-        
-        let props = this.props
+    
         let campaign = this.props.location.state.campaign
         /** check userinfo to canidate is */
         let getCandidate = JSON.parse(localStorage.getItem("user"))

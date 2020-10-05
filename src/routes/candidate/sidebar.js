@@ -14,6 +14,7 @@ export class SideBar extends React.Component {
                 <div class="list-group list-group-flush">
                     <Link className="list-group-item list-group-item-action bg-light" to="/candidate/dashboard">{t("side-menu.dashboard")}</Link>
                     <Link className="list-group-item list-group-item-action bg-light" to="/candidate/profile">{t("side-menu.candidate_profile")}</Link>
+                    <Link className="list-group-item list-group-item-action bg-light" to="/candidate/details/own">{t("side-menu.canidate_details")}</Link>
                 </div>
             </div>
         );

@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Form, Button, Alert } from "react-bootstrap";
-import { withTranslation, Trans } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import axios from 'axios';
 import "../company.css"
 import environment from "../../../environment.json"

@@ -6,6 +6,23 @@ export const MESSAGE_ALERT_DATA = 'MESSAGE_ALERT_DATA'
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES'
 export const GET_LANGUAGE_WISE_COUNTRIES= 'GET_LANGUAGE_WISE_COUNTRIES'
 
+export const GET_ALL_GENDERS = 'GET_ALL_GENDERS'
+export const GET_LANGUAGE_WISE_GENDERS = 'GET_LANGUAGE_WISE_GENDERS'
+
+export function getAllGenders (payload) {
+    return {
+        type: GET_ALL_GENDERS,
+        payload
+    }
+}
+
+export function getLanguageWiseGenders (payload) {
+    return {
+        type: GET_LANGUAGE_WISE_GENDERS,
+        payload
+    }
+}
+
 export function getLanguageWiseCountries (payload) {
     return {
         type: GET_LANGUAGE_WISE_COUNTRIES,

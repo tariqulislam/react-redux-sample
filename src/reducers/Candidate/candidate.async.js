@@ -45,3 +45,9 @@ export const getAllCountriesByApi = async () => {
     return  getAllCountries
 }
 
+export const getAllGendersByApi = async () => {
+    let genderUrl = `http://${environment.api_url}/api/genders`;
+    const getAllGenders = await axios.get(genderUrl)
+    return getAllGenders
+}
+
